@@ -60,7 +60,7 @@
                                 <li><a href="_goodmoral.html">Good Moral</a></li>
                                 <li><a href="_scholarship.html">Scholarship Program</a></li>
                                 <li><a href="_voting.html">Voting for USG</a></li>
-                                <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                             </ul>
                             <!-- <h4>Student Account</h4>
                             <ul>
@@ -76,7 +76,7 @@
                             <ul>
                                 <li><a href="_mainss.html">Home</a></li>
                                 <li><a href="_team.html">Team</a></li>
-                                <li><a href="_profile-dashboard.html">Profile</a></li>
+                                <li><a href="_profile-dashboard.php">Profile</a></li>
                                 <li><a href="index.html">Logout</a></li>
                             </ul>
                             <h4>About</h4>
@@ -239,13 +239,13 @@
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s4">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_profile-dashboard.html#violationss">
+                                                        <a class="course-overlay" href="_profile-dashboard.php#violationss">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Student Violation</span>
                                                         </a>
                                                     </div>
                                                     <p>Check if has violation. View remaining time for doing community service.</p>
-                                                    <a href="_profile-dashboard.html#violationss" class="mm-r-m-btn">Select</a>
+                                                    <a href="_profile-dashboard.php#violationss" class="mm-r-m-btn">Select</a>
                                                 </div>
 
                                             </div>
@@ -254,7 +254,7 @@
                                 </li>
                                 <li><a href="_team.html">Team</a>
                                 </li>
-                                <li><a href="_profile-dashboard.html">Profile</a>
+                                <li><a href="_profile-dashboard.php">Profile</a>
                                 </li>
                                 <li><a href="index.html">Logout</a>
                                 </li>
@@ -285,7 +285,7 @@
                                             <li><a href="_goodmoral.html">Good Moral</a></li>
                                             <li><a href="_voting.html">Voting for USG</a></li>
                                             <li><a href="_scholarship.html">Scholarship Programs</a></li>
-                                            <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                            <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -419,7 +419,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="_profile-dashboard.html#violationss" >
+                            <a class="course-overlay" href="_profile-dashboard.php#violationss" >
                                 <img src="images/h-about.jpg" alt="">
                                 <span>Student Violation</span>
                             </a>
@@ -427,7 +427,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="ed-course-in">
-                            <a class="course-overlay" href="_profile-dashboard.html">
+                            <a class="course-overlay" href="_profile-dashboard.php">
                                 <img src="images/h-about.jpg" alt="">
                                 <span>Students Profile</span>
                             </a>
@@ -459,7 +459,7 @@
                         <li><a href="_goodmoral.html">Good Moral</a></li>
                         <li><a href="_scholarship.html">Scholarship Program</a></li>
                         <li><a href="_voting.html">Voting for USG</a></li>
-                        <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                        <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">

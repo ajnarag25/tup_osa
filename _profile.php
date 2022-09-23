@@ -1,3 +1,11 @@
+<?php 
+  include('connection.php');
+  session_start();
+  if (!isset($_SESSION['get_data']['email'])) {
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,14 +38,13 @@
 
 <body>
 
-
     <!-- MOBILE MENU -->
     <section>
         <div class="ed-mob-menu">
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo2">
-                        <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" />
+                        <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" />
 						</a>
                     </div>
                 </div>
@@ -53,7 +60,7 @@
                                 <li><a href="_goodmoral.html">Good Moral</a></li>
                                 <li><a href="_scholarship.html">Scholarship Program</a></li>
                                 <li><a href="_voting.html">Voting for USG</a></li>
-                                <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                             </ul>
                             <!-- <h4>Student Account</h4>
                             <ul>
@@ -67,9 +74,9 @@
                             
                             <h4>Other Pages</h4>
                             <ul>
-                                <li><a href="_mainss.html">Home</a></li>
+                                <li><a href="_mainss.php">Home</a></li>
                                 <li><a href="_team.html">Team</a></li>
-                                <li><a href="_profile-dashboard.html">Profile</a></li>
+                                <li><a href="_profile-dashboard.php">Profile</a></li>
                                 <li><a href="index.html">Logout</a></li>
                             </ul>
                             <h4>About</h4>
@@ -126,11 +133,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
+                            <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="_mainss.html">Home</a>
+                                <li><a href="_mainss.php">Home</a>
                                 </li>
                                 <li class="about-menu">
                                     <a href="#" class="mm-arr">About</a>
@@ -232,13 +239,13 @@
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s4">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_profile-dashboard.html#violationss">
+                                                        <a class="course-overlay" href="_profile-dashboard.php#violationss">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Student Violation</span>
                                                         </a>
                                                     </div>
                                                     <p>Check if has violation. View remaining time for doing community service.</p>
-                                                    <a href="_profile-dashboard.html#violationss" class="mm-r-m-btn">Select</a>
+                                                    <a href="_profile-dashboard.php#violationss" class="mm-r-m-btn">Select</a>
                                                 </div>
 
                                             </div>
@@ -247,7 +254,7 @@
                                 </li>
                                 <li><a href="_team.html">Team</a>
                                 </li>
-                                <li><a href="_profile-dashboard.html" style="color: rgb(197,30,58);">Profile</a>
+                                <li><a href="_profile-dashboard.php" style="color: rgb(197,30,58);">Profile</a>
                                 </li>
                                 <li><a href="index.html">Logout</a>
                                 </li>
@@ -278,7 +285,7 @@
                                             <li><a href="_goodmoral.html">Good Moral</a></li>
                                             <li><a href="_voting.html">Voting for USG</a></li>
                                             <li><a href="_scholarship.html">Scholarship Programs</a></li>
-                                            <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                            <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -294,6 +301,7 @@
     </section>
     <!--END HEADER SECTION-->
 
+
     <!--SECTION START-->
     <section>
         <div class="pro-cover">
@@ -302,8 +310,8 @@
             <div class="container">
                 <div class="col-md-9 col-md-offset-3">
                     <ul>
-                        <li><a href="_profile-dashboard.html" class="pro-act">My Dashboard</a></li>
-                        <li><a href="_profile.html">Profile</a></li>
+                        <li><a href="_profile-dashboard.php">My Dashboard</a></li>
+                        <li><a href="#" class="pro-act">Profile</a></li>
                     </ul>
                 </div>
             </div>
@@ -312,297 +320,96 @@
             <div class="container pg-inn">
                 <div class="col-md-3">
                     <div class="pro-user">
-                        <img src="images/user.jpg" alt="user">
+                    <?php 
+                        $get_email = $_SESSION['get_data']['email'];
+                        $query = "SELECT * FROM student WHERE email='$get_email' ";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($result)) {
+
+                    ?>
+                        <img src="<?php echo $row['image'] ?>" alt="user">
                     </div>
                     <div class="pro-user-bio">
                         <ul>
                             <li>
-                                <h4>Bermon Ferreras</h4>
+                                <h4><?php echo $row['name'] ?></h4>
                             </li>
-                            <li>Student ID: TUPC-18-0069</li>
-                            <li><a href="#!"><i class="fa fa-facebook"></i>: Bermon Ferreras Jr.</a></li>
-                            <li><a href="#!"><i class="fa fa-google"></i>: bermsjr@gmail.com</a></li>
-                            <li><a href="#!"><i class="fa fa-twitter"></i>: berms</a></li>
+                            <li>Student ID: <?php echo $row['student_id'] ?></li>
+                            <li><a href="#!"><i class="fa fa-facebook"></i>: <?php echo $row['social1'] ?></a></li>
+                            <li><a href="#!"><i class="fa fa-google"></i>: <?php echo $row['email'] ?></a></li>
+                            <li><a href="#!"><i class="fa fa-twitter"></i>: <?php echo $row['social2'] ?></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div class="udb" id="idreq">
-                        <div class="udb-sec udb-cour-stat">
-                            <h4><img src="images/icon/db3.png" alt="" /> ID Request</h4>
-                            <p>You can see all your pending and done <strong>ID request</strong> here </p>
-                            <small>Note: <strong>Scheduled date</strong> is the date where you need to go to the campus. If status is <strong>declined</strong>, it means that you did not go 
-                                on the correct scheduled date.
-                            </small>
-                            
-                            <div class="pro-con-table">
-                                <table class="bordered responsive-table">
-                                    <thead >
-                                        <tr>
-                                            <th>Student ID</th>
-                                            <th>Request Date</th>
-                                            <th>Request Type</th>
-                                            <th>Scheduled Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>08/07/2022</td>
-                                            <td>Replacement (lost ID)</td>
-                                            <td>Pending</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>04/03/2022</td>
-                                            <td>Replacement (damaged ID)</td>
-                                            <td>04/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>02/03/2022</td>
-                                            <td>Replacement (damaged ID)</td>
-                                            <td>02/11/2022</td>
-                                            <td><span class="pro-user-danger">Declined</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>01/03/2022</td>
-                                            <td>New ID (for newly enrolled 1st year students)</td>
-                                            <td>01/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-xs btn-danger">Delete All</button>
+                    <div class="udb">
+                        <div class="udb-sec udb-prof">
+                            <h4><img src="images/icon/dbb1.png" alt="" /> My Profile</h4>
+                            <div class="n-form-com admiss-form">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Student Name:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control"  value="<?php echo $row['name'] ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Student ID:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control"  value="<?php echo $row['student_id'] ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Username:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="<?php echo $row['username'] ?>" readonly>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Password:</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" id="mypass" class="form-control" value="defaultpass" readonly>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Email:</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" value="<?php echo $row['email'] ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Phone:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="<?php echo $row['contact'] ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Facebook:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="<?php echo $row['social1'] ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-3">Twitter:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" value="<?php echo $row['social2'] ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="sdb-bot-edit">
+                                        <a href="_profile-edit.php" class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit"><i class="fa fa-pencil"></i> Edit my profile</a>
+                                    </div>
+                                </form>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
-
-                    <div class="udb" id="idval">
-                        <div class="udb-sec udb-cour-stat">
-                            <h4><img src="images/icon/db3.png" alt="" /> ID Validation</h4>
-                            <p>You can see all your pending and done <strong>ID validation</strong> here </p>
-                            <small>Note: <strong>Scheduled date</strong> is the date where you need to go to the campus. If status is <strong>declined</strong>, it means that you did not go 
-                                on the correct scheduled date or your ID is severely damaged and need to be replace.
-                            </small>
-                            <div class="pro-con-table">
-                                <table class="bordered responsive-table">
-                                    <thead >
-                                        <tr>
-                                            <th>Student ID</th>
-                                            <th>Request Date</th>
-                                            <th>ID Condition</th>
-                                            <th>Scheduled Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>08/07/2022</td>
-                                            <td>Newly made ID</td>
-                                            <td>Pending</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>04/03/2022</td>
-                                            <td>Newly made ID</td>
-                                            <td>04/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>02/03/2022</td>
-                                            <td>Discoloration but still readable</td>
-                                            <td>02/11/2022</td>
-                                            <td><span class="pro-user-danger">Declined</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>01/03/2022</td>
-                                            <td>Newly made ID</td>
-                                            <td>01/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-xs btn-danger">Delete All</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="udb" id="goodmor">
-                        <div class="udb-sec udb-cour-stat">
-                            <h4><img src="images/icon/db3.png" alt="" /> Good Moral</h4>
-                            <p>You can see all your pending and done <strong>Good moral request</strong> here </p>
-                            <small>Note: <strong>Scheduled date</strong> is the date where you need to go to the campus. If status is <strong>declined</strong>, it means that you did not go 
-                                on the correct scheduled date.
-                            </small>
-                            <div class="pro-con-table">
-                                <table class="bordered responsive-table">
-                                    <thead >
-                                        <tr>
-                                            <th>Student ID</th>
-                                            <th>Request Date</th>
-                                            <th>Purpose</th>
-                                            <th>Scheduled Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>08/07/2022</td>
-                                            <td>School Purposes</td>
-                                            <td>Pending</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>04/03/2022</td>
-                                            <td>School Purposes</td>
-                                            <td>04/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>02/03/2022</td>
-                                            <td>School Purposes</td>
-                                            <td>02/11/2022</td>
-                                            <td><span class="pro-user-danger">Declined</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>01/03/2022</td>
-                                            <td>School Purposes</td>
-                                            <td>01/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-xs btn-danger">Delete All</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="udb" id="violationss">
-                        <div class="udb-sec udb-cour-stat">
-                            <h4><img src="images/icon/db3.png" alt="" /> Violations</h4>
-                            <p>You can see all your pending and done <strong>violations</strong> here</p>
-                            <small>Note: You need to go and comply if you have a violation. After comply, you need to do the sanction and return to the office to submit or update your status.
-                            </small>
-                            <div class="pro-con-table">
-                                <table class="bordered responsive-table">
-                                    <thead >
-                                        <tr>
-                                            <th>Student ID</th>
-                                            <th>Offenses</th>
-                                            <th>Violation</th>
-                                            <th>Started Date</th>
-                                            <th>Offense #</th>
-                                            <th>Sanction</th>
-                                            <th>Remaining Time</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>Minor</td>
-                                            <td>Loitering or causing disturbance during class hours</td>
-                                            <td>08/07/2022</td>
-                                            <td>First Offense</td>
-                                            <td>Warning and a Letter of Apology</td>
-                                            <td>-</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>Major</td>
-                                            <td>Robbery/Theft</td>
-                                            <td>07/29/2022</td>
-                                            <td>First Offense</td>
-                                            <td>Suspension up to 30 school days and replacement of the stolen item</td>
-                                            <td>30 days</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-xs btn-danger">Delete All</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="udb" id="scho">
-                        <div class="udb-sec udb-cour-stat">
-                            <h4><img src="images/icon/db3.png" alt="" /> Scholarship</h4>
-                            <p>You can see all your pending and done <strong>Scholarship application</strong> here </p>
-                            <small>Note: <strong>Scheduled date</strong> is the date where you need to go to the campus. If status is <strong>declined</strong>, it means that you did not go 
-                                on the correct scheduled date.
-                            </small>
-                            <div class="pro-con-table">
-                                <table class="bordered responsive-table">
-                                    <thead >
-                                        <tr>
-                                            <th>Student ID</th>
-                                            <th>Request Date</th>
-                                            <th>Reason</th>
-                                            <th>Scheduled Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>08/07/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>Pending</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>04/03/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>04/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>02/03/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>02/11/2022</td>
-                                            <td><span class="pro-user-danger">Declined</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>01/03/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>01/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button class="btn btn-xs btn-danger">Delete All</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>             
+                </div>
             </div>
         </div>
     </section>
     <!--SECTION END-->
-
 
     <!-- FOOTER -->
     <section class="wed-hom-footer">
@@ -617,7 +424,7 @@
                         <li><a href="_goodmoral.html">Good Moral</a></li>
                         <li><a href="_scholarship.html">Scholarship Program</a></li>
                         <li><a href="_voting.html">Voting for USG</a></li>
-                        <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                        <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -656,7 +463,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- COPY RIGHTS -->
     <section class="wed-rights">
         <div class="container">
@@ -674,6 +481,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
+
 </body>
 
 

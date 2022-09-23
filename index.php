@@ -40,7 +40,7 @@
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo">
-                        <a href="index.html"><img src="images/logo.png" alt="" />
+                        <a href="index.php"><img src="images/logo.png" alt="" />
 						</a>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             </ul>
                             <h4>All Pages</h4>
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.php">Home</a></li>
                                 <li><a href="_team.html" data-toggle="modal" data-target="#modal1">Team</a></li>
                             </ul>
                         </div>
@@ -113,11 +113,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="index.html"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
+                            <a href="index.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="index.html">Home</a>
+                                <li><a href="index.php">Home</a>
                                 </li>
                                 <li class="about-menu">
                                     <a href="#" class="mm-arr">About</a>

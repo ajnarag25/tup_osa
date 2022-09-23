@@ -1,3 +1,11 @@
+<?php 
+  include('connection.php');
+  session_start();
+  if (!isset($_SESSION['get_data']['email'])) {
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,13 +38,14 @@
 
 <body>
 
+
     <!-- MOBILE MENU -->
     <section>
         <div class="ed-mob-menu">
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo2">
-                        <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" />
+                        <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" />
 						</a>
                     </div>
                 </div>
@@ -52,7 +61,7 @@
                                 <li><a href="_goodmoral.html">Good Moral</a></li>
                                 <li><a href="_scholarship.html">Scholarship Program</a></li>
                                 <li><a href="_voting.html">Voting for USG</a></li>
-                                <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                             </ul>
                             <!-- <h4>Student Account</h4>
                             <ul>
@@ -66,9 +75,9 @@
                             
                             <h4>Other Pages</h4>
                             <ul>
-                                <li><a href="_mainss.html">Home</a></li>
+                                <li><a href="_mainss.php">Home</a></li>
                                 <li><a href="_team.html">Team</a></li>
-                                <li><a href="_profile-dashboard.html">Profile</a></li>
+                                <li><a href="_profile-dashboard.php">Profile</a></li>
                                 <li><a href="index.html">Logout</a></li>
                             </ul>
                             <h4>About</h4>
@@ -125,11 +134,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
+                            <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="_mainss.html">Home</a>
+                                <li><a href="_mainss.php">Home</a>
                                 </li>
                                 <li class="about-menu">
                                     <a href="#" class="mm-arr">About</a>
@@ -231,13 +240,13 @@
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s4">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_profile-dashboard.html#violationss">
+                                                        <a class="course-overlay" href="_profile-dashboard.php#violationss">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Student Violation</span>
                                                         </a>
                                                     </div>
                                                     <p>Check if has violation. View remaining time for doing community service.</p>
-                                                    <a href="_profile-dashboard.html#violationss" class="mm-r-m-btn">Select</a>
+                                                    <a href="_profile-dashboard.php#violationss" class="mm-r-m-btn">Select</a>
                                                 </div>
 
                                             </div>
@@ -246,7 +255,7 @@
                                 </li>
                                 <li><a href="_team.html">Team</a>
                                 </li>
-                                <li><a href="_profile-dashboard.html" style="color: rgb(197,30,58);">Profile</a>
+                                <li><a href="_profile-dashboard.php" style="color: rgb(197,30,58);">Profile</a>
                                 </li>
                                 <li><a href="index.html">Logout</a>
                                 </li>
@@ -277,7 +286,7 @@
                                             <li><a href="_goodmoral.html">Good Moral</a></li>
                                             <li><a href="_voting.html">Voting for USG</a></li>
                                             <li><a href="_scholarship.html">Scholarship Programs</a></li>
-                                            <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                            <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -302,7 +311,7 @@
             <div class="container">
                 <div class="col-md-9 col-md-offset-3">
                     <ul>
-                        <li><a href="_profile-dashboard.html">My Dashboard</a></li>
+                        <li><a href="_profile-dashboard.php">My Dashboard</a></li>
                         <li><a href="#" class="pro-act">Profile</a></li>
                     </ul>
                 </div>
@@ -312,17 +321,32 @@
             <div class="container pg-inn">
                 <div class="col-md-3">
                     <div class="pro-user">
-                        <img src="images/user.jpg" alt="user">
+                    <?php 
+                        $get_email = $_SESSION['get_data']['email'];
+                        $query = "SELECT * FROM student WHERE email='$get_email' ";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($result)) {
+
+                    ?>
+                        <img src="<?php echo $row['image'] ?>" alt="user">
                     </div>
+                    <form action="process.php" method="POST" enctype="multipart/form-data">
+                        <input type="file" class="form-control" name="profile_pic" required>
+                        <br>
+                        <div class="text-center">
+                            <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                            <button type="submit" name="change_profile" class="btn btn-success">Change Profile</button>
+                        </div>
+                    </form>
                     <div class="pro-user-bio">
                         <ul>
                             <li>
-                                <h4>Bermon Ferreras</h4>
+                                <h4><?php echo $row['name'] ?></h4>
                             </li>
-                            <li>Student ID: TUPC-18-0069</li>
-                            <li><a href="#!"><i class="fa fa-facebook"></i>: Bermon Ferreras Jr.</a></li>
-                            <li><a href="#!"><i class="fa fa-google"></i>: bermsjr@gmail.com</a></li>
-                            <li><a href="#!"><i class="fa fa-twitter"></i>: berms</a></li>
+                            <li>Student ID: <?php echo $row['student_id'] ?></li>
+                            <li><a href="#!"><i class="fa fa-facebook"></i>: <?php echo $row['social1'] ?></a></li>
+                            <li><a href="#!"><i class="fa fa-google"></i>: <?php echo $row['email'] ?></a></li>
+                            <li><a href="#!"><i class="fa fa-twitter"></i>: <?php echo $row['social2']?></a></li>
                         </ul>
                     </div>
                 </div>
@@ -331,61 +355,119 @@
                         <div class="udb-sec udb-prof">
                             <h4><img src="images/icon/dbb1.png" alt="" /> My Profile</h4>
                             <div class="n-form-com admiss-form">
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" method="POST" action="process.php">
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3">Student Name:</label>
+                                        <label class="control-label col-sm-3">Username</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Enter your name" value="Bermon Ferreras" required readonly>
+                                            <input type="text" class="form-control" name="username" value="<?php echo $row['username'] ?>" required>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3">Student ID:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" placeholder="Enter your TUPC ID Number" value="TUPC-18-0069" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3">Password:</label>
-                                        <div class="col-sm-9">
-                                            <input type="password" id="mypass" class="form-control" placeholder="Enter your TUPC ID Number" value="pogikotalaga" required readonly>
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3">Email:</label>
-                                        <div class="col-sm-9">
-                                            <input type="email" class="form-control" placeholder="Enter your email" value="bermsjr@gmail.com" required readonly>
-                                        </div>
-                                    </div>
+                                    </div>  
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">Phone:</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="09091234567" placeholder="Enter your phone number" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-3">Address:</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="8800 Orchard Lake Road, Suite 180 Farmington Hills, U.S.A." placeholder="Enter your phone number" readonly>
+                                            <input type="text" class="form-control" name="contact" value="<?php echo $row['contact'] ?>" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">Facebook:</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="Bermon Ferreras Jr." placeholder="Enter your phone number" readonly>
+                                            <input type="text" class="form-control" name="s1" value="<?php echo $row['social1'] ?>" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-3">Twitter:</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" value="berms" placeholder="Enter your phone number" readonly>
+                                            <input type="text" class="form-control" name="s2" value="<?php echo $row['social2'] ?>" required>
                                         </div>
                                     </div>
                                     <div class="sdb-bot-edit">
-                                        <a href="_profile-edit.html" class="waves-effect waves-light btn-large sdb-btn sdb-btn-edit"><i class="fa fa-pencil"></i> Edit my profile</a>
+                                        <button type="button" data-toggle="modal" data-target="#save1<?php echo $row['id'] ?>" class="waves-effect waves-light btn-large sdb-btn sdb-btn-save"><i class="fa fa-pencil"></i> Save Changes</button>
                                     </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Update Profile Information -->
+                        <div class="modal fade" id="save1<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLabel">Update Profile Information</h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Are you sure to Update your Profile Information now?</h4>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" name="update_profile" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
                                 </form>
                             </div>
+                        </div>
+
+                        <?php } ?>
+                    </div>
+                    <div class="udb-sec udb-prof">
+                        <h4><img src="images/icon/dbb1.png" alt="" /> Change Password</h4>
+                        <div class="n-form-com admiss-form">
+                            <form class="form-horizontal" method="POST" action="process.php">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">New Password:</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" id="mypass1" class="form-control" name="newpass1" placeholder="Enter your new password" value="" required>
+                                        <input type="checkbox" id="test51" onclick="myFunction1()" />
+                                        <label for="test51">Show Password</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Confirm New Password:</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" id="mypass2" class="form-control" name="newpass2" placeholder="Enter confirm password" value="" required>
+                                        <input type="checkbox" id="test52" onclick="myFunction2()" />
+                                        <label for="test52">Show Password</label>
+                                    </div>
+                                </div>
+                                <div class="sdb-bot-edit">
+                                <?php 
+                                    $get_email = $_SESSION['get_data']['email'];
+                                    $query = "SELECT * FROM student WHERE email='$get_email' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                    <button type="button" data-toggle="modal" data-target="#save2<?php echo $row['id'] ?>"  class="waves-effect waves-light btn-large sdb-btn sdb-btn-save"><i class="fa fa-pencil"></i> Save Changes</button>
+                                </div>
+
+                                <!-- Modal Update Password -->
+                                <div class="modal fade" id="save2<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="exampleModalLabel">Update Password</h3>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3>Are you sure to Update your Password now?</h3>
+                                                <p>You will be automatically logout and simply login your new created password.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" name="change_password" class="btn btn-primary">Update Password</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <?php } ?>
+
                         </div>
                     </div>
                 </div>
@@ -407,7 +489,7 @@
                         <li><a href="_goodmoral.html">Good Moral</a></li>
                         <li><a href="_scholarship.html">Scholarship Program</a></li>
                         <li><a href="_voting.html">Voting for USG</a></li>
-                        <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                        <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -446,7 +528,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- COPY RIGHTS -->
     <section class="wed-rights">
         <div class="container">
@@ -460,6 +542,33 @@
 
 
     <!--Import jQuery before materialize.js-->
+    <script>
+        function myFunction() {
+            var x = document.getElementById("mypass");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function myFunction1() {
+            var x = document.getElementById("mypass1");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function myFunction2() {
+            var x = document.getElementById("mypass2");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
     <script src="js/main.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
