@@ -88,7 +88,7 @@
         }else{
             if (!$result->num_rows > 0) {
                 $conn->query("INSERT INTO student (image, student_id, name, course, email, contact, username, password, social1, social2, otp) 
-                VALUES('N/A','$studentid','$fullname', '$course','$email', '$contact', '$username', '".password_hash($pass1, PASSWORD_DEFAULT)."','N/A','N/A', 0)") or die($conn->error);
+                VALUES('uploads/default.png','$studentid','$fullname', '$course','$email', '$contact', '$username', '".password_hash($pass1, PASSWORD_DEFAULT)."','N/A','N/A', 0)") or die($conn->error);
                 ?>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
