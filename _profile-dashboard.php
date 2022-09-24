@@ -365,34 +365,44 @@
                                     </thead>
 
                                     <tbody>
+                                    <?php 
+                                        $get_email = $_SESSION['get_data']['email'];
+                                        $query = "SELECT * FROM id_request WHERE email='$get_email' ";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_array($result)) {
+
+                                    ?>
                                         <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>08/07/2022</td>
-                                            <td>Replacement (lost ID)</td>
-                                            <td>Pending</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
+                                            <td><?php echo $row['student_id'] ?></td>
+                                            <td><?php echo $row['sched_submit'] ?></td>
+                                            <td><?php echo $row['req_type'] ?></td>
+                                            <td><?php echo $row['sched_claim'] ?></td>
+                                            <td>
+                                                <?php 
+                                                    if ($row['status'] == 'PENDING'){
+                                                        $pending = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-de-act'>$pending</span>
+                                                        ";
+                                                    }elseif ($row['status'] == 'DECLINED'){
+                                                        $declined = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-danger'>$declined</span>
+                                                        ";
+                                                    }else{
+                                                        $accepted = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-act'>$accepted</span>
+                                                        ";
+                                                    }
+                                                
+                                                ?>
+                                            
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>04/03/2022</td>
-                                            <td>Replacement (damaged ID)</td>
-                                            <td>04/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>02/03/2022</td>
-                                            <td>Replacement (damaged ID)</td>
-                                            <td>02/11/2022</td>
-                                            <td><span class="pro-user-danger">Declined</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>01/03/2022</td>
-                                            <td>New ID (for newly enrolled 1st year students)</td>
-                                            <td>01/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
+
+                                    <?php } ?>
+
                                     </tbody>
                                 </table>
                                 <button class="btn btn-xs btn-danger">Delete All</button>

@@ -320,108 +320,88 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="n-form-com admiss-form">
                     <div class="col s12">
-                        <form class="form-horizontal">
+                        <?php 
+                            $get_email = $_SESSION['get_data']['email'];
+                            $query = "SELECT * FROM student WHERE email='$get_email' ";
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+
+                        ?>
+                        <form class="form-horizontal" method="POST" action="process.php" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label class="control-label col-sm-3">TUPC ID #:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your TUPC ID Number" required>
+                                    <input type="text" class="form-control" name="studentid" value="<?php echo $row['student_id'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Full Name:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Email:</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" placeholder="Enter your email" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Request Type:</label>
-                                <div class="col-sm-9">
-                                    <select>
-								<option selected disabled>-- Select Type --</option>
-								<option>New ID (for newly enrolled 1st year students)</option>
-								<option>Replacement (lost ID)</option>							
-								<option>Replacement (damaged ID)</option>	
-                                <option>Unclaimed</option>	
-							  </select>
+                                    <input type="email" class="form-control" name="email" value="<?php echo $row['email'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Course:</label>
                                 <div class="col-sm-9">
-                                    <select size="5" id="sel">
-                                        <option selected disabled>-- Select Course --</option>
-                                        <option value="BGT-AT">BGT-AT</option>
-                                        <option value="BET-ET">BET-ET</option>			
-                                        <option value="BET-ESET">BET-ESET</option>
-                                        <option value="BET-COET">BET-COET</option>		
-                                        <option value="BET-CT">BET-CT</option>
-                                        <option value="BET-MT">BET-MT</option>
-                                        <option value="BET-AD">BET-AD</option>
-                                        <option value="BET-PPT">BET-PPT</option>
-                                        <option value="BSIE-IA">BSIE-IA</option>		
-                                        <option value="BSIE-ICT">BSIE-ICT</option>	
-                                        <option value="BSCE">BSCE</option>	
-                                        <option value="BSEE">BSEE</option>	
-                                        <option value="BSME">BSME</option>					
-							        </select>
+                                    <input type="text" class="form-control" name="course" value="<?php echo $row['course'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Phone #:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your phone number (ex. 09091234567)" required>
+                                    <input type="text" class="form-control" name="contact" value="<?php echo $row['contact'] ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Request Type:</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select" name="request" required>
+                                        <option value="" selected disabled>-- Select Type --</option>
+                                        <option value="New ID">New ID (for newly enrolled 1st year students)</option>
+                                        <option value="Replacement (lost ID)">Replacement (lost ID)</option>							
+                                        <option value="Replacement (damaged ID)">Replacement (damaged ID)</option>	
+                                        <option value="Unclaimed">Unclaimed</option>	
+							        </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Birthday:</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control" placeholder="Enter your Birthday">
+                                    <input type="date" class="form-control" name="birthday" placeholder="Enter your Birthday" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">ID Picture:</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" placeholder="Choose photos">
+                                    <input type="file" class="form-control" name="id_pic" placeholder="Choose photos" required>
                                     <a class="btn btn-info btn-xs btn-block" href="#!" data-toggle="modal" data-target="#guidelines">Guidelines for ID Picture</a>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3">Signature:</label>
-                                <div class="col-sm-9">
-                                    <input type="file" class="form-control" placeholder="Choose photos">
-                                    <a class="btn btn-info btn-xs btn-block" href="#!" data-toggle="modal" data-target="#signa">Guidelines for Signature Picture</a>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="control-label col-sm-3"><small>Contact Person:</small></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Name of the contact person in case of emergency" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3"><small>Contact Person:</small></label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Number of the contact person in case of emergency" required>
+                                    <input type="text" class="form-control" name="contact_person" placeholder="Name of the contact person in case of emergency" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Address:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Please enter your address(All Capital Letters)" required>
+                                    <input type="text" class="form-control" name="address" placeholder="Please enter your address" required>
                                 </div>
                             </div>
                             <div class="form-group mar-bot-0">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" value="Submit Form" class="waves-button-input"></i>
+                                    <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" name="id_request" value="Submit Form" class="waves-button-input"></i>
                                 </div>
                             </div>
                         </form>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

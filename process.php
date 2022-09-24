@@ -437,4 +437,111 @@
         }
 
     }
+
+    /////////////////////////////////////////////////////////// SERVICES PART ///////////////////////////////////////////////////////////////////////////
+
+    // id request
+    if (isset($_POST['id_request'])) { 
+        $studentid = $_POST['studentid'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $course = $_POST['course'];
+        $contact = $_POST['contact'];
+        $request = $_POST['request'];
+        $birthday = $_POST['birthday'];
+        $contact_person = $_POST['contact_person'];
+        $address = $_POST['address'];
+        $sched_today = date("Y/m/d");
+
+        
+        $target_dir = "uploads/";
+        
+        $target_file = $target_dir . time(). basename($_FILES["id_pic"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES["id_pic"]["tmp_name"]);
+
+        $sql = "SELECT * FROM id_request WHERE student_id='$studentid' AND name='$name' AND status='PENDING' ";
+        $result = mysqli_query($conn, $sql);
+
+
+        if (!$result->num_rows > 0){
+            move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file);
+            if ($check == false ){
+                ?>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Uploaded file is not an image!',
+                        text: 'Please upload an image format',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_idrequest.php";
+                            }else{
+                                window.location.href = "_idrequest.php";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+                <?php
+            }else{
+                $conn->query("INSERT INTO id_request (student_id, name, email, req_type, course, contact, birthday, id_pic, contact_person, address, status, sched_submit, sched_claim) 
+                VALUES('$studentid','$name','$email', '$request', '$course', '$contact', '$birthday', '$target_file', '$contact_person', '$address', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
+                  ?>
+                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                  <script>
+                      $(document).ready(function(){
+                          Swal.fire({
+                          icon: 'success',
+                          title: 'Successfully Submitted your Request',
+                          confirmButtonColor: '#3085d6',
+                          confirmButtonText: 'Okay'
+                          }).then((result) => {
+                          if (result.isConfirmed) {
+                              window.location.href = "_profile-dashboard.php#idreq";
+                              }else{
+                                  window.location.href = "_profile-dashboard.php#idreq";
+                              }
+                          })
+                          
+                      })
+              
+                  </script>
+                  <?php
+            }
+        }else{
+            ?>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'warning',
+                        title: 'You have a pending request',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_profile-dashboard.php#idreq";
+                            }else{
+                                window.location.href = "_profile-dashboard.php#idreq";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+            <?php
+        }
+    }
+
+
 ?>
