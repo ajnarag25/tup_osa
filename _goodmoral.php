@@ -36,7 +36,7 @@
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo2">
-                        <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" />
+                        <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" />
 						</a>
                     </div>
                 </div>
@@ -47,12 +47,12 @@
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4 id="serv">All Services</h4>
                             <ul>
-                                <li><a href="_idrequest.html">ID Request</a></li>
-                                <li><a href="_idvalidation.html">ID Validation</a></li>
-                                <li><a href="_goodmoral.html">Good Moral</a></li>
-                                <li><a href="_scholarship.html">Scholarship Program</a></li>
-                                <li><a href="_voting.html">Voting for USG</a></li>
-                                <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                <li><a href="_idrequest.php">ID Request</a></li>
+                                <li><a href="_idvalidation.php">ID Validation</a></li>
+                                <li><a href="_goodmoral.php">Good Moral</a></li>
+                                <li><a href="_scholarship.php">Scholarship Program</a></li>
+                                <li><a href="_voting.php">Voting for USG</a></li>
+                                <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                             </ul>
                             <!-- <h4>Student Account</h4>
                             <ul>
@@ -66,10 +66,10 @@
                             
                             <h4>Other Pages</h4>
                             <ul>
-                                <li><a href="_mainss.html">Home</a></li>
-                                <li><a href="_team.html">Team</a></li>
-                                <li><a href="_profile-dashboard.html">Profile</a></li>
-                                <li><a href="index.html">Logout</a></li>
+                                <li><a href="_mainss.php">Home</a></li>
+                                <li><a href="_team.php">Team</a></li>
+                                <li><a href="_profile-dashboard.php">Profile</a></li>
+                                <li><a href="index.php">Logout</a></li>
                             </ul>
                             <h4>About</h4>
                             <ul>
@@ -125,11 +125,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
+                            <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="_mainss.html">Home</a>
+                                <li><a href="_mainss.php">Home</a>
                                 </li>
                                 <li class="about-menu">
                                     <a href="#" class="mm-arr">About</a>
@@ -181,74 +181,74 @@
                                             <div class="m-menu-inn">
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idrequest.html">
+                                                        <a class="course-overlay" href="_idrequest.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Request</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for ID request any time.</p>
-                                                    <a href="_idrequest.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_idrequest.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idvalidation.html">
+                                                        <a class="course-overlay" href="_idvalidation.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Validation</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Validation of School ID</p>
-                                                    <a href="_idvalidation.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_idvalidation.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_goodmoral.html">
+                                                        <a class="course-overlay" href="_goodmoral.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Good Moral</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Good Moral.</p>
-                                                    <a href="_goodmoral.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_goodmoral.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_voting.html">
+                                                        <a class="course-overlay" href="_voting.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Voting for USG</span>
                                                         </a>
                                                     </div>
                                                     <p>Vote for USG election candidates. </p>
-                                                    <a href="_voting.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_voting.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_scholarship.html">
+                                                        <a class="course-overlay" href="_scholarship.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Scholarship Programs</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for Scholarship Program. View announcement about scholarship program.</p>
-                                                    <a href="_scholarship.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_scholarship.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s4">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_profile-dashboard.html#violationss">
+                                                        <a class="course-overlay" href="_profile-dashboard.php#violationss">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Student Violation</span>
                                                         </a>
                                                     </div>
                                                     <p>Check if has violation. View remaining time for doing community service.</p>
-                                                    <a href="_profile-dashboard.html#violationss" class="mm-r-m-btn">Select</a>
+                                                    <a href="_profile-dashboard.php#violationss" class="mm-r-m-btn">Select</a>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="_team.html">Team</a>
+                                <li><a href="_team.php">Team</a>
                                 </li>
-                                <li><a href="_profile-dashboard.html">Profile</a>
+                                <li><a href="_profile-dashboard.php">Profile</a>
                                 </li>
-                                <li><a href="index.html">Logout</a>
+                                <li><a href="index.php">Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -272,12 +272,12 @@
                                     </div>
                                     <div class="sf-list">
                                         <ul>
-                                            <li><a href="_idrequest.html">ID Request</a></li>
-                                            <li><a href="_idvalidation.html">ID Validation</a></li>
-                                            <li><a href="_goodmoral.html">Good Moral</a></li>
-                                            <li><a href="_voting.html">Voting for USG</a></li>
-                                            <li><a href="_scholarship.html">Scholarship Programs</a></li>
-                                            <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                            <li><a href="_idrequest.php">ID Request</a></li>
+                                            <li><a href="_idvalidation.php">ID Validation</a></li>
+                                            <li><a href="_goodmoral.php">Good Moral</a></li>
+                                            <li><a href="_voting.php">Voting for USG</a></li>
+                                            <li><a href="_scholarship.php">Scholarship Programs</a></li>
+                                            <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -298,13 +298,10 @@
         <div class="container">
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="all-title quote-title qu-new">
-                    <h2>Apply for scholarship</h2>
-                    <p>Send a request form for scholarship program.</p>
-                    <p>After sending the form, wait for the update and further instructions. Once approved, please prepare the following list below.</p>
-                    <p><strong>Requirements List<br>-> Duly Accomplied Application Form<br>-> Endorsement from the Shop Adviser/Previous Professor in the campus<br>
-                        -> Certified True Copy of Evaluation of Grades (for students with atleast one semester residency) or High School Card (Form-138)(for new students)<br>
-                        -> Latest income Tax Return / Certificate of non-filing of ITR<br>-> 2x2 Picture(1pc)<br>-> Photocopy of Latest Registration Form</strong></p>
-                    <a class="btn btn-secondary btn-block" href="_profile-dashboard.html#scho" role="button">View Status</a>
+                    <h2>REQUEST FOR GOOD MORAL</h2>
+                    <p>Send a request form to make an appointment to get a good moral certificate.</p>
+                    <p>After sending the form, wait for the update when to go to the campus. Click the button below for the status of your appointment</p>
+                    <a class="btn btn-sm btn-secondary btn-block" href="_profile-dashboard.php#goodmor" role="button">View Status</a>
                     <p class="help-line">Help Line <span>(046) 416 4920</span> </p> <span class="help-arrow pulse"><i class="fa fa-angle-right" aria-hidden="true"></i></span> 
                 </div>
             </div>
@@ -313,23 +310,9 @@
                     <div class="col s12">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <h4 style="color: gray;">Basic Information</h4>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Scholarship Applied For:</label>
-                                <div class="col-sm-7">
-                                    <select size="5" id="sel">
-                                        <option selected disabled>-- Select Option --</option>
-                                        <option value="Option1">Option 1</option>
-                                        <option value="Option2">Option 2</option>
-                                        <option value="Option3">Option 3</option>		
-							        </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">School Year:</label>
+                                <label class="control-label col-sm-3">TUPC ID #:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter S.Y (ex. 2022-2023)" required>
+                                    <input type="text" class="form-control" placeholder="Enter your TUPC ID Number" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -372,279 +355,35 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <h4 style="color: gray;">Personal Information</h4>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-4">Date of Birth:</label>
-                                <div class="col-sm-8">
-                                    <input type="date" class="form-control" placeholder="Enter your complete address" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-4">Place of Birth:</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Enter your birth place" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Age:</label>
+                                <label class="control-label col-sm-3">Purpose:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your age" required>
+                                    <input type="text" class="form-control" placeholder="Enter your purpose" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3">Sex:</label>
+                                <label class="control-label col-sm-3"><small>Yr of Attendance:</small></label>
                                 <div class="col-sm-9">
-                                    <select>
-                                        <option selected disabled>-- Select Sex --</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-							        </select>
+                                    <input type="text" class="form-control" placeholder="Enter your year" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3">Nationality:</label>
+                                <label class="control-label col-sm-3">Graduated Year:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your nationality" required>
+                                    <input type="text" class="form-control" placeholder="Enter your year of graduation" required>
                                 </div>
+                                <p class="col-sm-9"><small>Type 'none' if not yet graduated</small></p>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-3">Religion:</label>
+                                <label class="control-label col-sm-3">Proof:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your religion" required>
+                                    <input type="file" class="form-control" placeholder="Choose photos">
+                                    <p ><small>Upload proof of graduation (for those who graduated only),
+                                        Upload one of the following: Diploma, alumni ID, Certificate of Graduation)</small></p>
                                 </div>
+                             
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Complete Address:</label>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control" placeholder="Enter your complete address" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Provincial Address:</label>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control" placeholder="Enter your complete provincial address" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h4 style="color: gray;">Educational History</h4>
-                            </div>
-                            <div class="form-group">
-                                <p>Elementary Level</p>
-                                <label class="control-label col-sm-3">Elementary</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your name of your school" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Address</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your address of school" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">S.Y Attended</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your school year attended" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Awards</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your awards received" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <p>Junior High Level</p>
-                                <label class="control-label col-sm-3">Junior High</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your name of your school" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Address</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your address of school" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">S.Y Attended</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your school year attended" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Awards</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your awards received" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <p>Senior High Level</p>
-                                <label class="control-label col-sm-3">Senor High</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your name of your school" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Address</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your address of school" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">S.Y Attended</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your school year attended" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Awards</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your awards received" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-12">Have you been placed under academic probation or any given sanction for poor academics? If yes, please provide details.</label>
-                                <div class="col-sm-12">
-                                    <textarea type="text" class="form-control" placeholder="Type N/A if not" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-12">Have you been placed under desciplinary probation or given any sanction for misbehavior? If yes, please provide details.</label>
-                                <div class="col-sm-12">
-                                    <textarea type="text" class="form-control" placeholder="Type N/A if not" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h4 style="color: gray;">Family Information</h4>
-                            </div>
-                            <div class="form-group">
-                                <p>Father's Information</p>
-                                <label class="control-label col-sm-3">Name</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your father's name" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Nationality</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your father's nationality" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Occupation</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your father's occupation" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Company Address</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Company address (type N/A if not applicable)" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Office Number</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Office Number (type N/A if not applicable)" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Mobile Number</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your father's mobile number" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <p>Mother's Information</p>
-                                <label class="control-label col-sm-3">Name</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your mother's name" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Nationality</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your mother's nationality" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Occupation</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your mother's occupation" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Company Address</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Company address (type N/A if not applicable)" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Office Number</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Office Number (type N/A if not applicable)" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Mobile Number</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your mother's mobile number" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <p>Siblings</p>
-                                <label class="control-label col-sm-5">Number of Siblings</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control" placeholder="Ex. 2 sister 3 brother" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Birth Order</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your birth order (ex. 2nd)" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h4 style="color: gray;">Medical Information</h4>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-6">Have you been hospitalized?</label>
-                                <div class="col-sm-6">
-                                    <select>
-                                        <option selected disabled>-- Select Option --</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-							        </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-4">If so, for what?</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Enter your birth order (ex. 2nd)" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h4 style="color: gray;">Essay</h4>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-12">Tell me something about yourself.</label>
-                                <div class="col-sm-12">
-                                    <textarea type="text" class="form-control" placeholder="..." required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-12">Why did you apply for scholarhip assistance?</label>
-                                <div class="col-sm-12">
-                                    <textarea type="text" class="form-control" placeholder="..." required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <p class="control-label col-sm-12">I hereby certify that all information stated is true and correct.</p>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label col-sm-12">
+                            <div class="form-group mar-bot-0">
+                                <div class="col-sm-offset-3 col-sm-9">
                                     <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" value="Submit Form" class="waves-button-input"></i>
                                 </div>
                             </div>
@@ -664,12 +403,12 @@
                 <div class="col-md-4 foot-tc-mar-t-o">
                     <h4>Most Popular Links</h4>
                     <ul>
-                        <li><a href="_idrequest.html">ID Request</a></li>
-                        <li><a href="_idvalidation.html">ID Validation</a></li>
-                        <li><a href="_goodmoral.html">Good Moral</a></li>
-                        <li><a href="_scholarship.html">Scholarship Program</a></li>
-                        <li><a href="_voting.html">Voting for USG</a></li>
-                        <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                        <li><a href="_idrequest.php">ID Request</a></li>
+                        <li><a href="_idvalidation.php">ID Validation</a></li>
+                        <li><a href="_goodmoral.php">Good Moral</a></li>
+                        <li><a href="_scholarship.php">Scholarship Program</a></li>
+                        <li><a href="_voting.php">Voting for USG</a></li>
+                        <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -719,11 +458,34 @@
             </div>
         </div>
     </section>
-
-  
+   
 
     <!--Import jQuery before materialize.js-->
-    
+    <script>
+        document.getElementById('sel').addEventListener('click', onClickHandler);
+        document.getElementById('sel').addEventListener('mousedown', onMouseDownHandler);
+
+        function onMouseDownHandler(e){
+            var el = e.currentTarget;
+            
+            if(el.hasAttribute('size') && el.getAttribute('size') == '5'){
+                e.preventDefault();    
+            }
+        }
+        function onClickHandler(e) {
+            var el = e.currentTarget; 
+
+            if (el.getAttribute('size') == '5') {
+                el.className += " selectOpen";
+                el.setAttribute('size', '3');
+            }
+            else {
+                el.className = '';
+                el.setAttribute('size', '5');
+            }
+        }
+
+    </script>
     <script src="js/main.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>

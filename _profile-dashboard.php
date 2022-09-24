@@ -56,11 +56,11 @@
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4 id="serv">All Services</h4>
                             <ul>
-                                <li><a href="_idrequest.html">ID Request</a></li>
-                                <li><a href="_idvalidation.html">ID Validation</a></li>
-                                <li><a href="_goodmoral.html">Good Moral</a></li>
-                                <li><a href="_scholarship.html">Scholarship Program</a></li>
-                                <li><a href="_voting.html">Voting for USG</a></li>
+                                <li><a href="_idrequest.php">ID Request</a></li>
+                                <li><a href="_idvalidation.php">ID Validation</a></li>
+                                <li><a href="_goodmoral.php">Good Moral</a></li>
+                                <li><a href="_scholarship.php">Scholarship Program</a></li>
+                                <li><a href="_voting.php">Voting for USG</a></li>
                                 <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                             </ul>
                             <!-- <h4>Student Account</h4>
@@ -76,9 +76,9 @@
                             <h4>Other Pages</h4>
                             <ul>
                                 <li><a href="_mainss.php">Home</a></li>
-                                <li><a href="_team.html">Team</a></li>
+                                <li><a href="_team.php">Team</a></li>
                                 <li><a href="_profile-dashboard.php">Profile</a></li>
-                                <li><a href="index.html">Logout</a></li>
+                                <li><a href="index.php">Logout</a></li>
                             </ul>
                             <h4>About</h4>
                             <ul>
@@ -190,53 +190,53 @@
                                             <div class="m-menu-inn">
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idrequest.html">
+                                                        <a class="course-overlay" href="_idrequest.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Request</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for ID request any time.</p>
-                                                    <a href="_idrequest.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_idrequest.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idvalidation.html">
+                                                        <a class="course-overlay" href="_idvalidation.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Validation</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Validation of School ID</p>
-                                                    <a href="_idvalidation.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_idvalidation.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_goodmoral.html">
+                                                        <a class="course-overlay" href="_goodmoral.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Good Moral</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Good Moral.</p>
-                                                    <a href="_goodmoral.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_goodmoral.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_voting.html">
+                                                        <a class="course-overlay" href="_voting.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Voting for USG</span>
                                                         </a>
                                                     </div>
                                                     <p>Vote for USG election candidates. </p>
-                                                    <a href="_voting.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_voting.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_scholarship.html">
+                                                        <a class="course-overlay" href="_scholarship.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Scholarship Programs</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for Scholarship Program. View announcement about scholarship program.</p>
-                                                    <a href="_scholarship.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_scholarship.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s4">
                                                     <div class="ed-course-in">
@@ -253,11 +253,11 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="_team.html">Team</a>
+                                <li><a href="_team.php">Team</a>
                                 </li>
                                 <li><a href="_profile-dashboard.php" style="color: rgb(197,30,58);">Profile</a>
                                 </li>
-                                <li><a href="index.html">Logout</a>
+                                <li><a href="index.php">Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -281,11 +281,11 @@
                                     </div>
                                     <div class="sf-list">
                                         <ul>
-                                            <li><a href="_idrequest.html">ID Request</a></li>
-                                            <li><a href="_idvalidation.html">ID Validation</a></li>
-                                            <li><a href="_goodmoral.html">Good Moral</a></li>
-                                            <li><a href="_voting.html">Voting for USG</a></li>
-                                            <li><a href="_scholarship.html">Scholarship Programs</a></li>
+                                            <li><a href="_idrequest.php">ID Request</a></li>
+                                            <li><a href="_idvalidation.php">ID Validation</a></li>
+                                            <li><a href="_goodmoral.php">Good Moral</a></li>
+                                            <li><a href="_voting.php">Voting for USG</a></li>
+                                            <li><a href="_scholarship.php">Scholarship Programs</a></li>
                                             <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                                         </ul>
                                     </div>
@@ -629,11 +629,11 @@
                 <div class="col-md-4 foot-tc-mar-t-o">
                     <h4>Most Popular Links</h4>
                     <ul>
-                        <li><a href="_idrequest.html">ID Request</a></li>
-                        <li><a href="_idvalidation.html">ID Validation</a></li>
-                        <li><a href="_goodmoral.html">Good Moral</a></li>
-                        <li><a href="_scholarship.html">Scholarship Program</a></li>
-                        <li><a href="_voting.html">Voting for USG</a></li>
+                        <li><a href="_idrequest.php">ID Request</a></li>
+                        <li><a href="_idvalidation.php">ID Validation</a></li>
+                        <li><a href="_goodmoral.php">Good Moral</a></li>
+                        <li><a href="_scholarship.php">Scholarship Program</a></li>
+                        <li><a href="_voting.php">Voting for USG</a></li>
                         <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                     </ul>
                 </div>

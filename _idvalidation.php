@@ -1,3 +1,11 @@
+<?php 
+  include('connection.php');
+  session_start();
+  if (!isset($_SESSION['get_data']['email'])) {
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +24,6 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- ALL CSS FILES -->
     <link href="css/materialize.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
@@ -27,22 +34,6 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-    <style>
-        .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-    </style>
 </head>
 
 <body>
@@ -53,7 +44,7 @@
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
                     <div class="wed-logo2">
-                        <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" />
+                        <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" />
 						</a>
                     </div>
                 </div>
@@ -64,12 +55,12 @@
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4 id="serv">All Services</h4>
                             <ul>
-                                <li><a href="_idrequest.html">ID Request</a></li>
-                                <li><a href="_idvalidation.html">ID Validation</a></li>
-                                <li><a href="_goodmoral.html">Good Moral</a></li>
-                                <li><a href="_scholarship.html">Scholarship Program</a></li>
-                                <li><a href="_voting.html">Voting for USG</a></li>
-                                <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                <li><a href="_idrequest.php">ID Request</a></li>
+                                <li><a href="_idvalidation.php">ID Validation</a></li>
+                                <li><a href="_goodmoral.php">Good Moral</a></li>
+                                <li><a href="_scholarship.php">Scholarship Program</a></li>
+                                <li><a href="_voting.php">Voting for USG</a></li>
+                                <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                             </ul>
                             <!-- <h4>Student Account</h4>
                             <ul>
@@ -83,10 +74,10 @@
                             
                             <h4>Other Pages</h4>
                             <ul>
-                                <li><a href="_mainss.html">Home</a></li>
-                                <li><a href="_team.html">Team</a></li>
-                                <li><a href="_profile-dashboard.html">Profile</a></li>
-                                <li><a href="index.html">Logout</a></li>
+                                <li><a href="_mainss.php">Home</a></li>
+                                <li><a href="_team.php">Team</a></li>
+                                <li><a href="_profile-dashboard.php">Profile</a></li>
+                                <li><a href="index.php">Logout</a></li>
                             </ul>
                             <h4>About</h4>
                             <ul>
@@ -142,11 +133,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="_mainss.html"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
+                            <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="_mainss.html">Home</a>
+                                <li><a href="_mainss.php">Home</a>
                                 </li>
                                 <li class="about-menu">
                                     <a href="#" class="mm-arr">About</a>
@@ -198,74 +189,74 @@
                                             <div class="m-menu-inn">
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idrequest.html">
+                                                        <a class="course-overlay" href="_idrequest.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Request</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for ID request any time.</p>
-                                                    <a href="_idrequest.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_idrequest.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idvalidation.html">
+                                                        <a class="course-overlay" href="_idvalidation.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Validation</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Validation of School ID</p>
-                                                    <a href="_idvalidation.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_idvalidation.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_goodmoral.html">
+                                                        <a class="course-overlay" href="_goodmoral.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Good Moral</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Good Moral.</p>
-                                                    <a href="_goodmoral.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_goodmoral.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_voting.html">
+                                                        <a class="course-overlay" href="_voting.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Voting for USG</span>
                                                         </a>
                                                     </div>
                                                     <p>Vote for USG election candidates. </p>
-                                                    <a href="_voting.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_voting.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_scholarship.html">
+                                                        <a class="course-overlay" href="_scholarship.php">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Scholarship Programs</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for Scholarship Program. View announcement about scholarship program.</p>
-                                                    <a href="_scholarship.html" class="mm-r-m-btn">Select</a>
+                                                    <a href="_scholarship.php" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s4">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_profile-dashboard.html#violationss">
+                                                        <a class="course-overlay" href="_profile-dashboard.php#violationss">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Student Violation</span>
                                                         </a>
                                                     </div>
                                                     <p>Check if has violation. View remaining time for doing community service.</p>
-                                                    <a href="_profile-dashboard.html#violationss" class="mm-r-m-btn">Select</a>
+                                                    <a href="_profile-dashboard.php#violationss" class="mm-r-m-btn">Select</a>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="_team.html">Team</a>
+                                <li><a href="_team.php">Team</a>
                                 </li>
-                                <li><a href="_profile-dashboard.html">Profile</a>
+                                <li><a href="_profile-dashboard.php">Profile</a>
                                 </li>
-                                <li><a href="index.html">Logout</a>
+                                <li><a href="index.php">Logout</a>
                                 </li>
                             </ul>
                         </div>
@@ -289,12 +280,12 @@
                                     </div>
                                     <div class="sf-list">
                                         <ul>
-                                            <li><a href="_idrequest.html">ID Request</a></li>
-                                            <li><a href="_idvalidation.html">ID Validation</a></li>
-                                            <li><a href="_goodmoral.html">Good Moral</a></li>
-                                            <li><a href="_voting.html">Voting for USG</a></li>
-                                            <li><a href="_scholarship.html">Scholarship Programs</a></li>
-                                            <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                                            <li><a href="_idrequest.php">ID Request</a></li>
+                                            <li><a href="_idvalidation.php">ID Validation</a></li>
+                                            <li><a href="_goodmoral.php">Good Moral</a></li>
+                                            <li><a href="_voting.php">Voting for USG</a></li>
+                                            <li><a href="_scholarship.php">Scholarship Programs</a></li>
+                                            <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -309,24 +300,93 @@
         </div>
     </section>
     <!--END HEADER SECTION-->
-    
-    <section>
-        <div class="head-2">
-            <div class="container">
-                <div class="head-2-inn head-2-inn-padd-top">
-                    <h1>Scholarship Application is not yet opened</h1>
-                    <p>Please wait for further announcement regarding for scholarship application.</p>
+
+    <!--SECTION START-->
+    <section class="c-all h-quote">
+        <div class="container">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="all-title quote-title qu-new">
+                    <h2>TUPC ID VALIDATION</h2>
+                    <p>Send a request form to make an appointment to validate your TUPC ID. Only you can validate your ID if it meets the conditions</p>
+                    <p>After sending the form, wait for the update when to go to the campus. Click the button below for the status of your appointment</p>
+                    <a class="btn btn-sm btn-secondary btn-block" href="_profile-dashboard.php#idval" role="button">View Status</a>
+                    <p class="help-line">Help Line <span>(046) 416 4920</span> </p> <span class="help-arrow pulse"><i class="fa fa-angle-right" aria-hidden="true"></i></span> 
                 </div>
             </div>
-        </div>
-    </section>
-    <!--SECTION START-->
-    <section>
-        <div class="container">
-            <div class="ed-res-bg">
-
-                	
-            </div>    
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="n-form-com admiss-form">
+                    <div class="col s12">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">TUPC ID #:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter your TUPC ID Number" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Full Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Course:</label>
+                                <div class="col-sm-9">
+                                    <select size="5" id="sel">
+                                        <option selected disabled>-- Select Course --</option>
+                                        <option value="BGT-AT">BGT-AT</option>
+                                        <option value="BET-ET">BET-ET</option>			
+                                        <option value="BET-ESET">BET-ESET</option>
+                                        <option value="BET-COET">BET-COET</option>		
+                                        <option value="BET-CT">BET-CT</option>
+                                        <option value="BET-MT">BET-MT</option>
+                                        <option value="BET-AD">BET-AD</option>
+                                        <option value="BET-PPT">BET-PPT</option>
+                                        <option value="BSIE-IA">BSIE-IA</option>		
+                                        <option value="BSIE-ICT">BSIE-ICT</option>	
+                                        <option value="BSCE">BSCE</option>	
+                                        <option value="BSEE">BSEE</option>	
+                                        <option value="BSME">BSME</option>					
+							        </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter your complete address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Phone #:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Enter your phone number (ex. 09091234567)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Birthday:</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" placeholder="Enter your Birthday">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">ID Condition:</label>
+                                <div class="col-sm-9">
+                                    <select>
+								<option selected disabled>-- Select Condition --</option>
+								<option>Newly made ID</option>
+								<option>Discoloration but still readable</option>							
+							  </select>
+                                </div>
+                            </div>
+                            <div class="form-group mar-bot-0">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" value="Submit Form" class="waves-button-input"></i>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!--SECTION END-->
@@ -339,12 +399,12 @@
                 <div class="col-md-4 foot-tc-mar-t-o">
                     <h4>Most Popular Links</h4>
                     <ul>
-                        <li><a href="_idrequest.html">ID Request</a></li>
-                        <li><a href="_idvalidation.html">ID Validation</a></li>
-                        <li><a href="_goodmoral.html">Good Moral</a></li>
-                        <li><a href="_scholarship.html">Scholarship Program</a></li>
-                        <li><a href="_voting.html">Voting for USG</a></li>
-                        <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                        <li><a href="_idrequest.php">ID Request</a></li>
+                        <li><a href="_idvalidation.php">ID Validation</a></li>
+                        <li><a href="_goodmoral.php">Good Moral</a></li>
+                        <li><a href="_scholarship.php">Scholarship Program</a></li>
+                        <li><a href="_voting.php">Voting for USG</a></li>
+                        <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -394,17 +454,14 @@
             </div>
         </div>
     </section>
-    
-    <!--Import jQuery before materialize.js-->
+
    
+
+    <!--Import jQuery before materialize.js-->
     <script src="js/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
-    
 </body>
 
 </html>

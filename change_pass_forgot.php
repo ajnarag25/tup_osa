@@ -74,7 +74,7 @@
                             <h4>All Pages</h4>
                             <ul>
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="_team.html" data-toggle="modal" data-target="#modal1">Team</a></li>
+                                <li><a href="_team.php" data-toggle="modal" data-target="#modal1">Team</a></li>
                             </ul>
                         </div>
                     </div>
@@ -274,12 +274,12 @@
                 <div class="col-md-4 foot-tc-mar-t-o">
                     <h4>Most Popular Links</h4>
                     <ul>
-                        <li><a href="_idrequest.html">ID Request</a></li>
-                        <li><a href="_idvalidation.html">ID Validation</a></li>
-                        <li><a href="_goodmoral.html">Good Moral</a></li>
-                        <li><a href="_scholarship.html">Scholarship Program</a></li>
-                        <li><a href="_voting.html">Voting for USG</a></li>
-                        <li><a href="_profile-dashboard.html#violationss">Student Violation</a></li>
+                        <li><a href="_idrequest.php">ID Request</a></li>
+                        <li><a href="_idvalidation.php">ID Validation</a></li>
+                        <li><a href="_goodmoral.php">Good Moral</a></li>
+                        <li><a href="_scholarship.php">Scholarship Program</a></li>
+                        <li><a href="_voting.php">Voting for USG</a></li>
+                        <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
