@@ -4,7 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
-    error_reporting(0);
+    // error_reporting(0);
 
     // login student
     if (isset($_POST['login_student'])) {
@@ -543,5 +543,278 @@
         }
     }
 
+    // id validation
+    if (isset($_POST['id_validation'])) { 
+        $id = $_POST['studentid'];
+        $name = $_POST['name'];
+        $course = $_POST['course'];
+        $contact = $_POST['contact'];
+        $address = $_POST['address'];
+        $birthday = $_POST['birthday'];
+        $condition = $_POST['condition'];
+        $email = $_POST['email'];
+        $sched_today = date("Y/m/d");
+
+        $sql = "SELECT * FROM id_validation WHERE student_id='$id' AND name='$name' AND status='PENDING' ";
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result->num_rows > 0){
+            $conn->query("INSERT INTO id_validation (student_id, name, course, contact, email, address, birthday, id_condition, status, date_submit, date_claim) 
+                VALUES('$id','$name','$course', '$contact', '$email', '$address', '$birthday', '$condition', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
+                  ?>
+                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                  <script>
+                      $(document).ready(function(){
+                          Swal.fire({
+                          icon: 'success',
+                          title: 'Successfully Submitted your Request',
+                          confirmButtonColor: '#3085d6',
+                          confirmButtonText: 'Okay'
+                          }).then((result) => {
+                          if (result.isConfirmed) {
+                              window.location.href = "_profile-dashboard.php#idval";
+                              }else{
+                                  window.location.href = "_profile-dashboard.php#idval";
+                              }
+                          })
+                          
+                      })
+              
+                  </script>
+                <?php
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'warning',
+                    title: 'You have a pending request',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_profile-dashboard.php#idval";
+                        }else{
+                            window.location.href = "_profile-dashboard.php#idval";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+        <?php
+        }
+    }
+
+    // good moral
+    if (isset($_POST['good_moral'])) { 
+        $id = $_POST['studentid'];
+        $name = $_POST['name'];
+        $course = $_POST['course'];
+        $contact = $_POST['contact'];
+        $email = $_POST['email'];
+        $purpose = $_POST['purpose'];
+        $yr_attendance = $_POST['yrattendance'];
+        $yr_graduate = $_POST['yrgraduate'];
+        $sched_today = date("Y/m/d");
+
+        $target_dir = "uploads/";
+        
+        $target_file = $target_dir . time(). basename($_FILES["proof"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES["proof"]["tmp_name"]);
+
+        $sql = "SELECT * FROM good_moral WHERE student_id='$id' AND name='$name' AND status='PENDING' ";
+        $result = mysqli_query($conn, $sql);
+
+
+        if (!$result->num_rows > 0){
+            move_uploaded_file($_FILES["proof"]["tmp_name"], $target_file);
+            if ($check == false ){
+                ?>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Uploaded file is not an image!',
+                        text: 'Please upload an image format',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_goodmoral.php";
+                            }else{
+                                window.location.href = "_goodmoral.php";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+                <?php
+            }else{
+                $conn->query("INSERT INTO good_moral (student_id, name, course, contact, email, purpose, yr_attendance, yr_graduate, proof, status, date_submit, date_claim) 
+                VALUES('$id','$name', '$course', '$contact', '$email', '$purpose', '$yr_attendance', '$yr_graduate', '$target_file', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
+                  ?>
+                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                  <script>
+                      $(document).ready(function(){
+                          Swal.fire({
+                          icon: 'success',
+                          title: 'Successfully Submitted your Request',
+                          confirmButtonColor: '#3085d6',
+                          confirmButtonText: 'Okay'
+                          }).then((result) => {
+                          if (result.isConfirmed) {
+                              window.location.href = "_profile-dashboard.php#goodmor";
+                              }else{
+                                  window.location.href = "_profile-dashboard.php#goodmor";
+                              }
+                          })
+                          
+                      })
+              
+                  </script>
+                  <?php
+            }
+        }else{
+            ?>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'warning',
+                        title: 'You have a pending request',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_profile-dashboard.php#goodmor";
+                            }else{
+                                window.location.href = "_profile-dashboard.php#goodmor";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+            <?php
+        }
+
+    }
+
+    // delete id request
+    if (isset($_POST['del_id_req'])) { 
+        $get_email = $_POST['email'];
+
+        if ($get_email != null){
+            $conn->query("DELETE FROM id_request WHERE email='$get_email'") or die($conn->error);
+            header('location:_profile-dashboard.php#idreq');
+
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An error occured!',
+                    text: 'Something Went Wrong.',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_profile-dashboard.php#idreq";
+                        }else{
+                            window.location.href = "_profile-dashboard.php#idreq";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+        
+    }
+    // delete id validation
+    if (isset($_POST['del_id_val'])) { 
+        $get_email = $_POST['email'];
+
+        if ($get_email != null){
+            $conn->query("DELETE FROM id_validation WHERE email='$get_email'") or die($conn->error);
+            header('location:_profile-dashboard.php#idval');
+
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An error occured!',
+                    text: 'Something Went Wrong.',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_profile-dashboard.php#idval";
+                        }else{
+                            window.location.href = "_profile-dashboard.php#idval";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+        
+    }
+    // delete good moral
+    if (isset($_POST['del_goodmoral'])) { 
+        $get_email = $_POST['email'];
+
+        if ($get_email != null){
+            $conn->query("DELETE FROM good_moral WHERE email='$get_email'") or die($conn->error);
+            header('location:_profile-dashboard.php#goodmor');
+
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An error occured!',
+                    text: 'Something Went Wrong.',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_profile-dashboard.php#goodmor";
+                        }else{
+                            window.location.href = "_profile-dashboard.php#goodmor";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+        
+    }
 
 ?>

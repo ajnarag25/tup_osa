@@ -1,3 +1,11 @@
+<?php 
+  include('connection.php');
+  session_start();
+  if (!isset($_SESSION['get_data']['email'])) {
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -308,75 +316,67 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="n-form-com admiss-form">
                     <div class="col s12">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" method="POST" action="process.php" enctype="multipart/form-data">
+                            <?php 
+                                $get_email = $_SESSION['get_data']['email'];
+                                $query = "SELECT * FROM student WHERE email='$get_email' ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+
+                            ?>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">TUPC ID #:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your TUPC ID Number" required>
+                                    <input type="text" class="form-control" name="studentid" value="<?php echo $row['student_id'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Full Name:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Course:</label>
                                 <div class="col-sm-9">
-                                    <select size="5" id="sel">
-                                        <option selected disabled>-- Select Course --</option>
-                                        <option value="BGT-AT">BGT-AT</option>
-                                        <option value="BET-ET">BET-ET</option>			
-                                        <option value="BET-ESET">BET-ESET</option>
-                                        <option value="BET-COET">BET-COET</option>		
-                                        <option value="BET-CT">BET-CT</option>
-                                        <option value="BET-MT">BET-MT</option>
-                                        <option value="BET-AD">BET-AD</option>
-                                        <option value="BET-PPT">BET-PPT</option>
-                                        <option value="BSIE-IA">BSIE-IA</option>		
-                                        <option value="BSIE-ICT">BSIE-ICT</option>	
-                                        <option value="BSCE">BSCE</option>	
-                                        <option value="BSEE">BSEE</option>	
-                                        <option value="BSME">BSME</option>					
-							        </select>
+                                    <input type="text" class="form-control" name="course" value="<?php echo $row['course'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Phone #:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your phone number (ex. 09091234567)" required>
+                                    <input type="text" class="form-control" name="contact" value="<?php echo $row['contact'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Email:</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" placeholder="Enter your email" required>
+                                    <input type="text" class="form-control" name="email" value="<?php echo $row['email'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Purpose:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your purpose" required>
+                                    <input type="text" class="form-control" name="purpose" placeholder="Enter your purpose" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><small>Yr of Attendance:</small></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your year" required>
+                                    <input type="text" class="form-control" name="yrattendance" placeholder="Enter your year" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Graduated Year:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Enter your year of graduation" required>
+                                    <input type="text" class="form-control" name="yrgraduate" placeholder="Enter your year of graduation" required>
                                 </div>
                                 <p class="col-sm-9"><small>Type 'none' if not yet graduated</small></p>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Proof:</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" placeholder="Choose photos">
+                                    <input type="file" class="form-control" name="proof" placeholder="Choose photos" required>
                                     <p ><small>Upload proof of graduation (for those who graduated only),
                                         Upload one of the following: Diploma, alumni ID, Certificate of Graduation)</small></p>
                                 </div>
@@ -384,9 +384,12 @@
                             </div>
                             <div class="form-group mar-bot-0">
                                 <div class="col-sm-offset-3 col-sm-9">
-                                    <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" value="Submit Form" class="waves-button-input"></i>
+                                    <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" name="good_moral" value="Submit Form" class="waves-button-input"></i>
                                 </div>
                             </div>
+
+                        <?php } ?>
+
                         </form>
                     </div>
                 </div>
