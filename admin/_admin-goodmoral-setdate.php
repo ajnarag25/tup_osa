@@ -43,7 +43,7 @@
                 <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
                 <div class="wed-logo">
-                    <a href="_admin.html"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;"></span></a>
+                    <a href="index.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;"></span></a>
                 </div>
                 </a>
             </div>
@@ -57,15 +57,15 @@
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
                 <div class="top-not-cen">
-                    <a class='waves-effect btn-noti' href="_admin-idrequest.html" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-idvalidation.html" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-goodmoral.html" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i><span>5</span></a>
                 </div>
             </div>
             <!--== MY ACCCOUNT ==-->
             <div class="col-md-2 col-sm-3 col-xs-6">
                 <!-- Dropdown Trigger -->
-                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.html' data-activates='top-menu'><img src="images/user.jpg" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.php' data-activates='top-menu'><img src="images/user.jpg" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -89,23 +89,23 @@
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
-                        <li><a href="_admin.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
+                        <li><a href="index.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                         </li>
-                        <li><a href="_admin-idrequest.html"  ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
+                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
-                        <li><a href="_admin-idvalidation.html" class="menu-active"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
+                        <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
                         </li>
-                        <li><a href="_admin-goodmoral.html"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
+                        <li><a href="_admin-goodmoral.php" class="menu-active"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
                         </li>
-                        <li><a href="_admin-voting.html"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
+                        <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
-                        <li><a href="_admin-scholarship.html"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
+                        <li><a href="_admin-scholarship.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
                         </li>
-                        <li><a href="_admin-violation.html"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
+                        <li><a href="_admin-violation.php"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
                         </li>
-						<li><a href="_admin-settings.html"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
+						<li><a href="_admin-settings.php"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>
-                        <li><a href="index.html"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                        <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -116,11 +116,11 @@
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
                     <ul>
-                        <li><a href="_admin.html"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
+                        <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li ><a href="_admin-idvalidation.html"> ID Validation</a>
+                        <li ><a href="_admin-goodmoral.php"> Good Moral Requests</a>
                         </li>
-                        <li class="active-bre"><a href="#"> ID Validation - Set Date</a>
+                        <li class="active-bre"><a href="#"> Good Moral Request - Set Date</a>
                         </li>
                     </ul>
                 </div>
@@ -147,7 +147,7 @@
                                         </div>                          
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <a href="_admin-idvalidation.html" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <a href="_admin-goodmoral.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
                                                 <button class="btn waves-effect btn-success"><strong>Submit</strong></button>
                                             </div>
                                         </div>
@@ -182,18 +182,6 @@
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Email:</p></strong>
-                                                <input type="email" class="validate" value="john_smith@gmail.com" required>
-                                                <label class="">Enter your email</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>ID Condition:</p></strong>
-                                               <input type="text" value="Newly made ID" class="validate" required>
-                                               <label class="">ID Condition</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
                                                 <strong><p>Course:</p></strong>
                                                 <input type="text" value="BET-AT" class="validate">
                                                 <label class="">Enter your course</label>
@@ -206,18 +194,39 @@
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Birthday:</p></strong>
-                                                <input type="date" value="2000-01-08" class="validate" required>
+                                                <strong><p>Email:</p></strong>
+                                                <input type="email" class="validate" value="john_smith@gmail.com" required>
+                                                <label class="">Enter your email</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Address:</p></strong>
-                                                <input type="text" value="Blk12 Lot12, Ph.B, Bermon Subdivision, Dasmariñas Cavite" class="validate" required>
-                                                <label class="">Enter your address</label>
+                                                <strong><p>Purpose:</p></strong>
+                                               <input type="text" value="Replacement (lost ID)" class="validate" required>
+                                               <label class="">Purpose</label>
                                             </div>
-                                        </div>                          
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <strong><p>Year of Attendance:</p></strong>
+                                                <input type="text" value="2022" class="validate" required>
+                                            </div>          
+                                            <div class="input-field col s6">
+                                                <strong><p>Graduated Year:</p></strong>
+                                                <input type="text" value="2022" class="validate" required>
+                                                <label class="">Graduated Year</label>
+                                            </div>                                 
+                                        </div>     
+                                        <div class="cor about-sp h-gal ed-pho-gal">
+                                            <ul>
+                                                <li>
+                                                    <strong><p>ID Picture:</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="images/diploma.jpg" alt="">
+                                                </li>
+                                            </ul>
+                                        </div>                               
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <a href="_admin-idvalidation.html" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <a href="_admin-goodmoral.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <!-- <button class="btn waves-effect btn-success" hidden><strong>Click this if Student Received the ID</strong></button> -->
                                             </div>
                                         </div>
                                     </form>

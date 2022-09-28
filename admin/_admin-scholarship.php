@@ -49,7 +49,7 @@
                 <a href="#" class="btn-close-menu"><i class="fa fa-times" aria-hidden="true"></i></a>
                 <a href="#" class="atab-menu"><i class="fa fa-bars tab-menu" aria-hidden="true"></i></a>
                 <div class="wed-logo">
-                    <a href="_admin.html"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;"></span></a>
+                    <a href="index.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;"></span></a>
                 </div>
                 </a>
             </div>
@@ -63,15 +63,15 @@
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
                 <div class="top-not-cen">
-                    <a class='waves-effect btn-noti' href="_admin-idrequest.html" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-idvalidation.html" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-goodmoral.html" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i><span>5</span></a>
                 </div>
             </div>
             <!--== MY ACCCOUNT ==-->
             <div class="col-md-2 col-sm-3 col-xs-6">
                 <!-- Dropdown Trigger -->
-                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.html' data-activates='top-menu'><img src="images/user.jpg" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.php' data-activates='top-menu'><img src="images/user.jpg" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -95,23 +95,23 @@
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
-                        <li><a href="_admin.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
+                        <li><a href="index.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                         </li>
-                        <li><a href="_admin-idrequest.html" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
+                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
-                        <li><a href="_admin-idvalidation.html"  ><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
+                        <li><a href="_admin-idvalidation.php"  ><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
                         </li>
-                        <li><a href="_admin-goodmoral.html" class="menu-active"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
+                        <li><a href="_admin-goodmoral.php" ><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
                         </li>
-                        <li><a href="_admin-voting.html"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
+                        <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
-                        <li><a href="_admin-scholarship.html"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
+                        <li><a href="_admin-scholarship.php" class="menu-active"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
                         </li>
-                        <li><a href="_admin-violation.html"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
+                        <li><a href="_admin-violation.php"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
                         </li>
-						<li><a href="_admin-settings.html"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
+						<li><a href="_admin-settings.php"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>
-                        <li><a href="index.html"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                        <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -122,21 +122,20 @@
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
                     <ul>
-                        <li><a href="_admin.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
-                        <li class="active-bre"><a href="#"> Good Moral Request</a>
+                        <li class="active-bre"><a href="#"> Scholarship Request</a>
                         </li>
                     </ul>
                 </div>
 
-                <!--== Good Moral Request new request ==-->
+                <!--== Scholarship ==-->
                 <div class="sb2-2-3" id="newlist">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Good Moral Request (New Request)</h4>
-                                    <p>List of students who request for good moral</p>
+                                    <h4>Scholarship (New Request)</h4>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example1" class="table table-bordered table-hover table-sm">
@@ -145,9 +144,9 @@
                                             <th>#</th>
                                             <th>TUPC-ID</th>
                                             <th>Full Name</th>
-                                            <th>Email</th>
+                                            <th>Address</th>
                                             <th>Course</th>
-                                            <th>Purpose</th>
+                                            <th>Reason</th>
                                             <th>Request Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -159,13 +158,13 @@
                                             </td>
                                             <td>Marsha Hogan
                                             </td>
-                                            <td>chadengle@dummy.com</td>
+                                            <td>Dasmarinas Cavite</td>
                                             <td>BSME</td>
                                             <td>Pesonal Purposes</td>
                                             <td>03 Jun 2022</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.html" class="btn btn-success waves-light btn-sm">Accept</a>
+                                                    <a href="_admin-scholarship-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
                                                     <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
@@ -176,13 +175,13 @@
                                             </td>
                                             <td>Lucas Caden
                                             </td>
-                                            <td>lucas@gmail.com</td>
+                                            <td>Imus Cavite</td>
                                             <td>BSIE</td>
                                             <td>Pesonal Purposes</td>
                                             <td>04 Jun 2022</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.html" class="btn btn-success waves-light btn-sm">Accept</a>
+                                                    <a href="_admin-scholarship-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
                                                     <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
@@ -193,13 +192,13 @@
                                             </td>
                                             <td>Ethan Oliver
                                             </td>
-                                            <td>Ethan@gmail.com</td>
+                                            <td>Silang Cavite</td>
                                             <td>COET</td>
                                             <td>Pesonal Purposes</td>
                                             <td>05 Jun 2022</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.html" class="btn btn-success waves-light btn-sm">Accept</a>
+                                                    <a href="_admin-scholarship-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
                                                     <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
@@ -210,13 +209,13 @@
                                             </td>
                                             <td>Lucas Caden
                                             </td>
-                                            <td>lucas@gmail.com</td>
+                                            <td>Molino</td>
                                             <td>BSIE</td>
                                             <td>Pesonal Purposes</td>
                                             <td>04 Jun 2022</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.html" class="btn btn-success waves-light btn-sm">Accept</a>
+                                                    <a href="_admin-scholarship-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
                                                     <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
@@ -227,13 +226,13 @@
                                             </td>
                                             <td>Ethan Oliver
                                             </td>
-                                            <td>Ethan@gmail.com</td>
+                                            <td>GMA</td>
                                             <td>COET</td>
                                             <td>Pesonal Purposes</td>
                                             <td>05 Jun 2022</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.html" class="btn btn-success waves-light btn-sm">Accept</a>
+                                                    <a href="_admin-scholarship-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
                                                     <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
@@ -246,14 +245,13 @@
                     </div>
                 </div>
 				
-                <!--== Good Moral Request ongoing ==-->
+                <!--== Scholarship ongoing ==-->
                 <div class="sb2-2-3" id="ongoinglist">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Good Moral Request (Ongoing)</h4>
-                                    <p>List of students who request for good moral</p>
+                                    <h4>Scholarship (Ongoing)</h4>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example2" class="table table-bordered table-hover table-sm">
@@ -262,8 +260,9 @@
                                             <th>#</th>
                                             <th>TUPC-ID</th>
                                             <th>Full Name</th>
+                                            <th>Address</th>
                                             <th>Course</th>
-                                            <th>Purposes</th>
+                                            <th>Reason</th>
                                             <th>Request Date</th>
                                             <th>Scheduled Date</th>
                                             <th>Status</th>
@@ -277,8 +276,9 @@
                                             </td>
                                             <td>Marsha Hogan
                                             </td>
+                                            <td>Imus Cavite</td>
                                             <td>BSME</td>
-                                            <td>Pesonal Purposes</td>
+                                            <td>Financial Problems</td>
                                             <td>03 Jun 2022</td>
                                             <td>05 Jun 2022</td>
                                             <td>
@@ -286,83 +286,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.html">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>06 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.html">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>07 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.html">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>07 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.html">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>08 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.html">View Info</a>
+                                                    <a class="btn waves-effect btn-info" href="_admin-scholarship-viewinfo.php">View Info</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -374,14 +298,13 @@
                     </div>
                 </div>
 
-                <!--== Good Moral Request history ==-->
+                <!--== Scholarship history ==-->
                 <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>Good Moral Request (History)</h4>
-                                    <p>List of students who request for good moral</p>
+                                    <h4>Scholarship (History)</h4>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example3" class="table table-bordered table-hover table-sm">
@@ -390,9 +313,9 @@
                                             <th>#</th>
                                             <th>TUPC-ID</th>
                                             <th>Full Name</th>
-                                            <th>Email</th>
+                                            <th>Address</th>
                                             <th>Course</th>
-                                            <th>Purposes</th>
+                                            <th>Reason</th>
                                             <th>Request Date</th>
                                             <th>Status</th>
                                         </tr>
@@ -402,72 +325,17 @@
                                             <td>1</td>
                                             <td><span class="list-enq-name">TUPC-18-0779</span>
                                             </td>
-                                            <td>Marsha Hogan
+                                            <td>Cardo Dalisay
                                             </td>
-                                            <td>chadengle@dummy.com</td>
+                                            <td>Imus Cavite</td>
                                             <td>BSME</td>
-                                            <td>Pesonal Purposes</td>
+                                            <td>Financial Problems</td>
                                             <td>03 Jun 2022</td>
                                             <td>
                                                 <span class="label label-success">Success</span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-danger">Declined</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-danger">Declined</span>
-                                            </td>
-                                        </tr>
+                                        
                                       </tbody>
                                     </table>
                                 </div>
