@@ -1,3 +1,7 @@
+<?php
+    include('connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,9 +67,36 @@
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
                 <div class="top-not-cen">
-                    <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i>
+                    <span>
+                    <?php 
+                        $sql = "SELECT * FROM id_request ";
+                        $result=mysqli_query($conn, $sql);
+                        $row1 = mysqli_num_rows($result);
+                    ?>
+                    <?php echo $row1 ?>
+                    </span>
+                    </a>
+                    <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i>
+                    <span>
+                    <?php 
+                        $sql = "SELECT * FROM id_validation ";
+                        $result=mysqli_query($conn, $sql);
+                        $row2 = mysqli_num_rows($result);
+                    ?>
+                    <?php echo $row2 ?>
+                    </span>
+                    </a>
+                    <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i>
+                    <span>
+                    <?php 
+                        $sql = "SELECT * FROM id_validation ";
+                        $result=mysqli_query($conn, $sql);
+                        $row3 = mysqli_num_rows($result);
+                    ?>
+                    <?php echo $row3 ?>
+                    </span>
+                    </a>
                 </div>
             </div>
             <!--== MY ACCCOUNT ==-->
@@ -128,7 +159,6 @@
                         </li>
                     </ul>
                 </div>
-
                 <!--== ID Request new request ==-->
                 <div class="sb2-2-3" id="newlist">
                     <div class="row">
@@ -154,101 +184,30 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM id_request ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-img"><img src="images/user/1.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>chadengle@dummy.com</td>
-                                            <td>BSME</td>
-                                            <td>Replacement(lost ID)</td>
-                                            <td>03 Jun 2022</td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-img"><img src="../<?php echo $row['id_pic'] ?>" alt=""></span></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['email'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['req_type'] ?></td>
+                                            <td><?php echo $row['sched_submit'] ?></td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-idrequest-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
+                                                    <a href="_admin-idrequest-setdate.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Accept</a>
                                                     <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Replacement(damaged ID)</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-idrequest-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>New ID</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-idrequest-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Replacement(damaged ID)</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-idrequest-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>New ID</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-idrequest-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        
+                                        <?php } ?>
+                       
                                       </tbody>
                                     </table>
                                 </div>
@@ -421,86 +380,43 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM id_request ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-img"><img src="images/user/1.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>chadengle@dummy.com</td>
-                                            <td>BSME</td>
-                                            <td>Replacement(lost ID)</td>
-                                            <td>03 Jun 2022</td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-img"><img src="../<?php echo $row['id_pic'] ?>" alt=""></span></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['email'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['req_type'] ?></td>
+                                            <td><?php echo $row['sched_submit'] ?></td>
                                             <td>
-                                                <span class="label label-success">Success</span>
+                                                <?php 
+                                                    if($row['status'] == 'PENDING'){
+                                                        echo '
+                                                        <span class="label label-warning">Pending</span>
+                                                        ';
+                                                    }elseif($row['status'] == 'DECLINED'){
+                                                        echo '
+                                                        <span class="label label-danger">Declined</span>
+                                                        ';
+                                                    }else{
+                                                        echo '
+                                                        <span class="label label-success">Accepted</span>
+                                                        ';
+                                                    }
+                                                
+                                                ?>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Replacement(damaged ID)</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-danger">Declined</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>New ID</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Replacement(damaged ID)</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>New ID</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-danger">Declined</span>
-                                            </td>
-                                        </tr>
+
+                                        <?php } ?>
+
                                       </tbody>
                                     </table>
                                 </div>

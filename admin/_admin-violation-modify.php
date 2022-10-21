@@ -1,3 +1,7 @@
+<?php
+    include('connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,9 +55,36 @@
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
                 <div class="top-not-cen">
-                    <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i><span>5</span></a>
-                    <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i><span>5</span></a>
+                    <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i>
+                    <span>
+                    <?php 
+                        $sql = "SELECT * FROM id_request ";
+                        $result=mysqli_query($conn, $sql);
+                        $row1 = mysqli_num_rows($result);
+                    ?>
+                    <?php echo $row1 ?>
+                    </span>
+                    </a>
+                    <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i>
+                    <span>
+                    <?php 
+                        $sql = "SELECT * FROM id_validation ";
+                        $result=mysqli_query($conn, $sql);
+                        $row2 = mysqli_num_rows($result);
+                    ?>
+                    <?php echo $row2 ?>
+                    </span>
+                    </a>
+                    <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i>
+                    <span>
+                    <?php 
+                        $sql = "SELECT * FROM id_validation ";
+                        $result=mysqli_query($conn, $sql);
+                        $row3 = mysqli_num_rows($result);
+                    ?>
+                    <?php echo $row3 ?>
+                    </span>
+                    </a>
                 </div>
             </div>
             <!--== MY ACCCOUNT ==-->
