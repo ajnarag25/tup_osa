@@ -165,88 +165,77 @@
                                     <h4>Student Information</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <form>
+                                    <?php 
+                                        $id = $_GET['id'];
+                                        $query = "SELECT * FROM id_request WHERE id='$id'";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_array($result)) {
+                                    ?>
+                                    <form method="POST" action="process.php">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>TUPC ID Number:</p></strong>
-                                                <input type="text" value="TUPC-18-0732" class="validate" required>
-                                                <label class="">Enter your TUPC ID Number</label>
+                                                <input type="text" value="<?php echo $row['student_id'] ?>" class="" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Full name:</p></strong>
-                                                <input id="name" type="text" value="Juan Dela Cruz" class="validate" required>
-                                                <label class="">Enter your full name</label>
+                                                <input id="name" type="text" value="<?php echo $row['name'] ?>" class="" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Email:</p></strong>
-                                                <input type="email" class="validate" value="john_smith@gmail.com" required>
-                                                <label class="">Enter your email</label>
+                                                <input type="email" class="" value="<?php echo $row['email'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Request Type:</p></strong>
-                                               <input type="text" value="Replacement (lost ID)" class="validate" required>
-                                               <label class="">Request Type</label>
+                                               <input type="text" value="<?php echo $row['req_type'] ?>" class="" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Course:</p></strong>
-                                                <input type="text" value="BET-AT" class="validate">
-                                                <label class="">Enter your course</label>
+                                                <input type="text" value="<?php echo $row['course'] ?>" class="">
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Phone Number:</p></strong>
-                                               <input type="number" value="09985752412" class="validate" required>
-                                               <label class="">Enter your phone number</label>
+                                               <input type="number" value="<?php echo $row['contact'] ?>" class="" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Birthday:</p></strong>
-                                                <input type="date" value="2000-01-08" class="validate" required>
+                                                <input type="date" value="<?php echo $row['birthday'] ?>" class="" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Contact Person:</p></strong>
-                                                <input type="text" value="Mary Dela Cruz" class="validate" required>
-                                                <label class="">Contact Person's Name</label>
+                                                <input type="text" value="<?php echo $row['contact_person'] ?>" class="" readonly>
                                             </div>
                                             
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Contact Person's Number:</p></strong>
-                                                <input type="text" value="09095209413" class="validate" required>
-                                                <label class="">Contact Person's Number</label>
-                                            </div>
-                                            <div class="input-field col s6">
                                                 <strong><p>Address:</p></strong>
-                                                <input type="text" value="Blk12 Lot12, Ph.B, Bermon Subdivision, Dasmariñas Cavite" class="validate" required>
-                                                <label class="">Enter your address</label>
+                                                <input type="text" value="<?php echo $row['address'] ?>e" class="" readonly>
                                             </div>
                                         </div>         
                                         <div class="cor about-sp h-gal ed-pho-gal">
                                             <ul>
                                                 <li>
                                                     <strong><p>ID Picture:</p></strong>
-                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="images/guidelines2.jpg" alt="">
-                                                    <button class="btn waves-effect btn-info btn-sm"><strong>Save Picture</strong></button>
-                                                </li>
-                                                <li>
-                                                    <strong><p>Signature:</p></strong>
-                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="images/signature.jpg" alt="">
-                                                    <button class="btn waves-effect btn-info btn-sm"><strong>Save Picture</strong></button>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['id_pic'] ?>" alt="">
                                                 </li>
                                             </ul>
-                                        </div>                               
+                                        </div>                                    
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <a href="_admin-idrequest.php#ongoinglist" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                                <button class="btn waves-effect btn-success"><strong>Click this if Student Received the ID</strong></button>
+                                                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                                <button name="received" class="btn waves-effect btn-success"><strong>Click this if Student Received the ID</strong></button>
                                             </div>
                                         </div>
                                     </form>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

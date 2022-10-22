@@ -184,91 +184,29 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM good_moral WHERE status='PENDING' AND date_claim='PENDING'";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>chadengle@dummy.com</td>
-                                            <td>BSME</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>03 Jun 2022</td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['email'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['purpose'] ?></td>
+                                            <td><?php echo $row['date_claim'] ?></td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
+                                                    <a href="_admin-goodmoral-setdate.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Accept</a>
+                                                    <a href="_admin-goodmoral-decline.php?id=<?php echo $row['id'] ?>" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-goodmoral-setdate.php" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                        <?php } ?>
+
                                       </tbody>
                                     </table>
                                 </div>
@@ -302,101 +240,29 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM good_moral WHERE status='ONGOING'";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>BSME</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>03 Jun 2022</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['email'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['purpose'] ?></td>
+                                            <td><?php echo $row['date_submit'] ?></td>
+                                            <td><?php echo $row['date_claim'] ?></td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.php">View Info</a>
+                                                    <a href="_admin-goodmoral-viewinfo.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">View Info</a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>06 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>07 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>07 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>08 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-goodmoral-viewinfo.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        
+                                        <?php } ?>
+                                        
                                       </tbody>
                                     </table>
                                 </div>
@@ -429,76 +295,48 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM good_moral ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>chadengle@dummy.com</td>
-                                            <td>BSME</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>03 Jun 2022</td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['email'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['purpose'] ?></td>
+                                            <td><?php echo $row['date_claim'] ?></td>
                                             <td>
-                                                <span class="label label-success">Success</span>
+                                                <?php 
+                                                    if($row['status'] == 'PENDING'){
+                                                        echo '
+                                                        <span class="label label-warning">Pending</span>
+                                                        ';
+                                                    }elseif($row['status'] == 'DECLINED'){
+                                                        echo '
+                                                        <span class="label label-danger">Declined</span>
+                                                        ';
+                                                    }elseif($row['status'] == 'ONGOING'){
+                                                        echo '
+                                                        <span class="label label-success">Ongoing</span>
+                                                        ';
+                                                    }
+                                                    else{
+                                                        echo '
+                                                        <span class="label label-primary">Success</span>
+                                                        ';
+                                                    }
+                                                
+                                                ?>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-danger">Declined</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>lucas@gmail.com</td>
-                                            <td>BSIE</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>Ethan@gmail.com</td>
-                                            <td>COET</td>
-                                            <td>Pesonal Purposes</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-danger">Declined</span>
-                                            </td>
-                                        </tr>
+
+
+                                        <?php } ?>
+
                                       </tbody>
                                     </table>
                                 </div>

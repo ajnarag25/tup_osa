@@ -122,9 +122,9 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <li><a href="index.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                         </li>
-                        <li><a href="_admin-idrequest.php"  ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
+                        <li><a href="_admin-idrequest.php"  class="menu-active"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
-                        <li><a href="_admin-idvalidation.php" class="menu-active"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
+                        <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
                         </li>
                         <li><a href="_admin-goodmoral.php"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
                         </li>
@@ -149,45 +149,11 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li ><a href="_admin-idvalidation.php"> ID Validation</a>
+                        <li ><a href="_admin-goodmoral.php"> Good Moral Requests</a>
                         </li>
-                        <li class="active-bre"><a href="#"> ID Validation - Set Date</a>
+                        <li class="active-bre"><a href="#"> Good Moral Request - Decline</a>
                         </li>
                     </ul>
-                </div>
-
-                 <!--== Set Date ==-->
-                 <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-						<div class="box-inn-sp admin-form">
-                                <div class="inn-title">
-                                    <h4>Set Date for Student to go to the Office</h4>
-                                </div>
-                                <div class="tab-inn">
-                                    <form method="POST" action="process.php">
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Scheduled Date:</p></strong>
-                                                <input type="date" class="validate" name="date" required>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Scheduled Time:</p></strong>
-                                                <input type="time" class="validate" name="time" required>
-                                            </div>
-                                        </div>                          
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                                <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                                <button class="btn waves-effect btn-success" name="update_idvalidate"><strong>Submit</strong></button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!--== View Details ==-->
@@ -196,63 +162,25 @@
                         <div class="col-md-12">
 						<div class="box-inn-sp admin-form">
                                 <div class="inn-title">
-                                    <h4>Student Information</h4>
+                                    <h4>Decline Student</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <?php 
                                         $id = $_GET['id'];
-                                        $query = "SELECT * FROM id_validation WHERE id='$id'";
+                                        $query = "SELECT * FROM good_moral WHERE id='$id'";
                                         $result = mysqli_query($conn, $query);
                                         while ($row = mysqli_fetch_array($result)) {
                                     ?>
-                                    <form>
-                                    <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>TUPC ID Number:</p></strong>
-                                                <input type="text" value="<?php echo $row['student_id'] ?>" class="" readonly>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Full name:</p></strong>
-                                                <input id="name" type="text" value="<?php echo $row['name'] ?>" class="" readonly>
-                                            </div>
+                                    <form method="POST" action="process.php">
+                                        <div class="text-center">
+                                            <h3>Are you sure to decline this student request?</h3>
+                                            <h3>Declining Student: <?php echo $row['name'] ?></h3>
+                                            <br><br>
+                                            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                            <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
+                                            <button class="btn waves-effect btn-danger" name="decline_goodmoral"><strong>Decline</strong></button>
                                         </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Email:</p></strong>
-                                                <input type="email" class="" value="<?php echo $row['email'] ?>" readonly>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>I.D Condition:</p></strong>
-                                               <input type="text" value="<?php echo $row['id_condition'] ?>" class="" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Course:</p></strong>
-                                                <input type="text" value="<?php echo $row['course'] ?>" class="">
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Phone Number:</p></strong>
-                                               <input type="number" value="<?php echo $row['contact'] ?>" class="" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Birthday:</p></strong>
-                                                <input type="date" value="<?php echo $row['birthday'] ?>" class="" readonly>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Address:</p></strong>
-                                                <input type="text" value="<?php echo $row['address'] ?>e" class="" readonly>
-                                            </div>
-                                            
-                                        </div>
-                          
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <a href="_admin-idvalidation.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                            </div>
-                                        </div>
+
                                     </form>
                                     <?php } ?>
                                 </div>

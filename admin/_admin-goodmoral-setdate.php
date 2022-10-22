@@ -165,21 +165,22 @@
                                     <h4>Set Date for Student to go to the Office</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <form>
+                                    <form method="POST" action="process.php">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Scheduled Date:</p></strong>
-                                                <input type="date" class="validate" required>
+                                                <input type="date" class="validate" name="date" required>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Scheduled Time:</p></strong>
-                                                <input type="time" class="validate" required>
+                                                <input type="time" class="validate" name="time" required>
                                             </div>
                                         </div>                          
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <a href="_admin-goodmoral.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                                <button class="btn waves-effect btn-success"><strong>Submit</strong></button>
+                                                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                                <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <button class="btn waves-effect btn-success" name="update_goodmoral"><strong>Submit</strong></button>
                                             </div>
                                         </div>
                                     </form>
@@ -198,51 +199,57 @@
                                     <h4>Student Information</h4>
                                 </div>
                                 <div class="tab-inn">
+                                    <?php 
+                                        $id = $_GET['id'];
+                                        $query = "SELECT * FROM good_moral WHERE id='$id'";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_array($result)) {
+                                    ?>
                                     <form>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>TUPC ID Number:</p></strong>
-                                                <input type="text" value="TUPC-18-0732" class="validate" required>
+                                                <input type="text" value="<?php echo $row['student_id'] ?>" readonly>
                                                 <label class="">Enter your TUPC ID Number</label>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Full name:</p></strong>
-                                                <input id="name" type="text" value="Juan Dela Cruz" class="validate" required>
+                                                <input id="name" type="text" value="<?php echo $row['name'] ?>" readonly>
                                                 <label class="">Enter your full name</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Course:</p></strong>
-                                                <input type="text" value="BET-AT" class="validate">
+                                                <input type="text" value="<?php echo $row['course'] ?>" readonly>
                                                 <label class="">Enter your course</label>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Phone Number:</p></strong>
-                                               <input type="number" value="09985752412" class="validate" required>
+                                               <input type="number" value="<?php echo $row['contact'] ?>" readonly>
                                                <label class="">Enter your phone number</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Email:</p></strong>
-                                                <input type="email" class="validate" value="john_smith@gmail.com" required>
+                                                <input type="email" value="<?php echo $row['email'] ?>" readonly>
                                                 <label class="">Enter your email</label>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Purpose:</p></strong>
-                                               <input type="text" value="Replacement (lost ID)" class="validate" required>
+                                               <input type="text" value="<?php echo $row['purpose'] ?>" readonly>
                                                <label class="">Purpose</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Year of Attendance:</p></strong>
-                                                <input type="text" value="2022" class="validate" required>
+                                                <input type="text" value="<?php echo $row['yr_attendance'] ?>" readonly>
                                             </div>          
                                             <div class="input-field col s6">
                                                 <strong><p>Graduated Year:</p></strong>
-                                                <input type="text" value="2022" class="validate" required>
+                                                <input type="text" value="<?php echo $row['yr_graduate'] ?>" readonly>
                                                 <label class="">Graduated Year</label>
                                             </div>                                 
                                         </div>     
@@ -250,7 +257,7 @@
                                             <ul>
                                                 <li>
                                                     <strong><p>ID Picture:</p></strong>
-                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="images/diploma.jpg" alt="">
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['proof'] ?>" alt="">
                                                 </li>
                                             </ul>
                                         </div>                               
@@ -261,6 +268,7 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

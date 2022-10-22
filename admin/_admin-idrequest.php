@@ -185,7 +185,7 @@
                                       </thead>
                                       <tbody>
                                         <?php 
-                                            $query = "SELECT * FROM id_request ";
+                                            $query = "SELECT * FROM id_request WHERE sched_claim='PENDING' AND status='PENDING'";
                                             $result = mysqli_query($conn, $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                         ?>
@@ -201,7 +201,7 @@
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="_admin-idrequest-setdate.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="#" class="btn btn-danger waves-light  btn-sm">Decline</a>
+                                                    <a href="_admin-idrequest-decline.php?id=<?php echo $row['id'] ?>" class="btn btn-danger waves-light  btn-sm">Decline</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -215,7 +215,7 @@
                         </div>
                     </div>
                 </div>
-				
+	
                 <!--== ID Request ongoing ==-->
                 <div class="sb2-2-3" id="ongoinglist">
                     <div class="row">
@@ -242,111 +242,28 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM id_request WHERE status='ONGOING'";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-img"><img src="images/user/1.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>BSME</td>
-                                            <td>Replacement(lost ID)</td>
-                                            <td>03 Jun 2022</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-img"><img src="../<?php echo $row['id_pic'] ?>" alt=""></span></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['email'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['req_type'] ?></td>
+                                            <td><?php echo $row['sched_submit'] ?></td>
+                                            <td><?php echo $row['status'] ?></td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-idrequest-details.php">View Info</a>
+                                                    <a href="_admin-idrequest-details.php?id=<?php echo $row['id'] ?>" class="btn btn-primary waves-light btn-sm">View Info</a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>Replacement(damaged ID)</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>06 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-idrequest-details.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>New ID</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>07 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-idrequest-details.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>Replacement(damaged ID)</td>
-                                            <td>04 Jun 2022</td>
-                                            <td>07 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-idrequest-details.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                            </td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>New ID</td>
-                                            <td>05 Jun 2022</td>
-                                            <td>08 Jun 2022</td>
-                                            <td>
-                                                <span class="label label-default">Pending</span>
-                                            </td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn waves-effect btn-info" href="_admin-idrequest-details.php">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <?php } ?>
                                       </tbody>
                                     </table>
                                 </div>
@@ -405,9 +322,14 @@
                                                         echo '
                                                         <span class="label label-danger">Declined</span>
                                                         ';
-                                                    }else{
+                                                    }elseif($row['status'] == 'ONGOING'){
                                                         echo '
-                                                        <span class="label label-success">Accepted</span>
+                                                        <span class="label label-success">Ongoing</span>
+                                                        ';
+                                                    }
+                                                    else{
+                                                        echo '
+                                                        <span class="label label-primary">Success</span>
                                                         ';
                                                     }
                                                 

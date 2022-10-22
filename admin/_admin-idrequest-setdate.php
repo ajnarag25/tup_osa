@@ -165,21 +165,22 @@
                                     <h4>Set Date for Student to go to the Office</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <form>
+                                    <form method="POST" action="process.php">
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Scheduled Date:</p></strong>
-                                                <input type="date" class="validate" required>
+                                                <input type="date" class="validate" name="date" required>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Scheduled Time:</p></strong>
-                                                <input type="time" class="validate" required>
+                                                <input type="time" class="validate" name="time" required>
                                             </div>
                                         </div>                          
                                         <div class="row">
                                             <div class="input-field col s12">
+                                                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
                                                 <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                                <button class="btn waves-effect btn-success"><strong>Submit</strong></button>
+                                                <button class="btn waves-effect btn-success" name="update_sched_claim"><strong>Submit</strong></button>
                                             </div>
                                         </div>
                                     </form>
