@@ -633,7 +633,6 @@
                                             <th>Student ID</th>
                                             <th>Offenses</th>
                                             <th>Violation</th>
-                                            <th>Started Date</th>
                                             <th>Offense #</th>
                                             <th>Sanction</th>
                                             <th>Remaining Time</th>
@@ -642,29 +641,69 @@
                                     </thead>
 
                                     <tbody>
+                                        <?php 
+                                            $get_id = $_SESSION['get_data']['student_id'];
+                                            $query = "SELECT * FROM violations WHERE student_id='$get_id' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+
                                         <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>Minor</td>
-                                            <td>Loitering or causing disturbance during class hours</td>
-                                            <td>08/07/2022</td>
-                                            <td>First Offense</td>
-                                            <td>Warning and a Letter of Apology</td>
-                                            <td>-</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
+                                            <td><?php echo $row['student_id'] ?></td>
+                                            <td><?php echo $row['offense1'] ?></td>
+                                            <td><?php echo $row['offense2'] ?></td>
+                                            <td><?php echo $row['offense3'] ?></td>
+                                            <td><?php echo $row['offense4'] ?></td>
+                                            <td><?php echo $row['td'] ?></td>
+                                            <td>
+                                                <?php 
+                                                    if($row['status'] == 'ONGOING'){
+                                                        $set_status = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-de-act'>$set_status</span>
+                                                        ";
+                                                    }else{
+                                                        $set_status = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-act'>$set_status</span>
+                                                        ";
+                                                    }
+                                                ?>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>Major</td>
-                                            <td>Robbery/Theft</td>
-                                            <td>07/29/2022</td>
-                                            <td>First Offense</td>
-                                            <td>Suspension up to 30 school days and replacement of the stolen item</td>
-                                            <td>30 days</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
+
+                                        <?php } ?>
+
                                     </tbody>
                                 </table>
-                                <button class="btn btn-xs btn-danger">Delete All</button>
+                                <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete_violation">Delete All</button>
+
+                                <!-- Modal Delete Violations -->
+                                <div class="modal fade" id="delete_violation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <form method="POST" action="process.php">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="exampleModalLabel">Delete Violation</h3>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>Are you sure to Delete all of your Violation/s?</h4>
+                                                    <p>This action is deleting all of your data!</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="hidden" value="<?php echo $_SESSION['get_data']['student_id']; ?>" name="studentid">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" name="del_violation" class="btn btn-danger">Delete All</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

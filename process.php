@@ -817,4 +817,40 @@
         
     }
 
+    // delete violation
+    if (isset($_POST['del_violation'])) { 
+        $get_studentid = $_POST['studentid'];
+
+        if ($get_studentid != null){
+            $conn->query("DELETE FROM violations WHERE student_id='$get_studentid'") or die($conn->error);
+            header('location:_profile-dashboard.php#violationss');
+
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An error occured!',
+                    text: 'Something Went Wrong.',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_profile-dashboard.php#violationss";
+                        }else{
+                            window.location.href = "_profile-dashboard.php#violationss";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+        
+    }
+
 ?>
