@@ -1,5 +1,6 @@
 <?php 
 include('connection.php');
+error_reporting(0);
 
 // ID REQUEST
 if (isset($_POST['update_sched_claim'])) {
@@ -517,4 +518,233 @@ if (isset($_POST['decline_goodmoral'])) {
     }
 }
 
+// VIOLATIONS
+if (isset($_POST['violation'])) {
+    $studentid = $_POST['studentid'];
+    $names = $_POST['name'];
+    $course = $_POST['course'];
+    $yrsection = $_POST['yrsection'];
+    $o1 = $_POST['offense1'];
+    $o2 = $_POST['offense2'];
+    $o3 = $_POST['offense3'];
+    $o4 = $_POST['offense4'];
+    $hrs = $_POST['hours'];
+
+    if($course == null && $o1 == null && $o2 == null && $o3 == null && $o4 == null ){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-violation-add.php";
+                    }else{
+                        window.location.href = "_admin-violation-add.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }elseif($course == null || $o1 == null || $o2 == null || $o3 == null || $o4 == null ){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-violation-add.php";
+                    }else{
+                        window.location.href = "_admin-violation-add.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        if($hrs == null){
+            $conn->query("INSERT INTO violations (student_id, name, course, yr_section, offense1, offense2, offense3, offense4, td, status) 
+            VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', 'N/A', 'ONGOING')") or die($conn->error);
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Added',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-violation.php";
+                        }else{
+                            window.location.href = "_admin-violation.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }else{
+            $conn->query("INSERT INTO violations (student_id, name, course, yr_section, offense1, offense2, offense3, offense4, td, status) 
+            VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', '$hrs', 'ONGOING')") or die($conn->error);
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Added',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-violation.php";
+                        }else{
+                            window.location.href = "_admin-violation.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+
+    }
+
+}   
+
+if (isset($_POST['update_violation'])) {
+    $getid = $_POST['id'];
+    $remain = $_POST['remaining'];
+
+    if($getid == null){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-violation-modify.php";
+                    }else{
+                        window.location.href = "_admin-violation-modify.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("UPDATE violations SET td='$remain' WHERE id='$getid'") or die($conn->error);
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Updated',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-violation.php";
+                    }else{
+                        window.location.href = "_admin-violation.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
+}
+
+if(isset($_GET['completed'])){
+    $id = $_GET['completed'];
+
+    if($id == null){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-violation-modify.php";
+                    }else{
+                        window.location.href = "_admin-violation-modify.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("UPDATE violations SET status='SUCCESS' WHERE id='$id'") or die($conn->error);
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Updated the Status',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-violation.php";
+                    }else{
+                        window.location.href = "_admin-violation.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
+}
 ?>

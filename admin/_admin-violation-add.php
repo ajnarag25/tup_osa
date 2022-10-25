@@ -166,21 +166,21 @@
                                                     <h4>Student Information</h4>
                                                 </div>
                                                 <div class="bor">
-                                                    <form>
+                                                    <form method="POST" action="process.php">
                                                         <h4>Personal Information</h4>
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n1" type="text" class="validate">
+                                                                <input id="t5-n1" type="text" class="validate" name="studentid" required>
                                                                 <label for="t5-n1">TUPC ID Number</label>
                                                             </div>
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" class="validate">
+                                                                <input id="t5-n2" type="text" class="validate" name="name" required>
                                                                 <label for="t5-n2">Full Name</label>
                                                             </div>
                                                         </div>  
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <select>
+                                                                <select name="course" required>
                                                                     <option selected disabled>-- Select Course --</option>
                                                                     <option value="BGT-AT">BGT-AT</option>
                                                                     <option value="BET-ET">BET-ET</option>			
@@ -198,21 +198,21 @@
                                                                 </select>
                                                             </div>
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" class="validate">
+                                                                <input id="t5-n2" type="text" class="validate" name="yrsection" required>
                                                                 <label for="t5-n2">Year & Section</label>
                                                             </div>
                                                         </div>
                                                         <h4>Violation Details</h4>
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <select id="choices" onChange="update()">
+                                                                <select id="choices" onChange="update()" name="offense1" required>
                                                                     <option selected disabled>-- Major or Minor --</option>
                                                                     <option value="Major">Major Offense</option>
                                                                     <option value="Minor">Minor Offense</option>				
                                                                 </select>
                                                             </div>
                                                             <div id="majorr" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense2" required>
                                                                     <option selected disabled>-- Select Violation (Major) --</option>
                                                                     <option value="Liquor and Prohibited Drugs">Liquor and Prohibited Drugs</option>
                                                                     <option value="Unautorized Activities/Illegal Assemblies">Unautorized Activities/Illegal Assemblies</option>			
@@ -243,7 +243,7 @@
                                                                 </select>
                                                             </div>
                                                             <div id="minorr" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense2" required>
                                                                     <option selected disabled>-- Select Violation (Minor) --</option>
                                                                     <option value="Loitering or causing disturbance during class hours">Loitering or causing disturbance during class hours</option>
                                                                     <option value="Not wearing the prescribed uniform/haircut/University identification card while inside the University premises">Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</option>
@@ -270,7 +270,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <select id="choices2" onChange="update()">
+                                                                <select id="choices2" onChange="update()" name="offense3" required>
                                                                     <option selected disabled>-- Offense # --</option>
                                                                     <option value="First">First Offense</option>
                                                                     <option value="Second">Second Offense</option>
@@ -279,7 +279,7 @@
                                                             </div>
                                                             <!-- For First offense Major-->
                                                             <div id="firstoff" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense4" required>
                                                                     <option selected disabled>-- Sanction (for major) --</option>
                                                                     <option value="Suspension up to 15 school days">Suspension up to 15 school days</option>
                                                                     <option value="Suspension up to 30 school days">Suspension up to 30 school days</option>
@@ -294,7 +294,7 @@
                                                             </div>
                                                             <!-- For Second offense Major-->
                                                             <div id="secondoff" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense4" required>
                                                                     <option selected disabled>-- Sanction (for major) --</option>
                                                                     <option value="Suspension up to 30 school days">Suspension up to 30 school days</option>
                                                                     <option value="Suspension for one semester">Suspension for one semester</option>
@@ -308,7 +308,7 @@
                                                             </div>
                                                             <!-- For Third offense Major-->
                                                             <div id="thirdoff" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense4" required>
                                                                     <option selected disabled>-- Sanction (for major) --</option>
                                                                     <option value="Suspension for one semester">Suspension for one semester</option>
                                                                     <option value="Dismissal">Dismissal</option>
@@ -322,7 +322,7 @@
 
                                                             <!-- For First offense Minor-->
                                                             <div id="firstoffminor" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense4" required>
                                                                     <option selected disabled>-- Sanction (for major) --</option>
                                                                     <option value="Warning and a Letter of Apology">Warning and a Letter of Apology</option>
                                                                     <option value="Warning and a Letter of Apology with the understanding that the student will no longer attempt to join such organization">Warning and a Letter of Apology with the understanding that the student will no longer attempt to join such organization</option>
@@ -333,7 +333,7 @@
                                                             </div>
                                                             <!-- For Third offense Minor-->
                                                             <div id="secondoffminor" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense4" required>
                                                                     <option selected disabled>-- Sanction (for major) --</option>
                                                                     <option value="10 to 20 hours of community service">10 to 20 hours of community service</option>
                                                                     <option value="10 to 20 hours of community service and replacement or repair of  the damaged property">10 to 20 hours of community service and replacement or repair of  the damaged property</option>
@@ -341,20 +341,20 @@
                                                             </div>
                                                             <!-- For Third offense Minor-->
                                                             <div id="thirdoffminor" class="input-field col s6" hidden>
-                                                                <select>
+                                                                <select name="offense4" required>
                                                                     <option selected disabled>-- Sanction (for major) --</option>
                                                                     <option value="30 to 50 hours of community service">30 to 50 hours of community service</option>
                                                                     <option value="30 to 50 hours of community service and replacement or repair of  the damaged property">30 to 50 hours of community service and replacement or repair of  the damaged property</option>
                                                                 </select>
                                                             </div>
                                                             <div id="hours" class="input-field col s6" hidden>
-                                                                <input id="t5-n2" type="text" class="validate">
+                                                                <input id="t5-n2" type="text" class="validate" name="hours">
                                                                 <label for="t5-n2">How many hours of community service ?</label>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s12">
-                                                                <button type="submit" class="btn btn-success"><strong>Add Violator</strong></button>
+                                                                <button type="submit" class="btn btn-success" name="violation"><strong>Add Violator</strong></button>
                                                             </div>
                                                         </div>
                                                     </form>

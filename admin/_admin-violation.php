@@ -184,54 +184,28 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM violations WHERE status='ONGOING'";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>BSME</td>
-                                            <td>Threats/Coercion</td>
-                                            <td>Suspension up to 15 school days</td>
-                                            <td>12 Days</td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['offense2'] ?></td>
+                                            <td><?php echo $row['offense4'] ?></td>
+                                            <td><?php echo $row['td'] ?></td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-violation-modify.php" class="btn btn-info waves-light btn-sm">Modify</a>
+                                                    <a href="_admin-violation-modify.php?id=<?php echo $row['id'] ?>" class="btn btn-info waves-light btn-sm">Modify</a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</td>
-                                            <td>Warning and a Letter of Apology</td>
-                                            <td>-</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-violation-modify.php" class="btn btn-info waves-light btn-sm">Modify</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>Loitering or causing disturbance during class hours</td>
-                                            <td>10 to 20 hours of community service</td>
-                                            <td>15 hours</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-violation-modify.php" class="btn btn-info waves-light btn-sm">Modify</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                        <?php } ?>
                                         
                                       </tbody>
                                     </table>
@@ -265,48 +239,37 @@
                                         </tr>
                                       </thead>
                                       <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM violations";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+
                                         <tr>
-                                            <td>1</td>
-                                            <td><span class="list-enq-name">TUPC-18-0779</span>
-                                            </td>
-                                            <td>Marsha Hogan
-                                            </td>
-                                            <td>BSME</td>
-                                            <td>First Offense</td>
-                                            <td>Threats/Coercion</td>
-                                            <td>Suspension up to 15 school days</td>
+                                            <td><?php echo $row['id'] ?></td>
+                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
+                                            <td><?php echo $row['name'] ?></td>
+                                            <td><?php echo $row['course'] ?></td>
+                                            <td><?php echo $row['offense3'] ?></td>
+                                            <td><?php echo $row['offense2'] ?></td>
+                                            <td><?php echo $row['offense4'] ?></td>
                                             <td>
-                                                <span class="label label-success">Success</span>
+                                                <?php 
+                                                    if($row['status'] == 'ONGOING'){
+                                                        echo '
+                                                        <span class="label label-warning">Ongoing</span>
+                                                        ';
+                                                    }else{
+                                                        echo '
+                                                        <span class="label label-success">Success</span>
+                                                        ';
+                                                    }
+                                                ?>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="list-enq-name">TUPC-18-0723</span>
-                                            </td>
-                                            <td>Lucas Caden
-                                            </td>
-                                            <td>BSIE</td>
-                                            <td>First Offense</td>
-                                            <td>Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</td>
-                                            <td>Warning and a Letter of Apology</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="list-enq-name">TUPC-18-0727</span>
-                                            </td>
-                                            <td>Ethan Oliver
-                                            </td>
-                                            <td>COET</td>
-                                            <td>First Offense</td>
-                                            <td>Loitering or causing disturbance during class hours</td>
-                                            <td>10 to 20 hours of community service</td>
-                                            <td>
-                                                <span class="label label-success">Success</span>
-                                            </td>
-                                        </tr>
+
+                                        <?php } ?>
+
                                       </tbody>
                                     </table>
                                 </div>

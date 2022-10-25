@@ -148,57 +148,6 @@
                     </ul>
                 </div>
 
-                <!--== List of Candidates ==-->
-                <div id="candidatelist" class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <a href="_admin-violation.php" style="margin-right: 10px; margin-top: 10px;" class="btn btn-primary waves-light right">Go Back</a>
-                                <div class="inn-title">
-                                    <h4>Dates Rendered & Hours/Day Rendered</h4>
-                                </div>
-                                <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table id="myTable" class="table table-hover centered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Last Date Modified</th>
-                                                    <th>Rendered Hours or Day</th>
-                                                    <th>Remaining Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td><span class="list-enq-name">01/05/2022</span>
-                                                    </td>
-                                                    <td>1 Day</td>
-                                                    <td>12 Days</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><span class="list-enq-name">01/04/2022</span>
-                                                    </td>
-                                                    <td>1 Day</td>
-                                                    <td>13 Days</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><span class="list-enq-name">01/03/2022</span>
-                                                    </td>
-                                                    <td>1 Day</td>
-                                                    <td>14 Days</td>
-                                                </tr> 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!--== User Details ==-->
                 <div class="sb2-2-3">
                     <div class="row">
@@ -217,16 +166,24 @@
                                                     <h4>Student Information</h4>
                                                 </div>
                                                 <div class="bor">
-                                                    <form>
-                                                        <h4>Modify Remaining Time/Days:</h4>
+                                                    <form method="POST" action="process.php">
+                                                        <h4>Modify Remaining Time/Day:</h4>
                                                         <div class="row">
+                                                            <?php 
+                                                                $id = $_GET['id'];
+                                                                $query = "SELECT * FROM violations WHERE id='$id'";
+                                                                $result = mysqli_query($conn, $query);
+                                                                while ($row = mysqli_fetch_array($result)) {
+                                                            ?>
                                                             <div class="input-field col s6">
-                                                                <input  type="text" value="12 Days" class="validate">
+                                                                <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                                                <input  type="text" placeholder="<?php echo $row['td'] ?>" name="remaining" class="validate" required>
                                                             </div>
+                                                            <?php } ?>
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s2">
-                                                                <button type="submit" class="btn btn-info"><strong>Save</strong></button>
+                                                                <button type="submit" name="update_violation" class="btn btn-info"><strong>Save</strong></button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -235,50 +192,61 @@
                                                 <div class="bor">
                                                     <form>
                                                         <h4>Personal Information</h4>
+
+                                                        <?php 
+                                                            $id = $_GET['id'];
+                                                            $query = "SELECT * FROM violations WHERE id='$id'";
+                                                            $result = mysqli_query($conn, $query);
+                                                            while ($row = mysqli_fetch_array($result)) {
+                                                        ?>
+
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n1" type="text" value="TUPC-18-0779"  readonly>
+                                                                <input id="t5-n1" type="text" value="<?php echo $row['student_id'] ?>"  readonly>
                                                                 <label for="t5-n1">TUPC ID Number</label>
                                                             </div>
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="Marsha Hogan" readonly>
+                                                                <input id="t5-n2" type="text" value="<?php echo $row['name'] ?>" readonly>
                                                                 <label for="t5-n2">Full Name</label>
                                                             </div>
                                                         </div>  
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="BSME"readonly>
+                                                                <input id="t5-n2" type="text" value="<?php echo $row['course'] ?>"readonly>
                                                                 <label for="t5-n2">Course</label>
                                                             </div>
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="BSME 3B"  readonly>
+                                                                <input id="t5-n2" type="text" value="<?php echo $row['yr_section'] ?>"  readonly>
                                                                 <label for="t5-n2">Year & Section</label>
                                                             </div>
                                                         </div>
                                                         <h4>Violation Details</h4>
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="Major Offense" readonly>
+                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense1'] ?>" readonly>
                                                                 <label for="t5-n2">Offense</label>
                                                             </div>
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="Threats and Coercion"  readonly>
+                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense2'] ?>"  readonly>
                                                                 <label for="t5-n2">Offense2</label>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="First Offense"  readonly>
+                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense3'] ?>"  readonly>
                                                                 <label for="t5-n2">Offense3</label>
                                                             </div>
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="Suspension up to 15 school days"  readonly>
+                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense4'] ?>"  readonly>
                                                                 <label for="t5-n2">Offense4</label>
                                                             </div>
                                                         </div>
+
                                                     </form>
                                                 </div>
                                                 <a href="_admin-violation.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <a href="process.php?completed=<?php echo $row['id'] ?>" class="btn waves-effect btn-success"><strong>Mark as completed</strong></a>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
