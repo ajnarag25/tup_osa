@@ -157,7 +157,7 @@
                 </div>
 
                  <!--== Checklist ==-->
-                 <div class="sb2-2-3">
+                 <!-- <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
 						<div class="box-inn-sp admin-form">
@@ -221,7 +221,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
                 <!--== View Details ==-->
@@ -233,89 +233,92 @@
                                     <h4>Student Information</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <form>
+                                    <form method="POST" action="process.php">
+                                        <?php 
+                                            $id = $_GET['id'];
+                                            $query = "SELECT * FROM scholarship WHERE id='$id'";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
                                         <div class="row">
                                             <h4>Basic Information</h4>
                                             <div class="input-field col s6">
                                                 <strong><p>Scholarship Applied for:</p></strong>
-                                                <input type="text" value="Tuition" class="validate" required>
+                                                <input type="text" value="<?php echo $row['apply'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>School Year:</p></strong>
-                                                <input id="name" type="text" value="2022-2023" class="validate" required>
+                                                <input id="name" type="text" value="<?php echo $row['school_yr'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
+                                                <strong><p>Student I.D:</p></strong>
+                                                <input id="name" type="text" value="<?php echo $row['student_id'] ?>" readonly>
+                                                <label class="">Enter your full name</label>
+                                            </div>
+                                            <div class="input-field col s6">
                                                 <strong><p>Full name:</p></strong>
-                                                <input id="name" type="text" value="Juan Dela Cruz" class="validate" required>
+                                                <input id="name" type="text" value="<?php echo $row['name'] ?>" readonly>
                                                 <label class="">Enter your full name</label>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Course:</p></strong>
-                                                <input type="text" value="BET-AT" class="validate">
-                                                <label class="">Enter your course</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Course:</p></strong>
-                                                <input type="text" value="BET-AT" class="validate">
+                                                <input type="text" value="<?php echo $row['course'] ?>" readonly>
                                                 <label class="">Enter your course</label>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Phone Number:</p></strong>
-                                               <input type="number" value="09985752412" class="validate" required>
+                                               <input type="number" value="<?php echo $row['contact'] ?>" readonly>
                                                <label class="">Enter your phone number</label>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Email:</p></strong>
-                                                <input type="email" class="validate" value="john_smith@gmail.com" required>
+                                                <input type="email" value="<?php echo $row['email'] ?>" readonly>
                                                 <label class="">Enter your email</label>
                                             </div>
-                                        </div>   
-                                        
+                                        </div>
                                         <div class="row">
                                             <h4>Personal Information</h4>
                                             <div class="input-field col s6">
                                                 <strong><p>Date of Birth:</p></strong>
-                                               <input type="text" value="03/01/2000" class="validate" required>
+                                               <input type="text" value="<?php echo $row['dbirth'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Place of Birth:</p></strong>
-                                                <input type="text" value="Imus Cavite" class="validate">
+                                                <input type="text" value="<?php echo $row['pbirth'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Age:</p></strong>
-                                               <input type="text" value="22" class="validate" required>
+                                               <input type="text" value="<?php echo $row['age'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Sex:</p></strong>
-                                                <input type="text" value="Male" class="validate">
+                                                <input type="text" value="<?php echo $row['sex'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Nationality:</p></strong>
-                                               <input type="text" value="Filipino" class="validate" required>
+                                               <input type="text" value="<?php echo $row['nationality'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Religion:</p></strong>
-                                                <input type="text" value="Roman Catholic" class="validate">
+                                                <input type="text" value="<?php echo $row['religion'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Complete Address:</p></strong>
-                                               <input type="text" value="Blk12 Lot12, Imus, Cavite" class="validate" required>
+                                               <input type="text" value="<?php echo $row['address'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Complete Provincial Address:</p></strong>
-                                                <input type="text" value="Blk12 Lot12, Imus, Cavite" class="validate">
+                                                <input type="text" value="<?php echo $row['paddress'] ?>" readonly>
                                             </div>
                                         </div>
 
@@ -323,172 +326,167 @@
                                             <h4>Educational History</h4>
                                             <div class="input-field col s6">
                                                 <strong><p>Elementary (School Name):</p></strong>
-                                               <input type="text" value="Bucandala Elementary School" class="validate" required>
+                                               <input type="text" value="<?php echo $row['elementary'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Elementary (Address):</p></strong>
-                                               <input type="text" value="Bucandala 1, City of Imus, Cavite" class="validate" required>
+                                               <input type="text" value="<?php echo $row['e_address'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Elementary (S.Y. Attended):</p></strong>
-                                               <input type="text" value="2006-2012" class="validate" required>
+                                               <input type="text" value="<?php echo $row['e_syattend'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Awards Received:</p></strong>
-                                               <input type="text" value="With Honors" class="validate" required>
+                                               <input type="text" value="<?php echo $row['e_awards'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Junior High (School Name):</p></strong>
-                                               <input type="text" value="Imus National High School" class="validate" required>
+                                               <input type="text" value="<?php echo $row['junior'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Junior High (Address):</p></strong>
-                                               <input type="text" value="Bucandala 1, City of Imus, Cavite" class="validate" required>
+                                               <input type="text" value="<?php echo $row['j_address'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Junior High (S.Y. Attended):</p></strong>
-                                               <input type="text" value="2012-2016" class="validate" required>
+                                               <input type="text" value="<?php echo $row['j_syattend'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Awards Received:</p></strong>
-                                               <input type="text" value="With Honors" class="validate" required>
+                                               <input type="text" value="<?php echo $row['j_awards'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Senior High (School Name):</p></strong>
-                                               <input type="text" value="Gen. Pantaleon Garcia Senior School" class="validate" required>
+                                               <input type="text" value="<?php echo $row['senior'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Senior High (Address):</p></strong>
-                                               <input type="text" value="Bucandala 1, City of Imus, Cavite" class="validate" required>
+                                               <input type="text" value="<?php echo $row['s_address'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Senior High (S.Y. Attended):</p></strong>
-                                               <input type="text" value="2016-2018" class="validate" required>
+                                               <input type="text" value="<?php echo $row['s_syattend'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Awards Received:</p></strong>
-                                               <input type="text" value="With Honors" class="validate" required>
+                                               <input type="text" value="<?php echo $row['s_awards'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Have you been placed under academic probation or any given sanction for poor academics? If yes, please provide details.</p></strong>
-                                               <textarea type="text" class="validate" required>No po</textarea>
+                                               <textarea type="text" readonly><?php echo $row['academic_probation'] ?></textarea>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Have you been placed under desciplinary probation or given any sanction for misbehavior? If yes, please provide details.</p></strong>
-                                               <textarea type="text" class="validate" required>No po</textarea>
+                                               <textarea type="text" readonly><?php echo $row['desciplinary_probation'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <h4>Family Information</h4>
                                             <div class="input-field col s6">
                                                 <strong><p>Father's Name:</p></strong>
-                                               <input type="text" value="John Dela Cruz" class="validate" required>
+                                               <input type="text" value="<?php echo $row['f_name'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Father's Nationality:</p></strong>
-                                               <input type="text" value="Filipino" class="validate" required>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Father's Highest Educational Attainment:</p></strong>
-                                               <input type="text" value="College Level" class="validate" required>
+                                               <input type="text" value="<?php echo $row['f_nationality'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Father's Occupation:</p></strong>
-                                               <input type="text" value="None" class="validate" required>
+                                               <input type="text" value="<?php echo $row['f_occupation'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Company Address:</p></strong>
-                                               <input type="text" value="N/A" class="validate" required>
+                                               <input type="text" value="<?php echo $row['f_company'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Office Number:</p></strong>
-                                               <input type="text" value="N/A" class="validate" required>
+                                               <input type="text" value="<?php echo $row['f_number'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Father's Number:</p></strong>
-                                               <input type="text" value="09092566294" class="validate" required>
+                                               <input type="text" value="<?php echo $row['f_contact'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Mother's Name:</p></strong>
-                                               <input type="text" value="Juana Dela Cruz" class="validate" required>
+                                               <input type="text" value="<?php echo $row['m_name'] ?>" Cruz" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Mother's Nationality:</p></strong>
-                                               <input type="text" value="Filipino" class="validate" required>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Mother's Highest Educational Attainment:</p></strong>
-                                               <input type="text" value="College Level" class="validate" required>
+                                               <input type="text" value="<?php echo $row['m_nationality'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Mother's Occupation:</p></strong>
-                                               <input type="text" value="None" class="validate" required>
+                                               <input type="text" value="<?php echo $row['m_occupation'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Company Address:</p></strong>
-                                               <input type="text" value="N/A" class="validate" required>
+                                               <input type="text" value="<?php echo $row['m_company'] ?>"" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Office Number:</p></strong>
-                                               <input type="text" value="N/A" class="validate" required>
+                                               <input type="text" value="<?php echo $row['m_number'] ?>"" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Mother's Number:</p></strong>
-                                               <input type="text" value="09062655924" class="validate" required>
+                                               <input type="text" value="<?php echo $row['m_contact'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Number of Siblings:</p></strong>
-                                               <input type="text" value="4" class="validate" required>
+                                               <input type="text" value="<?php echo $row['siblings'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Birth Order:</p></strong>
-                                               <input type="text" value="2nd" class="validate" required>
+                                               <input type="text" value="<?php echo $row['birth_order'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <h4>Medical Information</h4>
                                             <div class="input-field col s6">
                                                 <strong><p>Have you been hospitalized?</p></strong>
-                                               <input type="text" value="Yes" class="validate" required>
+                                               <input type="text" value="<?php echo $row['hospitalized'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>If so, for what?:</p></strong>
-                                               <input type="text" value="Dengue" class="validate" required>
+                                               <input type="text" value="<?php echo $row['details'] ?>" readonly>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <h4>Essay</h4>
                                             <div class="input-field col s6">
                                                 <strong><p>Tell me something about yourself.</p></strong>
-                                               <textarea type="text" class="validate" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+                                               <textarea type="text" readonly><?php echo $row['essay1'] ?></textarea>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Why did you apply for scholarhip assistance?</p></strong>
-                                               <textarea type="text" class="validate" required>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</textarea>
+                                               <textarea type="text" readonly><?php echo $row['essay2'] ?></textarea>
                                             </div>
-                                        </div>                                  
+                                        </div>
+                
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                                <button class="btn waves-effect btn-success" hidden><strong>Click this if Student Received his/her Scholarship</strong></button>
+                                                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                                <button class="btn waves-effect btn-success" name="received_scholarship"><strong>Click this if Student Received his/her Scholarship</strong></button>
                                             </div>
                                         </div>
+                                    <?php } ?>
                                     </form>
                                 </div>
                             </div>

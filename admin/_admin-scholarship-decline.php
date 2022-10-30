@@ -149,9 +149,9 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li ><a href="_admin-goodmoral.php"> Good Moral Requests</a>
+                        <li ><a href="_admin-scholarship.php"> Scholarship</a>
                         </li>
-                        <li class="active-bre"><a href="#"> Good Moral Request - Decline</a>
+                        <li class="active-bre"><a href="#"> Scholarship Request - Decline</a>
                         </li>
                     </ul>
                 </div>
@@ -167,7 +167,7 @@
                                 <div class="tab-inn">
                                     <?php 
                                         $id = $_GET['id'];
-                                        $query = "SELECT * FROM good_moral WHERE id='$id'";
+                                        $query = "SELECT * FROM scholarship WHERE id='$id'";
                                         $result = mysqli_query($conn, $query);
                                         while ($row = mysqli_fetch_array($result)) {
                                     ?>
@@ -177,8 +177,8 @@
                                             <h3>Declining Student: <?php echo $row['name'] ?></h3>
                                             <br><br>
                                             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                            <a href="_admin-goodmoral.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
-                                            <button class="btn waves-effect btn-danger" name="decline_goodmoral"><strong>Decline</strong></button>
+                                            <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
+                                            <button class="btn waves-effect btn-danger" name="decline_scholarship"><strong>Decline</strong></button>
                                         </div>
 
                                     </form>
