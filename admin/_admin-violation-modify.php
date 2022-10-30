@@ -58,7 +58,7 @@
                     <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i>
                     <span>
                     <?php 
-                        $sql = "SELECT * FROM id_request ";
+                        $sql = "SELECT * FROM id_request WHERE status='PENDING'";
                         $result=mysqli_query($conn, $sql);
                         $row1 = mysqli_num_rows($result);
                     ?>
@@ -68,7 +68,7 @@
                     <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i>
                     <span>
                     <?php 
-                        $sql = "SELECT * FROM id_validation ";
+                        $sql = "SELECT * FROM id_validation WHERE status='PENDING'";
                         $result=mysqli_query($conn, $sql);
                         $row2 = mysqli_num_rows($result);
                     ?>
@@ -78,7 +78,7 @@
                     <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i>
                     <span>
                     <?php 
-                        $sql = "SELECT * FROM id_validation ";
+                        $sql = "SELECT * FROM id_validation WHERE status='PENDING'";
                         $result=mysqli_query($conn, $sql);
                         $row3 = mysqli_num_rows($result);
                     ?>

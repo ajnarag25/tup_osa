@@ -59,7 +59,7 @@
                     <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i>
                     <span>
                     <?php 
-                        $sql = "SELECT * FROM id_request ";
+                        $sql = "SELECT * FROM id_request WHERE status='PENDING'";
                         $result=mysqli_query($conn, $sql);
                         $row1 = mysqli_num_rows($result);
                     ?>
@@ -69,7 +69,7 @@
                     <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i>
                     <span>
                     <?php 
-                        $sql = "SELECT * FROM id_validation ";
+                        $sql = "SELECT * FROM id_validation WHERE status='PENDING'";
                         $result=mysqli_query($conn, $sql);
                         $row2 = mysqli_num_rows($result);
                     ?>
@@ -79,7 +79,7 @@
                     <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i>
                     <span>
                     <?php 
-                        $sql = "SELECT * FROM id_validation ";
+                        $sql = "SELECT * FROM id_validation WHERE status='PENDING'";
                         $result=mysqli_query($conn, $sql);
                         $row3 = mysqli_num_rows($result);
                     ?>
@@ -190,9 +190,14 @@
                                 </div>
                             </li>
                             <li>
+                                <?php 
+                                    $sql = "SELECT * FROM violations ";
+                                    $result=mysqli_query($conn, $sql);
+                                    $row4 = mysqli_num_rows($result);
+                                ?>
                                 <div class="dash-book dash-b-4">
                                     <h5>Violations</h5>
-                                    <h4>12</h4>
+                                    <h4><?php echo $row4; ?></h4>
                                     <a href="_admin-violation.php">View more</a>
                                 </div>
                             </li>
@@ -423,10 +428,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Picture</th>
                                                     <th>TUPC-ID</th>
                                                     <th>Full Name</th>
-                                                    <th>Email</th>
                                                     <th>Course</th>
                                                     <th>Violation</th>
                                                     <th>Remaining Time</th>
@@ -434,54 +437,40 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM violations ";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td><span class="list-img"><img src="images/user/1.png" alt=""></span>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span>
                                                     </td>
-                                                    <td><span class="list-enq-name">TUPC-18-0779</span>
+                                                    <td><?php echo $row['name'] ?>
                                                     </td>
-                                                    <td>Marsha Hogan
-                                                    </td>
-                                                    <td>chadengle@dummy.com</td>
-                                                    <td>BSME</td>
-                                                    <td>Improper Haircut</td>
-													<td>12 Hour/s</td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['offense2'] ?></td>
+													<td><?php echo $row['td'] ?></td>
                                                     <td>
-                                                        <span class="label label-default">Pending</span>
+                                                        <?php 
+                                                            if ($row['status'] == 'PENDING'){
+                                                                echo '
+                                                                <span class="label label-default">PENDING</span>
+                                                                ';
+                                                            }elseif ($row['status'] == 'DECLINED'){
+                                                                echo '
+                                                                <span class="label label-danger">DECLINED</span>
+                                                                ';
+                                                            }else{
+                                                                echo'
+                                                                <span class="label label-success">SUCCESS</span>
+                                                                ';
+                                                            }
+                                                        
+                                                        ?>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">TUPC-18-0723</span>
-                                                    </td>
-                                                    <td>Lucas Caden
-                                                    </td>
-                                                    <td>lucas@gmail.com</td>
-                                                    <td>BSIE</td>
-                                                    <td>Improper Haircut</td>
-													<td>1 Hour/s</td>
-                                                    <td>
-                                                        <span class="label label-default">Pending</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">TUPC-18-0727</span>
-                                                    </td>
-                                                    <td>Ethan Oliver
-                                                    </td>
-                                                    <td>Ethan@gmail.com</td>
-                                                    <td>COET</td>
-                                                    <td>Improper Haircut</td>
-													<td>8 Hour/s</td>
-                                                    <td>
-                                                        <span class="label label-default">Pending</span>
-                                                    </td>
-                                                </tr>
+                                                <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
