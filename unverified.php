@@ -1,9 +1,9 @@
 <?php 
-  include('connection.php');
-  session_start();
-  if (!isset($_SESSION['get_data']['email'])) {
-    header("Location: index.php");
-}
+    include('connection.php');
+    session_start();
+    if (!isset($_SESSION['get_data']['email'])) {
+        header("Location: index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
 
 
 <head>
-    <title>TUPC OSA Services</title>
+    <title>TUPC OSA Services - Unverified</title>
     <!-- META TAGS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- ALL CSS FILES -->
     <link href="css/materialize.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
@@ -35,22 +34,6 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-    <style>
-        .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-    </style>
 </head>
 
 <body>
@@ -60,8 +43,8 @@
         <div class="ed-mob-menu">
             <div class="ed-mob-menu-con">
                 <div class="ed-mm-left">
-                    <div class="wed-logo2">
-                        <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" />
+                    <div class="wed-logo">
+                        <a href="index.php"><img src="images/logo.png" alt="" />
 						</a>
                     </div>
                 </div>
@@ -72,42 +55,26 @@
                             <a href="#!" class="ed-mi-close"><i class="fa fa-times"></i></a>
                             <h4 id="serv">All Services</h4>
                             <ul>
-                                <li><a href="_idrequest.php">ID Request</a></li>
-                                <li><a href="_idvalidation.php">ID Validation</a></li>
-                                <li><a href="_goodmoral.php">Good Moral</a></li>
-                                <li><a href="_scholarship.php">Scholarship Program</a></li>
-                                <li><a href="_voting.php">Voting for USG</a></li>
-                                <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modal1">ID Request</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modal1">ID Validation</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modal1">Good Moral</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modal1">Scholarship Program</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modal1">Voting for USG</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modal1">Student Violation</a></li>
                             </ul>
-                            <!-- <h4>Student Account</h4>
+                            <h4>Student Account</h4>
                             <ul>
                                 <li><a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a></li>
                                 <li><a href="#!" data-toggle="modal" data-target="#modal2">Register</a></li>
                             </ul>
                             <h4>Admin Account</h4>
                             <ul>
-                                <li><a href="#!" data-toggle="modal" data-target="#modal1">Sign In</a></li>
-                            </ul> -->
-                            
-                            <h4>Other Pages</h4>
-                            <ul>
-                                <li><a href="_mainss.php">Home</a></li>
-                                <li><a href="_team.php">Team</a></li>
-                                <li><a href="_profile-dashboard.php">Profile</a></li>
-                                <li><a href="process.php?logout">Logout</a></li>
+                                <li><a href="#!" data-toggle="modal" data-target="#">Sign In</a></li>
                             </ul>
-                            <h4>About</h4>
+                            <h4>All Pages</h4>
                             <ul>
-                                <li><a href="https://www.tupcavite.edu.ph/tupc-regents.html" target="_blank">Board of Regents</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/tupc-officials.html" target="_blank">Campus Officials</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/tupc-mandate.html" target="_blank">Vision and Mission</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/tupc-mission-vision.html" target="_blank">TUP Seal History</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/tupc-transparency-seal.html" target="_blank">Transparency Seal</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/programs.html" target="_blank">All Programs Offered</a></li>
-                                <li><a href="https://ers.tup.edu.ph/aims/applicants/" target="_blank">Application</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/admission.html" target="_blank">Admission Procedures</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/student-handbook.html" target="_blank">Student Handbook</a></li>
-                                <li><a href="https://www.tupcavite.edu.ph/student-scholarship.html" target="_blank">Apply for Scholarship</a></li>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#modal1">Team</a></li>
                             </ul>
                         </div>
                     </div>
@@ -118,6 +85,9 @@
 
     <!--HEADER SECTION-->
     <section>
+
+  <!--HEADER SECTION-->
+  <section>
         <!-- TOP BAR -->
         <div class="ed-top">
             <div class="container">
@@ -150,11 +120,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="wed-logo">
-                            <a href="_mainss.php"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
+                            <a href="#"><img src="images/gear-spin.gif" alt="" /><span style="font-weight: bold; font-size: larger;">  TUPC OSA Services</span></a>
                         </div>
                         <div class="main-menu">
                             <ul>
-                                <li><a href="_mainss.php">Home</a>
+                                <li><a href="#">Home</a>
                                 </li>
                                 <li class="about-menu">
                                     <a href="#" class="mm-arr">About</a>
@@ -206,72 +176,72 @@
                                             <div class="m-menu-inn">
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idrequest.php">
+                                                        <a class="course-overlay" href="#">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Request</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for ID request any time.</p>
-                                                    <a href="_idrequest.php" class="mm-r-m-btn">Select</a>
+                                                    <a href="#" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_idvalidation.php">
+                                                        <a class="course-overlay" href="#">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>ID Validation</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Validation of School ID</p>
-                                                    <a href="_idvalidation.php" class="mm-r-m-btn">Select</a>
+                                                    <a href="#" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_goodmoral.php">
+                                                        <a class="course-overlay" href="#">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Good Moral</span>
                                                         </a>
                                                     </div>
                                                     <p>Request for Good Moral.</p>
-                                                    <a href="_goodmoral.php" class="mm-r-m-btn">Select</a>
+                                                    <a href="#" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_voting.php">
+                                                        <a class="course-overlay" href="#">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Voting for USG</span>
                                                         </a>
                                                     </div>
                                                     <p>Vote for USG election candidates. </p>
-                                                    <a href="_voting.php" class="mm-r-m-btn">Select</a>
+                                                    <a href="#" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s1">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_scholarship.php">
+                                                        <a class="course-overlay" href="#">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Scholarship Programs</span>
                                                         </a>
                                                     </div>
                                                     <p>Apply for Scholarship Program. View announcement about scholarship program.</p>
-                                                    <a href="_scholarship.php" class="mm-r-m-btn">Select</a>
+                                                    <a href="#" class="mm-r-m-btn">Select</a>
                                                 </div>
                                                 <div class="mm2-com mm1-com mm1-s4">
                                                     <div class="ed-course-in">
-                                                        <a class="course-overlay" href="_profile-dashboard.php#violationss">
+                                                        <a class="course-overlay" href="#">
                                                             <img src="images/h-about1.jpg" alt="">
                                                             <span>Student Violation</span>
                                                         </a>
                                                     </div>
                                                     <p>Check if has violation. View remaining time for doing community service.</p>
-                                                    <a href="_profile-dashboard.php#violationss" class="mm-r-m-btn">Select</a>
+                                                    <a href="#" class="mm-r-m-btn">Select</a>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="_team.php">Team</a>
+                                <li><a href="#">Team</a>
                                 </li>
-                                <li><a href="_profile-dashboard.php">Profile</a>
+                                <li><a href="#">Profile</a>
                                 </li>
                                 <li><a href="process.php?logout">Logout</a>
                                 </li>
@@ -297,12 +267,12 @@
                                     </div>
                                     <div class="sf-list">
                                         <ul>
-                                            <li><a href="_idrequest.php">ID Request</a></li>
-                                            <li><a href="_idvalidation.php">ID Validation</a></li>
-                                            <li><a href="_goodmoral.php">Good Moral</a></li>
-                                            <li><a href="_voting.php">Voting for USG</a></li>
-                                            <li><a href="_scholarship.php">Scholarship Programs</a></li>
-                                            <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
+                                            <li><a href="#">ID Request</a></li>
+                                            <li><a href="#">ID Validation</a></li>
+                                            <li><a href="#">Good Moral</a></li>
+                                            <li><a href="#">Voting for USG</a></li>
+                                            <li><a href="#">Scholarship Programs</a></li>
+                                            <li><a href="#">Student Violation</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -322,22 +292,16 @@
         <div class="head-2">
             <div class="container">
                 <div class="head-2-inn head-2-inn-padd-top">
-                    <h1>Voting of USG Officers is not yet opened</h1>
-                    <p>Please wait for further announcement regarding of voting for incoming USG candidates.</p>
+                   
+                        <h1>Your Account is Unverified</h1>
+                        <h4>Please wait for your account verification</h4>
+
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-    <!--SECTION START-->
-    <section>
-        <div class="container">
-            <div class="ed-res-bg">
 
-                	
-            </div>    
-        </div>
-    </section>
-    <!--SECTION END-->
 
     <!-- FOOTER -->
     <section class="wed-hom-footer">
@@ -347,12 +311,12 @@
                 <div class="col-md-4 foot-tc-mar-t-o">
                     <h4>Most Popular Links</h4>
                     <ul>
-                        <li><a href="_idrequest.php">ID Request</a></li>
-                        <li><a href="_idvalidation.php">ID Validation</a></li>
-                        <li><a href="_goodmoral.php">Good Moral</a></li>
-                        <li><a href="_scholarship.php">Scholarship Program</a></li>
-                        <li><a href="_voting.php">Voting for USG</a></li>
-                        <li><a href="_profile-dashboard.php#violationss">Student Violation</a></li>
+                        <li><a href="#">ID Request</a></li>
+                        <li><a href="#">ID Validation</a></li>
+                        <li><a href="#">Good Moral</a></li>
+                        <li><a href="#">Scholarship Program</a></li>
+                        <li><a href="#">Voting for USG</a></li>
+                        <li><a href="#">Student Violation</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -402,61 +366,18 @@
             </div>
         </div>
     </section>
+
+    <!--SECTION LOGIN, REGISTER AND FORGOT PASSWORD-->
+    <section>
     
+ 
+
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript">
-        function secretary() {
-        var valuess = $('#limitsecretary').val().length;
-            if (valuess > 2){
-                document.getElementById("invalidsec").hidden = false
-            } else {
-                document.getElementById("invalidsec").hidden = true
-            }
-        }
-
-        function six1() {
-        var valuess = $('#limitsix1').val().length;
-            if (valuess > 6){
-                document.getElementById("invalidsix1").hidden = false
-            } else {
-                document.getElementById("invalidsix1").hidden = true
-            }
-        }
-
-        function six2() {
-        var valuess = $('#limitsix2').val().length;
-            if (valuess > 6){
-                document.getElementById("invalidsix2").hidden = false
-            } else {
-                document.getElementById("invalidsix2").hidden = true
-            }
-        }
-
-        function six3() {
-        var valuess = $('#limitsix3').val().length;
-            if (valuess > 6){
-                document.getElementById("invalidsix3").hidden = false
-            } else {
-                document.getElementById("invalidsix3").hidden = true
-            }
-        }
-        function six4() {
-        var valuess = $('#limitsix4').val().length;
-            if (valuess > 6){
-                document.getElementById("invalidsix4").hidden = false
-            } else {
-                document.getElementById("invalidsix4").hidden = true
-            }
-        }
-    </script>
     <script src="js/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
-    
+
 </body>
 
 </html>

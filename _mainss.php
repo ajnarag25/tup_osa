@@ -77,7 +77,7 @@
                                 <li><a href="_mainss.php">Home</a></li>
                                 <li><a href="_team.php">Team</a></li>
                                 <li><a href="_profile-dashboard.php">Profile</a></li>
-                                <li><a href="logout.php">Logout</a></li>
+                                <li><a href="process.php?logout">Logout</a></li>
                             </ul>
                             <h4>About</h4>
                             <ul>
@@ -256,7 +256,7 @@
                                 </li>
                                 <li><a href="_profile-dashboard.php">Profile</a>
                                 </li>
-                                <li><a href="logout.php">Logout</a>
+                                <li><a href="process.php?logout">Logout</a>
                                 </li>
                             </ul>
                         </div>

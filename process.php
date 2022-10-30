@@ -6,6 +6,13 @@
     session_start();
     error_reporting(0);
 
+
+     // logout
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header('location:index.php');
+    } 
+    
     // login student
     if (isset($_POST['login_student'])) {
         $username = $_POST['username'];
@@ -16,8 +23,14 @@
         $getData = mysqli_fetch_array($prompt);
 
         if (password_verify($password, $getData['password'])){
-            $_SESSION['get_data'] = $getData;
-            header('location:_mainss.php');
+            if ($getData['status'] == 'UNVERIFIED'){
+                $_SESSION['get_data'] = $getData;
+                header('location:unverified.php');
+            }else{
+                $_SESSION['get_data'] = $getData;
+                header('location:_mainss.php');
+            }
+
         }else{
             ?>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -53,12 +66,12 @@
         $fullname = $_POST['name'];
         $contact = $_POST['contact'];
         $course = $_POST['course'];
-        $email = $_POST['email'];
+        $emails = $_POST['email'];
         $username = $_POST['username'];
         $pass1 = $_POST['password1'];
         $pass2 = $_POST['password2'];
 
-        $sql = "SELECT * FROM student WHERE email='$email' OR name='$fullname' AND student_id = '$studentid'";
+        $sql = "SELECT * FROM student WHERE email='$emails' OR name='$fullname' AND student_id = '$studentid'";
         $result = mysqli_query($conn, $sql);
 
         if ($pass1 != $pass2){
@@ -87,8 +100,9 @@
             <?php
         }else{
             if (!$result->num_rows > 0) {
-                $conn->query("INSERT INTO student (image, student_id, name, course, email, contact, username, password, social1, social2, otp) 
-                VALUES('uploads/default.png','$studentid','$fullname', '$course','$email', '$contact', '$username', '".password_hash($pass1, PASSWORD_DEFAULT)."','N/A','N/A', 0)") or die($conn->error);
+                $conn->query("INSERT INTO student (image, student_id, name, course, email, contact, username, password, social1, social2, otp, status) 
+                VALUES('uploads/default.png','$studentid','$fullname', '$course','$emails', '$contact', '$username', '".password_hash($pass1, PASSWORD_DEFAULT)."','N/A','N/A', 0, 'UNVERIFIED')") or die($conn->error);
+                include 'signup_email.php';
                 ?>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
