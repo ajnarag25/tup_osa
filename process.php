@@ -4,7 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
-    // error_reporting(0);
+    error_reporting(0);
 
     // login student
     if (isset($_POST['login_student'])) {
@@ -853,4 +853,201 @@
         
     }
 
+
+    // submit scholarship
+    if (isset($_POST['scholarship'])) { 
+        $studentid = $_POST['studentid'];
+        $d1 = $_POST['apply'];	
+        $d2 = $_POST['school_yr'];	
+        $d3 = $_POST['name'];	
+        $d4 = $_POST['course'];	
+        $d5 = $_POST['contact'];	
+        $d6 = $_POST['email'];	
+        $d7 = $_POST['dbirth'];	
+        $d8 = $_POST['pbirth'];	
+        $d9 = $_POST['age'];	
+        $d10 = $_POST['sex'];
+        $d11 = $_POST['nationality'];	
+        $d12 = $_POST['religion'];	
+        $d13 = $_POST['address'];	
+        $d14 = $_POST['paddress'];	
+        $d15 = $_POST['elementary'];	
+        $d16 = $_POST['e_address'];	
+        $d17 = $_POST['e_syattend'];	
+        $d18 = $_POST['e_awards'];	
+        $d19 = $_POST['junior'];	
+        $d20 = $_POST['j_address'];	
+        $d21 = $_POST['j_syattend'];	
+        $d22 = $_POST['j_awards'];
+        $d23 = $_POST['senior'];	
+        $d24 = $_POST['s_address'];	
+        $d25 = $_POST['s_syattend'];	
+        $d26 = $_POST['s_awards'];	
+        $d27 = $_POST['academic_probation'];	
+        $d28 = $_POST['desciplinary_probation'];	
+        $d29 = $_POST['f_name'];	
+        $d30 = $_POST['f_nationality'];	
+        $d31 = $_POST['f_occupation'];	
+        $d32 = $_POST['f_company'];	
+        $d33 = $_POST['f_number'];	
+        $d34 = $_POST['f_contact'];	
+        $d35 = $_POST['m_name'];	
+        $d36 = $_POST['m_nationality'];	
+        $d37 = $_POST['m_occupation'];	
+        $d38 = $_POST['m_company'];	
+        $d39 = $_POST['m_number'];	
+        $d40 = $_POST['m_contact'];	
+        $d41 = $_POST['siblings'];	
+        $d42 = $_POST['birth_order'];	
+        $d43 = $_POST['hospitalized'];	
+        $d44 = $_POST['details'];	
+        $d45 = $_POST['essay1'];	
+        $d46 = $_POST['essay2'];
+        $sched_today = date("Y/m/d");
+
+        
+        $sql = "SELECT * FROM scholarship WHERE email='$d6' AND status='PENDING' ";
+        $result = mysqli_query($conn, $sql);
+
+        if(!$result->num_rows > 0){
+            if ($d1 == null && $d4 == null && $d10 == null && $d43 == null){
+                ?>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'An Error Occured',
+                        text: 'Please Provide all the Necessary Information Needed',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_scholarship.php";
+                            }else{
+                                window.location.href = "_scholarship.php";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+                <?php
+            }elseif($d1 == null || $d4 == null || $d10 == null || $d43 == null){
+                ?>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'An Error Occured',
+                        text: 'Please Provide all the Necessary Information Needed',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_scholarship.php";
+                            }else{
+                                window.location.href = "_scholarship.php";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+                <?php
+            }else{
+                $conn->query("INSERT INTO scholarship (student_id, apply, school_yr, name, course, contact, email, dbirth, pbirth, age, sex, nationality, religion, address, paddress, elementary, e_address, e_syattend, e_awards, junior, j_address, j_syattend, j_awards, senior, s_address, s_syattend, s_awards, academic_probation, desciplinary_probation, f_name, f_nationality, f_occupation, f_company, f_number, f_contact, m_name, m_nationality, m_occupation, m_company, m_number, m_contact, siblings, birth_order, hospitalized, details, essay1, essay2, req_date, sched_date, status) 
+                VALUES('$studentid','$d1','$d2','$d3','$d4','$d5','$d6','$d7','$d8','$d9','$d10','$d11','$d12','$d13','$d14','$d15','$d16','$d17','$d18','$d19','$d20','$d21','$d22','$d23','$d24','$d25','$d26','$d27','$d28','$d29','$d30','$d31','$d32','$d33','$d34','$d35','$d36','$d37','$d38','$d39','$d40','$d41','$d42','$d43','$d44','$d45','$d46', '$sched_today', 'PENDING', 'PENDING')") or die($conn->error);
+                 ?>
+                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                 <script>
+                     $(document).ready(function(){
+                         Swal.fire({
+                         icon: 'success',
+                         title: 'Successfully Submitted',
+                         confirmButtonColor: '#3085d6',
+                         confirmButtonText: 'Okay'
+                         }).then((result) => {
+                         if (result.isConfirmed) {
+                             window.location.href = "_profile-dashboard.php#scho";
+                             }else{
+                                 window.location.href = "_profile-dashboard.php#scho";
+                             }
+                         })
+                         
+                     })
+             
+                 </script>
+                 <?php
+            }
+        }else{
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'warning',
+                    title: 'You have a pending request',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_profile-dashboard.php#scho";
+                        }else{
+                            window.location.href = "_profile-dashboard.php#scho";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+       
+    }
+
+     // delete scholarship
+     if (isset($_POST['del_scholarship'])) { 
+        $get_studentid = $_POST['studentid'];
+
+        if ($get_studentid != null){
+            $conn->query("DELETE FROM scholarship WHERE student_id='$get_studentid'") or die($conn->error);
+            header('location:_profile-dashboard.php#scho');
+
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An error occured!',
+                    text: 'Something Went Wrong.',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_profile-dashboard.php#scho";
+                        }else{
+                            window.location.href = "_profile-dashboard.php#scho";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+        
+    }
 ?>

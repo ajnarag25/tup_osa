@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- ALL CSS FILES -->
     <link href="css/materialize.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
@@ -35,22 +34,6 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-    <style>
-        .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-    </style>
 </head>
 
 <body>
@@ -317,24 +300,364 @@
         </div>
     </section>
     <!--END HEADER SECTION-->
-    
-    <section>
-        <div class="head-2">
-            <div class="container">
-                <div class="head-2-inn head-2-inn-padd-top">
-                    <h1>Scholarship Application is not yet opened</h1>
-                    <p>Please wait for further announcement regarding for scholarship application.</p>
+
+    <!--SECTION START-->
+    <section class="c-all h-quote">
+        <div class="container">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="all-title quote-title qu-new">
+                    <h2>Apply for scholarship</h2>
+                    <p>Send a request form for scholarship program.</p>
+                    <p>After sending the form, wait for the update and further instructions. Once approved, please prepare the following list below.</p>
+                    <p><strong>Requirements List<br>-> Duly Accomplied Application Form<br>-> Endorsement from the Shop Adviser/Previous Professor in the campus<br>
+                        -> Certified True Copy of Evaluation of Grades (for students with atleast one semester residency) or High School Card (Form-138)(for new students)<br>
+                        -> Latest income Tax Return / Certificate of non-filing of ITR<br>-> 2x2 Picture(1pc)<br>-> Photocopy of Latest Registration Form</strong></p>
+                    <a class="btn btn-secondary btn-block" href="_profile-dashboard.php#scho" role="button">View Status</a>
+                    <p class="help-line">Help Line <span>(046) 416 4920</span> </p> <span class="help-arrow pulse"><i class="fa fa-angle-right" aria-hidden="true"></i></span> 
                 </div>
             </div>
-        </div>
-    </section>
-    <!--SECTION START-->
-    <section>
-        <div class="container">
-            <div class="ed-res-bg">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="n-form-com admiss-form">
+                    <div class="col s12">
+                        <form class="form-horizontal" method="POST" action="process.php">
+                            <?php 
+                                $get_email = $_SESSION['get_data']['email'];
+                                $query = "SELECT * FROM student WHERE email='$get_email' ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
 
-                	
-            </div>    
+                            ?>
+                            <div class="form-group">
+                                <h4 style="color: gray;">Basic Information</h4>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">TUPC ID #:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="studentid" value="<?php echo $row['student_id'] ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Full Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="name" value="<?php echo $row['name'] ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Course:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="course" value="<?php echo $row['course'] ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Phone #:</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" name="contact" value="<?php echo $row['contact'] ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Email:</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" name="email" value="<?php echo $row['email'] ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Scholarship Applied For:</label>
+                                <div class="col-sm-7">
+                                    <select size="5" name="apply" required>
+                                        <option value="" selected disabled>-- Select Option --</option>
+                                        <option value="Asian Development Bank Spouses Association Scholarship">Asian Development Bank Spouses Association Scholarship</option>
+                                        <option value="Teritiary Education Subsidy">Teritiary Education Subsidy</option>	
+							        </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">School Year:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="school_yr" placeholder="Enter S.Y (ex. 2022-2023)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color: gray;">Personal Information</h4>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Date of Birth:</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" name="dbirth" placeholder="Enter your complete address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Place of Birth:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="pbirth" placeholder="Enter your birth place" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Age:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="age" placeholder="Enter your age" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Sex:</label>
+                                <div class="col-sm-9">
+                                    <select name="sex">
+                                        <option selected disabled>-- Select Sex --</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+							        </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Nationality:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="nationality" placeholder="Enter your nationality" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Religion:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="religion" placeholder="Enter your religion" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Complete Address:</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="address" placeholder="Enter your complete address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Provincial Address:</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="paddress" placeholder="Enter your complete provincial address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color: gray;">Educational History</h4>
+                            </div>
+                            <div class="form-group">
+                                <p>Elementary Level</p>
+                                <label class="control-label col-sm-3">Elementary</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="elementary" placeholder="Enter your name of your school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="e_address" placeholder="Enter your address of school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">S.Y Attended</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="e_syattend" placeholder="Enter your school year attended" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Awards</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="e_awards" placeholder="Enter your awards received" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Junior High Level</p>
+                                <label class="control-label col-sm-3">Junior High</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="junior" placeholder="Enter your name of your school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="j_address" placeholder="Enter your address of school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">S.Y Attended</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="j_syattend" placeholder="Enter your school year attended" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Awards</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="j_awards" placeholder="Enter your awards received" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Senior High Level</p>
+                                <label class="control-label col-sm-3">Senor High</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="senior" placeholder="Enter your name of your school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="s_address" placeholder="Enter your address of school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">S.Y Attended</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="s_syattend" placeholder="Enter your school year attended" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Awards</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="s_awards" placeholder="Enter your awards received" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-12">Have you been placed under academic probation or any given sanction for poor academics? If yes, please provide details.</label>
+                                <div class="col-sm-12">
+                                    <textarea type="text" class="form-control" name="academic_probation" placeholder="Type N/A if not" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-12">Have you been placed under desciplinary probation or given any sanction for misbehavior? If yes, please provide details.</label>
+                                <div class="col-sm-12">
+                                    <textarea type="text" class="form-control" name="desciplinary_probation" placeholder="Type N/A if not" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color: gray;">Family Information</h4>
+                            </div>
+                            <div class="form-group">
+                                <p>Father's Information</p>
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_name" placeholder="Enter your father's name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Nationality</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_nationality" placeholder="Enter your father's nationality" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Occupation</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_occupation" placeholder="Enter your father's occupation" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Company Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_company" placeholder="Company address (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Office Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_number" placeholder="Office Number (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Mobile Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_contact" placeholder="Enter your father's mobile number" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Mother's Information</p>
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_name" placeholder="Enter your mother's name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Nationality</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_nationality" placeholder="Enter your mother's nationality" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Occupation</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_occupation" placeholder="Enter your mother's occupation" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Company Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_company" placeholder="Company address (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Office Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_number" placeholder="Office Number (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Mobile Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_contact" placeholder="Enter your mother's mobile number" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Siblings</p>
+                                <label class="control-label col-sm-5">Number of Siblings</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" name="siblings" placeholder="Ex. 2 sister 3 brother" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Birth Order</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="birth_order" placeholder="Enter your birth order (ex. 2nd)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color: gray;">Medical Information</h4>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-6">Have you been hospitalized?</label>
+                                <div class="col-sm-6">
+                                    <select name="hospitalized">
+                                        <option selected disabled>-- Select Option --</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+							        </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">If so, for what?</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="details" placeholder="Enter your birth order (ex. 2nd)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h4 style="color: gray;">Essay</h4>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-12">Tell me something about yourself.</label>
+                                <div class="col-sm-12">
+                                    <textarea type="text" class="form-control" name="essay1" placeholder="..." required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-12">Why did you apply for scholarhip assistance?</label>
+                                <div class="col-sm-12">
+                                    <textarea type="text" class="form-control" name="essay2" placeholder="..." required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p class="control-label col-sm-12">I hereby certify that all information stated is true and correct.</p>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label col-sm-12">
+                                    <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" value="Submit Form" name="scholarship" class="waves-button-input"></i>
+                                </div>
+                            </div>
+                         <?php } ?>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!--SECTION END-->
@@ -402,17 +725,15 @@
             </div>
         </div>
     </section>
-    
+
+  
+
     <!--Import jQuery before materialize.js-->
-   
+    
     <script src="js/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
-    
 </body>
 
 </html>

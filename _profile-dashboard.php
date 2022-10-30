@@ -728,37 +728,72 @@
                                     </thead>
 
                                     <tbody>
+                                        <?php 
+                                            $get_email = $_SESSION['get_data']['email'];
+                                            $query = "SELECT * FROM scholarship WHERE email='$get_email' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
                                         <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>08/07/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>Pending</td>
-                                            <td><span class="pro-user-de-act">Pending</span></td>
+                                            <td><?php echo $row['student_id'] ?></td>
+                                            <td><?php echo $row['req_date'] ?></td>
+                                            <td><?php echo $row['essay2'] ?></td>
+                                            <td><?php echo $row['sched_date'] ?></td>
+                                            <td>
+                                                <?php 
+                                                    if ($row['status'] == 'PENDING'){
+                                                        $pending = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-de-act'>$pending</span>
+                                                        ";
+                                                    }elseif ($row['status'] == 'DECLINED'){
+                                                        $declined = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-danger'>$declined</span>
+                                                        ";
+                                                    }else{
+                                                        $done = $row['status'];
+                                                        echo "
+                                                        <span class='pro-user-act'>$done</span>
+                                                        ";
+                                                    }
+                                                
+                                                ?>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>04/03/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>04/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>02/03/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>02/11/2022</td>
-                                            <td><span class="pro-user-danger">Declined</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>TUPC-18-0069</td>
-                                            <td>01/03/2022</td>
-                                            <td>Need funds for school</td>
-                                            <td>01/11/2022</td>
-                                            <td><span class="pro-user-act">Done</span></td>
-                                        </tr>
+
+                                        <?php } ?>
+
                                     </tbody>
                                 </table>
-                                <button class="btn btn-xs btn-danger">Delete All</button>
+                                <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete_scholarship">Delete All</button>
+
+                                 <!-- Modal Delete Scholarship -->
+                                 <div class="modal fade" id="delete_scholarship" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <form method="POST" action="process.php">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="exampleModalLabel">Delete Scholarship</h3>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>Are you sure to Delete all of your Scholarship/s?</h4>
+                                                    <p>This action is deleting all of your data!</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="hidden" value="<?php echo $_SESSION['get_data']['student_id']; ?>" name="studentid">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" name="del_scholarship" class="btn btn-danger">Delete All</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
