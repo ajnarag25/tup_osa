@@ -1,6 +1,12 @@
 <?php 
 include('connection.php');
-error_reporting(0);
+// error_reporting(0);
+
+// LOGOUT
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header('location:../index.php');
+} 
 
 // ID REQUEST
 if (isset($_POST['update_sched_claim'])) {
@@ -1036,6 +1042,118 @@ if (isset($_POST['deny_account'])) {
     }
 
 
+}
+
+// change profile pic
+if (isset($_POST['change_profile'])) {
+    $name = $_POST['name'];
+
+    $target_dir = "upload/";
+    $target_file = $target_dir . basename($_FILES["profile_pic"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $check = getimagesize($_FILES["profile_pic"]["tmp_name"]);
+
+    if($check !== false) {
+    
+        $uploadOk = 1;
+        if ($uploadOk == 0) {
+            echo "<script type=\"text/javascript\">
+            alert(\"Sorry, your file was not uploaded.\");
+            window.location = \"_admin-settings.php\"
+            </script>";
+    } else {
+      move_uploaded_file($_FILES["profile_pic"]["tmp_name"], $target_file);
+    }
+        $sql='UPDATE admin SET image="'.$target_file.'", name="'.$name.'" WHERE id=1';
+        $result = mysqli_query($conn, $sql);
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Updated',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-settings.php";
+                    }else{
+                        window.location.href = "_admin-settings.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+        
+      } else {
+        echo "<script type=\"text/javascript\">
+        alert(\"File is not an image!\");
+        window.location = \"_admin-settings.php\"
+        </script>";
+        $uploadOk = 0;
+      }
+}
+
+// change password 
+if (isset($_POST['change_pass'])) {
+    $pass1 = $_POST['password1'];
+    $pass2 = $_POST['password2'];
+
+    if($pass1 != $pass2){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'Password Does not Match',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-settings.php";
+                    }else{
+                        window.location.href = "_admin-settings.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $sql='UPDATE admin SET password="'.$pass1.'" WHERE id=1';
+        $result = mysqli_query($conn, $sql);
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Updated',
+                text: 'You will now automatically logout and kindly login your new created password',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "../index.php";
+                    }else{
+                        window.location.href = "../index.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
 }
 
 ?>

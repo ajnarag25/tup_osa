@@ -1,5 +1,9 @@
 <?php
     include('connection.php');
+    session_start();
+    if (!isset($_SESSION['admin_data']['email'])) {
+      header("Location: ../index.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +100,13 @@
             <!--== MY ACCCOUNT ==-->
             <div class="col-md-2 col-sm-3 col-xs-6">
                 <!-- Dropdown Trigger -->
-                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.php' data-activates='top-menu'><img src="images/user.jpg" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <?php 
+                    $query = "SELECT * FROM admin ";
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                ?>
+                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.php' data-activates='top-menu'><img src="<?php echo $row['image'] ?>" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <?php } ?>
                 </a>
             </div>
         </div>
@@ -108,14 +118,22 @@
             <div class="sb2-1">
                 <!--== USER INFO ==-->
                 <div class="sb2-12">
+                    <?php 
+                        $query = "SELECT * FROM admin ";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($result)) {
+                    ?>
+
                     <ul>
-                        <li><img src="images/user.jpg" alt="">
+                        <li><img src="<?php echo $row['image'] ?>" alt="">
                         </li>
                         <li>
-                            <h5>Bermon Batario <span> TUPC OSA</span></h5>
+                            <h5><?php echo $row['name'] ?> <span> TUPC OSA</span></h5>
                         </li>
                         <li></li>
                     </ul>
+                    <?php } ?>
+
                 </div>
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
@@ -138,7 +156,7 @@
                         </li>
 						<li><a href="_admin-settings.php"   class="menu-active"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                        <li><a href="process.php?logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -165,22 +183,31 @@
                                     <h4>Change Password</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <form>
+                                    <form method="POST" action="process.php" enctype="multipart/form-data">
+                                        <?php 
+                                            $query = "SELECT * FROM admin ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Name:</p></strong>
-                                                <input type="text" value="Bermon Batario" class="validate" readonly>
+                                                <input type="text" value="<?php echo $row['name'] ?>"  name="name" class="validate" required>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Change Picture:</p></strong>
-                                                <input type="file" class="validate" required>
+                                                <input type="file" class="validate" name="profile_pic" required>
                                             </div>
                                         </div>                          
                                         <div class="row">
                                             <div class="input-field col s2">
-                                                <button type="submit" class="btn waves-effect btn-success"><strong>Save Changes</strong></button>
+                                                <button type="submit" class="btn waves-effect btn-success" name="change_profile"><strong>Save Changes</strong></button>
                                             </div>
                                         </div>
+
+                                    <?php } ?>
+
                                     </form>
                                 </div>
                             </div>
@@ -197,20 +224,20 @@
                                 <h4>Change Password</h4>
                             </div>
                             <div class="tab-inn">
-                                <form>
+                                <form method="POST" action="process.php">
                                     <div class="row">
                                         <div class="input-field col s6">
                                             <strong><p>New Password:</p></strong>
-                                            <input type="password" class="validate" required>
+                                            <input type="password" name="password1" class="validate" required>
                                         </div>
                                         <div class="input-field col s6">
                                             <strong><p>Confirm New Password:</p></strong>
-                                            <input type="password" class="validate" required>
+                                            <input type="password" name="password2" class="validate" required>
                                         </div>
                                     </div>                          
                                     <div class="row">
                                         <div class="input-field col s3">
-                                            <button type="submit" class="btn waves-effect btn-success"><strong>Change Password</strong></button>
+                                            <button type="submit" class="btn waves-effect btn-success" name="change_pass"><strong>Change Password</strong></button>
                                         </div>
                                     </div>
                                 </form>

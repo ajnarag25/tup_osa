@@ -1,5 +1,9 @@
 <?php
     include('connection.php');
+    session_start();
+    if (!isset($_SESSION['admin_data']['email'])) {
+      header("Location: ../index.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -91,7 +95,13 @@
             <!--== MY ACCCOUNT ==-->
             <div class="col-md-2 col-sm-3 col-xs-6">
                 <!-- Dropdown Trigger -->
-                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.php' data-activates='top-menu'><img src="images/user.jpg" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <?php 
+                    $query = "SELECT * FROM admin ";
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                ?>
+                <a class='waves-effect dropdown-button top-user-pro' href='_admin-settings.php' data-activates='top-menu'><img src="<?php echo $row['image'] ?>" alt="" />My Account <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <?php } ?>
                 </a>
             </div>
         </div>
@@ -103,14 +113,21 @@
             <div class="sb2-1">
                 <!--== USER INFO ==-->
                 <div class="sb2-12">
+                    <?php 
+                        $query = "SELECT * FROM admin ";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($result)) {
+                    ?>
+
                     <ul>
-                        <li><img src="images/user.jpg" alt="">
+                        <li><img src="<?php echo $row['image'] ?>" alt="">
                         </li>
                         <li>
-                            <h5>Bermon Batario <span> TUPC OSA</span></h5>
+                            <h5><?php echo $row['name'] ?> <span> TUPC OSA</span></h5>
                         </li>
                         <li></li>
                     </ul>
+                    <?php } ?>
                 </div>
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
@@ -133,7 +150,7 @@
                         </li>
 						<li><a href="_admin-settings.php"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                        <li><a href="process.php?logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                         </li>
                     </ul>
                 </div>

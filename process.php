@@ -22,6 +22,12 @@
         $prompt = mysqli_query($conn, $login);
         $getData = mysqli_fetch_array($prompt);
 
+        $admin="SELECT * FROM admin WHERE username='$username' AND password='$password'";
+        $check = mysqli_query($conn, $admin);
+        $row_check = mysqli_num_rows($check);
+        $getData_admin = mysqli_fetch_array($check);
+
+
         if (password_verify($password, $getData['password'])){
             if ($getData['status'] == 'UNVERIFIED'){
                 $_SESSION['get_data'] = $getData;
@@ -34,6 +40,9 @@
                 header('location:_mainss.php');
             }
 
+        }elseif($row_check == 1){
+            $_SESSION['admin_data'] = $getData_admin;
+            header('location:./admin/index.php');
         }else{
             ?>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
