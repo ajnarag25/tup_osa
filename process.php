@@ -26,6 +26,9 @@
             if ($getData['status'] == 'UNVERIFIED'){
                 $_SESSION['get_data'] = $getData;
                 header('location:unverified.php');
+            }elseif($getData['status'] == 'DENIED'){
+                $_SESSION['get_data'] = $getData;
+                header('location:denied.php');
             }else{
                 $_SESSION['get_data'] = $getData;
                 header('location:_mainss.php');

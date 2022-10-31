@@ -151,9 +151,9 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li ><a href="_admin-idrequest.php"> ID Requests</a>
+                        <li ><a href="_admin-goodmoral.php"> Verify Student</a>
                         </li>
-                        <li class="active-bre"><a href="#"> ID Request - Decline</a>
+                        <li class="active-bre"><a href="#"> Verify Student - Deny</a>
                         </li>
                     </ul>
                 </div>
@@ -164,23 +164,26 @@
                         <div class="col-md-12">
 						<div class="box-inn-sp admin-form">
                                 <div class="inn-title">
-                                    <h4>Decline Student</h4>
+                                    <h4>Deny Student</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <?php 
                                         $id = $_GET['id'];
-                                        $query = "SELECT * FROM id_request WHERE id='$id'";
+                                        $query = "SELECT * FROM student WHERE id='$id'";
                                         $result = mysqli_query($conn, $query);
                                         while ($row = mysqli_fetch_array($result)) {
                                     ?>
                                     <form method="POST" action="process.php">
                                         <div class="text-center">
-                                            <h3>Are you sure to decline this student request?</h3>
-                                            <h3>Declining Student: <?php echo $row['name'] ?></h3>
+                                            <h3>Are you sure to deny this student account?</h3>
+                                            <h3>Deny Student: <?php echo $row['name'] ?></h3>
                                             <br><br>
                                             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                            <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
-                                            <button class="btn waves-effect btn-danger" name="decline_id"><strong>Decline</strong></button>
+                                            <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
+                                            <label for="">Compose Message:</label>
+                                            <textarea class="form-control" name="msg" id="" cols="30" rows="5" required></textarea>
+                                            <a href="_admin-verify-student.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
+                                            <button class="btn waves-effect btn-danger" name="deny_account"><strong>Deny</strong></button>
                                         </div>
 
                                     </form>

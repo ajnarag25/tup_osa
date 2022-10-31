@@ -128,9 +128,9 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <li><a href="index.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                         </li>
-                        <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
+                        <li><a href="_admin-verify-student.php"  class="menu-active"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
                         </li>
-                        <li><a href="_admin-idrequest.php"  class="menu-active"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
+                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
                         <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
                         </li>
@@ -157,18 +157,18 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
-                        <li class="active-bre"><a href="#"> ID Request</a>
+                        <li class="active-bre"><a href="#"> Verify Student</a>
                         </li>
                     </ul>
                 </div>
-                <!--== ID Request new request ==-->
+                <!--== Verify Student ==-->
                 <div class="sb2-2-3" id="newlist">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>ID Request (New Request)</h4>
-                                    <p>List of students who request new TUPC-ID</p>
+                                    <h4>Verify Student (New Request)</h4>
+                                    <p>List of students who Registered</p>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example1" class="table table-bordered table-hover table-sm">
@@ -180,30 +180,36 @@
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Course</th>
-                                            <th>Type</th>
-                                            <th>Request Date</th>
+                                            <th>Contact</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                         <?php 
-                                            $query = "SELECT * FROM id_request WHERE sched_claim='PENDING' AND status='PENDING'";
+                                            $query = "SELECT * FROM student WHERE status='UNVERIFIED'";
                                             $result = mysqli_query($conn, $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                         ?>
                                         <tr>
                                             <td><?php echo $row['id'] ?></td>
-                                            <td><span class="list-img"><img src="../<?php echo $row['id_pic'] ?>" alt=""></span></td>
+                                            <td><span class="list-img"><img src="../<?php echo $row['image'] ?>" alt=""></span></td>
                                             <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
                                             <td><?php echo $row['name'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
                                             <td><?php echo $row['course'] ?></td>
-                                            <td><?php echo $row['req_type'] ?></td>
-                                            <td><?php echo $row['sched_submit'] ?></td>
+                                            <td><?php echo $row['contact'] ?></td>
+                                            <td>
+                                                <?php 
+                                                    echo'
+                                                    <span class="label label-warning">Unverified</span>
+                                                    ';
+                                                ?>
+                                            </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="_admin-idrequest-setdate.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="_admin-idrequest-decline.php?id=<?php echo $row['id'] ?>" class="btn btn-danger waves-light  btn-sm">Decline</a>
+                                                    <a href="_admin-verify-student-update.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Verify</a>
+                                                    <a href="_admin-verify-student-deny.php?id=<?php echo $row['id'] ?>" class="btn btn-danger waves-light  btn-sm">Deny</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -218,70 +224,15 @@
                     </div>
                 </div>
 	
-                <!--== ID Request ongoing ==-->
-                <div class="sb2-2-3" id="ongoinglist">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>ID Request (Ongoing)</h4>
-                                    <p>List of students who request new TUPC-ID</p>
-                                </div>
-                                <div class="box-body tab-inn">
-                                    <table id="example2" class="table table-bordered table-hover table-sm">
-                                      <thead>
-                                        <tr class="table-secondary">
-                                            <th>#</th>
-                                            <th>Picture</th>
-                                            <th>TUPC-ID</th>
-                                            <th>Full Name</th>
-                                            <th>Course</th>
-                                            <th>Type</th>
-                                            <th>Request Date</th>
-                                            <th>Scheduled Date</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                        <?php 
-                                            $query = "SELECT * FROM id_request WHERE status='ONGOING'";
-                                            $result = mysqli_query($conn, $query);
-                                            while ($row = mysqli_fetch_array($result)) {
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $row['id'] ?></td>
-                                            <td><span class="list-img"><img src="../<?php echo $row['id_pic'] ?>" alt=""></span></td>
-                                            <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
-                                            <td><?php echo $row['name'] ?></td>
-                                            <td><?php echo $row['email'] ?></td>
-                                            <td><?php echo $row['course'] ?></td>
-                                            <td><?php echo $row['req_type'] ?></td>
-                                            <td><?php echo $row['sched_submit'] ?></td>
-                                            <td><?php echo $row['status'] ?></td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a href="_admin-idrequest-details.php?id=<?php echo $row['id'] ?>" class="btn btn-primary waves-light btn-sm">View Info</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                      </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                 <!--== ID Request history ==-->
+               
+                 <!--== Verify Student history ==-->
                  <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>ID Request (History)</h4>
-                                    <p>List of students who request new TUPC-ID</p>
+                                    <h4>Verify Student (History)</h4>
+                                    <p>List of students who Registered</p>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example4" class="table table-bordered table-hover table-sm">
@@ -293,45 +244,38 @@
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Course</th>
-                                            <th>Type</th>
-                                            <th>Request Date</th>
+                                            <th>Contact</th>
                                             <th>Status</th>
                                         </tr>
                                       </thead>
                                       <tbody>
                                         <?php 
-                                            $query = "SELECT * FROM id_request ";
+                                            $query = "SELECT * FROM student ";
                                             $result = mysqli_query($conn, $query);
                                             while ($row = mysqli_fetch_array($result)) {
                                         ?>
 
                                         <tr>
                                             <td><?php echo $row['id'] ?></td>
-                                            <td><span class="list-img"><img src="../<?php echo $row['id_pic'] ?>" alt=""></span></td>
+                                            <td><span class="list-img"><img src="../<?php echo $row['image'] ?>" alt=""></span></td>
                                             <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
                                             <td><?php echo $row['name'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
                                             <td><?php echo $row['course'] ?></td>
-                                            <td><?php echo $row['req_type'] ?></td>
-                                            <td><?php echo $row['sched_submit'] ?></td>
+                                            <td><?php echo $row['contact'] ?></td>
                                             <td>
                                                 <?php 
-                                                    if($row['status'] == 'PENDING'){
+                                                    if($row['status'] == 'UNVERIFIED'){
                                                         echo '
-                                                        <span class="label label-warning">Pending</span>
+                                                        <span class="label label-warning">Unverified</span>
                                                         ';
-                                                    }elseif($row['status'] == 'DECLINED'){
+                                                    }elseif($row['status'] == 'DENIED'){
                                                         echo '
-                                                        <span class="label label-danger">Declined</span>
+                                                        <span class="label label-danger">Denied</span>
                                                         ';
-                                                    }elseif($row['status'] == 'ONGOING'){
+                                                    }else{
                                                         echo '
-                                                        <span class="label label-success">Ongoing</span>
-                                                        ';
-                                                    }
-                                                    else{
-                                                        echo '
-                                                        <span class="label label-primary">Success</span>
+                                                        <span class="label label-success">Verified</span>
                                                         ';
                                                     }
                                                 

@@ -117,6 +117,8 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <li><a href="index.php" class="menu-active"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                         </li>
+                        <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
+                        </li>
                         <li><a href="_admin-idrequest.php"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
                         <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
@@ -460,6 +462,10 @@
                                                             }elseif ($row['status'] == 'DECLINED'){
                                                                 echo '
                                                                 <span class="label label-danger">DECLINED</span>
+                                                                ';
+                                                            }elseif ($row['status'] == 'ONGOING'){
+                                                                echo '
+                                                                <span class="label label-warning">ONGOING</span>
                                                                 ';
                                                             }else{
                                                                 echo'

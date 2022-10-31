@@ -919,4 +919,123 @@ if (isset($_POST['received_scholarship'])) {
 
 }
 
+// verify account
+if (isset($_POST['verify_account'])) {
+    $id = $_POST['id'];
+    $messages = $_POST['msg'];
+    $emails = $_POST['email'];
+    
+    if ($id == null){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured!',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-verify-student.php";
+                    }else{
+                        window.location.href = "_admin-verify-student.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("UPDATE student SET status='VERIFIED' WHERE id='$id'") or die($conn->error);
+        include 'verify_email.php';
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Submitted',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-verify-student.php";
+                    }else{
+                        window.location.href = "_admin-verify-student.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
+
+
+}
+
+
+// deny account
+if (isset($_POST['deny_account'])) {
+    $id = $_POST['id'];
+    $messages = $_POST['msg'];
+    $emails = $_POST['email'];
+    
+    if ($id == null){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured!',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-verify-student.php";
+                    }else{
+                        window.location.href = "_admin-verify-student.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("UPDATE student SET status='DENIED' WHERE id='$id'") or die($conn->error);
+        include 'verify_email.php';
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Submitted',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-verify-student.php";
+                    }else{
+                        window.location.href = "_admin-verify-student.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
+
+
+}
+
 ?>
