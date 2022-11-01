@@ -139,15 +139,15 @@
                     <ul class="collapsible" data-collapsible="accordion">
                         <li><a href="index.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
                         </li>
-                        <li><a href="_admin-verify-student.php" class="menu-active"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
+                        <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
                         </li>
-                        <li><a href="_admin-idrequest.php"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
+                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
                         <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
                         </li>
                         <li><a href="_admin-goodmoral.php"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
                         </li>
-                        <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
+                        <li><a href="_admin-voting.php" class="menu-active"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
                         <li><a href="_admin-scholarship.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
                         </li>
@@ -168,9 +168,9 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li ><a href="_admin-goodmoral.php"> Verify Student</a>
+                        <li ><a href="_admin-goodmoral.php"> USG Voting</a>
                         </li>
-                        <li class="active-bre"><a href="#"> Verify Student - Verify</a>
+                        <li class="active-bre"><a href="#"> USG Voting - Delete</a>
                         </li>
                     </ul>
                 </div>
@@ -181,7 +181,7 @@
                         <div class="col-md-12">
 						<div class="box-inn-sp admin-form">
                                 <div class="inn-title">
-                                    <h4>Verify Student</h4>
+                                    <h4>Delete Student Candidate</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <?php 
@@ -192,15 +192,12 @@
                                     ?>
                                     <form method="POST" action="process.php">
                                         <div class="text-center">
-                                            <h3>Are you sure to verify this student account?</h3>
-                                            <h3>Verify Student: <?php echo $row['name'] ?></h3>
+                                            <h3>Are you sure to delete this student candidate?</h3>
+                                            <h3>Delete Student Candidate: <?php echo $row['name'] ?></h3>
                                             <br><br>
                                             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                            <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
-                                            <label for="">Compose Message:</label>
-                                            <textarea class="form-control" name="msg" id="" cols="30" rows="5" required></textarea>
-                                            <a href="_admin-verify-student.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
-                                            <button class="btn waves-effect btn-success" name="verify_account"><strong>Verify</strong></button>
+                                            <a href="_admin-voting.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
+                                            <button class="btn waves-effect btn-danger" name="delete_candidate"><strong>Delete</strong></button>
                                         </div>
 
                                     </form>

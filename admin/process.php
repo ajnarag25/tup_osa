@@ -1,6 +1,6 @@
 <?php 
 include('connection.php');
-// error_reporting(0);
+error_reporting(0);
 
 // LOGOUT
 if (isset($_GET['logout'])) {
@@ -1154,6 +1154,166 @@ if (isset($_POST['change_pass'])) {
         </script>
         <?php
     }
+}
+
+// add candidates
+if (isset($_POST['candidate'])) {
+    $name = $_POST['names'];
+    $course = $_POST['course'];
+    $position = $_POST['position'];
+    
+    $target_dir = "upload/";
+    $target_file = $target_dir . basename($_FILES["pic"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $check = getimagesize($_FILES["pic"]["tmp_name"]);
+
+    if ($course == null && $position == null){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-voting.php";
+                    }else{
+                        window.location.href = "_admin-voting.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }elseif($course == null || $position == null){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-voting.php";
+                    }else{
+                        window.location.href = "_admin-voting.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        if($check !== false) {
+    
+            $uploadOk = 1;
+            if ($uploadOk == 0) {
+                echo "<script type=\"text/javascript\">
+                alert(\"Sorry, your file was not uploaded.\");
+                window.location = \"_admin-voting.php\"
+                </script>";
+        } else {
+          move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file);
+        }
+            $conn->query("INSERT INTO candidates (name, image, course, position, vote) 
+            VALUES('$name', '$target_file', '$course', '$position', 0)") or die($conn->error);
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Added',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-voting.php";
+                        }else{
+                            window.location.href = "_admin-voting.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+            
+          } else {
+            echo "<script type=\"text/javascript\">
+            alert(\"File is not an image!\");
+            window.location = \"_admin-voting.php\"
+            </script>";
+            $uploadOk = 0;
+          }
+    }
+}
+
+// delete candidate
+if (isset($_POST['delete_candidate'])) {
+    $id = $_POST['id'];
+    
+    if ($id == null){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured!',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-voting.php";
+                    }else{
+                        window.location.href = "_admin-voting.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("DELETE FROM candidates WHERE id='$id'") or die($conn->error);
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Deleted',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-voting.php";
+                    }else{
+                        window.location.href = "_admin-voting.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
+
 }
 
 ?>

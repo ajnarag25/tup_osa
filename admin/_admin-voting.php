@@ -180,7 +180,7 @@
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <p>Current Status:</p>
-                                                <input id="current" type="text" value="Close" class="validate" readonly onload="statt()">
+                                                <input id="current" type="text" value="Open" class="validate" readonly onload="statt()">
                                             </div>
                                             <div class="input-field col s6">
                                                 <p>Change Status:</p>
@@ -221,21 +221,21 @@
                                                     <h4>Candidate Information</h4>
                                                 </div>
                                                 <div class="bor">
-                                                    <form>
+                                                    <form method="POST" action="process.php" enctype="multipart/form-data">
                                                         <div class="row">
                                                             <div class="input-field col s6">
                                                                 <p>Full Name of the Candidate:</p>
-                                                                <input id="t5-n2" type="text" class="validate">
+                                                                <input id="t5-n2" type="text" name="names" class="validate" required>
                                                             </div>
                                                             <div class="input-field col s6">
                                                                 <p>Upload Image:</p>
-                                                                <input id="t5-n2" type="file" class="validate">
+                                                                <input id="t5-n2" type="file" name="pic" class="validate" required>
                                                             </div>
                                                         </div>  
                                                         <div class="row">
                                                             <div class="input-field col s6">
                                                                 <p>Course:</p>
-                                                                <select>
+                                                                <select name="course" value="" required>
                                                                     <option selected disabled>-- Select Course --</option>
                                                                     <option value="BGT-AT">BGT-AT</option>
                                                                     <option value="BET-ET">BET-ET</option>			
@@ -254,7 +254,7 @@
                                                             </div>
                                                             <div class="input-field col s6">
                                                                 <p>Position:</p>
-                                                                <select>
+                                                                <select name="position" value="" required>
                                                                     <option selected disabled>-- Select Position --</option>
                                                                     <option value="President">President</option>
                                                                     <option value="Vice President">Vice President</option>
@@ -269,7 +269,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s3">
-                                                                <button type="button" class="btn btn-success"><strong>Add Candidate</strong></button>
+                                                                <button type="submit" class="btn btn-success" name="candidate"><strong>Add Candidate</strong></button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -307,51 +307,27 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td><span class="list-img"><img src="images/user/1.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">Marsha Hogan</span>
-                                                    </td>
-                                                    <td>BSME</td>
-                                                    <td>President</td>
-                                                    <td>0</td>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
                                                     <td>
                                                         <div class="btn-group">
-                                                            <button class="btn waves-effect btn-danger">Delete</button>
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">Lucas Caden</span>
-                                                    </td>
-                                                    <td>BSIE</td>
-                                                    <td>Vice President</td>
-                                                    <td>0</td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <button class="btn waves-effect btn-danger">Delete</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">Ethan Oliver</span>
-                                                    </td>
-                                                    <td>COET</td>
-                                                    <td>Secretary</td>
-                                                    <td>0</td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <button class="btn waves-effect btn-danger">Delete</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+
+                                                <?php } ?>
+
                                             </tbody>
                                         </table>
                                     </div>

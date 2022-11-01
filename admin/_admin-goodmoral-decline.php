@@ -141,11 +141,11 @@
                         </li>
                         <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
                         </li>
-                        <li><a href="_admin-idrequest.php"  class="menu-active"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
+                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
                         <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
                         </li>
-                        <li><a href="_admin-goodmoral.php"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
+                        <li><a href="_admin-goodmoral.php" class="menu-active"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
                         </li>
                         <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
