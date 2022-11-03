@@ -20,12 +20,18 @@
     <link rel="shortcut icon" href="images/fav.ico" type="image/x-icon">
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- FONTAWESOME ICONS -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="css/font-awesome.css"> -->
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
     <!-- ALL CSS FILES -->
     <link href="css/materialize.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
     <link href="css/style-mob.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,8 +43,8 @@
 </head>
 
 <body>
-     <!--== MAIN CONTRAINER ==-->
-     <div class="container-fluid sb1">
+    <!--== MAIN CONTRAINER ==-->
+    <div class="container-fluid sb1">
         <div class="row">
             <!--== LOGO ==-->
             <div class="col-md-2 col-sm-3 col-xs-6 sb1-1">
@@ -155,106 +161,55 @@
                 </div>
             </div>
 
-             <!--== BODY INNER CONTAINER ==-->
-             <div class="sb2-2">
+            <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2">
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
                     <ul>
-                        <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li class="active-bre"><a href="#"> USG Voting</a>
+                        <li ><a href="_admin-goodmoral.php"> USG Voting</a>
+                        </li>
+                        <li class="active-bre"><a href="#"> USG Voting - Reset</a>
                         </li>
                     </ul>
                 </div>
 
-                <!--== List of Candidates ==-->
-                <div id="candidatelist" class="sb2-2-3">
+                <!--== View Details ==-->
+                <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <a href="_admin-voting.php" style="margin-right: 10px; margin-top: 10px;" class="btn btn-primary waves-light right">Stop Voting</a>
+						<div class="box-inn-sp admin-form">
                                 <div class="inn-title">
-                                    <h4>List of Candidates</h4>
+                                    <h4>Reset Voters</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table id="myTable" class="table table-hover centered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Picture</th>
-                                                    <th>Full Name</th>
-                                                    <th>Course</th>
-                                                    <th>Position</th>
-                                                    <th>Vote Count</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><span class="list-img"><img src="images/user/1.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">Marsha Hogan</span>
-                                                    </td>
-                                                    <td>BSME</td>
-                                                    <td>President</td>
-                                                    <td>45</td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <button class="btn waves-effect btn-danger">Delete</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">Lucas Caden</span>
-                                                    </td>
-                                                    <td>BSIE</td>
-                                                    <td>Vice President</td>
-                                                    <td>46</td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <button class="btn waves-effect btn-danger">Delete</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                                    </td>
-                                                    <td><span class="list-enq-name">Ethan Oliver</span>
-                                                    </td>
-                                                    <td>COET</td>
-                                                    <td>Secretary</td>
-                                                    <td>23</td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <button class="btn waves-effect btn-danger">Delete</button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <form method="GET" action="process.php">
+                                        <div class="text-center">
+                                            <h3>Are you sure to reset all the voters?</h3>
+                                            <br>
+                                            <a href="_admin-voting.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
+                                            <button class="btn waves-effect btn-danger" name="reset_vote"><strong>Reset</strong></button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-        
             </div>
         </div>
     </div>
 
-    
     <!--Import jQuery before materialize.js-->
     <script src="js/main.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
+    <!-- SlimScroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
 </body>
 
 

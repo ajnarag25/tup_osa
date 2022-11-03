@@ -176,35 +176,64 @@
                                     <h4>Change Voting Status</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <form>
+                                    <form method="POST" action="process.php">
                                         <div class="row">
+                                            <?php 
+                                                $query = "SELECT * FROM usg_voting ";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+
+                                            ?>
                                             <div class="input-field col s6">
                                                 <p>Current Status:</p>
-                                                <input id="current" type="text" value="Open" class="validate" readonly onload="statt()">
+                                                <input type="text" value="<?php echo $row['status'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
                                                 <p>Change Status:</p>
-                                                <select id="stat" onChange="updatestat()">
-                                                    <option selected disabled>-- Select Status --</option>
+                                                <select name="stat" required>
+                                                    <option selected disabled value="">-- Select Status --</option>
                                                     <option value="Open">Open</option>
                                                     <option value="Close">Close</option>				
                                                 </select>
                                             </div>
+                                            <button type="submit" name="change_stat" class="btn btn-primary">Change Status</button>
+
+                                            <?php } ?>
                                         </div>
-                                        <!-- <div class="row">
-                                            <div class="input-field col s3">
-                                                <button type="submit" class="btn btn-success"><strong>Save Changes</strong></button>
-                                            </div>
-                                        </div> -->
+
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </div>
+                
+                    <?php 
+                        $query = "SELECT * FROM usg_voting ";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($result)) {
 
+                    ?>
+                <?php 
+                    if($row['status'] == 'Close'){
+                    ?>
+                    <div class="sb2-2-3" >
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box-inn-sp admin-form">
+                                    <div class="sb2-2-add-blog sb2-2-1">
+                                        <div class="text-center">
+                                            <h2>USG VOTING IS CLOSED</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               <?php } else{
+                ?>
                 <!--== Add Candidate ==-->
-                <div id="addcandidate" class="sb2-2-3" hidden>
+                <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp admin-form">
@@ -284,11 +313,10 @@
                 </div>
 
                 <!--== List of Candidates ==-->
-                <div id="candidatelist" class="sb2-2-3" hidden>
+                <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
-                                <a href="_admin-voting-view.php" style="margin-right: 10px; margin-top: 10px;" class="btn btn-primary waves-light right">Start Voting</a>
                                 <div class="inn-title">
                                     <h4>List of Candidates</h4>
                                 </div>
@@ -336,41 +364,54 @@
                         </div>
                     </div>
                 </div>
+
+                  <!--== List of Voters ==-->
+                  <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <a href="_admin-voting-reset.php" style="margin-right: 10px; margin-top: 15px;" class="btn btn-primary waves-light right">Reset Voters</a>
+                                <div class="inn-title">
+                                    <h4>Voters</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Student I.D</th>
+                                                    <th>Email</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM voters";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['student_id'] ?></td>
+                                                    <td><?php echo $row['email'] ?></td>
+                                                    <td>VOTED</td>
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php } } ?>
         
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        function statt(){
-            var current = document.getElementById('current').value
-            if(current == 'Close'){
-                document.getElementById('addcandidate').hidden = true;
-                document.getElementById('candidatelist').hidden = true;
-            }
-            else if(current == 'Open'){
-                document.getElementById('addcandidate').hidden = false;
-                document.getElementById('candidatelist').hidden = false;
-            }
-        }
 
-        function updatestat() {
-            var select = document.getElementById('stat');
-            var option = select.options[select.selectedIndex];
-            if(option.value == "Open"){
-                document.getElementById('current').value = "Open"
-                document.getElementById('addcandidate').hidden = false;
-                document.getElementById('candidatelist').hidden = false;
-            }
-            else if(option.value == "Close"){
-                document.getElementById('current').value = "Close"
-                document.getElementById('addcandidate').hidden = true;
-                document.getElementById('candidatelist').hidden = true;
-            }
-        }
-        statt();
-        updatestat();
-    </script>
-    
     <!--Import jQuery before materialize.js-->
     <script src="js/main.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

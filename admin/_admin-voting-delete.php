@@ -186,7 +186,7 @@
                                 <div class="tab-inn">
                                     <?php 
                                         $id = $_GET['id'];
-                                        $query = "SELECT * FROM student WHERE id='$id'";
+                                        $query = "SELECT * FROM candidates WHERE id='$id'";
                                         $result = mysqli_query($conn, $query);
                                         while ($row = mysqli_fetch_array($result)) {
                                     ?>

@@ -4,7 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
-    error_reporting(0);
+    // error_reporting(0);
 
 
      // logout
@@ -1076,4 +1076,252 @@
         }
         
     }
+
+    // usg voting form
+    if (isset($_POST['submit_vote'])) {
+        $studentid = $_POST['studentid'];
+        $email = $_POST['email'];
+
+        $president = $_POST['pres'];
+        $vicepres = $_POST['vicepres'];
+        $secretary = $_POST['sec'];
+        $treasure = $_POST['treasure'];
+        $senator = $_POST['senator'];
+        $governor = $_POST['gov'];
+        $mayor = $_POST['may'];
+        $vicemayor = $_POST['vicemay'];
+
+
+        $sql = "SELECT * FROM voters  WHERE student_id='$studentid' AND email='$email' ";
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result->num_rows > 0){
+            if ($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
+                ?>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Please Select a Specific USG Candidates',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_voting.php#votingform";
+                            }else{
+                                window.location.href = "_voting.php#votingform";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+            <?php
+            }elseif($president == null || $vicepres == null || $secretary == null || $treasure == null || $senator == null || $governor == null || $mayor == null || $vicemayor == null){
+                ?>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'Please Select a Specific USG Candidates',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "_voting.php#votingform";
+                            }else{
+                                window.location.href = "_voting.php#votingform";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+            <?php
+            }else{
+                if(count($secretary) != 2){
+                    ?>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function(){
+                            Swal.fire({
+                            icon: 'warning',
+                            title: 'Please Choose 2 Secretary',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Okay'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "_voting.php#votingform";
+                                }else{
+                                    window.location.href = "_voting.php#votingform";
+                                }
+                            })
+                            
+                        })
+                
+                    </script>
+                <?php
+                }elseif(count($senator) != 6){
+                    ?>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function(){
+                            Swal.fire({
+                            icon: 'warning',
+                            title: 'Please Choose 6 Senator',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Okay'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "_voting.php#votingform";
+                                }else{
+                                    window.location.href = "_voting.php#votingform";
+                                }
+                            })
+                            
+                        })
+                
+                    </script>
+                <?php
+                }elseif(count($governor) != 6){
+                    ?>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function(){
+                            Swal.fire({
+                            icon: 'warning',
+                            title: 'Please Choose 6 Governor',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Okay'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "_voting.php#votingform";
+                                }else{
+                                    window.location.href = "_voting.php#votingform";
+                                }
+                            })
+                            
+                        })
+                
+                    </script>
+                <?php
+                }elseif(count($mayor) != 6){
+                    ?>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function(){
+                            Swal.fire({
+                            icon: 'warning',
+                            title: 'Please Choose 6 Mayor',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Okay'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "_voting.php#votingform";
+                                }else{
+                                    window.location.href = "_voting.php#votingform";
+                                }
+                            })
+                            
+                        })
+                
+                    </script>
+                <?php
+                }elseif(count($vicemayor) != 6){
+                    ?>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(function(){
+                            Swal.fire({
+                            icon: 'warning',
+                            title: 'Please Choose 6 Vice Mayor',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'Okay'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "_voting.php#votingform";
+                                }else{
+                                    window.location.href = "_voting.php#votingform";
+                                }
+                            })
+                            
+                        })
+                
+                    </script>
+                <?php
+                }else{
+                    
+                $sec_arr = implode(',',$secretary);
+                $sen_arr = implode(',',$senator);
+                $gov_arr = implode(',',$governor);
+                $mayor_arr = implode(',',$mayor);
+                $vicemay_arr = implode(',',$vicemayor);
+
+                $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+
+                $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($president, $vicepres, $treasure, $sec_arr, $sen_arr, $gov_arr, $mayor_arr, $vicemay_arr) ") or die($conn->error);
+                        
+                ?>
+                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                  <script>
+                      $(document).ready(function(){
+                          Swal.fire({
+                          icon: 'success',
+                          title: 'Successfully Submitted your Vote',
+                          confirmButtonColor: '#3085d6',
+                          confirmButtonText: 'Okay'
+                          }).then((result) => {
+                          if (result.isConfirmed) {
+                              window.location.href = "_mainss.php";
+                              }else{
+                                  window.location.href = "_mainss.php";
+                              }
+                          })
+                          
+                      })
+              
+                  </script>
+                <?php
+                }
+
+            }
+
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'warning',
+                    title: 'You have already voted',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_mainss.php";
+                        }else{
+                            window.location.href = "_mainss.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+        <?php
+        }
+
+    }
+
 ?>

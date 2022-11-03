@@ -355,43 +355,7 @@
                     </div>
                 </div>
         
-                <!-- Feedback Form -->
-                <div id="votingform" class="com-sp pad-bot-30 ed-res-bg">
-                    <div class="con-title">
-                        <strong><h2>Feedback <span>Form</span></h2></strong>
-                    </div>
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label col-sm-3">TUPC ID #:</label>
-                            <div class="col-lg-9">
-                                <input type="text" class="form-control" placeholder="Enter your TUPC ID Number" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3">Full Name:</label>
-                            <div class="col-lg-9">
-                                <input type="text" class="form-control" placeholder="Enter your name" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3">Email:</label>
-                            <div class="col-lg-9">
-                                <input type="email" class="form-control" placeholder="Enter your email" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3">Feedback:</label>
-                            <div class="col-lg-9">
-                                <input type="text" class="form-control" placeholder="Please enter your feedback" required>
-                            </div>
-                        </div>
-                        <div class="form-group mar-bot-0">
-                            <div class="col-sm-offset-3 col-lg-9">
-                                <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" value="Submit Form" class="waves-button-input"></i>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+  
             </div>    
         </div>
     </section>

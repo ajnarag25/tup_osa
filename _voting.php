@@ -318,26 +318,404 @@
     </section>
     <!--END HEADER SECTION-->
     
-    <section>
-        <div class="head-2">
+
+    <?php 
+        $query = "SELECT * FROM usg_voting ";
+        $result = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_array($result)) {
+
+    ?>
+    <!--SECTION START-->
+    <?php 
+        if($row['status'] == 'Open'){
+        ?>
+        <section>
             <div class="container">
-                <div class="head-2-inn head-2-inn-padd-top">
-                    <h1>Voting of USG Officers is not yet opened</h1>
-                    <p>Please wait for further announcement regarding of voting for incoming USG candidates.</p>
+                <div class="ed-res-bg">
+
+                    <div class="com-sp ed-res-bg">
+                        <div class="con-title">
+                            <h2>Welcome to USG <span>Online Voting</span></h2>
+                            <p>Below is all the list of candidates. Please vote wisely</p>
+                        </div>
+                        <div class="marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <h2>Running for <span>President</span></h2>
+                                <small><p>Please choose one president</p></small>
+                            </div>
+                            <!-- Three columns of text below the carousel -->
+                            <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='President' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+                                <?php } ?>
+                            </div>
+
+                 
+                            
+                        </div>
+                    </div>
+
+                    <div class="com-sp ed-res-bg">
+                        <div class=" marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <h2>Running for <span>Vice President</span></h2>
+                                <small><p>Please choose one vice president</p></small>
+                            </div>
+                            <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='Vice President' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+                                <?php } ?>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="com-sp ed-res-bg">
+                        <div class=" marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <h2>Running for <span>Secretary</span></h2>
+                                <small><p>Please choose two secretary (Internal and External)</p></small>
+                            </div>
+                            <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='Secretary' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="com-sp ed-res-bg">
+                        <div class=" marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <h2>Running for <span>Treasurer</span></h2>
+                                <small><p>Please choose one treasurer</p></small>
+                            </div>
+
+                            <div class="row text-center">
+                            <?php 
+                                $query = "SELECT * FROM candidates WHERE position='Treasurer' ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+
+                            ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+
+                            <?php } ?>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="com-sp ed-res-bg">
+                        <div class=" marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <strong><h2>Running for <span>Senator</span></h2></strong>
+                                <small><p>Please choose six senator</p></small>
+                            </div>
+
+                            <div class="row text-center">
+                            <?php 
+                                $query = "SELECT * FROM candidates WHERE position='Senator' ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+
+                            ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+                            <?php } ?>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="com-sp ed-res-bg">
+                        <div class=" marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <strong><h2>Running for <span>Governor</span></h2></strong>
+                                <small><p>Please choose six governor</p></small>
+                            </div>
+                            <div class="row text-center">
+                            <?php 
+                                $query = "SELECT * FROM candidates WHERE position='Governor' ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+
+                            ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+                            <?php } ?>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="com-sp ed-res-bg">
+                        <div class=" marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <strong><h2>Running for <span>Mayor</span></h2></strong>
+                                <small><p>Please choose six mayor</p></small>
+                            </div>
+                            <div class="row text-center">
+                            <?php 
+                                $query = "SELECT * FROM candidates WHERE position='Mayor' ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+
+                            ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+                            <?php } ?>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="com-sp ed-res-bg">
+                        <div class=" marketing" style="text-align: center;">
+                            <div class="con-title">
+                                <strong><h2>Running for <span>Vice Mayor</span></h2></strong>
+                                <small><p>Please choose six vice senator</p></small>
+                            </div>
+                            <div class="row text-center">
+                            <?php 
+                                $query = "SELECT * FROM candidates WHERE position='Vice Mayor' ";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_array($result)) {
+
+                            ?>
+                                <div class="col-lg-4 com-sp">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                </div>
+                            <?php } ?>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Voting Form -->
+                    <div id="votingform" class="com-sp pad-bot-20 ed-res-bg">
+                        <div class="con-title">
+                            <strong><h2>USG Voting <span>Form</span></h2></strong>
+                        </div>
+                        <form class="form-horizontal" method="POST" action="process.php">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">President:</label>
+                                <div class="col-sm-9">
+                                    <select name="pres">
+                                    <option disabled selected>-- Select one candidate --</option>
+                                    <?php 
+                                        $query = "SELECT * FROM candidates WHERE position='President' ";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_array($result)) {
+
+                                    ?>
+                                        <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                    <?php } ?>					
+                                    </select>
+                         
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Vice President:</label>
+                                <div class="col-sm-9">
+                                    <select name="vicepres">
+                                        <option disabled selected>-- Select one candidate --</option>
+                                        <?php 
+                                            $query = "SELECT * FROM candidates WHERE position='Vice President' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                        <?php } ?>						
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Secretary:</label>
+                                <div class="col-sm-9">
+                                    <select name="sec[]" id="limitsecretary" multiple="multiple" onchange="secretary()">
+                                        <option disabled >-- Select two candidate--</option>
+                                        <?php 
+                                            $query = "SELECT * FROM candidates WHERE position='Secretary' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                        <?php } ?>					
+                                    </select>
+                                    <span id="invalidsec" style="color:red;" hidden>Please select only two candidates</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Treasurer:</label>
+                                <div class="col-sm-9">
+                                    <select name="treasure">
+                                        <option disabled selected>-- Select one candidate --</option>
+                                        <?php 
+                                            $query = "SELECT * FROM candidates WHERE position='Treasurer' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                        <?php } ?>					
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Senator:</label>
+                                <div class="col-sm-9">
+                                    <select name="senator[]" id="limitsix1" multiple="multiple" onchange="six1()">
+                                        <option disabled >-- Select six candidate--</option>
+                                        <?php 
+                                            $query = "SELECT * FROM candidates WHERE position='Senator' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                        <?php } ?>						
+                                    </select>
+                                    <span id="invalidsix1" style="color:red;" hidden>Please select only six candidates</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Governor:</label>
+                                <div class="col-sm-9">
+                                    <select name="gov[]" id="limitsix2" multiple="multiple" onchange="six2()">
+                                        <option disabled >-- Select six candidate--</option>
+                                        <?php 
+                                            $query = "SELECT * FROM candidates WHERE position='Governor' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                        <?php } ?>						
+                                    </select>
+                                    <span id="invalidsix2" style="color:red;" hidden>Please select only six candidates</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Mayor:</label>
+                                <div class="col-sm-9">
+                                    <select name="may[]" id="limitsix3" multiple="multiple" onchange="six3()">
+                                        <option disabled >-- Select six candidate--</option>
+                                        <?php 
+                                            $query = "SELECT * FROM candidates WHERE position='Mayor' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                        <?php } ?>						
+                                    </select>
+                                    <span id="invalidsix3" style="color:red;" hidden>Please select only six candidates</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Vice Mayor:</label>
+                                <div class="col-sm-9">
+                                    <select name="vicemay[]" id="limitsix4" multiple="multiple" onchange="six4()">
+                                        <option disabled >-- Select six candidate--</option>
+                                        <?php 
+                                            $query = "SELECT * FROM candidates WHERE position='Vice Mayor' ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+
+                                        ?>
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                        <?php } ?>							
+                                    </select>
+                                    <span id="invalidsix4" style="color:red;" hidden>Please select only six candidates</span>
+                                </div>
+                            </div>
+                            <div class="form-group mar-bot-0">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                <?php 
+                                    $get_email = $_SESSION['get_data']['email'];
+                                    $query = "SELECT * FROM student WHERE email='$get_email' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                <input type="hidden" value="<?php echo $row['student_id'] ?>" name="studentid">
+                                <input type="hidden" value="<?php echo $row['email'] ?>" name="email">
+                                <?php } ?>
+                                    <button type="submit" name="submit_vote" class="waves-effect waves-light light-btn waves-input-wrapper w-100">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>    
+            </div>
+        </section>
+    <!--SECTION END-->
+    <?php
+        }else{
+            ?>
+        <section>
+            <div class="head-2">
+                <div class="container">
+                    <div class="head-2-inn head-2-inn-padd-top">
+                        <h1>Voting of USG Officers is not yet opened</h1>
+                        <p>Please wait for further announcement regarding of voting for incoming USG candidates.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--SECTION START-->
-    <section>
-        <div class="container">
-            <div class="ed-res-bg">
+        </section>
+        <?php
+        }
+    
+    }
+    ?>
+ 
 
-                	
-            </div>    
-        </div>
-    </section>
-    <!--SECTION END-->
 
     <!-- FOOTER -->
     <section class="wed-hom-footer">

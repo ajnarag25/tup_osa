@@ -1,6 +1,6 @@
 <?php 
 include('connection.php');
-error_reporting(0);
+// error_reporting(0);
 
 // LOGOUT
 if (isset($_GET['logout'])) {
@@ -1315,5 +1315,92 @@ if (isset($_POST['delete_candidate'])) {
     }
 
 }
+
+// usg voting
+if (isset($_POST['change_stat'])) {
+    $stat = $_POST['stat'];
+    
+    if ($stat == null){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured!',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-voting.php";
+                    }else{
+                        window.location.href = "_admin-voting.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("UPDATE usg_voting SET status='$stat' WHERE id=1") or die($conn->error);
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Updated',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-voting.php";
+                    }else{
+                        window.location.href = "_admin-voting.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
+
+}
+
+// reset votes
+if(isset($_GET['reset_vote'])){
+
+    $conn->query("TRUNCATE voters;") or die($conn->error);
+    ?>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            Swal.fire({
+            icon: 'success',
+            title: 'Successfully Updated the Status',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Okay'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "_admin-voting-reset.php";
+                }else{
+                    window.location.href = "_admin-voting-reset.php";
+                }
+            })
+            
+        })
+
+    </script>
+    <?php
+    
+}
+
+
 
 ?>
