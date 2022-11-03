@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2022 at 04:35 PM
+-- Generation Time: Nov 03, 2022 at 02:48 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,43 @@ SET time_zone = "+00:00";
 --
 -- Database: `tup_osa_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `image` text NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `image`, `name`, `username`, `password`, `email`) VALUES
+(1, 'upload/Admin-Profile-PNG-Clipart.png', 'Administrator OSA', 'administrator', 'admin123', 'tupc.osasystem@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `candidates`
+--
+
+CREATE TABLE `candidates` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `image` text NOT NULL,
+  `course` varchar(100) NOT NULL,
+  `position` varchar(100) NOT NULL,
+  `vote` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -172,6 +209,24 @@ CREATE TABLE `student` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `usg_voting`
+--
+
+CREATE TABLE `usg_voting` (
+  `id` int(11) NOT NULL,
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `usg_voting`
+--
+
+INSERT INTO `usg_voting` (`id`, `status`) VALUES
+(1, 'Open');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `violations`
 --
 
@@ -189,9 +244,41 @@ CREATE TABLE `violations` (
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voters`
+--
+
+CREATE TABLE `voters` (
+  `id` int(11) NOT NULL,
+  `student_id` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `president` varchar(100) NOT NULL,
+  `vicepres` varchar(100) NOT NULL,
+  `secretary` varchar(100) NOT NULL,
+  `treasure` varchar(100) NOT NULL,
+  `senator` varchar(100) NOT NULL,
+  `governor` varchar(100) NOT NULL,
+  `mayor` varchar(100) NOT NULL,
+  `vicemayor` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `candidates`
+--
+ALTER TABLE `candidates`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `good_moral`
@@ -224,14 +311,38 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `usg_voting`
+--
+ALTER TABLE `usg_voting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `violations`
 --
 ALTER TABLE `violations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `voters`
+--
+ALTER TABLE `voters`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `candidates`
+--
+ALTER TABLE `candidates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `good_moral`
@@ -264,9 +375,21 @@ ALTER TABLE `student`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `usg_voting`
+--
+ALTER TABLE `usg_voting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `violations`
 --
 ALTER TABLE `violations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `voters`
+--
+ALTER TABLE `voters`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
