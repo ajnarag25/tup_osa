@@ -167,151 +167,6 @@
                     </ul>
                 </div>
 
-                <!--== Status ==-->
-                <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                        <div class="box-inn-sp admin-form">
-                                <div class="inn-title">
-                                    <h4>Change Voting Status</h4>
-                                </div>
-                                <div class="tab-inn">
-                                    <form method="POST" action="process.php">
-                                        <div class="row">
-                                            <?php 
-                                                $query = "SELECT * FROM usg_voting ";
-                                                $result = mysqli_query($conn, $query);
-                                                while ($row = mysqli_fetch_array($result)) {
-
-                                            ?>
-                                            <div class="input-field col s6">
-                                                <p>Current Status:</p>
-                                                <input type="text" value="<?php echo $row['status'] ?>" readonly>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <p>Change Status:</p>
-                                                <select name="stat" required>
-                                                    <option selected disabled value="">-- Select Status --</option>
-                                                    <option value="Open">Open</option>
-                                                    <option value="Close">Close</option>				
-                                                </select>
-                                            </div>
-                                            <button type="submit" name="change_stat" class="btn btn-primary">Change Status</button>
-
-                                            <?php } ?>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                
-                    <?php 
-                        $query = "SELECT * FROM usg_voting ";
-                        $result = mysqli_query($conn, $query);
-                        while ($row = mysqli_fetch_array($result)) {
-
-                    ?>
-                <?php 
-                    if($row['status'] == 'Close'){
-                    ?>
-                    <div class="sb2-2-3" >
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="box-inn-sp admin-form">
-                                    <div class="sb2-2-add-blog sb2-2-1">
-                                        <div class="text-center">
-                                            <h2>USG VOTING IS CLOSED</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-               <?php } else{
-                ?>
-                <!--== Add Candidate ==-->
-                <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp admin-form">
-                                <div class="sb2-2-add-blog sb2-2-1">
-                                    <h2>Add New Candidate</h2>
-                                    <ul class="nav nav-tabs tab-list">
-                                        <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true"><i class="fa fa-info" aria-hidden="true"></i> <span>Details</span></a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div id="home" class="tab-pane fade active in">
-                                            <div class="box-inn-sp">
-                                                <div class="inn-title">
-                                                    <h4>Candidate Information</h4>
-                                                </div>
-                                                <div class="bor">
-                                                    <form method="POST" action="process.php" enctype="multipart/form-data">
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <p>Full Name of the Candidate:</p>
-                                                                <input id="t5-n2" type="text" name="names" class="validate" required>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <p>Upload Image:</p>
-                                                                <input id="t5-n2" type="file" name="pic" class="validate" required>
-                                                            </div>
-                                                        </div>  
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <p>Course:</p>
-                                                                <select name="course" value="" required>
-                                                                    <option selected disabled>-- Select Course --</option>
-                                                                    <option value="BGT-AT">BGT-AT</option>
-                                                                    <option value="BET-ET">BET-ET</option>			
-                                                                    <option value="BET-ESET">BET-ESET</option>
-                                                                    <option value="BET-COET">BET-COET</option>		
-                                                                    <option value="BET-CT">BET-CT</option>
-                                                                    <option value="BET-MT">BET-MT</option>
-                                                                    <option value="BET-AD">BET-AD</option>
-                                                                    <option value="BET-PPT">BET-PPT</option>
-                                                                    <option value="BSIE-IA">BSIE-IA</option>		
-                                                                    <option value="BSIE-ICT">BSIE-ICT</option>	
-                                                                    <option value="BSCE">BSCE</option>	
-                                                                    <option value="BSEE">BSEE</option>	
-                                                                    <option value="BSME">BSME</option>		
-                                                                </select>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <p>Position:</p>
-                                                                <select name="position" value="" required>
-                                                                    <option selected disabled>-- Select Position --</option>
-                                                                    <option value="President">President</option>
-                                                                    <option value="Vice President">Vice President</option>
-                                                                    <option value="Secretary">Secretary</option>
-                                                                    <option value="Treasurer">Treasurer</option>
-                                                                    <option value="Senator">Senator</option>
-                                                                    <option value="Governor">Governor</option>
-                                                                    <option value="Mayor">Mayor</option>
-                                                                    <option value="Vice Mayor">Vice Mayor</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s3">
-                                                                <button type="submit" class="btn btn-success" name="candidate"><strong>Add Candidate</strong></button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!--== List of Candidates ==-->
                 <div class="sb2-2-3">
                     <div class="row">
@@ -331,7 +186,6 @@
                                                     <th>Course</th>
                                                     <th>Position</th>
                                                     <th>Vote Count</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -347,11 +201,6 @@
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
                                                     <td><?php echo $row['vote'] ?></td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
-                                                        </div>
-                                                    </td>
                                                 </tr>
 
                                                 <?php } ?>
@@ -365,48 +214,6 @@
                     </div>
                 </div>
 
-                  <!--== List of Voters ==-->
-                  <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <a href="_admin-voting-reset.php" style="margin-right: 10px; margin-top: 15px;" class="btn btn-primary waves-light right">Reset Voters</a>
-                                <div class="inn-title">
-                                    <h4>Voters</h4>
-                                </div>
-                                <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table id="myTable" class="table table-hover centered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Student I.D</th>
-                                                    <th>Email</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    $query = "SELECT * FROM voters";
-                                                    $result = mysqli_query($conn, $query);
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                ?>
-                                                <tr>
-                                                    <td><?php echo $row['student_id'] ?></td>
-                                                    <td><?php echo $row['email'] ?></td>
-                                                    <td>VOTED</td>
-                                                </tr>
-
-                                                <?php } ?>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php } } ?>
         
             </div>
         </div>

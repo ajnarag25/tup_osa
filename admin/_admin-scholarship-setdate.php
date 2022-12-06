@@ -198,7 +198,7 @@
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                                <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
                                                 <button class="btn waves-effect btn-success" name="update_scholarship"><strong>Submit</strong></button>
                                             </div>
                                         </div>

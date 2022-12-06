@@ -366,16 +366,6 @@
                                     <input type="date" class="form-control" name="birthday" placeholder="Enter your Birthday">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">ID Condition:</label>
-                                <div class="col-sm-9">
-                                    <select class="form-select" name="condition">
-                                        <option selected disabled value="">-- Select Condition --</option>
-                                        <option value="Newly made ID">Newly made ID</option>
-                                        <option value="Discoloration but still readable">Discoloration but still readable</option>							
-							        </select>
-                                </div>
-                            </div>
                             <div class="form-group mar-bot-0">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <i class="waves-effect waves-light light-btn waves-input-wrapper"><input type="submit" name="id_validation" value="Submit Form" class="waves-button-input"></i>

@@ -357,7 +357,12 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Purpose:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="purpose" placeholder="Enter your purpose" required>
+                                    <select name="purpose" required>
+                                        <option value="" selected disabled>-- Select Option --</option>
+                                        <option value="SIT">SIT</option>
+                                        <option value="Scholarship">Scholarship</option>
+							        </select>
+                                    <p class="col-sm-9"><small>Type 'N/A' if not yet graduated</small></p>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -365,6 +370,7 @@
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="yrattendance" placeholder="Enter your year" required>
                                 </div>
+                                <p class="col-sm-9"><small>Type 'N/A' if not yet graduated</small></p>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Graduated Year:</label>
@@ -378,7 +384,7 @@
                                 <div class="col-sm-9">
                                     <input type="file" class="form-control" name="proof" placeholder="Choose photos" required>
                                     <p ><small>Upload proof of graduation (for those who graduated only),
-                                        Upload one of the following: Diploma, alumni ID, Certificate of Graduation)</small></p>
+                                        Upload one of the following: Diploma, alumni ID, Certificate of Graduation) (If not Graduated Please Upload your I.D)</small></p>
                                 </div>
                              
                             </div>

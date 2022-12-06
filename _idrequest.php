@@ -364,9 +364,8 @@
                                     <select class="form-select" name="request" required>
                                         <option value="" selected disabled>-- Select Type --</option>
                                         <option value="New ID">New ID (for newly enrolled 1st year students)</option>
-                                        <option value="Replacement (lost ID)">Replacement (lost ID)</option>							
-                                        <option value="Replacement (damaged ID)">Replacement (damaged ID)</option>	
-                                        <option value="Unclaimed">Unclaimed</option>	
+                                        <option value="Replacement (lost ID)">Replacement (lost ID) - Please Ready your Payment and Bring Affidavit of Loss</option>							
+                                        <option value="Replacement (damaged ID)">Replacement (damaged ID) - Please Ready your Payment and Surrender your I.D</option>	
 							        </select>
                                 </div>
                             </div>

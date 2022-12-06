@@ -450,7 +450,6 @@
                                         <tr>
                                             <th>Student ID</th>
                                             <th>Request Date</th>
-                                            <th>ID Condition</th>
                                             <th>Scheduled Date</th>
                                             <th>Status</th>
                                         </tr>
@@ -467,7 +466,6 @@
                                         <tr>
                                             <td><?php echo $row['student_id'] ?></td>
                                             <td><?php echo $row['date_submit'] ?></td>
-                                            <td><?php echo $row['id_condition'] ?></td>
                                             <td><?php echo $row['date_claim'] ?></td>
                                             <td>
                                                 <?php 

@@ -4,7 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
-    // error_reporting(0);
+    error_reporting(0);
 
 
      // logout
@@ -27,6 +27,12 @@
         $row_check = mysqli_num_rows($check);
         $getData_admin = mysqli_fetch_array($check);
 
+        
+        $comselec="SELECT * FROM comselec WHERE username='$username' AND password='$password'";
+        $check2 = mysqli_query($conn, $comselec);
+        $row_check2 = mysqli_num_rows($check2);
+        $getData_comselec = mysqli_fetch_array($check2);
+
 
         if (password_verify($password, $getData['password'])){
             if ($getData['status'] == 'UNVERIFIED'){
@@ -43,6 +49,9 @@
         }elseif($row_check == 1){
             $_SESSION['admin_data'] = $getData_admin;
             header('location:./admin/index.php');
+        }elseif($row_check2 == 1){
+            $_SESSION['admin_data'] = $getData_comselec;
+            header('location:./comselec/index.php');
         }else{
             ?>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -528,6 +537,7 @@
                           Swal.fire({
                           icon: 'success',
                           title: 'Successfully Submitted your Request',
+                          text: 'Please proceed to the cashier for payment',
                           confirmButtonColor: '#3085d6',
                           confirmButtonText: 'Okay'
                           }).then((result) => {
@@ -577,7 +587,6 @@
         $contact = $_POST['contact'];
         $address = $_POST['address'];
         $birthday = $_POST['birthday'];
-        $condition = $_POST['condition'];
         $email = $_POST['email'];
         $sched_today = date("Y/m/d");
 
@@ -585,8 +594,8 @@
         $result = mysqli_query($conn, $sql);
 
         if (!$result->num_rows > 0){
-            $conn->query("INSERT INTO id_validation (student_id, name, course, contact, email, address, birthday, id_condition, status, date_submit, date_claim) 
-                VALUES('$id','$name','$course', '$contact', '$email', '$address', '$birthday', '$condition', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
+            $conn->query("INSERT INTO id_validation (student_id, name, course, contact, email, address, birthday, status, date_submit, date_claim) 
+                VALUES('$id','$name','$course', '$contact', '$email', '$address', '$birthday', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
                   ?>
                   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -695,6 +704,7 @@
                           Swal.fire({
                           icon: 'success',
                           title: 'Successfully Submitted your Request',
+                          text: 'Please proceed to the cashier for payment',
                           confirmButtonColor: '#3085d6',
                           confirmButtonText: 'Okay'
                           }).then((result) => {
