@@ -299,7 +299,7 @@
                                     <h4>Good Moral Request (History)</h4>
                                     <p>List of students who request for good moral</p>
                                 </div>
-                                <div class="box-body tab-inn">
+                                <div class="box-body tab-inn" id="printTable">
                                     <table id="example3" class="table table-bordered table-hover table-sm">
                                       <thead>
                                         <tr class="table-secondary">
@@ -358,6 +358,7 @@
 
                                       </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -404,14 +405,16 @@
         'searching'   : true,
         'ordering'    : true,
         'info'        : true,
-        'autoWidth'   : true
+        'autoWidth'   : true,
         })
     })
+
+
     </script>
     <!-- <script src="js/bootstrap.min.js"></script> -->
     <!-- <script src="js/materialize.min.js"></script> -->
-    
     <script src="js/custom.js"></script>
+    
 </body>
 
 

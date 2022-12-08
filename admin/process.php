@@ -1,6 +1,6 @@
 <?php 
 include('connection.php');
-error_reporting(0);
+// error_reporting(0);
 
 // LOGOUT
 if (isset($_GET['logout'])) {
@@ -13,7 +13,8 @@ if (isset($_POST['update_sched_claim'])) {
     $id = $_POST['id'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_idrequest_set'];
     
     if($id == null){
         ?>
@@ -40,7 +41,8 @@ if (isset($_POST['update_sched_claim'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE id_request SET status='ONGOING', sched_claim='$date $time' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE id_request SET status='ONGOING', sched_claim='$date $time', message='$messages' WHERE id='$id'") or die($conn->error);
+        include '_admin_idrequest_setdate_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -127,6 +129,8 @@ if (isset($_POST['received'])) {
 
 if (isset($_POST['decline_id'])) {
     $id = $_POST['id'];
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_idrequest_decline'];
 
     if($id == null){
         ?>
@@ -154,6 +158,7 @@ if (isset($_POST['decline_id'])) {
         <?php
     }else{
         $conn->query("UPDATE id_request SET status='DECLINED' WHERE id='$id'") or die($conn->error);
+        include '_admin_idrequest_decline_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -186,7 +191,8 @@ if (isset($_POST['update_idvalidate'])) {
     $id = $_POST['id'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_idvalidate_set'];
     
     if($id == null){
         ?>
@@ -213,7 +219,8 @@ if (isset($_POST['update_idvalidate'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE id_validation SET status='ONGOING', date_claim='$date $time' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE id_validation SET status='ONGOING', date_claim='$date $time', message='$messages' WHERE id='$id'") or die($conn->error);
+        include '_admin_idvalidate_setdate_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -298,6 +305,8 @@ if(isset($_GET['done'])){
 
 if (isset($_POST['decline_id_validation'])) {
     $id = $_POST['id'];
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_idvalidate_decline'];
 
     if($id == null){
         ?>
@@ -324,7 +333,8 @@ if (isset($_POST['decline_id_validation'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE id_validation SET status='DECLINED' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE id_validation SET status='DECLINED', date_claim='N/A', message='$messages' WHERE id='$id'") or die($conn->error);
+        include '_admin_idvalidate_decline_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -357,7 +367,8 @@ if (isset($_POST['update_goodmoral'])) {
     $id = $_POST['id'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_goodmoral_set'];
     
     if($id == null){
         ?>
@@ -384,7 +395,8 @@ if (isset($_POST['update_goodmoral'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE good_moral SET status='ONGOING', date_claim='$date $time' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE good_moral SET status='ONGOING', date_claim='$date $time', message='$messages' WHERE id='$id'") or die($conn->error);
+        include '_admin_goodmoral_setdate_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -471,6 +483,8 @@ if (isset($_POST['received_goodmoral'])) {
 
 if (isset($_POST['decline_goodmoral'])) {
     $id = $_POST['id'];
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_goodmoral_decline'];
 
     if($id == null){
         ?>
@@ -497,7 +511,8 @@ if (isset($_POST['decline_goodmoral'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE good_moral SET status='DECLINED' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE good_moral SET status='DECLINED', date_claim='N/A', message='$messages' WHERE id='$id'") or die($conn->error);
+        include '_admin_goodmoral_decline_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -756,7 +771,8 @@ if(isset($_GET['completed'])){
 
 if (isset($_POST['decline_scholarship'])) {
     $id = $_POST['id'];
-
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_scholar_decline'];
     if($id == null){
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -782,7 +798,8 @@ if (isset($_POST['decline_scholarship'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE scholarship SET status='DECLINED' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE scholarship SET status='DECLINED', sched_date='N/A', message='$messages' WHERE id='$id'") or die($conn->error);
+        include '_admin_scholarship_decline_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -813,7 +830,8 @@ if (isset($_POST['update_scholarship'])) {
     $id = $_POST['id'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-    
+    $emails = $_POST['email'];
+    $messages = $_POST['msg_scholar_set'];
     
     if($id == null){
         ?>
@@ -840,7 +858,8 @@ if (isset($_POST['update_scholarship'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE scholarship SET status='ONGOING', sched_date='$date $time' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE scholarship SET status='ONGOING', sched_date='$date $time', message='$messages' WHERE id='$id'") or die($conn->error);
+        include '_admin_scholarship_setdate_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -1156,250 +1175,7 @@ if (isset($_POST['change_pass'])) {
     }
 }
 
-// add candidates
-if (isset($_POST['candidate'])) {
-    $name = $_POST['names'];
-    $course = $_POST['course'];
-    $position = $_POST['position'];
-    
-    $target_dir = "upload/";
-    $target_file = $target_dir . basename($_FILES["pic"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    $check = getimagesize($_FILES["pic"]["tmp_name"]);
 
-    if ($course == null && $position == null){
-        ?>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                Swal.fire({
-                icon: 'error',
-                title: 'An Error Occured',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Okay'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "_admin-voting.php";
-                    }else{
-                        window.location.href = "_admin-voting.php";
-                    }
-                })
-                
-            })
-    
-        </script>
-        <?php
-    }elseif($course == null || $position == null){
-        ?>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                Swal.fire({
-                icon: 'error',
-                title: 'An Error Occured',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Okay'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "_admin-voting.php";
-                    }else{
-                        window.location.href = "_admin-voting.php";
-                    }
-                })
-                
-            })
-    
-        </script>
-        <?php
-    }else{
-        if($check !== false) {
-    
-            $uploadOk = 1;
-            if ($uploadOk == 0) {
-                echo "<script type=\"text/javascript\">
-                alert(\"Sorry, your file was not uploaded.\");
-                window.location = \"_admin-voting.php\"
-                </script>";
-        } else {
-          move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file);
-        }
-            $conn->query("INSERT INTO candidates (name, image, course, position, vote) 
-            VALUES('$name', '$target_file', '$course', '$position', 0)") or die($conn->error);
-            ?>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function(){
-                    Swal.fire({
-                    icon: 'success',
-                    title: 'Successfully Added',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Okay'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "_admin-voting.php";
-                        }else{
-                            window.location.href = "_admin-voting.php";
-                        }
-                    })
-                    
-                })
-        
-            </script>
-            <?php
-            
-          } else {
-            echo "<script type=\"text/javascript\">
-            alert(\"File is not an image!\");
-            window.location = \"_admin-voting.php\"
-            </script>";
-            $uploadOk = 0;
-          }
-    }
-}
-
-// delete candidate
-if (isset($_POST['delete_candidate'])) {
-    $id = $_POST['id'];
-    
-    if ($id == null){
-        ?>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                Swal.fire({
-                icon: 'error',
-                title: 'An Error Occured!',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Okay'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "_admin-voting.php";
-                    }else{
-                        window.location.href = "_admin-voting.php";
-                    }
-                })
-                
-            })
-    
-        </script>
-        <?php
-    }else{
-        $conn->query("DELETE FROM candidates WHERE id='$id'") or die($conn->error);
-        ?>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                Swal.fire({
-                icon: 'success',
-                title: 'Successfully Deleted',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Okay'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "_admin-voting.php";
-                    }else{
-                        window.location.href = "_admin-voting.php";
-                    }
-                })
-                
-            })
-    
-        </script>
-        <?php
-    }
-
-}
-
-// usg voting
-if (isset($_POST['change_stat'])) {
-    $stat = $_POST['stat'];
-    
-    if ($stat == null){
-        ?>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                Swal.fire({
-                icon: 'error',
-                title: 'An Error Occured!',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Okay'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "_admin-voting.php";
-                    }else{
-                        window.location.href = "_admin-voting.php";
-                    }
-                })
-                
-            })
-    
-        </script>
-        <?php
-    }else{
-        $conn->query("UPDATE usg_voting SET status='$stat' WHERE id=1") or die($conn->error);
-        ?>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                Swal.fire({
-                icon: 'success',
-                title: 'Successfully Updated',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Okay'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "_admin-voting.php";
-                    }else{
-                        window.location.href = "_admin-voting.php";
-                    }
-                })
-                
-            })
-    
-        </script>
-        <?php
-    }
-
-}
-
-// reset votes
-if(isset($_GET['reset_vote'])){
-
-    $conn->query("TRUNCATE voters;") or die($conn->error);
-    ?>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            Swal.fire({
-            icon: 'success',
-            title: 'Successfully Updated the Status',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Okay'
-            }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "_admin-voting-reset.php";
-                }else{
-                    window.location.href = "_admin-voting-reset.php";
-                }
-            })
-            
-        })
-
-    </script>
-    <?php
-    
-}
 
 
 

@@ -197,7 +197,6 @@
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Course</th>
-                                            <th>ID Condition</th>
                                             <th>Request Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -215,7 +214,6 @@
                                             <td><?php echo $row['name'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
                                             <td><?php echo $row['course'] ?></td>
-                                            <td><?php echo $row['id_condition'] ?></td>
                                             <td><?php echo $row['date_claim'] ?></td>
                                             <td>
                                                 <div class="btn-group">
@@ -252,7 +250,6 @@
                                             <th>TUPC-ID</th>
                                             <th>Full Name</th>
                                             <th>Course</th>
-                                            <th>ID Condition</th>
                                             <th>Request Date</th>
                                             <th>Scheduled Date</th>
                                             <th>Status</th>
@@ -271,7 +268,6 @@
                                             <td><span class="list-enq-name"><?php echo $row['student_id'] ?></span></td>
                                             <td><?php echo $row['name'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
-                                            <td><?php echo $row['id_condition'] ?></td>
                                             <td><?php echo $row['date_submit'] ?></td>
                                             <td><?php echo $row['date_claim'] ?></td>
                                             <td><?php echo $row['status'] ?></td>
@@ -308,7 +304,6 @@
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Course</th>
-                                            <th>ID Condition</th>
                                             <th>Request Date</th>
                                             <th>Status</th>
                                         </tr>
@@ -326,7 +321,6 @@
                                             <td><?php echo $row['name'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
                                             <td><?php echo $row['course'] ?></td>
-                                            <td><?php echo $row['id_condition'] ?></td>
                                             <td><?php echo $row['date_submit'] ?></td>
                                             <td>
                                                 <?php 

@@ -194,11 +194,23 @@
                                                 <strong><p>Scheduled Time:</p></strong>
                                                 <input type="time" class="validate" name="time" required>
                                             </div>
+                                            <div class="input-field col s12">
+                                                <strong><p>Compose Message:</p></strong>
+                                                <textarea name="msg_idvalidate_set" id="" class="form-control" cols="30" rows="5" required></textarea>
+                                            </div>
                                         </div>                          
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                                <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <?php 
+                                                    $get_id = $_GET['id'];
+                                                    $query = "SELECT * FROM id_validate WHERE id='$get_id'";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
+                                                <?php } ?>
+                                                <a href="_admin-idvalidation.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
                                                 <button class="btn waves-effect btn-success" name="update_idvalidate"><strong>Submit</strong></button>
                                             </div>
                                         </div>
@@ -241,25 +253,21 @@
                                                 <input type="email" class="" value="<?php echo $row['email'] ?>" readonly>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>I.D Condition:</p></strong>
-                                               <input type="text" value="<?php echo $row['id_condition'] ?>" class="" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
                                                 <strong><p>Course:</p></strong>
                                                 <input type="text" value="<?php echo $row['course'] ?>" class="">
                                             </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Phone Number:</p></strong>
                                                <input type="number" value="<?php echo $row['contact'] ?>" class="" readonly>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Birthday:</p></strong>
                                                 <input type="date" value="<?php echo $row['birthday'] ?>" class="" readonly>
                                             </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Address:</p></strong>
                                                 <input type="text" value="<?php echo $row['address'] ?>e" class="" readonly>

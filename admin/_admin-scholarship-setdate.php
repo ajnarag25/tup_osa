@@ -194,10 +194,22 @@
                                                 <strong><p>Scheduled Time:</p></strong>
                                                 <input type="time" class="validate" name="time" required>
                                             </div>
+                                            <div class="input-field col s12">
+                                                <strong><p>Compose Message:</p></strong>
+                                                <textarea name="msg_scholar_set" id="" class="form-control" cols="30" rows="5" required></textarea>
+                                            </div>
                                         </div>                          
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                                <?php 
+                                                    $get_id = $_GET['id'];
+                                                    $query = "SELECT * FROM scholarship WHERE id='$get_id'";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
+                                                <?php } ?>
                                                 <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
                                                 <button class="btn waves-effect btn-success" name="update_scholarship"><strong>Submit</strong></button>
                                             </div>
@@ -213,9 +225,11 @@
                 <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
-						<div class="box-inn-sp admin-form">
+						<div class="box-inn-sp admin-form" id="scholarship_print">
                                 <div class="inn-title">
                                     <h4>Student Information</h4>
+                                    <br>
+                                    <button class="btn btn-primary" onclick="printDiv()">Print</button>
                                 </div>
                                 <div class="tab-inn">
                                     <form>
@@ -471,6 +485,7 @@
                                         </div>
                                     <?php } ?>
                                     </form>
+                                    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -487,8 +502,13 @@
     <script src="js/custom.js"></script>
     <!-- SlimScroll -->
     <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script>
+        function printDiv() {
+            window.frames["print_frame"].document.body.innerHTML = document.getElementById("scholarship_print").innerHTML;
+            window.frames["print_frame"].window.focus();
+            window.frames["print_frame"].window.print();
+        }
+    </script>
 </body>
 
 

@@ -527,8 +527,8 @@
                 </script>
                 <?php
             }else{
-                $conn->query("INSERT INTO id_request (student_id, name, email, req_type, course, contact, birthday, id_pic, contact_person, address, status, sched_submit, sched_claim) 
-                VALUES('$studentid','$name','$email', '$request', '$course', '$contact', '$birthday', '$target_file', '$contact_person', '$address', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
+                $conn->query("INSERT INTO id_request (student_id, name, email, req_type, course, contact, birthday, id_pic, contact_person, address, status, sched_submit, sched_claim, message) 
+                VALUES('$studentid','$name','$email', '$request', '$course', '$contact', '$birthday', '$target_file', '$contact_person', '$address', 'PENDING', '$sched_today', 'PENDING', 'N/A')") or die($conn->error);
                   ?>
                   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -594,8 +594,8 @@
         $result = mysqli_query($conn, $sql);
 
         if (!$result->num_rows > 0){
-            $conn->query("INSERT INTO id_validation (student_id, name, course, contact, email, address, birthday, status, date_submit, date_claim) 
-                VALUES('$id','$name','$course', '$contact', '$email', '$address', '$birthday', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
+            $conn->query("INSERT INTO id_validation (student_id, name, course, contact, email, address, birthday, status, date_submit, date_claim, message) 
+                VALUES('$id','$name','$course', '$contact', '$email', '$address', '$birthday', 'PENDING', '$sched_today', 'PENDING', 'N/A')") or die($conn->error);
                   ?>
                   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -694,8 +694,8 @@
                 </script>
                 <?php
             }else{
-                $conn->query("INSERT INTO good_moral (student_id, name, course, contact, email, purpose, yr_attendance, yr_graduate, proof, status, date_submit, date_claim) 
-                VALUES('$id','$name', '$course', '$contact', '$email', '$purpose', '$yr_attendance', '$yr_graduate', '$target_file', 'PENDING', '$sched_today', 'PENDING')") or die($conn->error);
+                $conn->query("INSERT INTO good_moral (student_id, name, course, contact, email, purpose, yr_attendance, yr_graduate, proof, status, date_submit, date_claim, message) 
+                VALUES('$id','$name', '$course', '$contact', '$email', '$purpose', '$yr_attendance', '$yr_graduate', '$target_file', 'PENDING', '$sched_today', 'PENDING', 'N/A')") or die($conn->error);
                   ?>
                   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -997,8 +997,8 @@
                 </script>
                 <?php
             }else{
-                $conn->query("INSERT INTO scholarship (student_id, apply, school_yr, name, course, contact, email, dbirth, pbirth, age, sex, nationality, religion, address, paddress, elementary, e_address, e_syattend, e_awards, junior, j_address, j_syattend, j_awards, senior, s_address, s_syattend, s_awards, academic_probation, desciplinary_probation, f_name, f_nationality, f_occupation, f_company, f_number, f_contact, m_name, m_nationality, m_occupation, m_company, m_number, m_contact, siblings, birth_order, hospitalized, details, essay1, essay2, req_date, sched_date, status) 
-                VALUES('$studentid','$d1','$d2','$d3','$d4','$d5','$d6','$d7','$d8','$d9','$d10','$d11','$d12','$d13','$d14','$d15','$d16','$d17','$d18','$d19','$d20','$d21','$d22','$d23','$d24','$d25','$d26','$d27','$d28','$d29','$d30','$d31','$d32','$d33','$d34','$d35','$d36','$d37','$d38','$d39','$d40','$d41','$d42','$d43','$d44','$d45','$d46', '$sched_today', 'PENDING', 'PENDING')") or die($conn->error);
+                $conn->query("INSERT INTO scholarship (student_id, apply, school_yr, name, course, contact, email, dbirth, pbirth, age, sex, nationality, religion, address, paddress, elementary, e_address, e_syattend, e_awards, junior, j_address, j_syattend, j_awards, senior, s_address, s_syattend, s_awards, academic_probation, desciplinary_probation, f_name, f_nationality, f_occupation, f_company, f_number, f_contact, m_name, m_nationality, m_occupation, m_company, m_number, m_contact, siblings, birth_order, hospitalized, details, essay1, essay2, req_date, sched_date, status, message) 
+                VALUES('$studentid','$d1','$d2','$d3','$d4','$d5','$d6','$d7','$d8','$d9','$d10','$d11','$d12','$d13','$d14','$d15','$d16','$d17','$d18','$d19','$d20','$d21','$d22','$d23','$d24','$d25','$d26','$d27','$d28','$d29','$d30','$d31','$d32','$d33','$d34','$d35','$d36','$d37','$d38','$d39','$d40','$d41','$d42','$d43','$d44','$d45','$d46', '$sched_today', 'PENDING', 'PENDING', 'N/A')") or die($conn->error);
                  ?>
                  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

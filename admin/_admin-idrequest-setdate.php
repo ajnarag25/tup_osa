@@ -194,10 +194,22 @@
                                                 <strong><p>Scheduled Time:</p></strong>
                                                 <input type="time" class="validate" name="time" required>
                                             </div>
+                                            <div class="input-field col s12">
+                                                <strong><p>Compose Message:</p></strong>
+                                                <textarea name="msg_idrequest_set" id="" class="form-control" cols="30" rows="5" required></textarea>
+                                            </div>
                                         </div>                          
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                                <?php 
+                                                    $get_id = $_GET['id'];
+                                                    $query = "SELECT * FROM id_request WHERE id='$get_id'";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
+                                                <?php } ?>
                                                 <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
                                                 <button class="btn waves-effect btn-success" name="update_sched_claim"><strong>Submit</strong></button>
                                             </div>

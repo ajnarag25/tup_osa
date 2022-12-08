@@ -194,12 +194,21 @@
                                         <div class="text-center">
                                             <h3>Are you sure to decline this student request?</h3>
                                             <h3>Declining Student: <?php echo $row['name'] ?></h3>
+                                            <strong><p>Compose Message:</p></strong>
+                                            <textarea name="msg_scholar_decline" id="" class="form-control" cols="30" rows="5" required></textarea>
                                             <br><br>
                                             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                            <?php 
+                                                $get_id = $_GET['id'];
+                                                $query = "SELECT * FROM scholarship WHERE id='$get_id'";
+                                                $result = mysqli_query($conn, $query);
+                                                while ($row = mysqli_fetch_array($result)) {
+                                            ?>
+                                            <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
+                                            <?php } ?>
                                             <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
                                             <button class="btn waves-effect btn-danger" name="decline_scholarship"><strong>Decline</strong></button>
                                         </div>
-
                                     </form>
                                     <?php } ?>
                                 </div>
