@@ -365,8 +365,13 @@
                                 <div class="col-sm-7">
                                     <select size="5" name="apply" required>
                                         <option value="" selected disabled>-- Select Option --</option>
-                                        <option value="Asian Development Bank Spouses Association Scholarship">Asian Development Bank Spouses Association Scholarship</option>
-                                        <option value="Teritiary Education Subsidy">Teritiary Education Subsidy</option>	
+                                        <?php 
+                                            $query = "SELECT * FROM list_scholar ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+                                        <option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+                                        <?php } ?>
 							        </select>
                                 </div>
                             </div>

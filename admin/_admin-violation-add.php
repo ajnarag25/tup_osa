@@ -231,7 +231,7 @@
                                                                 </select>
                                                             </div>
                                                             <div id="majorr" class="input-field col s6" hidden>
-                                                                <select name="offense2" required>
+                                                                <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
                                                                     <option selected disabled>-- Select Violation (Major) --</option>
                                                                     <option value="Liquor and Prohibited Drugs">Liquor and Prohibited Drugs</option>
                                                                     <option value="Unautorized Activities/Illegal Assemblies">Unautorized Activities/Illegal Assemblies</option>			
@@ -259,10 +259,12 @@
                                                                     <option value="Commission of the same or any minor offense for the 4th time">Commission of the same or any minor offense for the 4th time</option>				
                                                                     <option value="Commission of a major offense while under academic probation">Commission of a major offense while under academic probation</option>	
                                                                     <option value="Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances">Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances</option>	
+                                                                    <option value="customOption1">[Type Specific Violation]</option>
                                                                 </select>
+                                                                <input name="offense2" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
                                                             </div>
                                                             <div id="minorr" class="input-field col s6" hidden>
-                                                                <select name="offense2" required>
+                                                                <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
                                                                     <option selected disabled>-- Select Violation (Minor) --</option>
                                                                     <option value="Loitering or causing disturbance during class hours">Loitering or causing disturbance during class hours</option>
                                                                     <option value="Not wearing the prescribed uniform/haircut/University identification card while inside the University premises">Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</option>
@@ -284,7 +286,9 @@
                                                                     <option value="Accidental damage of property within the University premises">Accidental damage of property within the University premises</option>
                                                                     <option value="Public and indecent display of physical intimacy with another person within the University premises or during an official school activity">Public and indecent display of physical intimacy with another person within the University premises or during an official school activity</option>
                                                                     <option value="Possession of any type of cigarette or tobacco product inside the campus">Possession of any type of cigarette or tobacco product inside the campus</option>
+                                                                    <option value="customOption1">[Type Specific Violation]</option>
                                                                 </select>
+                                                                <input name="offense2" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -367,7 +371,7 @@
                                                                 </select>
                                                             </div>
                                                             <div id="hours" class="input-field col s6" hidden>
-                                                                <input id="t5-n2" type="text" class="validate" name="hours">
+                                                                <input id="t5-n2" type="number" class="validate" name="hours">
                                                                 <label for="t5-n2">How many hours of community service ?</label>
                                                             </div>
                                                         </div>
@@ -493,9 +497,26 @@
             }
         }
         update();
+
+        function toggle($toBeHidden, $toBeShown) {
+            $toBeHidden.hide().prop('disabled', true);
+            $toBeShown.show().prop('disabled', false).focus();
+        }
+
+        function showOptions(inputName) {
+            var $select = $(`select[name=${inputName}]`);
+            toggle($(`input[name=${inputName}]`), $select);
+            $select.val(null);
+        }
+
+        function showCustomInput(inputName) {
+            toggle($(`select[name=${inputName}]`), $(`input[name=${inputName}]`));
+        }
+        
     </script>
     <!--Import jQuery before materialize.js-->
     <script src="js/main.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>

@@ -198,7 +198,7 @@
                                             <th>Course</th>
                                             <th>Offense</th>
                                             <th>Sanction</th>
-                                            <th>Remaining T/D</th>
+                                            <th>Remaining Hours</th>
                                             <th>Action</th>
                                         </tr>
                                       </thead>
@@ -216,7 +216,7 @@
                                             <td><?php echo $row['course'] ?></td>
                                             <td><?php echo $row['offense2'] ?></td>
                                             <td><?php echo $row['offense4'] ?></td>
-                                            <td><?php echo $row['td'] ?></td>
+                                            <td><?php echo $row['td'] ?> hr/s</td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="_admin-violation-modify.php?id=<?php echo $row['id'] ?>" class="btn btn-info waves-light btn-sm">Modify</a>

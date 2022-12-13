@@ -30,9 +30,9 @@ if (isset($_POST['update_sched_claim'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-idrequest-setdate.php";
+                    window.location.href = "_admin-idrequest.php";
                     }else{
-                        window.location.href = "_admin-idrequest-setdate.php";
+                        window.location.href = "_admin-idrequest.php";
                     }
                 })
                 
@@ -87,9 +87,9 @@ if (isset($_POST['received'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-idrequest-setdate.php";
+                    window.location.href = "_admin-idrequest.php";
                     }else{
-                        window.location.href = "_admin-idrequest-setdate.php";
+                        window.location.href = "_admin-idrequest.php";
                     }
                 })
                 
@@ -146,9 +146,9 @@ if (isset($_POST['decline_id'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-idrequest-decline.php";
+                    window.location.href = "_admin-idrequest.php";
                     }else{
-                        window.location.href = "_admin-idrequest-decline.php";
+                        window.location.href = "_admin-idrequest.php";
                     }
                 })
                 
@@ -157,7 +157,7 @@ if (isset($_POST['decline_id'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE id_request SET status='DECLINED' WHERE id='$id'") or die($conn->error);
+        $conn->query("UPDATE id_request SET status='DECLINED', sched_claim='N/A', message='$messages' WHERE id='$id'") or die($conn->error);
         include '_admin_idrequest_decline_email.php'
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -208,9 +208,9 @@ if (isset($_POST['update_idvalidate'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-idvalidate-setdate.php";
+                    window.location.href = "_admin-idvalidate.php";
                     }else{
-                        window.location.href = "_admin-idvalidate-setdate.php";
+                        window.location.href = "_admin-idvalidate.php";
                     }
                 })
                 
@@ -265,9 +265,9 @@ if(isset($_GET['done'])){
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-idvalidate-setdate.php";
+                    window.location.href = "_admin-idvalidate.php";
                     }else{
-                        window.location.href = "_admin-idvalidate-setdate.php";
+                        window.location.href = "_admin-idvalidate.php";
                     }
                 })
                 
@@ -322,9 +322,9 @@ if (isset($_POST['decline_id_validation'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-idrequest-decline.php";
+                    window.location.href = "_admin-idrequest.php";
                     }else{
-                        window.location.href = "_admin-idrequest-decline.php";
+                        window.location.href = "_admin-idrequest.php";
                     }
                 })
                 
@@ -384,9 +384,9 @@ if (isset($_POST['update_goodmoral'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-goodmoral-setdate.php";
+                    window.location.href = "_admin-goodmoral.php";
                     }else{
-                        window.location.href = "_admin-goodmoral-setdate.php";
+                        window.location.href = "_admin-goodmoral.php";
                     }
                 })
                 
@@ -441,9 +441,9 @@ if (isset($_POST['received_goodmoral'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-goodmoral-setdate.php";
+                    window.location.href = "_admin-goodmoral.php";
                     }else{
-                        window.location.href = "_admin-goodmoral-setdate.php";
+                        window.location.href = "_admin-goodmoral.php";
                     }
                 })
                 
@@ -500,9 +500,9 @@ if (isset($_POST['decline_goodmoral'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-goodmoral-decline.php";
+                    window.location.href = "_admin-goodmoral.php";
                     }else{
-                        window.location.href = "_admin-goodmoral-decline.php";
+                        window.location.href = "_admin-goodmoral.php";
                     }
                 })
                 
@@ -551,7 +551,35 @@ if (isset($_POST['violation'])) {
     $o4 = $_POST['offense4'];
     $hrs = $_POST['hours'];
 
-    if($course == null && $o1 == null && $o2 == null && $o3 == null && $o4 == null ){
+    $sql = "SELECT * FROM violations WHERE student_id = '$studentid' AND name = '$names' AND course = '$course' AND yr_section = '$yrsection'";
+    $result = mysqli_query($conn, $sql);
+    $check = mysqli_num_rows($result);
+
+    if ($check == 1){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'Student already added',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-violation.php";
+                    }else{
+                        window.location.href = "_admin-violation.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }elseif($course == null && $o1 == null && $o2 == null && $o3 == null && $o4 == null ){
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -565,9 +593,9 @@ if (isset($_POST['violation'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-violation-add.php";
+                    window.location.href = "_admin-violation.php";
                     }else{
-                        window.location.href = "_admin-violation-add.php";
+                        window.location.href = "_admin-violation.php";
                     }
                 })
                 
@@ -589,9 +617,9 @@ if (isset($_POST['violation'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-violation-add.php";
+                    window.location.href = "_admin-violation.php";
                     }else{
-                        window.location.href = "_admin-violation-add.php";
+                        window.location.href = "_admin-violation.php";
                     }
                 })
                 
@@ -602,7 +630,7 @@ if (isset($_POST['violation'])) {
     }else{
         if($hrs == null){
             $conn->query("INSERT INTO violations (student_id, name, course, yr_section, offense1, offense2, offense3, offense4, td, status) 
-            VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', 'N/A', 'ONGOING')") or die($conn->error);
+            VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', 0, 'ONGOING')") or die($conn->error);
             ?>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -662,7 +690,11 @@ if (isset($_POST['update_violation'])) {
     $getid = $_POST['id'];
     $remain = $_POST['remaining'];
 
-    if($getid == null){
+    $sql = "SELECT * FROM violations WHERE td <= 0 AND id='$getid'";
+    $result = mysqli_query($conn, $sql);
+    $check = mysqli_num_rows($result);
+
+    if($check == 1){
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -672,13 +704,14 @@ if (isset($_POST['update_violation'])) {
                 Swal.fire({
                 icon: 'error',
                 title: 'An Error Occured',
+                text: 'Remaining Hours is Already set to 0',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-violation-modify.php";
+                    window.location.href = "_admin-violation.php";
                     }else{
-                        window.location.href = "_admin-violation-modify.php";
+                        window.location.href = "_admin-violation.php";
                     }
                 })
                 
@@ -687,7 +720,7 @@ if (isset($_POST['update_violation'])) {
         </script>
         <?php
     }else{
-        $conn->query("UPDATE violations SET td='$remain' WHERE id='$getid'") or die($conn->error);
+        $conn->query("UPDATE violations SET td= td - $remain WHERE id='$getid'") or die($conn->error);
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -711,13 +744,19 @@ if (isset($_POST['update_violation'])) {
     
         </script>
         <?php
+    
+       
     }
 }
 
 if(isset($_GET['completed'])){
     $id = $_GET['completed'];
 
-    if($id == null){
+    $sql = "SELECT * FROM violations WHERE td > 0";
+    $result = mysqli_query($conn, $sql);
+    $check = mysqli_num_rows($result);
+
+    if($check == 1){
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -726,14 +765,14 @@ if(isset($_GET['completed'])){
             $(document).ready(function(){
                 Swal.fire({
                 icon: 'error',
-                title: 'An Error Occured',
+                title: 'There is a remaining time left',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-violation-modify.php";
+                    window.location.href = "_admin-violation.php";
                     }else{
-                        window.location.href = "_admin-violation-modify.php";
+                        window.location.href = "_admin-violation.php";
                     }
                 })
                 
@@ -787,9 +826,9 @@ if (isset($_POST['decline_scholarship'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-scholarship-decline.php";
+                    window.location.href = "_admin-scholarship.php";
                     }else{
-                        window.location.href = "_admin-scholarship-decline.php";
+                        window.location.href = "_admin-scholarship.php";
                     }
                 })
                 
@@ -847,9 +886,9 @@ if (isset($_POST['update_scholarship'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-scholarship-setdate.php";
+                    window.location.href = "_admin-scholarship.php";
                     }else{
-                        window.location.href = "_admin-scholarship-setdate.php";
+                        window.location.href = "_admin-scholarship.php";
                     }
                 })
                 
@@ -904,9 +943,9 @@ if (isset($_POST['received_scholarship'])) {
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-scholarship-setdate.php";
+                    window.location.href = "_admin-scholarship.php";
                     }else{
-                        window.location.href = "_admin-scholarship-setdate.php";
+                        window.location.href = "_admin-scholarship.php";
                     }
                 })
                 
@@ -1175,7 +1214,66 @@ if (isset($_POST['change_pass'])) {
     }
 }
 
+// add announcement
 
+if (isset($_POST['add_scholar'])) {
+    $scholar = $_POST['scholarship'];
+    $det = $_POST['details'];
+
+    $sql = "SELECT * FROM list_scholar WHERE name = '$scholar' OR description='$det'";
+    $result = mysqli_query($conn, $sql);
+    $check = mysqli_num_rows($result);
+
+    if($check == 1){
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'warning',
+                title: 'Scholarship Already Exists',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-scholarship.php";
+                    }else{
+                        window.location.href = "_admin-scholarship.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("INSERT INTO list_scholar (name, description) VALUES('$scholar', '$det')") or die($conn->error);
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Added',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-scholarship.php";
+                    }else{
+                        window.location.href = "_admin-scholarship.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+
+    }
+}
 
 
 

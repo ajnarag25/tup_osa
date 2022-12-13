@@ -177,8 +177,8 @@
                         <li class="active-bre"><a href="#"> Scholarship Request</a>
                         </li>
                     </ul>
+                    <a href="_admin-scholarship-announcement.php" class="btn btn-danger waves-light right">Add Announcement</a>
                 </div>
-
                 <!--== Scholarship ==-->
                 <div class="sb2-2-3" id="newlist">
                     <div class="row">

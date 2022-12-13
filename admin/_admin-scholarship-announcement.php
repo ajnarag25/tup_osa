@@ -143,9 +143,9 @@
                         </li>
                         <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
-                        <li><a href="_admin-scholarship.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
+                        <li><a href="_admin-scholarship.php" class="menu-active"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
                         </li>
-                        <li><a href="_admin-violation.php" class="menu-active"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
+                        <li><a href="_admin-violation.php"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
                         </li>
 						<li><a href="_admin-settings.php"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>
@@ -162,7 +162,7 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
-                        <li class="active-bre"><a href="#"> Violations - Add Violators</a>
+                        <li class="active-bre"><a href="#"> Scholarship - Add Announcement</a>
                         </li>
                     </ul>
                 </div>
@@ -173,7 +173,7 @@
                         <div class="col-md-12">
                             <div class="box-inn-sp admin-form">
                                 <div class="sb2-2-add-blog sb2-2-1">
-                                    <h2>Update Violator</h2>
+                                    <h2>Add New Announcement</h2>
                                     <ul class="nav nav-tabs tab-list">
                                         <li class="active"><a data-toggle="tab" href="#home" aria-expanded="true"><i class="fa fa-info" aria-hidden="true"></i> <span>Details</span></a>
                                         </li>
@@ -182,90 +182,27 @@
                                         <div id="home" class="tab-pane fade active in">
                                             <div class="box-inn-sp">
                                                 <div class="inn-title">
-                                                    <h4>Student Information</h4>
+                                                    <h4>Scholarship Information</h4>
                                                 </div>
                                                 <div class="bor">
                                                     <form method="POST" action="process.php">
-                                                        <h4>Modify Remaining Hours:</h4>
-                                                        <div class="row">
-                                                            <?php 
-                                                                $id = $_GET['id'];
-                                                                $query = "SELECT * FROM violations WHERE id='$id'";
-                                                                $result = mysqli_query($conn, $query);
-                                                                while ($row = mysqli_fetch_array($result)) {
-                                                            ?>
-                                                            <div class="input-field col s6">
-                                                                <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
-                                                                <input  type="number" placeholder="<?php echo $row['td'] ?>" value=1 min=1 name="remaining" class="validate" required>
-                                                            </div>
-                                                            <?php } ?>
+                                                        <h4>Scholarship</h4>
+                                                        <div class="input-field">
+                                                            <input id="t5-n1" type="text" class="validate" name="scholarship" required>
+                                                            <label for="t5-n1">Scholarship</label>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <textarea name="details" class="validate" id="" cols="30" rows="10" required></textarea>
+                                                            <label for="t5-n2">Details</label>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="input-field col s2">
-                                                                <button type="submit" name="update_violation" class="btn btn-info"><strong>Save</strong></button>
+                                                            <div class="input-field col s12">
+                                                                <button type="submit" class="btn btn-success" name="add_scholar"><strong>Add Announcement</strong></button>
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div>
-
-                                                <div class="bor">
-                                                    <form>
-                                                        <h4>Personal Information</h4>
-
-                                                        <?php 
-                                                            $id = $_GET['id'];
-                                                            $query = "SELECT * FROM violations WHERE id='$id'";
-                                                            $result = mysqli_query($conn, $query);
-                                                            while ($row = mysqli_fetch_array($result)) {
-                                                        ?>
-
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n1" type="text" value="<?php echo $row['student_id'] ?>"  readonly>
-                                                                <label for="t5-n1">TUPC ID Number</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="<?php echo $row['name'] ?>" readonly>
-                                                                <label for="t5-n2">Full Name</label>
-                                                            </div>
-                                                        </div>  
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="<?php echo $row['course'] ?>"readonly>
-                                                                <label for="t5-n2">Course</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="<?php echo $row['yr_section'] ?>"  readonly>
-                                                                <label for="t5-n2">Year & Section</label>
-                                                            </div>
-                                                        </div>
-                                                        <h4>Violation Details</h4>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense1'] ?>" readonly>
-                                                                <label for="t5-n2">Offense</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense2'] ?>"  readonly>
-                                                                <label for="t5-n2">Offense2</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense3'] ?>"  readonly>
-                                                                <label for="t5-n2">Offense3</label>
-                                                            </div>
-                                                            <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" value="<?php echo $row['offense4'] ?>"  readonly>
-                                                                <label for="t5-n2">Offense4</label>
-                                                            </div>
-                                                        </div>
-
                                                     </form>
                                                 </div>
                                                 <a href="_admin-violation.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                                <a href="process.php?completed=<?php echo $row['id'] ?>" class="btn waves-effect btn-success"><strong>Mark as completed</strong></a>
-                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
@@ -274,14 +211,14 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
 
         </div>
     </div>
-    
+
     <!--Import jQuery before materialize.js-->
     <script src="js/main.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>

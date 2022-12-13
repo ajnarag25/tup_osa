@@ -675,7 +675,7 @@
 
                                     </tbody>
                                 </table>
-                                <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete_violation">Delete All</button>
+                                <!-- <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete_violation">Delete All</button> -->
 
                                 <!-- Modal Delete Violations -->
                                 <div class="modal fade" id="delete_violation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
