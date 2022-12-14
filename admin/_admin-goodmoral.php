@@ -298,6 +298,7 @@
                                 <div class="inn-title">
                                     <h4>Good Moral Request (History)</h4>
                                     <p>List of students who request for good moral</p>
+                                    <a href="table_goodmoral.php" class="btn btn-primary">Print</a>
                                 </div>
                                 <div class="box-body tab-inn" id="printTable">
                                     <table id="example3" class="table table-bordered table-hover table-sm">

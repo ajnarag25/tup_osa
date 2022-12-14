@@ -147,7 +147,7 @@
                                             <h3>Delete Student Candidate: <?php echo $row['name'] ?></h3>
                                             <br><br>
                                             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                            <a href="_admin-voting.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
+                                            <a href="index.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
                                             <button class="btn waves-effect btn-danger" name="delete_candidate"><strong>Delete</strong></button>
                                         </div>
 

@@ -299,6 +299,7 @@
                                 <div class="inn-title">
                                     <h4>ID Request (History)</h4>
                                     <p>List of students who request new TUPC-ID</p>
+                                    <a href="table_idrequest.php" class="btn btn-primary">Print</a>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example4" class="table table-bordered table-hover table-sm">

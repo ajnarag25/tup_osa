@@ -242,250 +242,203 @@
                                         <div class="row">
                                             <h4>Basic Information</h4>
                                             <div class="input-field col s6">
-                                                <strong><p>Scholarship Applied for:</p></strong>
-                                                <input type="text" value="<?php echo $row['apply'] ?>" readonly>
+                                                <strong><p>Scholarship Applied for: <?php echo $row['apply'] ?></p></strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>School Year:</p></strong>
-                                                <input id="name" type="text" value="<?php echo $row['school_yr'] ?>" readonly>
+                                                <strong><p>School Year:</p> <?php echo $row['school_yr'] ?></strong>
+
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Student I.D:</p></strong>
-                                                <input id="name" type="text" value="<?php echo $row['student_id'] ?>" readonly>
-                                                <label class="">Enter your full name</label>
+                                                <strong><p>Student I.D:</p> <?php echo $row['student_id'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Full name:</p></strong>
-                                                <input id="name" type="text" value="<?php echo $row['name'] ?>" readonly>
-                                                <label class="">Enter your full name</label>
+                                                <strong><p>Full name:</p> <?php echo $row['name'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Course:</p></strong>
-                                                <input type="text" value="<?php echo $row['course'] ?>" readonly>
-                                                <label class="">Enter your course</label>
+                                                <strong><p>Course:</p> <?php echo $row['course'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Phone Number:</p></strong>
-                                               <input type="number" value="<?php echo $row['contact'] ?>" readonly>
-                                               <label class="">Enter your phone number</label>
+                                                <strong><p>Phone Number:</p> <?php echo $row['contact'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Email:</p></strong>
-                                                <input type="email" value="<?php echo $row['email'] ?>" readonly>
-                                                <label class="">Enter your email</label>
+                                                <strong><p>Email:</p> <?php echo $row['email'] ?> </strong>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
                                             <h4>Personal Information</h4>
                                             <div class="input-field col s6">
-                                                <strong><p>Date of Birth:</p></strong>
-                                               <input type="text" value="<?php echo $row['dbirth'] ?>" readonly>
+                                                <strong><p>Date of Birth:</p> <?php echo $row['dbirth'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Place of Birth:</p></strong>
-                                                <input type="text" value="<?php echo $row['pbirth'] ?>" readonly>
+                                                <strong><p>Place of Birth:</p> <?php echo $row['pbirth'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Age:</p></strong>
-                                               <input type="text" value="<?php echo $row['age'] ?>" readonly>
+                                                <strong><p>Age:</p> <?php echo $row['age'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Sex:</p></strong>
-                                                <input type="text" value="<?php echo $row['sex'] ?>" readonly>
+                                                <strong><p>Sex:</p> <?php echo $row['sex'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Nationality:</p></strong>
-                                               <input type="text" value="<?php echo $row['nationality'] ?>" readonly>
+                                                <strong><p>Nationality:</p> <?php echo $row['nationality'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Religion:</p></strong>
-                                                <input type="text" value="<?php echo $row['religion'] ?>" readonly>
+                                                <strong><p>Religion:</p> <?php echo $row['religion'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Complete Address:</p></strong>
-                                               <input type="text" value="<?php echo $row['address'] ?>" readonly>
+                                                <strong><p>Complete Address:</p> <?php echo $row['address'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Complete Provincial Address:</p></strong>
-                                                <input type="text" value="<?php echo $row['paddress'] ?>" readonly>
+                                                <strong><p>Complete Provincial Address:</p> <?php echo $row['paddress'] ?> </strong>
                                             </div>
                                         </div>
-
+                                        <br>
                                         <div class="row">
                                             <h4>Educational History</h4>
                                             <div class="input-field col s6">
-                                                <strong><p>Elementary (School Name):</p></strong>
-                                               <input type="text" value="<?php echo $row['elementary'] ?>" readonly>
+                                                <strong><p>Elementary (School Name):</p> <?php echo $row['elementary'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Elementary (Address):</p></strong>
-                                               <input type="text" value="<?php echo $row['e_address'] ?>" readonly>
+                                                <strong><p>Elementary (Address):</p> <?php echo $row['e_address'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Elementary (S.Y. Attended):</p></strong>
-                                               <input type="text" value="<?php echo $row['e_syattend'] ?>" readonly>
+                                                <strong><p>Elementary (S.Y. Attended):</p> <?php echo $row['e_syattend'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Awards Received:</p></strong>
-                                               <input type="text" value="<?php echo $row['e_awards'] ?>" readonly>
+                                                <strong><p>Awards Received:</p> <?php echo $row['e_awards'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Junior High (School Name):</p></strong>
-                                               <input type="text" value="<?php echo $row['junior'] ?>" readonly>
+                                                <strong><p>Junior High (School Name):</p> <?php echo $row['junior'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Junior High (Address):</p></strong>
-                                               <input type="text" value="<?php echo $row['j_address'] ?>" readonly>
+                                                <strong><p>Junior High (Address):</p> <?php echo $row['j_address'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Junior High (S.Y. Attended):</p></strong>
-                                               <input type="text" value="<?php echo $row['j_syattend'] ?>" readonly>
+                                                <strong><p>Junior High (S.Y. Attended):</p> <?php echo $row['j_syattend'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Awards Received:</p></strong>
-                                               <input type="text" value="<?php echo $row['j_awards'] ?>" readonly>
+                                                <strong><p>Awards Received:</p> <?php echo $row['j_awards'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Senior High (School Name):</p></strong>
-                                               <input type="text" value="<?php echo $row['senior'] ?>" readonly>
+                                                <strong><p>Senior High (School Name):</p> <?php echo $row['senior'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Senior High (Address):</p></strong>
-                                               <input type="text" value="<?php echo $row['s_address'] ?>" readonly>
+                                                <strong><p>Senior High (Address):</p> <?php echo $row['s_address'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Senior High (S.Y. Attended):</p></strong>
-                                               <input type="text" value="<?php echo $row['s_syattend'] ?>" readonly>
+                                                <strong><p>Senior High (S.Y. Attended):</p> <?php echo $row['s_syattend'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Awards Received:</p></strong>
-                                               <input type="text" value="<?php echo $row['s_awards'] ?>" readonly>
+                                                <strong><p>Awards Received:</p> <?php echo $row['s_awards'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Have you been placed under academic probation or any given sanction for poor academics? If yes, please provide details.</p></strong>
-                                               <textarea type="text" readonly><?php echo $row['academic_probation'] ?></textarea>
+                                                <strong><p>Have you been placed under academic probation or any given sanction for poor academics? If yes, please provide details.</p> <?php echo $row['academic_probation'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Have you been placed under desciplinary probation or given any sanction for misbehavior? If yes, please provide details.</p></strong>
-                                               <textarea type="text" readonly><?php echo $row['desciplinary_probation'] ?></textarea>
+                                                <strong><p>Have you been placed under desciplinary probation or given any sanction for misbehavior? If yes, please provide details.</p> <?php echo $row['desciplinary_probation'] ?> </strong>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
                                             <h4>Family Information</h4>
                                             <div class="input-field col s6">
-                                                <strong><p>Father's Name:</p></strong>
-                                               <input type="text" value="<?php echo $row['f_name'] ?>" readonly>
+                                                <strong><p>Father's Name:</p> <?php echo $row['f_name'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Father's Nationality:</p></strong>
-                                               <input type="text" value="<?php echo $row['f_nationality'] ?>" readonly>
+                                                <strong><p>Father's Nationality:</p> <?php echo $row['f_nationality'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Father's Occupation:</p></strong>
-                                               <input type="text" value="<?php echo $row['f_occupation'] ?>" readonly>
+                                                <strong><p>Father's Occupation:</p> <?php echo $row['f_occupation'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Company Address:</p></strong>
-                                               <input type="text" value="<?php echo $row['f_company'] ?>" readonly>
+                                                <strong><p>Company Address:</p> <?php echo $row['f_company'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Office Number:</p></strong>
-                                               <input type="text" value="<?php echo $row['f_number'] ?>" readonly>
+                                                <strong><p>Office Number:</p> <?php echo $row['f_number'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Father's Number:</p></strong>
-                                               <input type="text" value="<?php echo $row['f_contact'] ?>" readonly>
+                                                <strong><p>Father's Number:</p> <?php echo $row['f_contact'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Mother's Name:</p></strong>
-                                               <input type="text" value="<?php echo $row['m_name'] ?>" Cruz" readonly>
+                                                <strong><p>Mother's Name:</p> <?php echo $row['m_name'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Mother's Nationality:</p></strong>
-                                               <input type="text" value="<?php echo $row['m_nationality'] ?>" readonly>
+                                                <strong><p>Mother's Nationality:</p> <?php echo $row['m_nationality'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Mother's Occupation:</p></strong>
-                                               <input type="text" value="<?php echo $row['m_occupation'] ?>" readonly>
+                                                <strong><p>Mother's Occupation:</p> <?php echo $row['m_occupation'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Company Address:</p></strong>
-                                               <input type="text" value="<?php echo $row['m_company'] ?>"" readonly>
+                                                <strong><p>Company Address:</p> <?php echo $row['m_company'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Office Number:</p></strong>
-                                               <input type="text" value="<?php echo $row['m_number'] ?>"" readonly>
+                                                <strong><p>Office Number:</p> <?php echo $row['m_number'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Mother's Number:</p></strong>
-                                               <input type="text" value="<?php echo $row['m_contact'] ?>" readonly>
+                                                <strong><p>Mother's Number:</p> <?php echo $row['m_contact'] ?> </strong>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>Number of Siblings:</p></strong>
-                                               <input type="text" value="<?php echo $row['siblings'] ?>" readonly>
+                                                <strong><p>Number of Siblings:</p> <?php echo $row['siblings'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Birth Order:</p></strong>
-                                               <input type="text" value="<?php echo $row['birth_order'] ?>" readonly>
+                                                <strong><p>Birth Order:</p> <?php echo $row['birth_order'] ?> </strong>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
                                             <h4>Medical Information</h4>
                                             <div class="input-field col s6">
-                                                <strong><p>Have you been hospitalized?</p></strong>
-                                               <input type="text" value="<?php echo $row['hospitalized'] ?>" readonly>
+                                                <strong><p>Have you been hospitalized?</p> <?php echo $row['hospitalized'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>If so, for what?:</p></strong>
-                                               <input type="text" value="<?php echo $row['details'] ?>" readonly>
+                                                <strong><p>If so, for what?:</p> <?php echo $row['details'] ?> </strong>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
                                             <h4>Essay</h4>
                                             <div class="input-field col s6">
-                                                <strong><p>Tell me something about yourself.</p></strong>
-                                               <textarea type="text" readonly><?php echo $row['essay1'] ?></textarea>
+                                                <strong><p>Tell me something about yourself.</p> <?php echo $row['essay1'] ?> </strong>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Why did you apply for scholarhip assistance?</p></strong>
-                                               <textarea type="text" readonly><?php echo $row['essay2'] ?></textarea>
+                                                <strong><p>Why did you apply for scholarhip assistance?</p> <?php echo $row['essay2'] ?> </strong>
                                             </div>
                                         </div>
-                
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
-                                            </div>
-                                        </div>
+            
                                     <?php } ?>
                                     </form>
                                     <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

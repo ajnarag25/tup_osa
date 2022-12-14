@@ -242,6 +242,7 @@
                                 <div class="inn-title">
                                     <h4>Violators (History)</h4>
                                     <p>List of students who request for validation TUPC-ID</p>
+                                    <a href="table_violation.php" class="btn btn-primary">Print</a>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example3" class="table table-bordered table-hover table-sm">

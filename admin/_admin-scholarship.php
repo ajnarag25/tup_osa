@@ -293,6 +293,7 @@
                             <div class="box-inn-sp">
                                 <div class="inn-title">
                                     <h4>Scholarship (History)</h4>
+                                    <a href="table_scholarship.php" class="btn btn-primary">Print</a>
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example3" class="table table-bordered table-hover table-sm">
