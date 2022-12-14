@@ -44,9 +44,11 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 </head>
+
 <a href="_admin-idrequest.php" type="button" class="btn btn-primary">Go Back</a>
 <button type="submit" class="btn btn-primary" id="print" onclick="printPage()">Print</button>
 <br><br>
+
 <table class="table table-bordered table-hover table-sm">
     <thead>
     <tr class="table-secondary">
