@@ -290,8 +290,12 @@
                                                     <strong><p>ID Picture:</p></strong>
                                                     <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['id_pic'] ?>" alt="">
                                                 </li>
+                                                <li>
+                                                    <strong><p>Signature:</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['signature'] ?>" alt="">
+                                                </li>
                                             </ul>
-                                        </div>                               
+                                        </div>                              
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <a href="_admin-idrequest.php#ongoinglist" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>

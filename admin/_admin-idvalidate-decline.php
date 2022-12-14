@@ -200,7 +200,7 @@
                                             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
                                             <?php 
                                                 $get_id = $_GET['id'];
-                                                $query = "SELECT * FROM id_validate WHERE id='$get_id'";
+                                                $query = "SELECT * FROM id_validation WHERE id='$get_id'";
                                                 $result = mysqli_query($conn, $query);
                                                 while ($row = mysqli_fetch_array($result)) {
                                             ?>

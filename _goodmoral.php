@@ -357,12 +357,15 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Purpose:</label>
                                 <div class="col-sm-9">
-                                    <select name="purpose" required>
+                                    <select name="purpose" onchange="if($(this).val()=='customOption1')showCustomInput('purpose')"  required>
                                         <option value="" selected disabled>-- Select Option --</option>
                                         <option value="SIT">SIT</option>
                                         <option value="Scholarship">Scholarship</option>
+                                        <option value="Work">Work</option>
+                                        <option value="customOption1">[Type Others]</option>
 							        </select>
                                     <p class="col-sm-9"><small>Type 'N/A' if not yet graduated</small></p>
+                                    <input name="purpose" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('purpose')">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -492,6 +495,22 @@
                 el.className = '';
                 el.setAttribute('size', '5');
             }
+        }
+
+        
+        function toggle($toBeHidden, $toBeShown) {
+            $toBeHidden.hide().prop('disabled', true);
+            $toBeShown.show().prop('disabled', false).focus();
+        }
+
+        function showOptions(inputName) {
+            var $select = $(`select[name=${inputName}]`);
+            toggle($(`input[name=${inputName}]`), $select);
+            $select.val(null);
+        }
+
+        function showCustomInput(inputName) {
+            toggle($(`select[name=${inputName}]`), $(`input[name=${inputName}]`));
         }
 
     </script>

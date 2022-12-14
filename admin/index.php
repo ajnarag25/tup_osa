@@ -299,7 +299,7 @@
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>ID Request</h4>
+                                    <h4>ID Validation</h4>
                                     <p>List of students who needs to verify their TUPC-ID</p>
                                 </div>
                                 <div class="tab-inn">
@@ -312,7 +312,6 @@
                                                     <th>Full Name</th>
                                                     <th>Email</th>
                                                     <th>Course</th>
-                                                    <th>ID Condition</th>
                                                     <th>Request Date</th>
                                                     <th>Status</th>
                                                 </tr>
@@ -331,7 +330,6 @@
                                                     </td>
                                                     <td><?php echo $row['email'] ?></td>
                                                     <td><?php echo $row['course'] ?></td>
-                                                    <td><?php echo $row['id_condition'] ?></td>
 													<td><?php echo $row['date_submit'] ?></td>
                                                     <td>
                                                         <?php 

@@ -4,7 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
-    error_reporting(0);
+    // error_reporting(0);
 
 
      // logout
@@ -485,12 +485,19 @@
         $request = $_POST['request'];
         $birthday = $_POST['birthday'];
         $contact_person = $_POST['contact_person'];
+        $contact_number = $_POST['contact_number'];
         $address = $_POST['address'];
         $sched_today = date("Y/m/d");
 
         
         $target_dir = "uploads/";
-        
+        $target_dir_signature = "uploads/signatures/";
+
+        $target_file_signature = $target_dir_signature . time(). basename($_FILES["signa"]["name"]);
+        $uploadOk_signature = 1;
+        $imageFileType_signature = strtolower(pathinfo($target_file_signature,PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES["signa"]["tmp_name"]);
+
         $target_file = $target_dir . time(). basename($_FILES["id_pic"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -502,6 +509,7 @@
 
         if (!$result->num_rows > 0){
             move_uploaded_file($_FILES["id_pic"]["tmp_name"], $target_file);
+            move_uploaded_file($_FILES["signa"]["tmp_name"], $target_file_signature);
             if ($check == false ){
                 ?>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -527,8 +535,8 @@
                 </script>
                 <?php
             }else{
-                $conn->query("INSERT INTO id_request (student_id, name, email, req_type, course, contact, birthday, id_pic, contact_person, address, status, sched_submit, sched_claim, message) 
-                VALUES('$studentid','$name','$email', '$request', '$course', '$contact', '$birthday', '$target_file', '$contact_person', '$address', 'PENDING', '$sched_today', 'PENDING', 'N/A')") or die($conn->error);
+                $conn->query("INSERT INTO id_request (student_id, name, email, req_type, course, contact, birthday, id_pic, signature, contact_person, contact_no, address, status, sched_submit, sched_claim, message) 
+                VALUES('$studentid','$name','$email', '$request', '$course', '$contact', '$birthday', '$target_file', '$target_file_signature', '$contact_person', '$contact_number', '$address', 'PENDING', '$sched_today', 'PENDING', 'N/A')") or die($conn->error);
                   ?>
                   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

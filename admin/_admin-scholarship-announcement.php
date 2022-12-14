@@ -186,7 +186,7 @@
                                                 </div>
                                                 <div class="bor">
                                                     <form method="POST" action="process.php">
-                                                        <h4>Scholarship</h4>
+                                                        <h4>Add New Scholarship</h4>
                                                         <div class="input-field">
                                                             <input id="t5-n1" type="text" class="validate" name="scholarship" required>
                                                             <label for="t5-n1">Scholarship</label>
@@ -197,12 +197,12 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s12">
-                                                                <button type="submit" class="btn btn-success" name="add_scholar"><strong>Add Announcement</strong></button>
+                                                                <button type="submit" class="btn btn-success" name="add_scholar"><strong>Publish</strong></button>
                                                             </div>
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <a href="_admin-violation.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
                                             </div>
                                         </div>
                                     </div>

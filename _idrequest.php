@@ -383,9 +383,22 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-sm-3">Signature:</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="signa" class="form-control" placeholder="Choose photos">
+                                    <a class="btn btn-info btn-xs btn-block" href="#!" data-toggle="modal" data-target="#signa">Guidelines for Signature Picture</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-sm-3"><small>Contact Person:</small></label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="contact_person" placeholder="Name of the contact person in case of emergency" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3"><small>Contact Number:</small></label>
+                                <div class="col-sm-9">
+                                    <input type="number" class="form-control" name="contact_number"  required>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -339,7 +339,81 @@
             </div>
         </div>
     </section>
+    <br><br>
+    <div class="con-title">
+        <h2>Announcements</h2>
+        <p>Welcome to TUPC OSA Services</p>
+    </div>
+    <?php 
+        $query = "SELECT * FROM usg_voting ";
+        $result = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_array($result)) {
+    ?>
+    <?php 
+     if ($row['status'] == 'Open'){
+    ?>
+    <section>
+        <div class="head-2">
+            <div class="container">
+                <div class="head-2-inn head-2-inn-padd-top">
+                    <h1>Voting of USG Officers is now open</h1>
+                    <p>Please Check the Voting Form.</p>
+                    <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-primary">Vote Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <?php } else {
+    ?>
+    <section>
+        <div class="head-2">
+            <div class="container">
+                <div class="head-2-inn head-2-inn-padd-top">
+                    <h1>Voting of USG Officers is not yet opened</h1>
+                    <p>Please wait for further announcement regarding of voting for incoming USG candidates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php } } ?>
+    <br>
+    <!-- ANNOUNCEMENT -->
+    <section>
+        <div class="container com-sp pad-bot-70">
+            <div class="row">
+                <div class="con-title">
+                    <h2>Scholarship <span>Programs</span> </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="ed-course">
+                <?php 
+                    $query = "SELECT * FROM list_scholar ";
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                ?>
+                    <div class="col-md-4">
+                        <div class="ed-course-in">
+                            <div class="card-body text-center">
+                                <h2 class="card-title"><?php echo $row['name'] ?></h2>
+                                <p class="card-text"><?php echo $row['description'] ?></p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="con-title">
+                    <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-primary">Apply Scholarship</a>
+                </div>
+            </div>
+   
+        </div>
+    </section>
     <!-- DISCOVER MORE -->
     <section>
         <div class="container com-sp pad-bot-70">
@@ -601,9 +675,10 @@
                         </div>
                         <div>
                             <div class="input-field s12">
-                                <input type="email" name="email" class="validate" required>
+                                <input type="email" name="email" onkeyup="gsfeOnly(this)" class="validate" required>
                                 <label>Email</label>
                             </div>
+                            <label id="check_gsfe" class="text-danger"></label>
                         </div>
                         <hr>
                         <div>
@@ -673,7 +748,19 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
-
+    <script>
+        function gsfeOnly(input) {
+            let regex = new RegExp('[a-z0-9]+@gsfe.tupcavite.edu.ph');
+            check = regex.test(input.value)
+            if(check == false){
+                console.log('Not gsfe account')
+                document.getElementById("check_gsfe").innerText = "Please use your gsfe account only";
+            }else{
+                console.log('Your using gsfe account')
+                document.getElementById("check_gsfe").innerText = "";
+            }
+        }
+    </script>
 </body>
 
 </html>
