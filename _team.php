@@ -332,22 +332,22 @@
                         <!-- Three columns of text below the carousel -->
                         <div class="row text-center">
                             <div class="col-lg-3 com-sp">
-                                <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="images/team1.jpg" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <img class="materialboxed bd-placeholder-img rounded-circle" width="250" height="300" src="images/team1.jpg" role="img" aria-label="Placeholder: 130x180" preserveAspectRatio="xMidYMid slice" focusable="false">
                                 <p style="font-size: large; padding-top: 10px;"><strong>Bermon Ferreras Jr.</strong></p>
                                 <p><small>Back-end Developer</small></p>
                             </div>
                             <div class="col-lg-3 com-sp">
-                                <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="images/team2.jpg" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">                       
+                                <img class="materialboxed bd-placeholder-img rounded-circle" width="250" height="300" src="images/team2.jpg" role="img" aria-label="Placeholder: 130x180" preserveAspectRatio="xMidYMid slice" focusable="false">                       
                                 <p style="font-size: large; padding-top: 10px;"><strong>Lawrence Aguimbag</strong></p>
                                 <p><small>Front-end Developer</small></p>
                             </div>
                             <div class="col-lg-3 com-sp">
-                                <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="images/team3.jpg" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <img class="materialboxed bd-placeholder-img rounded-circle" width="250" height="300" src="images/team3.jpg" role="img" aria-label="Placeholder: 130x180" preserveAspectRatio="xMidYMid slice" focusable="false">
                                 <p style="font-size: large; padding-top: 10px;"><strong>Levy Batario</strong> </p>
                                 <p><small>Back-end Developer</small></p>
                             </div>
                             <div class="col-lg-3 com-sp">
-                                <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="images/team4.jpg" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <img class="materialboxed bd-placeholder-img rounded-circle" width="250" height="300" src="images/team4.jpg" role="img" aria-label="Placeholder: 130x180" preserveAspectRatio="xMidYMid slice" focusable="false">
                                 <p style="font-size: large; padding-top: 10px;"><strong>Lhexmhar Dawe</strong> </p>
                                 <p><small>Front-end Developer</small></p>
                             </div>
