@@ -352,9 +352,10 @@
 
                                 ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                                 <?php } ?>
                             </div>
@@ -378,9 +379,10 @@
 
                                 ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                                 <?php } ?>
                             </div>
@@ -402,9 +404,10 @@
 
                                 ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                                 <?php } ?>
                             </div>
@@ -426,9 +429,10 @@
 
                             ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
 
                             <?php } ?>
@@ -452,9 +456,10 @@
 
                             ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                             <?php } ?>
 
@@ -477,9 +482,10 @@
 
                             ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                             <?php } ?>
                             </div>
@@ -501,9 +507,10 @@
 
                             ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                             <?php } ?>
                             </div>
@@ -525,9 +532,10 @@
 
                             ?>
                                 <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./admin/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
                                     <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                             <?php } ?>
                             </div>

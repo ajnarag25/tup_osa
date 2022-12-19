@@ -18,81 +18,27 @@
         $name = $_POST['names'];
         $course = $_POST['course'];
         $position = $_POST['position'];
-        
+        $partylist = $_POST['partylist'];
+
         $target_dir = "upload/";
         $target_file = $target_dir . basename($_FILES["pic"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         $check = getimagesize($_FILES["pic"]["tmp_name"]);
 
-        if ($course == null && $position == null){
-            ?>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function(){
-                    Swal.fire({
-                    icon: 'error',
-                    title: 'An Error Occured',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Okay'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "index.php";
-                        }else{
-                            window.location.href = "index.php";
-                        }
-                    })
-                    
-                })
-        
-            </script>
-            <?php
-        }elseif($course == null || $position == null){
-            ?>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function(){
-                    Swal.fire({
-                    icon: 'error',
-                    title: 'An Error Occured',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Okay'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "index.php";
-                        }else{
-                            window.location.href = "index.php";
-                        }
-                    })
-                    
-                })
-        
-            </script>
-            <?php
-        }else{
-            if($check !== false) {
-        
-                $uploadOk = 1;
-                if ($uploadOk == 0) {
-                    echo "<script type=\"text/javascript\">
-                    alert(\"Sorry, your file was not uploaded.\");
-                    window.location = \"index.php\"
-                    </script>";
-            } else {
-            move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file);
-            }
-                $conn->query("INSERT INTO candidates (name, image, course, position, vote) 
-                VALUES('$name', '$target_file', '$course', '$position', 0)") or die($conn->error);
+        $sql = "SELECT * FROM candidates WHERE name='$name' AND course='$course' AND position='$position' ";
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result->num_rows > 0){
+            if ($course == null && $position == null){
                 ?>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <script>
                     $(document).ready(function(){
                         Swal.fire({
-                        icon: 'success',
-                        title: 'Successfully Added',
+                        icon: 'error',
+                        title: 'An Error Occured',
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: 'Okay'
                         }).then((result) => {
@@ -107,15 +53,127 @@
             
                 </script>
                 <?php
-                
-            } else {
-                echo "<script type=\"text/javascript\">
-                alert(\"File is not an image!\");
-                window.location = \"index.php\"
-                </script>";
-                $uploadOk = 0;
+            }elseif($course == null || $position == null){
+                ?>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function(){
+                        Swal.fire({
+                        icon: 'error',
+                        title: 'An Error Occured',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "index.php";
+                            }else{
+                                window.location.href = "index.php";
+                            }
+                        })
+                        
+                    })
+            
+                </script>
+                <?php
+            }else{
+                if($check !== false) {
+            
+                    $uploadOk = 1;
+                    if ($uploadOk == 0) {
+                        echo "<script type=\"text/javascript\">
+                        alert(\"Sorry, your file was not uploaded.\");
+                        window.location = \"index.php\"
+                        </script>";
+                } else {
+                    move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file);
+                    if ($partylist == null){
+                        $conn->query("INSERT INTO candidates (name, image, course, position, partylist, vote) 
+                        VALUES('$name', '$target_file', '$course', '$position', 'N/A', 0)") or die($conn->error);
+                        ?>
+                        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                        <script>
+                            $(document).ready(function(){
+                                Swal.fire({
+                                icon: 'success',
+                                title: 'Successfully Added',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Okay'
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "index.php";
+                                    }else{
+                                        window.location.href = "index.php";
+                                    }
+                                })
+                                
+                            })
+                    
+                        </script>
+                        <?php
+                    }else{
+                        $conn->query("INSERT INTO candidates (name, image, course, position, partylist, vote) 
+                        VALUES('$name', '$target_file', '$course', '$position', '$partylist', 0)") or die($conn->error);
+                        ?>
+                        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                        <script>
+                            $(document).ready(function(){
+                                Swal.fire({
+                                icon: 'success',
+                                title: 'Successfully Added',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'Okay'
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "index.php";
+                                    }else{
+                                        window.location.href = "index.php";
+                                    }
+                                })
+                                
+                            })
+                    
+                        </script>
+                        <?php
+                    }
+                  
+                }
+                    
+                } else {
+                    echo "<script type=\"text/javascript\">
+                    alert(\"File is not an image!\");
+                    window.location = \"index.php\"
+                    </script>";
+                    $uploadOk = 0;
+                }
             }
+        }else{
+            ?>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'warning',
+                    title: 'Candidate Already Added',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "index.php";
+                        }else{
+                            window.location.href = "index.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+        <?php
         }
+      
     }
 
     // delete candidate
@@ -245,9 +303,9 @@
                 confirmButtonText: 'Okay'
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "_admin-voting-reset.php";
+                    window.location.href = "index.php";
                     }else{
-                        window.location.href = "_admin-voting-reset.php";
+                        window.location.href = "index.php";
                     }
                 })
                 

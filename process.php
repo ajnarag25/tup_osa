@@ -1115,206 +1115,91 @@
 
         if (!$result->num_rows > 0){
             if ($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
-                ?>
-                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function(){
-                        Swal.fire({
-                        icon: 'error',
-                        title: 'Please Select a Specific USG Candidates',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Okay'
-                        }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "_voting.php#votingform";
-                            }else{
-                                window.location.href = "_voting.php#votingform";
-                            }
-                        })
-                        
-                    })
+                echo "walang binoto ni isa lods";
             
-                </script>
-            <?php
-            }elseif($president == null || $vicepres == null || $secretary == null || $treasure == null || $senator == null || $governor == null || $mayor == null || $vicemayor == null){
-                ?>
-                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function(){
-                        Swal.fire({
-                        icon: 'error',
-                        title: 'Please Select a Specific USG Candidates',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Okay'
-                        }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "_voting.php#votingform";
-                            }else{
-                                window.location.href = "_voting.php#votingform";
-                            }
-                        })
-                        
-                    })
-            
-                </script>
-            <?php
             }else{
-                if(count($secretary) != 2){
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'warning',
-                            title: 'Please Choose 2 Secretary',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php#votingform";
-                                }else{
-                                    window.location.href = "_voting.php#votingform";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                <?php
-                }elseif(count($senator) != 6){
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'warning',
-                            title: 'Please Choose 6 Senator',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php#votingform";
-                                }else{
-                                    window.location.href = "_voting.php#votingform";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                <?php
-                }elseif(count($governor) != 6){
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'warning',
-                            title: 'Please Choose 6 Governor',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php#votingform";
-                                }else{
-                                    window.location.href = "_voting.php#votingform";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                <?php
-                }elseif(count($mayor) != 6){
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'warning',
-                            title: 'Please Choose 6 Mayor',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php#votingform";
-                                }else{
-                                    window.location.href = "_voting.php#votingform";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                <?php
-                }elseif(count($vicemayor) != 6){
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'warning',
-                            title: 'Please Choose 6 Vice Mayor',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php#votingform";
-                                }else{
-                                    window.location.href = "_voting.php#votingform";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                <?php
-                }else{
-                    
-                $sec_arr = implode(',',$secretary);
-                $sen_arr = implode(',',$senator);
-                $gov_arr = implode(',',$governor);
-                $mayor_arr = implode(',',$mayor);
-                $vicemay_arr = implode(',',$vicemayor);
+                if($vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($president) ") or die($conn->error);
 
-                $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-
-                $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($president, $vicepres, $treasure, $sec_arr, $sen_arr, $gov_arr, $mayor_arr, $vicemay_arr) ") or die($conn->error);
-                        
-                ?>
-                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                  <script>
-                      $(document).ready(function(){
-                          Swal.fire({
-                          icon: 'success',
-                          title: 'Successfully Submitted your Vote',
-                          confirmButtonColor: '#3085d6',
-                          confirmButtonText: 'Okay'
-                          }).then((result) => {
-                          if (result.isConfirmed) {
-                              window.location.href = "_mainss.php";
-                              }else{
-                                  window.location.href = "_mainss.php";
-                              }
-                          })
-                          
-                      })
-              
-                  </script>
-                <?php
+                    echo "President lang binoto";
+                }elseif($president == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($vicepres) ") or die($conn->error);
+                    echo "Vice President lang binoto";
+                }elseif($president == null && $vicepres == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
+                    $sec_arr = implode(',',$secretary);
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($sec_arr) ") or die($conn->error);
+                    echo "Secretary lang binoto";
+                }elseif($president == null && $vicepres == null && $secretary == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($treasure) ") or die($conn->error);
+                    echo "Treasurer lang binoto";
+                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $governor == null && $mayor == null && $vicemayor == null){
+                    $sen_arr = implode(',',$senator);
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($sen_arr) ") or die($conn->error);
+                    echo "Senator lang binoto";
+                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $mayor == null && $vicemayor == null){
+                    $gov_arr = implode(',',$governor);
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($gov_arr) ") or die($conn->error);
+                    echo "Governor lang binoto";
+                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $vicemayor == null){
+                    $mayor_arr = implode(',',$mayor);
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($mayor_arr) ") or die($conn->error);
+                    echo "Mayor lang binoto";
+                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null){
+                    $vicemay_arr = implode(',',$vicemayor);
+                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
+    
+                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($vicemay_arr) ") or die($conn->error);
+                    echo "Vice Mayor lang binoto";
                 }
-
+                //MORE THAN 1
+                elseif($president != null && $vicepres != null){
+                    echo "pres at vice";
+                } elseif($president != null && $vicepres != null && $secretary != null){
+                    
+                } elseif($president != null && $vicepres != null && $secretary != null && $treasure != null){
+                    
+                } elseif($president != null && $vicepres != null && $secretary != null && $treasure != null && $senator != null){
+                    
+                } elseif($president != null && $vicepres != null && $secretary != null && $treasure != null && $senator != null && $governor != null){
+                    
+                } elseif($president != null && $vicepres != null && $secretary != null && $treasure != null && $senator != null && $governor != null && $mayor != null){
+                    
+                } elseif($president != null || $vicepres != null){
+                    echo "pres at vice";
+                } elseif($president != null || $vicepres != null || $secretary != null){
+                    
+                } elseif($president != null || $vicepres != null || $secretary != null || $treasure != null){
+                    
+                } elseif($president != null || $vicepres != null || $secretary != null || $treasure != null || $senator != null){
+                    
+                } elseif($president != null || $vicepres != null || $secretary != null || $treasure != null || $senator != null || $governor != null){
+                    
+                } elseif($president != null || $vicepres != null || $secretary != null || $treasure != null || $senator != null || $governor != null || $mayor != null){
+                    
+                } 
             }
-
         }else{
             ?>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -1339,7 +1224,7 @@
             </script>
         <?php
         }
-
+  
     }
 
 ?>

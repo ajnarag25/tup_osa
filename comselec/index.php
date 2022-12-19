@@ -211,9 +211,14 @@
                                                                 <p>Upload Image:</p>
                                                                 <input id="t5-n2" type="file" name="pic" class="validate" required>
                                                             </div>
+    
                                                         </div>  
                                                         <div class="row">
-                                                            <div class="input-field col s6">
+                                                            <div class="input-field col s4">
+                                                                <p>Partylist:</p>
+                                                                <input id="t5-n2" type="text" name="partylist" class="validate">
+                                                            </div>
+                                                            <div class="input-field col s4">
                                                                 <p>Course:</p>
                                                                 <select name="course" value="" required>
                                                                     <option selected disabled>-- Select Course --</option>
@@ -232,7 +237,7 @@
                                                                     <option value="BSME">BSME</option>		
                                                                 </select>
                                                             </div>
-                                                            <div class="input-field col s6">
+                                                            <div class="input-field col s4">
                                                                 <p>Position:</p>
                                                                 <select name="position" value="" required>
                                                                     <option selected disabled>-- Select Position --</option>
