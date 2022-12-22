@@ -645,7 +645,7 @@
                         </div>
                         <div>
                             <div class="input-field s12">
-                                <input type="text" name="contact" class="validate" required>
+                                <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="11" name="contact" class="validate" required>
                                 <label>Contact</label>
                             </div>
                         </div>

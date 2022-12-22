@@ -1110,8 +1110,8 @@
         $vicemayor = $_POST['vicemay'];
 
 
-        // $sql = "SELECT * FROM voters  WHERE student_id='$studentid' AND email='$email' ";
-        // $result = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM voters  WHERE student_id='$studentid' AND email='$email' ";
+        $result = mysqli_query($conn, $sql);
 
         if (!$result->num_rows > 0){
             if ($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){

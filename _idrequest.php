@@ -398,7 +398,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><small>Contact Number:</small></label>
                                 <div class="col-sm-9">
-                                    <input type="number" class="form-control" name="contact_number"  required>
+                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="11" placeholder="Number of the contact person in case of emergency" class="form-control" name="contact_number"  required>
                                 </div>
                             </div>
                             <div class="form-group">
