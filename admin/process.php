@@ -1,3 +1,6 @@
+<link href="css/style.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
+
 <?php 
 include('connection.php');
 error_reporting(0);
@@ -1274,6 +1277,65 @@ if (isset($_POST['add_scholar'])) {
 
     }
 }
+
+// delete scholarship
+
+if (isset($_POST['delete_scholarship'])) {
+    $id = $_POST['id'];
+
+    if($id != null){
+        $conn->query("DELETE FROM list_scholar WHERE id='$id'") or die($conn->error);
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully Deleted the Scholarship',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-scholarship.php";
+                    }else{
+                        window.location.href = "_admin-scholarship.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        ?>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-scholarship.php";
+                    }else{
+                        window.location.href = "_admin-scholarship.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+
+    }
+
+   
+}
+
 
 
 

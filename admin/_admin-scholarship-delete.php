@@ -20,12 +20,18 @@
     <link rel="shortcut icon" href="images/fav.ico" type="image/x-icon">
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700%7CJosefin+Sans:600,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- FONTAWESOME ICONS -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="css/font-awesome.css"> -->
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
     <!-- ALL CSS FILES -->
     <link href="css/materialize.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
     <link href="css/style-mob.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,8 +43,8 @@
 </head>
 
 <body>
-     <!--== MAIN CONTRAINER ==-->
-     <div class="container-fluid sb1">
+    <!--== MAIN CONTRAINER ==-->
+    <div class="container-fluid sb1">
         <div class="row">
             <!--== LOGO ==-->
             <div class="col-md-2 col-sm-3 col-xs-6 sb1-1">
@@ -141,9 +147,9 @@
                         </li>
                         <li><a href="_admin-goodmoral.php"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
                         </li>
-                        <li><a href="_admin-voting.php" class="menu-active"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
+                        <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
-                        <li><a href="_admin-scholarship.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
+                        <li><a href="_admin-scholarship.php" class="menu-active"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
                         </li>
                         <li><a href="_admin-violation.php"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
                         </li>
@@ -155,66 +161,49 @@
                 </div>
             </div>
 
-             <!--== BODY INNER CONTAINER ==-->
-             <div class="sb2-2">
+            <!--== BODY INNER CONTAINER ==-->
+            <div class="sb2-2">
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
                     <ul>
-                        <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                        <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li class="active-bre"><a href="#"> USG Voting</a>
+                        <li ><a href="_admin-scholarship.php"> Scholarship</a>
+                        </li>
+                        <li class="active-bre"><a href="#"> Scholarship - Delete</a>
                         </li>
                     </ul>
                 </div>
 
-                <!--== List of Candidates ==-->
+                <!--== View Details ==-->
                 <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="box-inn-sp">
+						<div class="box-inn-sp admin-form">
                                 <div class="inn-title">
-                                    <h4>List of Candidates</h4>
+                                    <h4>Delete Scholarship</h4>
                                 </div>
                                 <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table id="myTable" class="table table-hover centered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Picture</th>
-                                                    <th>Full Name</th>
-                                                    <th>Course</th>
-                                                    <th>Position</th>
-                                                    <th>Vote Count</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    $query = "SELECT * FROM candidates";
-                                                    $result = mysqli_query($conn, $query);
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                ?>
-                                                <tr>
-                                                    <td><?php echo $row['id'] ?></td>
-                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
-                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
-                                                    <td><?php echo $row['course'] ?></td>
-                                                    <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
-                                                </tr>
-
-                                                <?php } ?>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <?php 
+                                        $id = $_GET['id'];
+                                        $query = "SELECT * FROM list_scholar WHERE id='$id'";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_array($result)) {
+                                    ?>
+                                    <form method="POST" action="process.php">
+                                        <div class="text-center">
+                                            <h3>Are you sure to delete this scholarship program?</h3>
+                                            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                            <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Cancel</strong></a>
+                                            <button class="btn waves-effect btn-danger" name="delete_scholarship"><strong>Delete</strong></button>
+                                        </div>
+                                    </form>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-        
             </div>
         </div>
     </div>
@@ -224,6 +213,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
+    <!-- SlimScroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
 </body>
 
 

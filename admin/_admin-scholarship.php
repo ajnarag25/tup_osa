@@ -177,8 +177,50 @@
                         <li class="active-bre"><a href="#"> Scholarship Request</a>
                         </li>
                     </ul>
-                    <a href="_admin-scholarship-announcement.php" class="btn btn-danger waves-light right">Add Announcement</a>
+                    <a href="_admin-scholarship-announcement.php" class="btn btn-danger waves-light right">Add Scholarship</a>
                 </div>
+                <div class="sb2-2-3" id="newlist">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>Scholarship Programs</h4>
+                                </div>
+                                <div class="box-body tab-inn">
+                                    <table id="example1" class="table table-bordered table-hover table-sm">
+                                      <thead>
+                                        <tr class="table-secondary">
+                                            <th>Scholarship</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <?php 
+                                            $query = "SELECT * FROM list_scholar";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+                                        <tr>
+                                            <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                            <td><?php echo $row['description'] ?></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="_admin-scholarship-delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger waves-light  btn-sm">Delete</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <?php } ?>
+
+                                      </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
                 <!--== Scholarship ==-->
                 <div class="sb2-2-3" id="newlist">
                     <div class="row">
