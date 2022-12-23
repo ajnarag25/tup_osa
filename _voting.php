@@ -577,7 +577,7 @@
                                             while ($row = mysqli_fetch_array($result)) {
 
                                         ?>
-                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                            <option value="<?php echo $row['id'] ?>,"><?php echo $row['name'] ?></option>	
                                         <?php } ?>						
                                     </select>
                                 </div>
@@ -593,7 +593,7 @@
                                             while ($row = mysqli_fetch_array($result)) {
 
                                         ?>
-                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                            <option value="<?php echo $row['id'] ?>,"><?php echo $row['name'] ?></option>	
                                         <?php } ?>					
                                     </select>
                                     <span id="invalidsec" style="color:red;" hidden>Please select only two candidates</span>
@@ -610,7 +610,7 @@
                                             while ($row = mysqli_fetch_array($result)) {
 
                                         ?>
-                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
+                                            <option value="<?php echo $row['id'] ?>,"><?php echo $row['name'] ?></option>	
                                         <?php } ?>					
                                     </select>
                                 </div>

@@ -1109,384 +1109,62 @@
         $mayor = $_POST['may'];
         $vicemayor = $_POST['vicemay'];
 
-
-        $sql = "SELECT * FROM voters  WHERE student_id='$studentid' AND email='$email' ";
-        $result = mysqli_query($conn, $sql);
-
-        if (!$result->num_rows > 0){
-            if ($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
-                ?>
-                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function(){
-                        Swal.fire({
-                        icon: 'error',
-                        title: 'Please Vote a Candidate',
-                        text: 'Something Went Wrong.',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Okay'
-                        }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "_voting.php";
-                            }else{
-                                window.location.href = "_voting.php";
-                            }
-                        })
-                        
-                    })
+        if(is_null($president) || is_null($vicepres) || is_null($secretary) || is_null($treasure) || is_null($senator) || is_null($governor) || is_null($mayor) || is_null($vicemayor)){
             
-                </script>
-                <?php
-            
-            }elseif($president != null && $vicepres != null && $secretary != null && $treasure != null && $senator != null && $governor != null && $mayor != null && $vicemayor != null){
-                $sec_arr = implode(',',$secretary);
-                $sen_arr = implode(',',$senator);
-                $gov_arr = implode(',',$governor);
-                $mayor_arr = implode(',',$mayor);
-                $vicemay_arr = implode(',',$vicemayor);
-                $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-                
-                $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($president, $vicepres, $sec_arr, $treasure, $sen_arr, $gov_arr, $mayor_arr, $vicemay_arr) ") or die($conn->error);
-                ?>
-                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function(){
-                        Swal.fire({
-                        icon: 'success',
-                        title: 'Successfully Submitted your Vote',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Okay'
-                        }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "_voting.php";
-                            }else{
-                                window.location.href = "_voting.php";
-                            }
-                        })
-                        
-                    })
-            
-                </script>
-                <?php
-            }else{
-                if($vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($president) ") or die($conn->error);
+            // if ($secretary == null){
+            //     $secretary = [0];
+            //     $sec_arr = implode(',',$secretary);
+            // } elseif ($secretary == null){
+            //     $senator = [0];
+            //     $sen_arr = implode(',',$senator);
+            // } elseif ($secretary == null){
+            //     $governor = [0];
+            //     $gov_arr = implode(',',$governor);
+            // } elseif ($secretary == null){
+            //     $mayor = [0];
+            //     $mayor_arr = implode(',',$mayor);
+            // } elseif ($secretary == null){
+            //     $vicemayor = [0];
+            //     $vicemay_arr = implode(',',$vicemayor);
+            // } elseif ($secretary == null){
+            //     $secretary = [0];
+            //     $sec_arr = implode(',',$secretary);
+            // }
 
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }elseif($president == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($vicepres) ") or die($conn->error);
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }elseif($president == null && $vicepres == null && $treasure == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
-                    $sec_arr = implode(',',$secretary);
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($sec_arr) ") or die($conn->error);
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }elseif($president == null && $vicepres == null && $secretary == null && $senator == null && $governor == null && $mayor == null && $vicemayor == null){
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($treasure) ") or die($conn->error);
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $governor == null && $mayor == null && $vicemayor == null){
-                    $sen_arr = implode(',',$senator);
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($sen_arr) ") or die($conn->error);
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $mayor == null && $vicemayor == null){
-                    $gov_arr = implode(',',$governor);
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($gov_arr) ") or die($conn->error);
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $vicemayor == null){
-                    $mayor_arr = implode(',',$mayor);
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($mayor_arr) ") or die($conn->error);
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }elseif($president == null && $vicepres == null && $secretary == null && $treasure == null && $senator == null && $governor == null && $mayor == null){
-                    $vicemay_arr = implode(',',$vicemayor);
-                    $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                    VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-    
-                    $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($vicemay_arr) ") or die($conn->error);
-                    ?>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                    <script>
-                        $(document).ready(function(){
-                            Swal.fire({
-                            icon: 'success',
-                            title: 'Successfully Submitted your Vote',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'Okay'
-                            }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "_voting.php";
-                                }else{
-                                    window.location.href = "_voting.php";
-                                }
-                            })
-                            
-                        })
-                
-                    </script>
-                    <?php
-                }
-                //MORE THAN 1
-                else{
-                    if ($secretary == null){
-                        $sen_arr = implode(',',$senator);
-                        $gov_arr = implode(',',$governor);
-                        $mayor_arr = implode(',',$mayor);
-                        $vicemay_arr = implode(',',$vicemayor);
-                        $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                        VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-                        
-                        $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($president, $vicepres, $treasure, $sen_arr, $gov_arr, $mayor_arr, $vicemay_arr) ") or die($conn->error);
-                        ?>
-                        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                        <script>
-                            $(document).ready(function(){
-                                Swal.fire({
-                                icon: 'success',
-                                title: 'Successfully Submitted your Vote',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'Okay'
-                                }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "_voting.php";
-                                    }else{
-                                        window.location.href = "_voting.php";
-                                    }
-                                })
-                                
-                            })
+            
+            $store_data = array([$president], [$vicepres], $secretary, [$treasure], $senator, $governor, $mayor, $vicemayor);
+            foreach($store_data as $data){
+                if (is_array($data)){
+                    // echo $data;
+                    $convert = implode(",",$data);
+                    echo $convert;
+                    // $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
+                    // VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
                     
-                        </script>
-                        <?php
-                    }elseif ($senator == null){
-                        $sec_arr = implode(',',$secretary);
-                        $gov_arr = implode(',',$governor);
-                        $mayor_arr = implode(',',$mayor);
-                        $vicemay_arr = implode(',',$vicemayor);
-                        $conn->query("INSERT INTO voters (student_id, email, president, vicepres, secretary, treasure, senator, governor, mayor, vicemayor) 
-                        VALUES('$studentid', '$email', '$president', '$vicepres', '$sec_arr', '$treasure', '$sen_arr', '$gov_arr', '$mayor_arr', '$vicemay_arr')") or die($conn->error);
-                        
-                        $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in($president, $vicepres, $sec_arr, $treasure, $gov_arr, $mayor_arr, $vicemay_arr) ") or die($conn->error);
-                        ?>
-                        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                        <script>
-                            $(document).ready(function(){
-                                Swal.fire({
-                                icon: 'success',
-                                title: 'Successfully Submitted your Vote',
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: 'Okay'
-                                }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "_voting.php";
-                                    }else{
-                                        window.location.href = "_voting.php";
-                                    }
-                                })
-                                
-                            })
-                    
-                        </script>
-                        <?php
-                    }
-
+                    // $conn->query("UPDATE candidates SET vote = vote + 1 WHERE id in ($convert) ") or die($conn->error);
+                    // echo "success lods";
+                  
                 }
+
             }
-        }else{
-            ?>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function(){
-                    Swal.fire({
-                    icon: 'warning',
-                    title: 'You have already voted',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Okay'
-                    }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "_mainss.php";
-                        }else{
-                            window.location.href = "_mainss.php";
-                        }
-                    })
-                    
-                })
-        
-            </script>
-        <?php
+
+   
         }
+
+
+        // $store_data = array($president, $vicepres, $sec_arr, $treasure, $sen_arr, $gov_arr, $mayor_arr, $vicemay_arr);
+
+
+        // foreach($store_data as $data){
+        //     echo $data;
+        // }
+        // $sql = "SELECT * FROM voters  WHERE student_id='$studentid' AND email='$email' ";
+        // $result = mysqli_query($conn, $sql);
+
+
+
+
+        
   
     }
 
