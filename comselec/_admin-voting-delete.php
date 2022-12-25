@@ -102,7 +102,7 @@
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
-                        <li><a href="_admin-voting.php" class="menu-active"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
+                        <li><a href="index.php" class="menu-active"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
 						<li><a href="_admin-settings.php"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>

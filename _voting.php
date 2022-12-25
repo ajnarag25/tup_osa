@@ -552,7 +552,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">President:</label>
                                 <div class="col-sm-9">
-                                    <select name="pres">
+                                    <select name="pres[]">
                                     <option disabled selected>-- Select one candidate --</option>
                                     <?php 
                                         $query = "SELECT * FROM candidates WHERE position='President' ";
@@ -569,7 +569,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Vice President:</label>
                                 <div class="col-sm-9">
-                                    <select name="vicepres">
+                                    <select name="vicepres[]">
                                         <option disabled selected>-- Select one candidate --</option>
                                         <?php 
                                             $query = "SELECT * FROM candidates WHERE position='Vice President' ";
@@ -577,7 +577,7 @@
                                             while ($row = mysqli_fetch_array($result)) {
 
                                         ?>
-                                            <option value="<?php echo $row['id'] ?>,"><?php echo $row['name'] ?></option>	
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
                                         <?php } ?>						
                                     </select>
                                 </div>
@@ -585,7 +585,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Secretary:</label>
                                 <div class="col-sm-9">
-                                    <select name="sec[]" id="limitsecretary" multiple="multiple" onchange="secretary()">
+                                    <select name="sec[]" id="limitsecretary" multiple onchange="secretary()">
                                         <option disabled >-- Select two candidate--</option>
                                         <?php 
                                             $query = "SELECT * FROM candidates WHERE position='Secretary' ";
@@ -593,7 +593,7 @@
                                             while ($row = mysqli_fetch_array($result)) {
 
                                         ?>
-                                            <option value="<?php echo $row['id'] ?>,"><?php echo $row['name'] ?></option>	
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
                                         <?php } ?>					
                                     </select>
                                     <span id="invalidsec" style="color:red;" hidden>Please select only two candidates</span>
@@ -602,7 +602,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Treasurer:</label>
                                 <div class="col-sm-9">
-                                    <select name="treasure">
+                                    <select name="treasure[]">
                                         <option disabled selected>-- Select one candidate --</option>
                                         <?php 
                                             $query = "SELECT * FROM candidates WHERE position='Treasurer' ";
@@ -610,7 +610,7 @@
                                             while ($row = mysqli_fetch_array($result)) {
 
                                         ?>
-                                            <option value="<?php echo $row['id'] ?>,"><?php echo $row['name'] ?></option>	
+                                            <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
                                         <?php } ?>					
                                     </select>
                                 </div>
@@ -618,7 +618,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Senator:</label>
                                 <div class="col-sm-9">
-                                    <select name="senator[]" id="limitsix1" multiple="multiple" onchange="six1()">
+                                    <select name="senator[]" id="limitsix1" multiple onchange="six1()">
                                         <option disabled >-- Select six candidate--</option>
                                         <?php 
                                             $query = "SELECT * FROM candidates WHERE position='Senator' ";
@@ -635,7 +635,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Governor:</label>
                                 <div class="col-sm-9">
-                                    <select name="gov[]" id="limitsix2" multiple="multiple" onchange="six2()">
+                                    <select name="gov[]" id="limitsix2" multiple onchange="six2()">
                                         <option disabled >-- Select six candidate--</option>
                                         <?php 
                                             $query = "SELECT * FROM candidates WHERE position='Governor' ";
@@ -652,7 +652,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Mayor:</label>
                                 <div class="col-sm-9">
-                                    <select name="may[]" id="limitsix3" multiple="multiple" onchange="six3()">
+                                    <select name="may[]" id="limitsix3" multiple onchange="six3()">
                                         <option disabled >-- Select six candidate--</option>
                                         <?php 
                                             $query = "SELECT * FROM candidates WHERE position='Mayor' ";
@@ -669,7 +669,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Vice Mayor:</label>
                                 <div class="col-sm-9">
-                                    <select name="vicemay[]" id="limitsix4" multiple="multiple" onchange="six4()">
+                                    <select name="vicemay[]" id="limitsix4" multiple onchange="six4()">
                                         <option disabled >-- Select six candidate--</option>
                                         <?php 
                                             $query = "SELECT * FROM candidates WHERE position='Vice Mayor' ";
