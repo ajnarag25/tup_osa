@@ -342,7 +342,7 @@
                                                             <!-- For First offense Minor-->
                                                             <div id="firstoffminor" class="input-field col s6" hidden>
                                                                 <select name="offense4" required>
-                                                                    <option selected disabled>-- Sanction (for major) --</option>
+                                                                    <option selected disabled>-- Sanction (for minor) --</option>
                                                                     <option value="Warning and a Letter of Apology">Warning and a Letter of Apology</option>
                                                                     <option value="Warning and a Letter of Apology with the understanding that the student will no longer attempt to join such organization">Warning and a Letter of Apology with the understanding that the student will no longer attempt to join such organization</option>
                                                                     <option value="Warning, a Letter of Apology and forfeiture of gambling parapher">Warning, a Letter of Apology and forfeiture of gambling parapher</option>
@@ -353,7 +353,7 @@
                                                             <!-- For Third offense Minor-->
                                                             <div id="secondoffminor" class="input-field col s6" hidden>
                                                                 <select name="offense4" required>
-                                                                    <option selected disabled>-- Sanction (for major) --</option>
+                                                                    <option selected disabled>-- Sanction (for minor) --</option>
                                                                     <option value="10 to 20 hours of community service">10 to 20 hours of community service</option>
                                                                     <option value="10 to 20 hours of community service and replacement or repair of  the damaged property">10 to 20 hours of community service and replacement or repair of  the damaged property</option>
                                                                 </select>
@@ -361,7 +361,7 @@
                                                             <!-- For Third offense Minor-->
                                                             <div id="thirdoffminor" class="input-field col s6" hidden>
                                                                 <select name="offense4" required>
-                                                                    <option selected disabled>-- Sanction (for major) --</option>
+                                                                    <option selected disabled>-- Sanction (for minor) --</option>
                                                                     <option value="30 to 50 hours of community service">30 to 50 hours of community service</option>
                                                                     <option value="30 to 50 hours of community service and replacement or repair of  the damaged property">30 to 50 hours of community service and replacement or repair of  the damaged property</option>
                                                                 </select>

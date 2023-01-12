@@ -38,6 +38,7 @@
 
 <body>
      <!--== MAIN CONTRAINER ==-->
+     
      <div class="container-fluid sb1">
         <div class="row">
             <!--== LOGO ==-->
@@ -136,18 +137,16 @@
 
                                             ?>
                                             <div class="input-field col s6">
-                                                <p>Current Status:</p>
-                                                <input type="text" value="<?php echo $row['status'] ?>" readonly>
-                                            </div>
-                                            <div class="input-field col s6">
                                                 <p>Change Status:</p>
                                                 <select name="stat" required>
-                                                    <option selected disabled value="">-- Select Status --</option>
+                                                    <option selected disabled value=""><?php echo $row['status'] ?></option>
                                                     <option value="Open">Open</option>
-                                                    <option value="Close">Close</option>				
+                                                    <option value="Close">Close</option>
+                                                    <option value="Adding Candidates">Adding Candidates</option>				
                                                 </select>
+                                                <button type="submit" name="change_stat" class="btn btn-primary">Change Status</button>
                                             </div>
-                                            <button type="submit" name="change_stat" class="btn btn-primary">Change Status</button>
+                                            
 
                                             <?php } ?>
                                         </div>
@@ -158,7 +157,9 @@
                         </div>
                     </div>
                     </div>
-                
+                    <a href = "pdf_with_votes.php" target = "_blank" class="btn btn-primary">Generate PDF(with vote counts)</a> 
+                    <a href = "pdf_without_votes.php" target = "_blank" class="btn btn-primary">Generate PDF(without vote counts)</a>
+                    <a href = "pdf_voters.php" target = "_blank" class="btn btn-primary">Generate PDF for list of voters</a> 
                     <?php 
                         $query = "SELECT * FROM usg_voting ";
                         $result = mysqli_query($conn, $query);
@@ -168,20 +169,917 @@
                 <?php 
                     if($row['status'] == 'Close'){
                     ?>
-                    <div class="sb2-2-3" >
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="box-inn-sp admin-form">
-                                    <div class="sb2-2-add-blog sb2-2-1">
-                                        <div class="text-center">
-                                            <h2>USG VOTING IS CLOSED</h2>
-                                        </div>
+                    <br>
+                    <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#reset_comselec">Delete All Candidates</button> 
+                    <!-- Modal Reset Comselec-->
+                    <div class="modal fade" id="reset_comselec" tabindex="-1" role="dialog" aria-labelledby="reset_comseleclabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="reset_comseleclabel">Delete All</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Delete All Cadidates? This Action is irreversible!
+                        </div>
+                        <div class="modal-footer">
+                            <form action="process.php" method = "POST">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" name = "del_all_candid" class="btn btn-primary">Proceed</button>
+                            </form>
+                                            
+                        </div>
+                        </div>
+                    </div>
+                    </div> 
+
+                
+                <!--== List of Candidates President ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(President)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'president' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-               <?php } else{
+                </div>
+
+                <!--== List of Candidates Vice President ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Vice President)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'vice president' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--== List of Candidates Secretary ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Secretary)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'secretary' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--== List of Candidates Treasurer ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Treasurer)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'treasurer' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Senator ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Senator)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'senator' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--== List of Candidates Governor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Governor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'governor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Mayor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Mayor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'mayor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Vice Mayor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Vice Mayor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'vice mayor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+               <?php }
+               elseif ($row['status'] == 'Open') {
+                ?>
+                <br>
+                <!--== List of Candidates President ==-->
+                <div id = "invoice">
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(President)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'president' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Vice President ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Vice President)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'vice president' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!--== List of Candidates Secretary ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Secretary)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'secretary' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--== List of Candidates Treasurer ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Treasurer)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'treasurer' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Senator ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Senator)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'senator' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--== List of Candidates Governor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Governor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'governor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Mayor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Mayor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'mayor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Vice Mayor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Vice Mayor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'vice mayor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+
+            
+                  <!--== List of Voters ==-->
+                  <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <a href="_admin-voting-reset.php" style="margin-right: 10px; margin-top: 15px;" class="btn btn-primary waves-light right">Reset Voters</a>
+                                <div class="inn-title">
+                                    <h4>Voters</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Student I.D</th>
+                                                    <th>Email</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM voters";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['student_id'] ?></td>
+                                                    <td><?php echo $row['email'] ?></td>
+                                                    <td>VOTED</td>
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+               }
+               else{
                 ?>
                 <!--== Add Candidate ==-->
                 <div class="sb2-2-3">
@@ -268,13 +1166,13 @@
                     </div>
                 </div>
 
-                <!--== List of Candidates ==-->
+                <!--== List of Candidates President ==-->
                 <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
                                 <div class="inn-title">
-                                    <h4>List of Candidates</h4>
+                                    <h4>List of Candidates(President)</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <div class="table-responsive table-desi">
@@ -287,27 +1185,23 @@
                                                     <th>Course</th>
                                                     <th>Position</th>
                                                     <th>Vote Count</th>
-                                                    <th>Action</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
-                                                    $query = "SELECT * FROM candidates";
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'president' order by vote desc";
                                                     $result = mysqli_query($conn, $query);
                                                     while ($row = mysqli_fetch_array($result)) {
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $row['id'] ?></td>
-                                                    <td><span class="list-img"><img src="<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
                                                     <td><?php echo $row['vote'] ?></td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="_admin-voting-delete.php?id=<?php echo $row['id'] ?>" style="color:white" class="btn waves-effect btn-danger">Delete</a>
-                                                        </div>
-                                                    </td>
+                                                    
                                                 </tr>
 
                                                 <?php } ?>
@@ -321,35 +1215,42 @@
                     </div>
                 </div>
 
-                  <!--== List of Voters ==-->
-                  <div class="sb2-2-3">
+                <!--== List of Candidates Vice President ==-->
+                <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
-                                <a href="_admin-voting-reset.php" style="margin-right: 10px; margin-top: 15px;" class="btn btn-primary waves-light right">Reset Voters</a>
                                 <div class="inn-title">
-                                    <h4>Voters</h4>
+                                    <h4>List of Candidates(Vice President)</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <div class="table-responsive table-desi">
                                         <table id="myTable" class="table table-hover centered">
                                             <thead>
                                                 <tr>
-                                                    <th>Student I.D</th>
-                                                    <th>Email</th>
-                                                    <th>Status</th>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
-                                                    $query = "SELECT * FROM voters";
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'vice president' order by vote desc";
                                                     $result = mysqli_query($conn, $query);
                                                     while ($row = mysqli_fetch_array($result)) {
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $row['student_id'] ?></td>
-                                                    <td><?php echo $row['email'] ?></td>
-                                                    <td>VOTED</td>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                   
                                                 </tr>
 
                                                 <?php } ?>
@@ -362,6 +1263,308 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <!--== List of Candidates Secretary ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Secretary)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'secretary' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--== List of Candidates Treasurer ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Treasurer)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'treasurer' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Senator ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Senator)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'senator' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--== List of Candidates Governor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Governor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'governor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                    
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Mayor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Mayor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'mayor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--== List of Candidates Vice Mayor ==-->
+                <div class="sb2-2-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-inn-sp">
+                                <div class="inn-title">
+                                    <h4>List of Candidates(Vice Mayor)</h4>
+                                </div>
+                                <div class="tab-inn">
+                                    <div class="table-responsive table-desi">
+                                        <table id="myTable" class="table table-hover centered">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Course</th>
+                                                    <th>Position</th>
+                                                    <th>Vote Count</th>
+                                                
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                                    $query = "SELECT * FROM candidates  WHERE POSITION = 'vice mayor' order by vote desc";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo $row['id'] ?></td>
+                                                    <td><span class="list-img"><img src="../comselec/<?php echo $row['image'] ?>" alt=""></span></td>
+                                                    <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
+                                                    <td><?php echo $row['course'] ?></td>
+                                                    <td><?php echo $row['position'] ?></td>
+                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                   
+                                                </tr>
+
+                                                <?php } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <?php } } ?>
         
             </div>
@@ -373,6 +1576,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src = "pdf_with_votes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 </body>
 
 

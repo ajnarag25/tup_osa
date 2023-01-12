@@ -4,6 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
+    date_default_timezone_set('Asia/Manila');
     // error_reporting(0);
 
 
@@ -50,8 +51,17 @@
             $_SESSION['admin_data'] = $getData_admin;
             header('location:./admin/index.php');
         }elseif($row_check2 == 1){
+            $dt = date("Y-m-d")." at ".date("h:ia");
+            $conn->query("INSERT INTO comselec_activity_log (date_time_login) 
+                VALUES('$dt')") or die($conn->error);
             $_SESSION['admin_data'] = $getData_comselec;
-            header('location:./comselec/index.php');
+            if ($password == 'comselec123') {
+                header('location:./comselec/reset_redirect.php');
+            }else{
+                header('location:./comselec/index.php');
+
+            }
+            
         }else{
             ?>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -352,6 +362,66 @@
 
     }
 
+    // change password
+    if (isset($_POST['change_pass'])) {
+        $password1 = $_POST['newpass1'];
+        $password2 = $_POST['newpass2'];
+        $get_otp = $_SESSION['otp'];
+        
+        if ($password1 != $password2){
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Password does not match!',
+                    text: 'Something went wrong',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "change_pass_forgot.php";
+                        }else{
+                            window.location.href = "change_pass_forgot.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }else{
+            $conn->query("UPDATE student SET password='".password_hash($password1, PASSWORD_DEFAULT)."' WHERE otp='$get_otp'") or die($conn->error);
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully changed your password',
+                    text: 'Please login your new created password account',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "index.php";
+                        }else{
+                            window.location.href = "index.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+
+    }
 
     // change profile pic
     if (isset($_POST['change_profile'])) {

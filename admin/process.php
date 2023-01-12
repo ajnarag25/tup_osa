@@ -1621,7 +1621,35 @@ if (isset($_POST['delete_scholarship'])) {
    
 }
 
+?>
+<?php
+if (isset($_POST['res_comselec'])) {
+    $username = $_POST['username'];
+    $passwordd = $_POST['passwordd'];
+    $conn->query("UPDATE comselec SET username='$username', password='$passwordd' WHERE id=1") or die($conn->error);    
 
 
-
+?>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'COMSELEC Account Reset Successfully',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-voting.php";
+                    }else{
+                        window.location.href = "_admin-voting.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+<?php
+}
 ?>
