@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2022 at 06:00 PM
+-- Generation Time: Jan 12, 2023 at 04:44 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -145,7 +145,7 @@ CREATE TABLE `good_moral` (
 
 INSERT INTO `good_moral` (`id`, `student_id`, `name`, `course`, `contact`, `email`, `purpose`, `yr_attendance`, `yr_graduate`, `proof`, `status`, `date_submit`, `date_claim`, `message`) VALUES
 (4, 'TUPC-18-0717', 'Avor John A. Narag', 'BET-COET', '09089637505', 'ajnarag25@gmail.com', 'Scholarship', '4 years', '2022', 'uploads/1670513552Admin-Profile-PNG-Clipart.png', 'DECLINED', '2022/12/08', 'PENDING', 'SORRY LODS GOODMORAL DI TANGGAP'),
-(5, 'TUPC-18-0717', 'Avor John A. Narag', 'BET-COET', '09089637505', 'ajnarag25@gmail.com', 'Para sa liga boss', 'N/A', 'N/A', 'uploads/16709952596.DL.jpg', 'PENDING', '2022/12/14', 'PENDING', 'N/A');
+(5, 'TUPC-18-0717', 'Avor John A. Narag', 'BET-COET', '09089637505', 'ajnarag25@gmail.com', 'Para sa liga boss', 'N/A', 'N/A', 'uploads/16709952596.DL.jpg', 'PENDING', '2022/12/14', 'PENDING', 'asqwe');
 
 -- --------------------------------------------------------
 
@@ -178,7 +178,7 @@ CREATE TABLE `id_request` (
 --
 
 INSERT INTO `id_request` (`id`, `student_id`, `name`, `email`, `req_type`, `course`, `contact`, `birthday`, `id_pic`, `signature`, `contact_person`, `contact_no`, `address`, `status`, `sched_submit`, `sched_claim`, `message`) VALUES
-(3, 'TUPC-18-0717', 'Avor John A. Narag', 'ajnarag25@gmail.com', 'Replacement (lost ID)', 'BET-COET', '09089637505', '1999-08-25', 'uploads/1670996755319270803_555776956387734_185498102251204505_n.jpg', 'uploads/signatures/167099675541fIV+4JzDL.jpg', 'Hazel Narag', '09555497138', 'blk 3 lot 8 meadow park subdivision, molino 4', 'PENDING', '2022/12/14', 'PENDING', 'N/A');
+(4, 'TUPC-18-0717', 'Avor John A. Narag', 'avorjohn.narag@gsfe.tupcavite.edu.ph', 'Replacement (lost ID)', 'BET-COET', '09555547745', '2023-01-13', 'uploads/1673517552button.PNG', 'uploads/signatures/1673517552318356725_1327096224723891_2068317325266581320_n.jpg', 'Hazel', '09555497138', 'blk 3 lot 8 meadow park subdivision, molino 4', 'PENDING', '2023/01/12', 'PENDING', 'N/A');
 
 -- --------------------------------------------------------
 
@@ -206,7 +206,7 @@ CREATE TABLE `id_validation` (
 --
 
 INSERT INTO `id_validation` (`id`, `student_id`, `name`, `course`, `contact`, `email`, `address`, `birthday`, `status`, `date_submit`, `date_claim`, `message`) VALUES
-(3, 'TUPC-18-0717', 'Avor John A. Narag', 'BET-COET', '09089637505', 'ajnarag25@gmail.com', 'blk 3 lot 8 meadow park subdivision, molino 4', '1999-08-25', 'PENDING', '2022/12/14', 'PENDING', 'N/A');
+(4, 'TUPC-18-0717', 'Avor John A. Narag', 'BET-COET', '09555547745', 'avorjohn.narag@gsfe.tupcavite.edu.ph', 'blk 3 lot 8 meadow park subdivision, molino 4', '2023-01-13', 'PENDING', '2023/01/12', 'PENDING', 'N/A');
 
 -- --------------------------------------------------------
 
@@ -295,7 +295,7 @@ CREATE TABLE `scholarship` (
 
 INSERT INTO `scholarship` (`id`, `student_id`, `apply`, `school_yr`, `name`, `course`, `contact`, `email`, `dbirth`, `pbirth`, `age`, `sex`, `nationality`, `religion`, `address`, `paddress`, `elementary`, `e_address`, `e_syattend`, `e_awards`, `junior`, `j_address`, `j_syattend`, `j_awards`, `senior`, `s_address`, `s_syattend`, `s_awards`, `academic_probation`, `desciplinary_probation`, `f_name`, `f_nationality`, `f_occupation`, `f_company`, `f_number`, `f_contact`, `m_name`, `m_nationality`, `m_occupation`, `m_company`, `m_number`, `m_contact`, `siblings`, `birth_order`, `hospitalized`, `details`, `essay1`, `essay2`, `req_date`, `sched_date`, `status`, `message`) VALUES
 (2, 'TUPC-18-0717', 'Teritiary Education Subsidy', '2022-2023', 'Avor John A. Narag', 'BET-COET', '09089637505', 'ajnarag25@gmail.com', '1999-08-25', 'Marikina', 22, 'Male', 'Filipino', 'Christian', 'blk 3 lot 8 meadow park subdivision, molino 4', 'Pangasinan', 'T. Alonzo Elementary School', 'Quezon city', '2008', 'N/A', 'St. John Fisher School', 'Bacoor, Cavite', '2012', 'N/A', 'APEC Schools', 'Bacoor, Cavite', '2018', 'N/A', 'N/A', 'N/A', 'Nixon', 'Filipino', 'Salesman', 'Bacoor', 'N/A', '09165982748', 'Hazel', 'Filipino', 'N/A', 'N/A', 'N/A', '09555497138', 2, '3rd', 'No', 'N/A', 'Malupet po', 'Need lang po', '2022/12/08', '2022-12-15 03:17', 'SUCCESS', 'madaling araw punta ka lods'),
-(3, 'TUPC-18-0717', 'Asian Development Bank Spouses Association Scholarship', '2022-2023', 'Avor John A. Narag', 'BET-COET', '09089637505', 'ajnarag25@gmail.com', '2000-08-25', 'Marikina', 23, 'Male', 'Filipino', 'Christian', 'blk 3 lot 8 meadow park subdivision, molino 4', 'Pangasinan', 'T. Alonzo Elementary School', 'Quezon city', '2008', 'N/A', 'St. John Fisher School', 'Bacoor, Cavite', '2012', 'N/A', 'APEC Schools', 'Bacoor, Cavite', '2018', 'N/A', 'N/A', 'N/A', 'Nixon', 'Filipino', 'Salesman', 'Bacoor', 'N/A', '09165982748', 'Hazel', 'Filipino', 'N/A', 'N/A', 'N/A', '09555497138', 5, '3rd', 'No', 'N/A', 'Pogi po', 'Need lang talaga', '2022/12/13', 'PENDING', 'PENDING', 'N/A');
+(3, 'TUPC-18-0717', 'Asian Development Bank Spouses Association Scholarship', '2022-2023', 'Avor John A. Narag', 'BET-COET', '09089637505', 'ajnarag25@gmail.com', '2000-08-25', 'Marikina', 23, 'Male', 'Filipino', 'Christian', 'blk 3 lot 8 meadow park subdivision, molino 4', 'Pangasinan', 'T. Alonzo Elementary School', 'Quezon city', '2008', 'N/A', 'St. John Fisher School', 'Bacoor, Cavite', '2012', 'N/A', 'APEC Schools', 'Bacoor, Cavite', '2018', 'N/A', 'N/A', 'N/A', 'Nixon', 'Filipino', 'Salesman', 'Bacoor', 'N/A', '09165982748', 'Hazel', 'Filipino', 'N/A', 'N/A', 'N/A', '09555497138', 5, '3rd', 'No', 'N/A', 'Pogi po', 'Need lang talaga', '2022/12/13', '2023-01-13 12nn-1pm', 'ONGOING', '');
 
 -- --------------------------------------------------------
 
@@ -311,6 +311,40 @@ CREATE TABLE `student` (
   `course` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `contact` varchar(100) NOT NULL,
+  `dbirth` varchar(100) NOT NULL,
+  `pbirth` varchar(100) NOT NULL,
+  `age` int(11) NOT NULL,
+  `sex` varchar(100) NOT NULL,
+  `nationality` varchar(100) NOT NULL,
+  `religion` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `paddress` varchar(100) NOT NULL,
+  `elementary` varchar(100) NOT NULL,
+  `e_address` varchar(100) NOT NULL,
+  `e_syattend` varchar(100) NOT NULL,
+  `e_awards` varchar(100) NOT NULL,
+  `junior` varchar(100) NOT NULL,
+  `j_address` varchar(100) NOT NULL,
+  `j_syattend` varchar(100) NOT NULL,
+  `j_awards` varchar(100) NOT NULL,
+  `senior` varchar(100) NOT NULL,
+  `s_address` varchar(100) NOT NULL,
+  `s_syattend` varchar(100) NOT NULL,
+  `s_awards` varchar(100) NOT NULL,
+  `f_name` varchar(100) NOT NULL,
+  `f_nationality` varchar(100) NOT NULL,
+  `f_occupation` varchar(100) NOT NULL,
+  `f_company` varchar(100) NOT NULL,
+  `f_number` varchar(100) NOT NULL,
+  `f_contact` varchar(100) NOT NULL,
+  `m_name` varchar(100) NOT NULL,
+  `m_nationality` varchar(100) NOT NULL,
+  `m_occupation` varchar(100) NOT NULL,
+  `m_company` varchar(100) NOT NULL,
+  `m_number` varchar(100) NOT NULL,
+  `m_contact` varchar(100) NOT NULL,
+  `siblings` int(11) NOT NULL,
+  `birth_order` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `social1` varchar(100) NOT NULL,
@@ -323,8 +357,22 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `image`, `student_id`, `name`, `course`, `email`, `contact`, `username`, `password`, `social1`, `social2`, `otp`, `status`) VALUES
-(1, 'uploads/default.png', 'TUPC-18-0717', 'Avor John A. Narag', 'BET-COET', 'ajnarag25@gmail.com', '09089637505', 'ajnarag25', '$2y$10$X.Cl/Is30BfZ7SKR4C9fqu45QgQeJeTRC8NQu65WRQnUhp1thPtj2', 'N/A', 'N/A', 0, 'VERIFIED');
+INSERT INTO `student` (`id`, `image`, `student_id`, `name`, `course`, `email`, `contact`, `dbirth`, `pbirth`, `age`, `sex`, `nationality`, `religion`, `address`, `paddress`, `elementary`, `e_address`, `e_syattend`, `e_awards`, `junior`, `j_address`, `j_syattend`, `j_awards`, `senior`, `s_address`, `s_syattend`, `s_awards`, `f_name`, `f_nationality`, `f_occupation`, `f_company`, `f_number`, `f_contact`, `m_name`, `m_nationality`, `m_occupation`, `m_company`, `m_number`, `m_contact`, `siblings`, `birth_order`, `username`, `password`, `social1`, `social2`, `otp`, `status`) VALUES
+(2, 'uploads/default.png', 'TUPC-18-0717', 'Avor John A. Narag', 'BET-COET', 'avorjohn.narag@gsfe.tupcavite.edu.ph', '09555547745', '2023-01-13', 'Marikina', 23, 'Male', 'Filipino', 'Christian', 'blk 3 lot 8 meadow park subdivision, molino 4', 'Bacoor, Cavite', 'T. Alonzo Elementary School', 'Quezon city', '2008', 'N/A', 'St. John Fisher School', 'blk 3 lot 8 meadow park subdivision, molino 4', '2012', 'N/A', 'APEC Schools', 'blk 3 lot 8 meadow park subdivision, molino 4', '2018', 'N/A', 'Nixon', 'Filipino', 'Salesman', 'Bacoor', 'N/A', '09165982748', 'Hazel', 'Filipino', 'N/A', 'N/A', 'N/A', '09555497138', 5, '3', 'ajnarag25', '$2y$10$r7mRp5pVYa9jPrbxhDpnxekuMioAc5xqrJxT5PFjqoT5atm2yTjK6', 'N/A', 'N/A', 0, 'VERIFIED');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_violation`
+--
+
+CREATE TABLE `system_violation` (
+  `id` int(11) NOT NULL,
+  `type1` varchar(100) NOT NULL,
+  `type2` varchar(100) NOT NULL,
+  `type3` varchar(100) NOT NULL,
+  `type4` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -450,6 +498,12 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `system_violation`
+--
+ALTER TABLE `system_violation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `usg_voting`
 --
 ALTER TABLE `usg_voting`
@@ -499,13 +553,13 @@ ALTER TABLE `good_moral`
 -- AUTO_INCREMENT for table `id_request`
 --
 ALTER TABLE `id_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `id_validation`
 --
 ALTER TABLE `id_validation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `list_scholar`
@@ -523,7 +577,13 @@ ALTER TABLE `scholarship`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `system_violation`
+--
+ALTER TABLE `system_violation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `usg_voting`
