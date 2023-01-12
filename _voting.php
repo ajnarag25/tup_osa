@@ -338,6 +338,13 @@
                             <h2>Welcome to USG <span>Online Voting</span></h2>
                             <p>Below is all the list of candidates. Please vote wisely</p>
                         </div>
+                   
+                    </div>
+                    <!-- Voting Form -->
+                    <div id="votingform" class="com-sp pad-bot-20 ed-res-bg">
+                        <div class="con-title">
+                            <strong><h2>USG Voting <span>Form</span></h2></strong>
+                        </div>
                         <div class="marketing" style="text-align: center;">
                             <div class="con-title">
                                 <h2>Running for <span>President</span></h2>
@@ -354,199 +361,11 @@
                                 <div class="col-lg-4 com-sp">
                                     <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
                                     <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
+                                    <p><?php echo $row['course'] ?></p>
                                     <p>Partylist: <?php echo $row['partylist'] ?></p>
                                 </div>
                                 <?php } ?>
                             </div>
-
-                 
-                            
-                        </div>
-                    </div>
-
-                    <div class="com-sp ed-res-bg">
-                        <div class=" marketing" style="text-align: center;">
-                            <div class="con-title">
-                                <h2>Running for <span>Vice President</span></h2>
-                                <small><p>Please choose one vice president</p></small>
-                            </div>
-                            <div class="row text-center">
-                                <?php 
-                                    $query = "SELECT * FROM candidates WHERE position='Vice President' ";
-                                    $result = mysqli_query($conn, $query);
-                                    while ($row = mysqli_fetch_array($result)) {
-
-                                ?>
-                                <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
-                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
-                                </div>
-                                <?php } ?>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="com-sp ed-res-bg">
-                        <div class=" marketing" style="text-align: center;">
-                            <div class="con-title">
-                                <h2>Running for <span>Secretary</span></h2>
-                                <small><p>Please choose two secretary (Internal and External)</p></small>
-                            </div>
-                            <div class="row text-center">
-                                <?php 
-                                    $query = "SELECT * FROM candidates WHERE position='Secretary' ";
-                                    $result = mysqli_query($conn, $query);
-                                    while ($row = mysqli_fetch_array($result)) {
-
-                                ?>
-                                <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
-                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
-                                </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="com-sp ed-res-bg">
-                        <div class=" marketing" style="text-align: center;">
-                            <div class="con-title">
-                                <h2>Running for <span>Treasurer</span></h2>
-                                <small><p>Please choose one treasurer</p></small>
-                            </div>
-
-                            <div class="row text-center">
-                            <?php 
-                                $query = "SELECT * FROM candidates WHERE position='Treasurer' ";
-                                $result = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($result)) {
-
-                            ?>
-                                <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
-                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
-                                </div>
-
-                            <?php } ?>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="com-sp ed-res-bg">
-                        <div class=" marketing" style="text-align: center;">
-                            <div class="con-title">
-                                <strong><h2>Running for <span>Senator</span></h2></strong>
-                                <small><p>Please choose six senator</p></small>
-                            </div>
-
-                            <div class="row text-center">
-                            <?php 
-                                $query = "SELECT * FROM candidates WHERE position='Senator' ";
-                                $result = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($result)) {
-
-                            ?>
-                                <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
-                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
-                                </div>
-                            <?php } ?>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="com-sp ed-res-bg">
-                        <div class=" marketing" style="text-align: center;">
-                            <div class="con-title">
-                                <strong><h2>Running for <span>Governor</span></h2></strong>
-                                <small><p>Please choose six governor</p></small>
-                            </div>
-                            <div class="row text-center">
-                            <?php 
-                                $query = "SELECT * FROM candidates WHERE position='Governor' ";
-                                $result = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($result)) {
-
-                            ?>
-                                <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
-                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
-                                </div>
-                            <?php } ?>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="com-sp ed-res-bg">
-                        <div class=" marketing" style="text-align: center;">
-                            <div class="con-title">
-                                <strong><h2>Running for <span>Mayor</span></h2></strong>
-                                <small><p>Please choose six mayor</p></small>
-                            </div>
-                            <div class="row text-center">
-                            <?php 
-                                $query = "SELECT * FROM candidates WHERE position='Mayor' ";
-                                $result = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($result)) {
-
-                            ?>
-                                <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
-                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
-                                </div>
-                            <?php } ?>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="com-sp ed-res-bg">
-                        <div class=" marketing" style="text-align: center;">
-                            <div class="con-title">
-                                <strong><h2>Running for <span>Vice Mayor</span></h2></strong>
-                                <small><p>Please choose six vice senator</p></small>
-                            </div>
-                            <div class="row text-center">
-                            <?php 
-                                $query = "SELECT * FROM candidates WHERE position='Vice Mayor' ";
-                                $result = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_array($result)) {
-
-                            ?>
-                                <div class="col-lg-4 com-sp">
-                                    <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <p style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
-                                    <p><a class="btn btn-danger btn-waves" href="#votingform">Vote</a></p>
-                                    <p>Partylist: <?php echo $row['partylist'] ?></p>
-                                </div>
-                            <?php } ?>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Voting Form -->
-                    <div id="votingform" class="com-sp pad-bot-20 ed-res-bg">
-                        <div class="con-title">
-                            <strong><h2>USG Voting <span>Form</span></h2></strong>
                         </div>
                         <form class="form-horizontal" method="POST" action="process.php">
                             <div class="form-group">
@@ -566,6 +385,29 @@
                          
                                 </div>
                             </div>
+                         
+                            <div class="text-center">
+                                <div class="con-title">
+                                    <h2>Running for <span>Vice President</span></h2>
+                                    <small><p class="text-center">Please choose one vice president</p></small>
+                                </div>
+                                <div class="row text-center">
+                                    <?php 
+                                        $query = "SELECT * FROM candidates WHERE position='Vice President' ";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_array($result)) {
+
+                                    ?>
+                                    <div class="col-lg-4 com-sp">
+                                        <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <p class="text-center" style="font-size: large; padding-top: 10px; "><strong><?php echo $row['name'] ?></strong> </p>
+                                        <p class="text-center"><?php echo $row['course'] ?></p>
+                                        <p class="text-center">Partylist: <?php echo $row['partylist'] ?></p>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Vice President:</label>
                                 <div class="col-sm-9">
@@ -580,6 +422,27 @@
                                             <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>	
                                         <?php } ?>						
                                     </select>
+                                </div>
+                            </div>
+                            <div class=" marketing" style="text-align: center;">
+                                <div class="con-title">
+                                    <h2>Running for <span>Secretary</span></h2>
+                                    <small><p class="text-center">Please choose two secretary</p></small>
+                                </div>
+                                <div class="row text-center">
+                                    <?php 
+                                        $query = "SELECT * FROM candidates WHERE position='Secretary' ";
+                                        $result = mysqli_query($conn, $query);
+                                        while ($row = mysqli_fetch_array($result)) {
+
+                                    ?>
+                                    <div class="col-lg-4 com-sp">
+                                        <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <p class="text-center" style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                        <p class="text-center"><?php echo $row['course'] ?></p>
+                                        <p class="text-center">Partylist: <?php echo $row['partylist'] ?></p>
+                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -599,6 +462,30 @@
                                     <span id="invalidsec" style="color:red;" hidden>Please select only two candidates</span>
                                 </div>
                             </div>
+                            <div class=" marketing" style="text-align: center;">
+                                <div class="con-title">
+                                    <h2>Running for <span>Treasurer</span></h2>
+                                    <small><p class="text-center">Please choose one treasurer</p></small>
+                                </div>
+
+                                <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='Treasurer' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                    <div class="col-lg-4 com-sp">
+                                        <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <p class="text-center" style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                        <p class="text-center"><?php echo $row['course'] ?></p>
+                                        <p class="text-center">Partylist: <?php echo $row['partylist'] ?></p>
+                                    </div>
+
+                                <?php } ?>
+
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Treasurer:</label>
                                 <div class="col-sm-9">
@@ -614,6 +501,30 @@
                                         <?php } ?>					
                                     </select>
                                 </div>
+                            </div>
+                            <div class=" marketing" style="text-align: center;">
+                                <div class="con-title">
+                                    <strong><h2>Running for <span>Senator</span></h2></strong>
+                                    <small><p class="text-center">Please choose six senator</p></small>
+                                </div>
+
+                                <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='Senator' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                    <div class="col-lg-4 com-sp">
+                                        <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <p class="text-center" style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                        <p class="text-center"><?php echo $row['course'] ?></p>
+                                        <p class="text-center">Partylist: <?php echo $row['partylist'] ?></p>
+                                    </div>
+                                <?php } ?>
+
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Senator:</label>
@@ -632,6 +543,28 @@
                                     <span id="invalidsix1" style="color:red;" hidden>Please select only six candidates</span>
                                 </div>
                             </div>
+                            <div class=" marketing" style="text-align: center;">
+                                <div class="con-title">
+                                    <strong><h2>Running for <span>Governor</span></h2></strong>
+                                    <small><p class="text-center">Please choose six governor</p></small>
+                                </div>
+                                <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='Governor' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                    <div class="col-lg-4 com-sp">
+                                        <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <p class="text-center" style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                        <p class="text-center"><?php echo $row['course'] ?></p>
+                                        <p class="text-center">Partylist: <?php echo $row['partylist'] ?></p>
+                                    </div>
+                                <?php } ?>
+                                </div>
+
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Governor:</label>
                                 <div class="col-sm-9">
@@ -649,6 +582,28 @@
                                     <span id="invalidsix2" style="color:red;" hidden>Please select only six candidates</span>
                                 </div>
                             </div>
+                            <div class=" marketing" style="text-align: center;">
+                                <div class="con-title">
+                                    <strong><h2>Running for <span>Mayor</span></h2></strong>
+                                    <small><p class="text-center">Please choose six mayor</p></small>
+                                </div>
+                                <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='Mayor' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                    <div class="col-lg-4 com-sp">
+                                        <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <p class="text-center" style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                        <p class="text-center"><?php echo $row['course'] ?></p>
+                                        <p class="text-center">Partylist: <?php echo $row['partylist'] ?></p>
+                                    </div>
+                                <?php } ?>
+                                </div>
+
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Mayor:</label>
                                 <div class="col-sm-9">
@@ -665,6 +620,28 @@
                                     </select>
                                     <span id="invalidsix3" style="color:red;" hidden>Please select only six candidates</span>
                                 </div>
+                            </div>
+                            <div class=" marketing" style="text-align: center;">
+                                <div class="con-title">
+                                    <strong><h2>Running for <span>Vice Mayor</span></h2></strong>
+                                    <small><p class="text-center">Please choose six vice senator</p></small>
+                                </div>
+                                <div class="row text-center">
+                                <?php 
+                                    $query = "SELECT * FROM candidates WHERE position='Vice Mayor' ";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_array($result)) {
+
+                                ?>
+                                    <div class="col-lg-4 com-sp">
+                                        <img class="materialboxed bd-placeholder-img rounded-circle" width="200" height="200" src="./comselec/<?php echo $row['image'] ?>" role="img" aria-label="Placeholder: 130x130" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                        <p class="text-center" style="font-size: large; padding-top: 10px;"><strong><?php echo $row['name'] ?></strong> </p>
+                                        <p class="text-center"><?php echo $row['course'] ?></p>
+                                        <p class="text-center">Partylist: <?php echo $row['partylist'] ?></p>
+                                    </div>
+                                <?php } ?>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Vice Mayor:</label>
