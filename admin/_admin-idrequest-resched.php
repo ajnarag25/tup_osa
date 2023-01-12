@@ -29,6 +29,7 @@
     <link href="css/materialize.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
 
@@ -57,7 +58,6 @@
             </div>
             <!--== SEARCH ==-->
             <div class="col-md-6 col-sm-6 mob-hide">
-
             </div>
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
@@ -138,11 +138,11 @@
                         </li>
                         <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
                         </li>
-                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
+                        <li><a href="_admin-idrequest.php"  class="menu-active"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
                         </li>
                         <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
                         </li>
-                        <li><a href="_admin-goodmoral.php" class="menu-active"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
+                        <li><a href="_admin-goodmoral.php"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
                         </li>
                         <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
@@ -165,94 +165,62 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home /</a>
                         </li>
-                        <li ><a href="_admin-goodmoral.php"> Good Moral Requests</a>
+                        <li ><a href="_admin-idrequest.php"> ID Requests</a>
                         </li>
-                        <li class="active-bre"><a href="#"> Good Moral Request - Set Date</a>
+                        <li class="active-bre"><a href="#"> ID Request - Set Date</a>
                         </li>
                     </ul>
                 </div>
 
-                <!--== View Details ==-->
-                <div class="sb2-2-3">
+                 <!--== Set Date ==-->
+                 <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
 						<div class="box-inn-sp admin-form">
                                 <div class="inn-title">
-                                    <h4>Student Information</h4>
+                                    <h4>Set Date for Student to go to the Office</h4>
                                 </div>
                                 <div class="tab-inn">
                                     <form method="POST" action="process.php">
-                                    <?php 
-                                        $id = $_GET['id'];
-                                        $query = "SELECT * FROM good_moral WHERE id='$id'";
-                                        $result = mysqli_query($conn, $query);
-                                        while ($row = mysqli_fetch_array($result)) {
-                                    ?>
-                                    <form>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <strong><p>TUPC ID Number:</p></strong>
-                                                <input type="text" value="<?php echo $row['student_id'] ?>" readonly>
-                                                <label class="">Enter your TUPC ID Number</label>
+                                                <strong><p>Reschedule Date:</p></strong>
+                                                <input type="date" class="validate" id="dateSelect" name="date" required>
                                             </div>
                                             <div class="input-field col s6">
-                                                <strong><p>Full name:</p></strong>
-                                                <input id="name" type="text" value="<?php echo $row['name'] ?>" readonly>
-                                                <label class="">Enter your full name</label>
+                                                <strong><p>Scheduled Time:</p></strong>
+                                                <select name="time" id="" class="">
+                                                    <option value="8am-9am">8am-9am</option>
+                                                    <option value="9am-10am">9am-10am</option>
+                                                    <option value="10am-11am">10am-11am</option>
+                                                    <option value="11am-12nn">11am-12nn</option>
+                                                    <option value="12nn-1pm">12nn-1pm</option>
+                                                    <option value="1pm-2pm">1pm-2pm</option>
+                                                    <option value="3pm-4pm">3pm-4pm</option>
+                                                    <option value="4pm-5pm">4pm-5pm</option>
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Course:</p></strong>
-                                                <input type="text" value="<?php echo $row['course'] ?>" readonly>
-                                                <label class="">Enter your course</label>
+                                            <div class="input-field col s12">
+                                                <strong><p>Compose Message:</p></strong>
+                                                <textarea name="msg_idrequest_set" id="" class="form-control" cols="30" rows="5" value="N/A"></textarea>
                                             </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Phone Number:</p></strong>
-                                               <input type="number" value="<?php echo $row['contact'] ?>" readonly>
-                                               <label class="">Enter your phone number</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Email:</p></strong>
-                                                <input type="email" value="<?php echo $row['email'] ?>" readonly>
-                                                <label class="">Enter your email</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <strong><p>Purpose:</p></strong>
-                                               <input type="text" value="<?php echo $row['purpose'] ?>" readonly>
-                                               <label class="">Purpose</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <strong><p>Year of Attendance:</p></strong>
-                                                <input type="text" value="<?php echo $row['yr_attendance'] ?>" readonly>
-                                            </div>          
-                                            <div class="input-field col s6">
-                                                <strong><p>Graduated Year:</p></strong>
-                                                <input type="text" value="<?php echo $row['yr_graduate'] ?>" readonly>
-                                                <label class="">Graduated Year</label>
-                                            </div>                                 
-                                        </div>     
-                                        <div class="cor about-sp h-gal ed-pho-gal">
-                                            <ul>
-                                                <li>
-                                                    <strong><p>ID Picture:</p></strong>
-                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['proof'] ?>" alt="">
-                                                </li>
-                                            </ul>
-                                        </div>                               
+                                        </div>                          
                                         <div class="row">
                                             <div class="input-field col s12">
-                                                <a href="_admin-goodmoral.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
                                                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                                <button class="btn waves-effect btn-success" name="received_goodmoral"><strong>Click this if Student Received his/her Good Moral</strong></button>
+                                                <?php 
+                                                    $get_id = $_GET['id'];
+                                                    $query = "SELECT * FROM id_request WHERE id='$get_id'";
+                                                    $result = mysqli_query($conn, $query);
+                                                    while ($row = mysqli_fetch_array($result)) {
+                                                ?>
+                                                <input type="hidden" name="email" value="<?php echo $row['email'] ?>">
+                                                <?php } ?>
+                                                <a href="_admin-idrequest.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <button class="btn waves-effect btn-success" name="idrequest_resched"><strong>Submit</strong></button>
                                             </div>
                                         </div>
                                     </form>
-                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -271,6 +239,18 @@
     <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $("#dateSelect").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd',
+            minDate: 0
+        });
+    </script>
 </body>
 
 

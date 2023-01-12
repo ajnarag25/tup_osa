@@ -357,13 +357,13 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Address:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="address" placeholder="Enter your complete address" required>
+                                    <input type="text" class="form-control" name="address" value="<?php echo $row['address'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Birthday:</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control" name="birthday" placeholder="Enter your Birthday">
+                                    <input type="text" class="form-control" name="birthday" value="<?php echo $row['dbirth'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group mar-bot-0">

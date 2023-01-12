@@ -372,7 +372,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Birthday:</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control" name="birthday" placeholder="Enter your Birthday" required>
+                                    <input type="text" class="form-control" name="birthday" value="<?php echo $row['dbirth'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -392,19 +392,19 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><small>Contact Person:</small></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="contact_person" placeholder="Name of the contact person in case of emergency" required>
+                                    <input type="text" class="form-control" name="contact_person" value="<?php echo $row['m_name'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><small>Contact Number:</small></label>
                                 <div class="col-sm-9">
-                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="11" placeholder="Number of the contact person in case of emergency" class="form-control" name="contact_number"  required>
+                                    <input type="text" onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="11" value="<?php echo $row['m_contact'] ?>" class="form-control" name="contact_number"  readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Address:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="address" placeholder="Please enter your address" required>
+                                    <input type="text" class="form-control" name="address" value="<?php echo $row['address'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group mar-bot-0">

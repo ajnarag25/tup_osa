@@ -63,10 +63,6 @@
             </div>
             <!--== SEARCH ==-->
             <div class="col-md-6 col-sm-6 mob-hide">
-                <form class="app-search">
-                    <input type="text" placeholder="Search..." class="form-control">
-                    <a href="#"><i class="fa fa-search"></i></a>
-                </form>
             </div>
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
@@ -273,12 +269,15 @@
                                             <td><?php echo $row['name'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
                                             <td><?php echo $row['course'] ?></td>
-                                            <td><?php echo $row['req_type'] ?></td>
                                             <td><?php echo $row['sched_submit'] ?></td>
+                                            <td><?php echo $row['sched_claim'] ?></td>
                                             <td><?php echo $row['status'] ?></td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="_admin-idrequest-details.php?id=<?php echo $row['id'] ?>" class="btn btn-primary waves-light btn-sm">View Info</a>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <a href="_admin-idrequest-resched.php?id=<?php echo $row['id'] ?>" class="btn btn-warning waves-light btn-sm">Resched</a>
                                                 </div>
                                             </td>
                                         </tr>

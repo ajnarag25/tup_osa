@@ -680,6 +680,219 @@
                             </div>
                             <label id="check_gsfe" class="text-danger"></label>
                         </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Date of Birth:</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control" name="dbirth" placeholder="Enter your complete address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4">Place of Birth:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="pbirth" placeholder="Enter your birth place" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Age:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="age" placeholder="Enter your age" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Sex:</label>
+                                <div class="col-sm-9">
+                                    <select name="sex">
+                                        <option selected disabled>-- Select Sex --</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+							        </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Nationality:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="nationality" placeholder="Enter your nationality" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Religion:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="religion" placeholder="Enter your religion" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="address" placeholder="Enter your complete address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" name="paddress" placeholder="Enter your complete provincial address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Elementary Level</p>
+                                <label class="control-label col-sm-3">Elementary</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="elementary" placeholder="Enter your name of your school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="e_address" placeholder="Enter your address of school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">S.Y Attended</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="e_syattend" placeholder="Enter your school year attended" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Awards</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="e_awards" placeholder="Enter your awards received" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Junior High Level</p>
+                                <label class="control-label col-sm-3">Junior High</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="junior" placeholder="Enter your name of your school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="j_address" placeholder="Enter your address of school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">S.Y Attended</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="j_syattend" placeholder="Enter your school year attended" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Awards</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="j_awards" placeholder="Enter your awards received" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Senior High Level</p>
+                                <label class="control-label col-sm-3">Senor High</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="senior" placeholder="Enter your name of your school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="s_address" placeholder="Enter your address of school" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">S.Y Attended</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="s_syattend" placeholder="Enter your school year attended" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Awards</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="s_awards" placeholder="Enter your awards received" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Father's Information</p>
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_name" placeholder="Enter your father's name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Nationality</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_nationality" placeholder="Enter your father's nationality" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Occupation</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_occupation" placeholder="Enter your father's occupation" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Company Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_company" placeholder="Company address (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Office Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_number" placeholder="Office Number (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Mobile Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="f_contact" placeholder="Enter your father's mobile number" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Mother's Information</p>
+                                <label class="control-label col-sm-3">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_name" placeholder="Enter your mother's name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Nationality</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_nationality" placeholder="Enter your mother's nationality" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Occupation</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_occupation" placeholder="Enter your mother's occupation" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Company Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_company" placeholder="Company address (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Office Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_number" placeholder="Office Number (type N/A if not applicable)" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Mobile Number</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="m_contact" placeholder="Enter your mother's mobile number" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p>Siblings</p>
+                                <label class="control-label col-sm-5">Number of Siblings</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" name="siblings" placeholder="Ex. 2 sister 3 brother" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Birth Order</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="birth_order" placeholder="Enter your birth order (ex. 2nd)" required>
+                                </div>
+                            </div>
                         <hr>
                         <div>
                             <p>Account Information</p>

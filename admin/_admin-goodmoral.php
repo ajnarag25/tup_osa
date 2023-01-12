@@ -63,10 +63,6 @@
             </div>
             <!--== SEARCH ==-->
             <div class="col-md-6 col-sm-6 mob-hide">
-                <form class="app-search">
-                    <input type="text" placeholder="Search..." class="form-control">
-                    <a href="#"><i class="fa fa-search"></i></a>
-                </form>
             </div>
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
@@ -276,6 +272,9 @@
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="_admin-goodmoral-viewinfo.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">View Info</a>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <a href="_admin-goodmoral-resched.php?id=<?php echo $row['id'] ?>" class="btn btn-warning waves-light btn-sm">Resched</a>
                                                 </div>
                                             </td>
                                         </tr>

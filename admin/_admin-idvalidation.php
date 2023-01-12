@@ -63,10 +63,6 @@
             </div>
             <!--== SEARCH ==-->
             <div class="col-md-6 col-sm-6 mob-hide">
-                <form class="app-search">
-                    <input type="text" placeholder="Search..." class="form-control">
-                    <a href="#"><i class="fa fa-search"></i></a>
-                </form>
             </div>
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
@@ -214,7 +210,7 @@
                                             <td><?php echo $row['name'] ?></td>
                                             <td><?php echo $row['email'] ?></td>
                                             <td><?php echo $row['course'] ?></td>
-                                            <td><?php echo $row['date_claim'] ?></td>
+                                            <td><?php echo $row['date_submit'] ?></td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="_admin-idvalidate-setdate.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Accept</a>
@@ -274,6 +270,9 @@
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="process.php?done=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Done</a>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <a href="_admin-idvalidation-resched.php?id=<?php echo $row['id'] ?>" class="btn btn-warning waves-light btn-sm">Resched</a>
                                                 </div>
                                             </td>
                                         </tr>

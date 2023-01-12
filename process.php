@@ -4,7 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
-    error_reporting(0);
+    // error_reporting(0);
 
 
      // logout
@@ -92,6 +92,41 @@
         $pass1 = $_POST['password1'];
         $pass2 = $_POST['password2'];
 
+        $d7 = $_POST['dbirth'];	
+        $d8 = $_POST['pbirth'];	
+        $d9 = $_POST['age'];	
+        $d10 = $_POST['sex'];
+        $d11 = $_POST['nationality'];	
+        $d12 = $_POST['religion'];	
+        $d13 = $_POST['address'];	
+        $d14 = $_POST['paddress'];	
+        $d15 = $_POST['elementary'];	
+        $d16 = $_POST['e_address'];	
+        $d17 = $_POST['e_syattend'];	
+        $d18 = $_POST['e_awards'];	
+        $d19 = $_POST['junior'];	
+        $d20 = $_POST['j_address'];	
+        $d21 = $_POST['j_syattend'];	
+        $d22 = $_POST['j_awards'];
+        $d23 = $_POST['senior'];	
+        $d24 = $_POST['s_address'];	
+        $d25 = $_POST['s_syattend'];	
+        $d26 = $_POST['s_awards'];	
+        $d27 = $_POST['f_name'];	
+        $d28 = $_POST['f_nationality'];	
+        $d29 = $_POST['f_occupation'];	
+        $d30 = $_POST['f_company'];	
+        $d31 = $_POST['f_number'];	
+        $d32 = $_POST['f_contact'];	
+        $d33 = $_POST['m_name'];	
+        $d34 = $_POST['m_nationality'];	
+        $d35 = $_POST['m_occupation'];	
+        $d36 = $_POST['m_company'];	
+        $d37 = $_POST['m_number'];	
+        $d38 = $_POST['m_contact'];	
+        $d39 = $_POST['siblings'];	
+        $d40 = $_POST['birth_order'];	
+
         $sql = "SELECT * FROM student WHERE email='$emails' OR name='$fullname' AND student_id = '$studentid'";
         $result = mysqli_query($conn, $sql);
 
@@ -121,8 +156,8 @@
             <?php
         }else{
             if (!$result->num_rows > 0) {
-                $conn->query("INSERT INTO student (image, student_id, name, course, email, contact, username, password, social1, social2, otp, status) 
-                VALUES('uploads/default.png','$studentid','$fullname', '$course','$emails', '$contact', '$username', '".password_hash($pass1, PASSWORD_DEFAULT)."','N/A','N/A', 0, 'UNVERIFIED')") or die($conn->error);
+                $conn->query("INSERT INTO student (image, student_id, name, course, email, contact, dbirth, pbirth, age, sex, nationality, religion, address, paddress, elementary, e_address, e_syattend, e_awards, junior, j_address, j_syattend, j_awards, senior, s_address, s_syattend, s_awards, f_name, f_nationality, f_occupation, f_company, f_number, f_contact, m_name, m_nationality, m_occupation, m_company, m_number, m_contact, siblings, birth_order, username, password, social1, social2, otp, status) 
+                VALUES('uploads/default.png','$studentid','$fullname', '$course','$emails', '$contact','$d7','$d8','$d9','$d10','$d11','$d12','$d13','$d14','$d15','$d16','$d17','$d18','$d19','$d20','$d21','$d22','$d23','$d24','$d25','$d26','$d27','$d28','$d29','$d30','$d31','$d32','$d33','$d34','$d35','$d36','$d37','$d38','$d39','$d40', '$username', '".password_hash($pass1, PASSWORD_DEFAULT)."','N/A','N/A', 0, 'UNVERIFIED')") or die($conn->error);
                 include 'signup_email.php';
                 ?>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -29,7 +29,7 @@
     <link href="css/materialize.css" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
 
     <!-- RESPONSIVE.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
@@ -57,10 +57,6 @@
             </div>
             <!--== SEARCH ==-->
             <div class="col-md-6 col-sm-6 mob-hide">
-                <form class="app-search">
-                    <input type="text" placeholder="Search..." class="form-control">
-                    <a href="#"><i class="fa fa-search"></i></a>
-                </form>
             </div>
             <!--== NOTIFICATION ==-->
             <div class="col-md-2 tab-hide">
@@ -188,15 +184,24 @@
                                         <div class="row">
                                             <div class="input-field col s6">
                                                 <strong><p>Scheduled Date:</p></strong>
-                                                <input type="date" class="validate" name="date" required>
+                                                <input type="date" class="validate" id="dateSelect" name="date" required>
                                             </div>
                                             <div class="input-field col s6">
                                                 <strong><p>Scheduled Time:</p></strong>
-                                                <input type="time" class="validate" name="time" required>
+                                                <select name="time" id="" class="">
+                                                    <option value="8am-9am">8am-9am</option>
+                                                    <option value="9am-10am">9am-10am</option>
+                                                    <option value="10am-11am">10am-11am</option>
+                                                    <option value="11am-12nn">11am-12nn</option>
+                                                    <option value="12nn-1pm">12nn-1pm</option>
+                                                    <option value="1pm-2pm">1pm-2pm</option>
+                                                    <option value="3pm-4pm">3pm-4pm</option>
+                                                    <option value="4pm-5pm">4pm-5pm</option>
+                                                </select>
                                             </div>
                                             <div class="input-field col s12">
                                                 <strong><p>Compose Message:</p></strong>
-                                                <textarea name="msg_goodmoral_set" id="" class="form-control" cols="30" rows="5" required></textarea>
+                                                <textarea name="msg_goodmoral_set" id="" class="form-control" cols="30" rows="5"></textarea>
                                             </div>
                                         </div>                          
                                         <div class="row">
@@ -318,6 +323,18 @@
     <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $("#dateSelect").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd',
+            minDate: 0
+        });
+    </script>
 </body>
 
 

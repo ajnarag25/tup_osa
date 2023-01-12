@@ -320,6 +320,24 @@
                 <div class="n-form-com admiss-form">
                     <div class="col s12">
                         <form class="form-horizontal" method="POST" action="process.php">
+                            <div class="form-group">
+                                <h4 style="color: gray;">Basic Information</h4>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-5">Scholarship Applied For:</label>
+                                <div class="col-sm-7">
+                                    <select size="5" name="apply" required>
+                                        <option value="" selected disabled>-- Select Option --</option>
+                                        <?php 
+                                            $query = "SELECT * FROM list_scholar ";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+                                        <option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+                                        <?php } ?>
+							        </select>
+                                </div>
+                            </div>
                             <?php 
                                 $get_email = $_SESSION['get_data']['email'];
                                 $query = "SELECT * FROM student WHERE email='$get_email' ";
@@ -327,9 +345,6 @@
                                 while ($row = mysqli_fetch_array($result)) {
 
                             ?>
-                            <div class="form-group">
-                                <h4 style="color: gray;">Basic Information</h4>
-                            </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">TUPC ID #:</label>
                                 <div class="col-sm-9">
@@ -360,21 +375,7 @@
                                     <input type="email" class="form-control" name="email" value="<?php echo $row['email'] ?>" readonly>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-5">Scholarship Applied For:</label>
-                                <div class="col-sm-7">
-                                    <select size="5" name="apply" required>
-                                        <option value="" selected disabled>-- Select Option --</option>
-                                        <?php 
-                                            $query = "SELECT * FROM list_scholar ";
-                                            $result = mysqli_query($conn, $query);
-                                            while ($row = mysqli_fetch_array($result)) {
-                                        ?>
-                                        <option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
-                                        <?php } ?>
-							        </select>
-                                </div>
-                            </div>
+            
                             <div class="form-group">
                                 <label class="control-label col-sm-3">School Year:</label>
                                 <div class="col-sm-9">
@@ -387,53 +388,49 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-4">Date of Birth:</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" name="dbirth" placeholder="Enter your complete address" required>
+                                    <input type="text" class="form-control" name="dbirth" value="<?php echo $row['dbirth'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-4">Place of Birth:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="pbirth" placeholder="Enter your birth place" required>
+                                    <input type="text" class="form-control" name="pbirth" value="<?php echo $row['pbirth'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Age:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="age" placeholder="Enter your age" required>
+                                    <input type="text" class="form-control" name="age" value="<?php echo $row['age'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Sex:</label>
                                 <div class="col-sm-9">
-                                    <select name="sex">
-                                        <option selected disabled>-- Select Sex --</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-							        </select>
+                                    <input type="text" class="form-control" name="sex" value="<?php echo $row['sex'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Nationality:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="nationality" placeholder="Enter your nationality" required>
+                                    <input type="text" class="form-control" name="nationality" value="<?php echo $row['nationality'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Religion:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="religion" placeholder="Enter your religion" required>
+                                    <input type="text" class="form-control" name="religion" value="<?php echo $row['religion'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-5">Complete Address:</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="address" placeholder="Enter your complete address" required>
+                                    <input type="text" class="form-control" name="address" value="<?php echo $row['address'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-5">Provincial Address:</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" name="paddress" placeholder="Enter your complete provincial address" required>
+                                    <input type="text" class="form-control" name="paddress" value="<?php echo $row['paddress'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -443,75 +440,75 @@
                                 <p>Elementary Level</p>
                                 <label class="control-label col-sm-3">Elementary</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="elementary" placeholder="Enter your name of your school" required>
+                                    <input type="text" class="form-control" name="elementary" value="<?php echo $row['elementary'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Address</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="e_address" placeholder="Enter your address of school" required>
+                                    <input type="text" class="form-control" name="e_address" value="<?php echo $row['e_address'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">S.Y Attended</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="e_syattend" placeholder="Enter your school year attended" required>
+                                    <input type="text" class="form-control" name="e_syattend" value="<?php echo $row['e_syattend'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Awards</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="e_awards" placeholder="Enter your awards received" required>
+                                    <input type="text" class="form-control" name="e_awards" value="<?php echo $row['e_awards'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <p>Junior High Level</p>
                                 <label class="control-label col-sm-3">Junior High</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="junior" placeholder="Enter your name of your school" required>
+                                    <input type="text" class="form-control" name="junior" value="<?php echo $row['junior'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Address</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="j_address" placeholder="Enter your address of school" required>
+                                    <input type="text" class="form-control" name="j_address" value="<?php echo $row['j_address'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">S.Y Attended</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="j_syattend" placeholder="Enter your school year attended" required>
+                                    <input type="text" class="form-control" name="j_syattend" value="<?php echo $row['j_syattend'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Awards</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="j_awards" placeholder="Enter your awards received" required>
+                                    <input type="text" class="form-control" name="j_awards" value="<?php echo $row['j_awards'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <p>Senior High Level</p>
                                 <label class="control-label col-sm-3">Senor High</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="senior" placeholder="Enter your name of your school" required>
+                                    <input type="text" class="form-control" name="senior" value="<?php echo $row['senior'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Address</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="s_address" placeholder="Enter your address of school" required>
+                                    <input type="text" class="form-control" name="s_address" value="<?php echo $row['s_address'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">S.Y Attended</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="s_syattend" placeholder="Enter your school year attended" required>
+                                    <input type="text" class="form-control" name="s_syattend" value="<?php echo $row['s_syattend'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Awards</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="s_awards" placeholder="Enter your awards received" required>
+                                    <input type="text" class="form-control" name="s_awards" value="<?php echo $row['s_awards'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -533,87 +530,87 @@
                                 <p>Father's Information</p>
                                 <label class="control-label col-sm-3">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="f_name" placeholder="Enter your father's name" required>
+                                    <input type="text" class="form-control" name="f_name" value="<?php echo $row['f_name'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Nationality</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="f_nationality" placeholder="Enter your father's nationality" required>
+                                    <input type="text" class="form-control" name="f_nationality" value="<?php echo $row['f_nationality'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Occupation</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="f_occupation" placeholder="Enter your father's occupation" required>
+                                    <input type="text" class="form-control" name="f_occupation" value="<?php echo $row['f_occupation'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Company Address</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="f_company" placeholder="Company address (type N/A if not applicable)" required>
+                                    <input type="text" class="form-control" name="f_company" value="<?php echo $row['f_company'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Office Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="f_number" placeholder="Office Number (type N/A if not applicable)" required>
+                                    <input type="text" class="form-control" name="f_number" value="<?php echo $row['f_number'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Mobile Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="f_contact" placeholder="Enter your father's mobile number" required>
+                                    <input type="text" class="form-control" name="f_contact" value="<?php echo $row['f_contact'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <p>Mother's Information</p>
                                 <label class="control-label col-sm-3">Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="m_name" placeholder="Enter your mother's name" required>
+                                    <input type="text" class="form-control" name="m_name" value="<?php echo $row['m_name'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Nationality</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="m_nationality" placeholder="Enter your mother's nationality" required>
+                                    <input type="text" class="form-control" name="m_nationality" value="<?php echo $row['m_nationality'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Occupation</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="m_occupation" placeholder="Enter your mother's occupation" required>
+                                    <input type="text" class="form-control" name="m_occupation" value="<?php echo $row['m_occupation'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Company Address</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="m_company" placeholder="Company address (type N/A if not applicable)" required>
+                                    <input type="text" class="form-control" name="m_company" value="<?php echo $row['m_company'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Office Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="m_number" placeholder="Office Number (type N/A if not applicable)" required>
+                                    <input type="text" class="form-control" name="m_number" value="<?php echo $row['m_number'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Mobile Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="m_contact" placeholder="Enter your mother's mobile number" required>
+                                    <input type="text" class="form-control" name="m_contact" value="<?php echo $row['m_contact'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <p>Siblings</p>
                                 <label class="control-label col-sm-5">Number of Siblings</label>
                                 <div class="col-sm-7">
-                                    <input type="number" class="form-control" name="siblings" placeholder="Ex. 2 sister 3 brother" required>
+                                    <input type="text" class="form-control" name="siblings" value="<?php echo $row['siblings'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Birth Order</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="birth_order" placeholder="Enter your birth order (ex. 2nd)" required>
+                                    <input type="text" class="form-control" name="birth_order" value="<?php echo $row['birth_order'] ?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">

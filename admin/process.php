@@ -3,7 +3,7 @@
 
 <?php 
 include('connection.php');
-error_reporting(0);
+// error_reporting(0);
 
 // LOGOUT
 if (isset($_GET['logout'])) {
@@ -18,7 +18,11 @@ if (isset($_POST['update_sched_claim'])) {
     $time = $_POST['time'];
     $emails = $_POST['email'];
     $messages = $_POST['msg_idrequest_set'];
-    
+
+    $sql = "SELECT * FROM id_request WHERE sched_claim='$date $time'";
+    $result = mysqli_query($conn, $sql);
+    $check = mysqli_num_rows($result);
+  
     if($id == null){
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,6 +33,30 @@ if (isset($_POST['update_sched_claim'])) {
                 Swal.fire({
                 icon: 'error',
                 title: 'An Error Occured',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-idrequest.php";
+                    }else{
+                        window.location.href = "_admin-idrequest.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }elseif ($check > 5){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'Cannot exceed in 5 respondents',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Okay'
                 }).then((result) => {
@@ -72,6 +100,207 @@ if (isset($_POST['update_sched_claim'])) {
     }
 
 }
+
+
+    // ID REQUEST RESCHED
+    if (isset($_POST['idrequest_resched'])) {
+        $id = $_POST['id'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $emails = $_POST['email'];
+        $messages = $_POST['msg_idrequest_set'];
+
+        $sql = "SELECT * FROM id_request WHERE sched_claim='$date $time'";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+    
+        if($id == null){
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An Error Occured',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-idrequest.php";
+                        }else{
+                            window.location.href = "_admin-idrequest.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }else{
+            $conn->query("UPDATE id_request SET status='PENDING', sched_claim='PENDING', message='$messages' WHERE id='$id'") or die($conn->error);
+            include '_admin_idrequest_resched.php'
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Set Reschedule',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-idrequest.php";
+                        }else{
+                            window.location.href = "_admin-idrequest.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+
+    }
+
+
+    // ID VALIDATION RESCHED
+    if (isset($_POST['idvalidation_resched'])) {
+        $id = $_POST['id'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $emails = $_POST['email'];
+        $messages = $_POST['msg_idrequest_set'];
+
+        $sql = "SELECT * FROM id_validation WHERE date_claim='$date $time'";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+    
+        if($id == null){
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An Error Occured',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-idvalidation.php";
+                        }else{
+                            window.location.href = "_admin-idvalidation.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }else{
+            $conn->query("UPDATE id_validation SET status='PENDING', date_claim='PENDING', message='$messages' WHERE id='$id'") or die($conn->error);
+            include '_admin_idvalidation_resched.php'
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Set Reschedule',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-idvalidation.php";
+                        }else{
+                            window.location.href = "_admin-idvalidation.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+
+    }
+
+    // GOOD MORAL RESCHED
+    if (isset($_POST['goodmoral_resched'])) {
+        $id = $_POST['id'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $emails = $_POST['email'];
+        $messages = $_POST['msg_idrequest_set'];
+
+        $sql = "SELECT * FROM good_moral WHERE date_claim='$date $time'";
+        $result = mysqli_query($conn, $sql);
+        $check = mysqli_num_rows($result);
+    
+        if($id == null){
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An Error Occured',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-goodmoral.php";
+                        }else{
+                            window.location.href = "_admin-goodmoral.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }else{
+            $conn->query("UPDATE good_moral SET status='PENDING', date_claim='PENDING', message='$messages' WHERE id='$id'") or die($conn->error);
+            include '_admin_idvalidation_resched.php'
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Set Reschedule',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-goodmoral.php";
+                        }else{
+                            window.location.href = "_admin-goodmoral.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+
+    }
+
 
 if (isset($_POST['received'])) {
     $id = $_POST['id'];
@@ -196,7 +425,11 @@ if (isset($_POST['update_idvalidate'])) {
     $time = $_POST['time'];
     $emails = $_POST['email'];
     $messages = $_POST['msg_idvalidate_set'];
-    
+
+    $sql = "SELECT * FROM id_validation WHERE date_claim='$date $time'";
+    $result = mysqli_query($conn, $sql);
+    $check = mysqli_num_rows($result);
+
     if($id == null){
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -214,6 +447,30 @@ if (isset($_POST['update_idvalidate'])) {
                     window.location.href = "_admin-idvalidate.php";
                     }else{
                         window.location.href = "_admin-idvalidate.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }elseif ($check > 5){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'Cannot exceed in 5 respondents',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-idrequest.php";
+                    }else{
+                        window.location.href = "_admin-idrequest.php";
                     }
                 })
                 
@@ -373,6 +630,10 @@ if (isset($_POST['update_goodmoral'])) {
     $emails = $_POST['email'];
     $messages = $_POST['msg_goodmoral_set'];
     
+    $sql = "SELECT * FROM good_moral WHERE date_claim='$date $time'";
+    $result = mysqli_query($conn, $sql);
+    $check = mysqli_num_rows($result);
+
     if($id == null){
         ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -390,6 +651,30 @@ if (isset($_POST['update_goodmoral'])) {
                     window.location.href = "_admin-goodmoral.php";
                     }else{
                         window.location.href = "_admin-goodmoral.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }elseif ($check > 5){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'Cannot exceed in 5 respondents',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "_admin-idrequest.php";
+                    }else{
+                        window.location.href = "_admin-idrequest.php";
                     }
                 })
                 
