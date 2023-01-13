@@ -309,6 +309,9 @@
                                                 <div class="btn-group">
                                                     <a href="_admin-scholarship-viewinfo.php?id=<?php echo $row['id'] ?>" class="btn btn-primary waves-light btn-sm">View Info</a>
                                                 </div>
+                                                <div class="btn-group">
+                                                    <a href="_admin-scholarship-resched.php?id=<?php echo $row['id'] ?>" class="btn btn-warning waves-light btn-sm">Resched</a>
+                                                </div>
                                             </td>
                                         </tr>
                                         <?php } ?>

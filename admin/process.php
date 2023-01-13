@@ -301,6 +301,68 @@ if (isset($_POST['update_sched_claim'])) {
 
     }
 
+     // SCHOLARSHIP RESCHED
+     if (isset($_POST['scholarship_resched'])) {
+        $id = $_POST['id'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $emails = $_POST['email'];
+        $messages = $_POST['msg_idrequest_set'];
+        echo "dumaan";
+        if($id == null){
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'An Error Occured',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-scholarship.php";
+                        }else{
+                            window.location.href = "_admin-scholarship.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }else{
+            $conn->query("UPDATE scholarship SET status='PENDING' AND sched_date='PENDING', message='$messages' WHERE id='$id'") or die($conn->error);
+            include '_admin_scholarship_resched.php'
+            ?>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Set Reschedule',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Okay'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "_admin-scholarship.php";
+                        }else{
+                            window.location.href = "_admin-scholarship.php";
+                        }
+                    })
+                    
+                })
+        
+            </script>
+            <?php
+        }
+
+    }
+
 
 if (isset($_POST['received'])) {
     $id = $_POST['id'];
