@@ -429,5 +429,98 @@ if (isset($_POST['change_pass'])) {
     }
 }
 
+?>
+
+<?php
+
+// change password_reset
+if (isset($_POST['change_pass_res'])) {
+    $password1 = $_POST['password1'];
+    $password2 = $_POST['password2'];
+
+    if ($password1 != $password2){
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'error',
+                title: 'Password does not match!',
+                text: 'Something went wrong',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "reset_redirect.php";
+                    }else{
+                        window.location.href = "reset_redirect.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }else{
+        $conn->query("UPDATE comselec SET password='$password2' WHERE id=1") or die($conn->error);
+        ?>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Successfully changed default password',
+                text: 'Please login again with your new password',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "../index.php";
+                    }else{
+                        window.location.href = "../index.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+        <?php
+    }
+
+}
+?>
+
+<?php
+if (isset($_POST['del_all_candid'])) {
+    $conn->query("DELETE FROM candidates") or die($conn->error);
+    ?>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Successfully Delete all Candidates',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Okay'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "index.php";
+                    }else{
+                        window.location.href = "index.php";
+                    }
+                })
+                
+            })
+    
+        </script>
+    <?php
+}
 
 ?>

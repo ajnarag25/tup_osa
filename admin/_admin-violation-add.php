@@ -208,6 +208,7 @@
                                                                     <option value="BSME">BSME</option>		
                                                                 </select>
                                                             </div>
+                                                           
                                                             <div class="input-field col s6">
                                                                 <input id="t5-n2" type="text" class="validate" name="yrsection" required>
                                                                 <label for="t5-n2">Year & Section</label>
@@ -225,8 +226,15 @@
                                                             <div id="majorr" class="input-field col s6" hidden>
                                                                 <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
                                                                     <option selected disabled>-- Select Violation (Major) --</option>
-                                                                    <option value="Liquor and Prohibited Drugs">Liquor and Prohibited Drugs</option>
-                                                                    <option value="Unautorized Activities/Illegal Assemblies">Unautorized Activities/Illegal Assemblies</option>			
+                                                                    <?php 
+                                                                        $sql = "SELECT * FROM violation_data WHERE typee='major'";
+                                                                        $result=mysqli_query($conn, $sql);
+                                                                        $row = mysqli_num_rows($result);
+                                                                        while ($row = mysqli_fetch_array($result)) {
+                                                                    ?>
+
+                                                                    <option value="<?php echo $row['violation_col'] ?>"><?php echo $row['violation_col'] ?></option>
+                                                                    <!-- <option value="Unautorized Activities/Illegal Assemblies">Unautorized Activities/Illegal Assemblies</option>			
                                                                     <option value="Deadly and Dangerous Weapons">Deadly and Dangerous Weapons</option>
                                                                     <option value="Threats/Coercion">Threats/Coercion</option>		
                                                                     <option value="Swindling">Swindling</option>
@@ -235,7 +243,7 @@
                                                                     <option value="Robbery/Theft">Robbery/Theft</option>
                                                                     <option value="Damage to Property">Damage to Property</option>		
                                                                     <option value="Forcible or unauthorized entry into the TUP premises">Forcible or unauthorized entry into the TUP premises</option>	
-                                                                    <option value="Commission of cyber crimes as defi ned under R.A. No. 10175">Commission of cyber crimes as defi ned under R.A. No. 10175</option>	
+                                                                    <option value="Commission of cyber crimes as defined under R.A. No. 10175">Commission of cyber crimes as defined under R.A. No. 10175</option>	
                                                                     <option value="Slander/Libel/Gossip">Slander/Libel/Gossip</option>	
                                                                     <option value="Falsification of documents,records and credentials">Falsification of documents,records and credentials</option>
                                                                     <option value="Academic Dishonesty">Academic Dishonesty</option>
@@ -250,8 +258,10 @@
                                                                     <option value="Lending of ID/ registration form to facilitate the entry of another student into the University premises">Lending of ID/ registration form to facilitate the entry of another student into the University premises</option>	
                                                                     <option value="Commission of the same or any minor offense for the 4th time">Commission of the same or any minor offense for the 4th time</option>				
                                                                     <option value="Commission of a major offense while under academic probation">Commission of a major offense while under academic probation</option>	
-                                                                    <option value="Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances">Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances</option>	
+                                                                    <option value="Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances">Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances</option>	 -->
                                                                     <option value="customOption1">[Type Specific Violation]</option>
+                                                                        <?php
+                                                                    }?>
                                                                 </select>
                                                                 <input name="offense2" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
                                                             </div>
@@ -338,7 +348,7 @@
                                                             <!-- For First offense Minor-->
                                                             <div id="firstoffminor" class="input-field col s6" hidden>
                                                                 <select name="offense4" required>
-                                                                    <option selected disabled>-- Sanction (for major) --</option>
+                                                                    <option selected disabled>-- Sanction (for minor) --</option>
                                                                     <option value="Warning and a Letter of Apology">Warning and a Letter of Apology</option>
                                                                     <option value="Warning and a Letter of Apology with the understanding that the student will no longer attempt to join such organization">Warning and a Letter of Apology with the understanding that the student will no longer attempt to join such organization</option>
                                                                     <option value="Warning, a Letter of Apology and forfeiture of gambling parapher">Warning, a Letter of Apology and forfeiture of gambling parapher</option>
@@ -349,7 +359,7 @@
                                                             <!-- For Third offense Minor-->
                                                             <div id="secondoffminor" class="input-field col s6" hidden>
                                                                 <select name="offense4" required>
-                                                                    <option selected disabled>-- Sanction (for major) --</option>
+                                                                    <option selected disabled>-- Sanction (for minor) --</option>
                                                                     <option value="10 to 20 hours of community service">10 to 20 hours of community service</option>
                                                                     <option value="10 to 20 hours of community service and replacement or repair of  the damaged property">10 to 20 hours of community service and replacement or repair of  the damaged property</option>
                                                                 </select>
@@ -357,7 +367,7 @@
                                                             <!-- For Third offense Minor-->
                                                             <div id="thirdoffminor" class="input-field col s6" hidden>
                                                                 <select name="offense4" required>
-                                                                    <option selected disabled>-- Sanction (for major) --</option>
+                                                                    <option selected disabled>-- Sanction (for minor) --</option>
                                                                     <option value="30 to 50 hours of community service">30 to 50 hours of community service</option>
                                                                     <option value="30 to 50 hours of community service and replacement or repair of  the damaged property">30 to 50 hours of community service and replacement or repair of  the damaged property</option>
                                                                 </select>

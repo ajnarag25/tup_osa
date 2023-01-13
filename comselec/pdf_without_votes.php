@@ -11,7 +11,7 @@
 
 
 <head>
-    <title>TUPC OSA Services - Admin Site</title>
+    <title>TUPC OSA Services - Comselec Site</title>
     <!-- META TAGS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,6 +38,7 @@
 
 <body>
      <!--== MAIN CONTRAINER ==-->
+     
      <div class="container-fluid sb1">
         <div class="row">
             <!--== LOGO ==-->
@@ -51,41 +52,10 @@
             </div>
             <!--== SEARCH ==-->
             <div class="col-md-6 col-sm-6 mob-hide">
-            </div>
-            <!--== NOTIFICATION ==-->
-            <div class="col-md-2 tab-hide">
-                <div class="top-not-cen">
-                    <a class='waves-effect btn-noti' href="_admin-idrequest.php" title="All ID Request"><i class="fa fa-id-card-o" aria-hidden="true"></i>
-                    <span>
-                    <?php 
-                        $sql = "SELECT * FROM id_request WHERE status='PENDING'";
-                        $result=mysqli_query($conn, $sql);
-                        $row1 = mysqli_num_rows($result);
-                    ?>
-                    <?php echo $row1 ?>
-                    </span>
-                    </a>
-                    <a class='waves-effect btn-noti' href="_admin-idvalidation.php" title="All ID Validation Request"><i class="fa fa-id-card" aria-hidden="true"></i>
-                    <span>
-                    <?php 
-                        $sql = "SELECT * FROM id_validation WHERE status='PENDING'";
-                        $result=mysqli_query($conn, $sql);
-                        $row2 = mysqli_num_rows($result);
-                    ?>
-                    <?php echo $row2 ?>
-                    </span>
-                    </a>
-                    <a class='waves-effect btn-noti' href="_admin-goodmoral.php" title="All Good Moral Request"><i class="fa fa-user" aria-hidden="true"></i>
-                    <span>
-                    <?php 
-                        $sql = "SELECT * FROM id_validation WHERE status='PENDING'";
-                        $result=mysqli_query($conn, $sql);
-                        $row3 = mysqli_num_rows($result);
-                    ?>
-                    <?php echo $row3 ?>
-                    </span>
-                    </a>
-                </div>
+                <form class="app-search">
+                    <input type="text" placeholder="Search..." class="form-control">
+                    <a href="#"><i class="fa fa-search"></i></a>
+                </form>
             </div>
             <!--== MY ACCCOUNT ==-->
             <div class="col-md-2 col-sm-3 col-xs-6">
@@ -109,7 +79,7 @@
                 <!--== USER INFO ==-->
                 <div class="sb2-12">
                     <?php 
-                        $query = "SELECT * FROM admin ";
+                        $query = "SELECT * FROM comselec ";
                         $result = mysqli_query($conn, $query);
                         while ($row = mysqli_fetch_array($result)) {
                     ?>
@@ -127,17 +97,7 @@
                 <!--== LEFT MENU ==-->
                 <div class="sb2-13">
                     <ul class="collapsible" data-collapsible="accordion">
-                        <li><a href="index.php"><i class="fa fa-bar-chart" aria-hidden="true"></i> Dashboard</a>
-                        </li>
-                        <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
-                        </li>
-                        <li><a href="_admin-idrequest.php"><i class="fa fa-id-card-o" aria-hidden="true"></i> Appointment Request</a>
-                        </li>
-                        <li><a href="_admin-voting.php" class="menu-active"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
-                        </li>
-                        <li><a href="_admin-scholarship.php"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Scholarship</a>
-                        </li>
-                        <li><a href="_admin-violation.php"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
+                        <li><a href="index.php" class="menu-active"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
 						<li><a href="_admin-settings.php"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>
@@ -158,90 +118,19 @@
                         </li>
                     </ul>
                 </div>
-            
-                <!--== List of Candidates ==-->
-                <div class="sb2-2-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-inn-sp">
-                                <div class="inn-title">
-                                    <h4>COMSELEC Activity Log</h4>
-                                    <?php
-                                    $query = "SELECT * FROM comselec where password = 'comselec123' and username = 'comselec'";
-                                    $result = mysqli_query($conn, $query);
-                                    $fet_data = mysqli_num_rows($result);
-                                    if ($fet_data>0) {
-                                        ?>
-                                        <button type="button" style = "display:none;" class="btn btn-danger" data-toggle="modal" data-target="#reset_comselec">Reset COMSELEC Account</button>    
-                                    <?php
-                                    }else{
-                                    ?>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reset_comselec">Reset COMSELEC Account</button>
-                                    <?php
-                                    }
-                                    ?>
-                                    
-                                    <!-- Modal Reset Comselec-->
-                                    <div class="modal fade" id="reset_comselec" tabindex="-1" role="dialog" aria-labelledby="reset_comseleclabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="reset_comseleclabel">Reset COMSELEC Account</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to Reset the COMSELEC Account?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action="process.php" method = "POST">
-                                                <input type="hidden" name = "username" value = "comselec">
-                                                <input type="hidden" name = "passwordd" value = "comselec123">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                            <button type="submit" name = "res_comselec" class="btn btn-primary">Proceed</button>
-                                            </form>
-                                            
-                                        </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="tab-inn">
-                                    <div class="table-responsive table-desi">
-                                        <table id="myTable" class="table table-hover centered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Date(Year-Month-Day) and Time of Recent Logins</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                    $query = "SELECT * FROM comselec_activity_log order by date_time_login desc";
-                                                    $result = mysqli_query($conn, $query);
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                ?>
-                                                <tr>
-                                                    <td><?php echo $row['id'] ?></td>
-                                                    <td>Logged In Last <?php echo $row['date_time_login'] ?></td>
-                                                </tr>
-
-                                                <?php } ?>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
 
+                
+                    <?php 
+                        $query = "SELECT * FROM usg_voting ";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_array($result)) {
 
+                    ?>
+                <br>
+                <button class="btn btn-primary" id  = "download" >Download PDF</button>
                 <!--== List of Candidates President ==-->
+                <div id = "invoice">
                 <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
@@ -259,7 +148,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -274,7 +164,8 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                    
                                                 </tr>
 
                                                 <?php } ?>
@@ -306,7 +197,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -321,7 +213,8 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                   
                                                 </tr>
 
                                                 <?php } ?>
@@ -355,7 +248,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -370,7 +264,8 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                   
+                                                   
                                                 </tr>
 
                                                 <?php } ?>
@@ -403,7 +298,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                   
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -418,7 +314,8 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                    
                                                 </tr>
 
                                                 <?php } ?>
@@ -450,7 +347,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -465,7 +363,8 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                    <
+                                                    
                                                 </tr>
 
                                                 <?php } ?>
@@ -498,7 +397,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -513,7 +413,9 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                   
+                                                    
+                                                    
                                                 </tr>
 
                                                 <?php } ?>
@@ -545,7 +447,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -560,7 +463,9 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                    
+                                                   
                                                 </tr>
 
                                                 <?php } ?>
@@ -592,7 +497,8 @@
                                                     <th>Full Name</th>
                                                     <th>Course</th>
                                                     <th>Position</th>
-                                                    <th>Vote Count</th>
+                                                    
+                                                
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -607,7 +513,9 @@
                                                     <td><span class="list-enq-name"><?php echo $row['name'] ?></span></td>
                                                     <td><?php echo $row['course'] ?></td>
                                                     <td><?php echo $row['position'] ?></td>
-                                                    <td><?php echo $row['vote'] ?></td>
+                                                    
+                                                    
+                                                   
                                                 </tr>
 
                                                 <?php } ?>
@@ -620,10 +528,12 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 
 
-
-
+            
+        
+                <?php  } ?>
         
             </div>
         </div>
@@ -634,6 +544,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/materialize.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src = "pdf_without_votes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 </body>
 
 
