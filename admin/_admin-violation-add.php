@@ -237,7 +237,7 @@
                                                                         while ($row = mysqli_fetch_array($result)) {
                                                                     ?>
 
-                                                                    <option value="<?php echo $row['violation_col'] ?>"><?php echo $row['violation_col'] ?></option>
+                                                                    <option value="<?php echo $row['violations_col'] ?>"><?php echo $row['violations_col'] ?></option>
                                                                     <!-- <option value="Unautorized Activities/Illegal Assemblies">Unautorized Activities/Illegal Assemblies</option>			
                                                                     <option value="Deadly and Dangerous Weapons">Deadly and Dangerous Weapons</option>
                                                                     <option value="Threats/Coercion">Threats/Coercion</option>		
@@ -263,17 +263,28 @@
                                                                     <option value="Commission of the same or any minor offense for the 4th time">Commission of the same or any minor offense for the 4th time</option>				
                                                                     <option value="Commission of a major offense while under academic probation">Commission of a major offense while under academic probation</option>	
                                                                     <option value="Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances">Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances</option>	 -->
-                                                                    <option value="customOption1">[Type Specific Violation]</option>
-                                                                        <?php
+                                                                    
+                                                                   <?php
                                                                     }?>
+                                                                    <option value="customOption1">[Type Specific Violation]</option>
                                                                 </select>
                                                                 <input name="offense2" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
                                                             </div>
+
+
+
+
                                                             <div id="minorr" class="input-field col s6" hidden>
                                                                 <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
                                                                     <option selected disabled>-- Select Violation (Minor) --</option>
-                                                                    <option value="Loitering or causing disturbance during class hours">Loitering or causing disturbance during class hours</option>
-                                                                    <option value="Not wearing the prescribed uniform/haircut/University identification card while inside the University premises">Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</option>
+                                                                    <?php 
+                                                                        $sql = "SELECT * FROM violation_data WHERE typee='minor'";
+                                                                        $result=mysqli_query($conn, $sql);
+                                                                        $row1 = mysqli_num_rows($result);
+                                                                        while ($row1 = mysqli_fetch_array($result)) {
+                                                                    ?>
+                                                                   <option value="<?php echo $row1['violations_col'] ?>"><?php echo $row1['violations_col'] ?></option>
+                                                                    <!-- <option value="Not wearing the prescribed uniform/haircut/University identification card while inside the University premises">Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</option>
                                                                     <option value="Cross dressing during uniform days and wash days">Cross dressing during uniform days and wash days</option>
                                                                     <option value="Violation of the dress code regulation or the footwear regulation during wash days">Violation of the dress code regulation or the footwear regulation during wash days</option>
                                                                     <option value="For male students, sporting of inappropriate or unwanted facial hair, as may be determined by the proper University officials">For male students, sporting of inappropriate or unwanted facial hair, as may be determined by the proper University officials</option>
@@ -290,8 +301,12 @@
                                                                     <option value="Irresponsible use of water and/or electricity within the University premises">Irresponsible use of water and/or electricity within the University premises</option>
                                                                     <option value="Making lewd gestures or uttering lustful word/s to offend or provoke another person or group within the campus">Making lewd gestures or uttering lustful word/s to offend or provoke another person or group within the campus</option>
                                                                     <option value="Accidental damage of property within the University premises">Accidental damage of property within the University premises</option>
-                                                                    <option value="Public and indecent display of physical intimacy with another person within the University premises or during an official school activity">Public and indecent display of physical intimacy with another person within the University premises or during an official school activity</option>
-                                                                    <option value="Possession of any type of cigarette or tobacco product inside the campus">Possession of any type of cigarette or tobacco product inside the campus</option>
+                                                                    <option value="Public and indecent display of physical intimacy with another person within the University premises or during an official school activity">Public and indecent display of physical intimacy with another person within the University premises or during an official school activity</option> -->
+                                                                    <!-- <option value="Possession of any type of cigarette or tobacco product inside the campus">Possession of any type of cigarette or tobacco product inside the campus</option> -->
+                                                                    
+                                                                    <?php
+                                                                        }
+                                                                    ?>
                                                                     <option value="customOption1">[Type Specific Violation]</option>
                                                                 </select>
                                                                 <input name="offense2" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
