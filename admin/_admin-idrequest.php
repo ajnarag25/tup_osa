@@ -143,11 +143,7 @@
                         </li>
                         <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
                         </li>
-                        <li><a href="_admin-idrequest.php"  class="menu-active"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
-                        </li>
-                        <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
-                        </li>
-                        <li><a href="_admin-goodmoral.php"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
+                        <li><a href="_admin-idrequest.php"  class="menu-active"><i class="fa fa-id-card-o" aria-hidden="true"></i> Appointment Request</a>
                         </li>
                         <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
@@ -163,15 +159,21 @@
                 </div>
             </div>
 
-            <!--== BODY INNER CONTAINER ==-->
             <div class="sb2-2">
                 <!--== breadcrumbs ==-->
                 <div class="sb2-2-2">
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
-                        <li class="active-bre"><a href="#"> ID Request</a>
+                        <li class="active-bre"><a href="#"> Appointment Request</a>
                         </li>
+                        <div class="sb2-2-2 right">
+                            <ul>
+                                <li><a href="_admin-idrequest.php" class="btn btn-secondary" style="color:white">I.D REQUEST</a></li>
+                                <li><a href="_admin-idvalidation.php" class="btn btn-primary" style="color:white">I.D VALIDATION</a></li>
+                                <li><a href="_admin-goodmoral.php" class="btn btn-primary" style="color:white">GOOD MORAL</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
                 <!--== ID Request new request ==-->
@@ -183,9 +185,10 @@
                                     <h4>ID Request (New Request)</h4>
                                     <p>List of students who request new TUPC-ID</p>
                                 </div>
+    
                                 <div class="box-body tab-inn">
                                     <table id="example1" class="table table-bordered table-hover table-sm">
-                                      <thead>
+                                    <thead>
                                         <tr class="table-secondary">
                                             <th>#</th>
                                             <th>Picture</th>
@@ -197,8 +200,8 @@
                                             <th>Request Date</th>
                                             <th>Action</th>
                                         </tr>
-                                      </thead>
-                                      <tbody>
+                                    </thead>
+                                    <tbody>
                                         <?php 
                                             $query = "SELECT * FROM id_request WHERE sched_claim='PENDING' AND status='PENDING'";
                                             $result = mysqli_query($conn, $query);
@@ -222,15 +225,15 @@
                                         </tr>
                                         
                                         <?php } ?>
-                       
-                                      </tbody>
+                    
+                                    </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-	
+    
                 <!--== ID Request ongoing ==-->
                 <div class="sb2-2-3" id="ongoinglist">
                     <div class="row">
@@ -242,7 +245,7 @@
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example2" class="table table-bordered table-hover table-sm">
-                                      <thead>
+                                    <thead>
                                         <tr class="table-secondary">
                                             <th>#</th>
                                             <th>Picture</th>
@@ -255,8 +258,8 @@
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
-                                      </thead>
-                                      <tbody>
+                                    </thead>
+                                    <tbody>
                                         <?php 
                                             $query = "SELECT * FROM id_request WHERE status='ONGOING'";
                                             $result = mysqli_query($conn, $query);
@@ -282,7 +285,7 @@
                                             </td>
                                         </tr>
                                         <?php } ?>
-                                      </tbody>
+                                    </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -290,8 +293,8 @@
                     </div>
                 </div>
 
-                 <!--== ID Request history ==-->
-                 <div class="sb2-2-3">
+                <!--== ID Request history ==-->
+                <div class="sb2-2-3">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
@@ -302,7 +305,7 @@
                                 </div>
                                 <div class="box-body tab-inn">
                                     <table id="example4" class="table table-bordered table-hover table-sm">
-                                      <thead>
+                                    <thead>
                                         <tr class="table-secondary">
                                             <th>#</th>
                                             <th>Picture</th>
@@ -314,8 +317,8 @@
                                             <th>Request Date</th>
                                             <th>Status</th>
                                         </tr>
-                                      </thead>
-                                      <tbody>
+                                    </thead>
+                                    <tbody>
                                         <?php 
                                             $query = "SELECT * FROM id_request ";
                                             $result = mysqli_query($conn, $query);
@@ -358,7 +361,7 @@
 
                                         <?php } ?>
 
-                                      </tbody>
+                                    </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -366,6 +369,8 @@
                     </div>
                 </div>
             </div>
+        
+           
         </div>
     </div>
 
