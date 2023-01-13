@@ -138,11 +138,7 @@
                         </li>
                         <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
                         </li>
-                        <li><a href="_admin-idrequest.php"><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
-                        </li>
-                        <li><a href="_admin-idvalidation.php"><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
-                        </li>
-                        <li><a href="_admin-goodmoral.php"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
+                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> Appointment Request</a>
                         </li>
                         <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
@@ -150,7 +146,7 @@
                         </li>
                         <li><a href="_admin-violation.php"><i class="fa fa-ban" aria-hidden="true"></i> Violations</a>
                         </li>
-						<li><a href="_admin-settings.php"   class="menu-active"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
+						<li><a href="_admin-settings.php" class="menu-active"><i class="fa fa-cogs" aria-hidden="true"></i> Admin Settings</a>
                         </li>
                         <li><a href="process.php?logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                         </li>

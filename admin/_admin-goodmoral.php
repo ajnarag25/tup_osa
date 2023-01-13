@@ -143,11 +143,7 @@
                         </li>
                         <li><a href="_admin-verify-student.php"><i class="fa fa-user" aria-hidden="true"></i> Verify Student</a>
                         </li>
-                        <li><a href="_admin-idrequest.php" ><i class="fa fa-id-card-o" aria-hidden="true"></i> ID Request</a>
-                        </li>
-                        <li><a href="_admin-idvalidation.php"  ><i class="fa fa-id-card" aria-hidden="true"></i> ID Validation</a>
-                        </li>
-                        <li><a href="_admin-goodmoral.php" class="menu-active"><i class="fa fa-handshake-o" aria-hidden="true"></i> Good Moral</a>
+                        <li><a href="_admin-goodmoral.php"  class="menu-active"><i class="fa fa-id-card-o" aria-hidden="true"></i> Appointment Request</a>
                         </li>
                         <li><a href="_admin-voting.php"><i class="fa fa-university" aria-hidden="true"></i> USG Voting</a>
                         </li>
@@ -170,8 +166,15 @@
                     <ul>
                         <li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                         </li>
-                        <li class="active-bre"><a href="#"> Good Moral Request</a>
+                        <li class="active-bre"><a href="#"> Appointment Request</a>
                         </li>
+                        <div class="sb2-2-2 right">
+                            <ul>
+                                <li><a href="_admin-idrequest.php" class="btn btn-primary" style="color:white">I.D REQUEST</a></li>
+                                <li><a href="_admin-idvalidation.php" class="btn btn-primary" style="color:white">I.D VALIDATION</a></li>
+                                <li><a href="_admin-goodmoral.php" class="btn btn-secondary" style="color:white">GOOD MORAL</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
 
