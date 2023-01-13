@@ -217,7 +217,7 @@
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="_admin-idvalidate-setdate.php?id=<?php echo $row['id'] ?>" class="btn btn-success waves-light btn-sm">Accept</a>
-                                                    <a href="_admin-idvalidate-decline.php?id=<?php echo $row['id'] ?>" class="btn btn-danger waves-light  btn-sm">Decline</a>
+                                                    <!-- <a href="_admin-idvalidate-decline.php?id=<?php echo $row['id'] ?>" class="btn btn-danger waves-light  btn-sm">Decline</a> -->
                                                 </div>
                                             </td>
                                         </tr>

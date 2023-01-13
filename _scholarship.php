@@ -319,7 +319,7 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="n-form-com admiss-form">
                     <div class="col s12">
-                        <form class="form-horizontal" method="POST" action="process.php">
+                        <form class="form-horizontal" method="POST" action="process.php" enctype="multipart/form-data">
                             <div class="form-group">
                                 <h4 style="color: gray;">Basic Information</h4>
                             </div>
@@ -648,6 +648,51 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <h4 class="text-center">Upload your Requirements:</h4>
+                                <br><br>
+                                <label class="control-label col-sm-3 text-center">Certificate of Registration</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="cor" class="form-control" placeholder="Choose photos" required>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 text-center">Latest Grades</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="grades" class="form-control" placeholder="Choose photos" required>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 text-center">Income Tax Return</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="itr" class="form-control" placeholder="Choose photos" required>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 text-center">Letter of Endorsement</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="loe" class="form-control" placeholder="Choose photos" required>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 text-center">Good Moral</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="gm" class="form-control" placeholder="Choose photos" required>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3 text-center">2x2 Picture</label>
+                                <div class="col-sm-9">
+                                    <input type="file" name="pic" class="form-control" placeholder="Choose photos" required>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="form-group">
                                 <p class="control-label col-sm-12">I hereby certify that all information stated is true and correct.</p>
                             </div>
                             <div class="form-group">
@@ -717,18 +762,7 @@
         </div>
     </section>
 
-    <!-- COPY RIGHTS -->
-    <section class="wed-rights">
-        <div class="container">
-            <div class="row">
-                <div class="copy-right">
-                   <a target="_blank" href="https://www.tupcavite.edu.ph/">Technological University of the Philippines - Cavite Campus</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-  
 
     <!--Import jQuery before materialize.js-->
     

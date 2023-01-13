@@ -489,7 +489,39 @@
                                                <textarea type="text" readonly><?php echo $row['essay2'] ?></textarea>
                                             </div>
                                         </div>
-                
+                                        <br>
+                                        <h4 class="text-center">Requirements:</h4>
+                                        <br>
+                                        <div class="cor about-sp h-gal ed-pho-gal">
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <strong><p>Certificate of Registration</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['cor'] ?>" alt="">
+                                                </div>
+                                                <div class="col text-center">
+                                                    <strong><p>Latest Grades:</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['grades'] ?>" alt="">
+                                                </div>
+                                                <div class="col text-center">
+                                                    <strong><p>Income Tax Return:</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['itr'] ?>" alt="">
+                                                </div>
+                                                <div class="col text-center">
+                                                    <strong><p>Letter of Endorsement:</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['loe'] ?>" alt="">
+                                                </div>
+                                                <div class="col text-center">
+                                                    <strong><p>Good Moral:</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['gm'] ?>" alt="">
+                                                </div>
+                                                <div class="col text-center">
+                                                    <strong><p>2x2 Picture:</p></strong>
+                                                    <img class="materialboxed" style="width: 110px; height:110px;" src="../<?php echo $row['pic'] ?>" alt="">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>   
+                                        <br><br>           
                                         <div class="row">
                                             <div class="input-field col s12">
                                                 <a href="_admin-scholarship.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>

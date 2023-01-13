@@ -1118,7 +1118,7 @@
                                                             </div>
                                                             <div class="input-field col s4">
                                                                 <p>Course:</p>
-                                                                <select name="course" value="" required>
+                                                                <select name="course" onchange="if($(this).val()=='customOption1')showCustomInput('course')"  required>
                                                                     <option selected disabled>-- Select Course --</option>
                                                                     <option value="BGT-AT">BGT-AT</option>
                                                                     <option value="BET-ET">BET-ET</option>			
@@ -1132,8 +1132,10 @@
                                                                     <option value="BSIE-ICT">BSIE-ICT</option>	
                                                                     <option value="BSCE">BSCE</option>	
                                                                     <option value="BSEE">BSEE</option>	
-                                                                    <option value="BSME">BSME</option>		
+                                                                    <option value="BSME">BSME</option>	
+                                                                    <option value="customOption1">[Type Specific Course]</option>
                                                                 </select>
+                                                                <input name="course" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('course')">
                                                             </div>
                                                             <div class="input-field col s4">
                                                                 <p>Position:</p>
@@ -1578,6 +1580,15 @@
     <script src="js/custom.js"></script>
     <script src = "pdf_with_votes.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script>
+          function toggle($toBeHidden, $toBeShown) {
+            $toBeHidden.hide().prop('disabled', true);
+            $toBeShown.show().prop('disabled', false).focus();
+        }
+        function showCustomInput(inputName) {
+            toggle($(`select[name=${inputName}]`), $(`input[name=${inputName}]`));
+        }
+    </script>
 </body>
 
 

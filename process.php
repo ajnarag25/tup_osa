@@ -4,6 +4,7 @@
 <?php 
     include('connection.php');
     session_start();
+    date_default_timezone_set('Asia/Manila');
     // error_reporting(0);
 
 
@@ -1053,7 +1054,39 @@
         $d46 = $_POST['essay2'];
         $sched_today = date("Y/m/d");
 
+        $target_dir = "uploads/";
         
+        $target_file1 = $target_dir . time(). basename($_FILES["cor"]["name"]);
+        $uploadOk1 = 1;
+        $imageFileType1 = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
+        $check1 = getimagesize($_FILES["cor"]["tmp_name"]);
+
+        $target_file2 = $target_dir . time(). basename($_FILES["grades"]["name"]);
+        $uploadOk2 = 1;
+        $imageFileType2 = strtolower(pathinfo($target_file2,PATHINFO_EXTENSION));
+        $check2 = getimagesize($_FILES["grades"]["tmp_name"]);
+
+        $target_file3 = $target_dir . time(). basename($_FILES["itr"]["name"]);
+        $uploadOk3 = 1;
+        $imageFileType3 = strtolower(pathinfo($target_file3,PATHINFO_EXTENSION));
+        $check3 = getimagesize($_FILES["itr"]["tmp_name"]);
+
+        $target_file4 = $target_dir . time(). basename($_FILES["loe"]["name"]);
+        $uploadOk4 = 1;
+        $imageFileType4 = strtolower(pathinfo($target_file4,PATHINFO_EXTENSION));
+        $check4 = getimagesize($_FILES["loe"]["tmp_name"]);
+
+        $target_file5 = $target_dir . time(). basename($_FILES["gm"]["name"]);
+        $uploadOk5 = 1;
+        $imageFileType5 = strtolower(pathinfo($target_file5,PATHINFO_EXTENSION));
+        $check5 = getimagesize($_FILES["gm"]["tmp_name"]);
+
+        $target_file6 = $target_dir . time(). basename($_FILES["pic"]["name"]);
+        $uploadOk6 = 1;
+        $imageFileType6 = strtolower(pathinfo($target_file6,PATHINFO_EXTENSION));
+        $check6 = getimagesize($_FILES["pic"]["tmp_name"]);
+
+
         $sql = "SELECT * FROM scholarship WHERE email='$d6' AND status='PENDING' ";
         $result = mysqli_query($conn, $sql);
 
@@ -1109,8 +1142,14 @@
                 </script>
                 <?php
             }else{
-                $conn->query("INSERT INTO scholarship (student_id, apply, school_yr, name, course, contact, email, dbirth, pbirth, age, sex, nationality, religion, address, paddress, elementary, e_address, e_syattend, e_awards, junior, j_address, j_syattend, j_awards, senior, s_address, s_syattend, s_awards, academic_probation, desciplinary_probation, f_name, f_nationality, f_occupation, f_company, f_number, f_contact, m_name, m_nationality, m_occupation, m_company, m_number, m_contact, siblings, birth_order, hospitalized, details, essay1, essay2, req_date, sched_date, status, message) 
-                VALUES('$studentid','$d1','$d2','$d3','$d4','$d5','$d6','$d7','$d8','$d9','$d10','$d11','$d12','$d13','$d14','$d15','$d16','$d17','$d18','$d19','$d20','$d21','$d22','$d23','$d24','$d25','$d26','$d27','$d28','$d29','$d30','$d31','$d32','$d33','$d34','$d35','$d36','$d37','$d38','$d39','$d40','$d41','$d42','$d43','$d44','$d45','$d46', '$sched_today', 'PENDING', 'PENDING', 'N/A')") or die($conn->error);
+                move_uploaded_file($_FILES["cor"]["tmp_name"], $target_file1);
+                move_uploaded_file($_FILES["grades"]["tmp_name"], $target_file2);
+                move_uploaded_file($_FILES["itr"]["tmp_name"], $target_file3);
+                move_uploaded_file($_FILES["loe"]["tmp_name"], $target_file4);
+                move_uploaded_file($_FILES["gm"]["tmp_name"], $target_file5);
+                move_uploaded_file($_FILES["pic"]["tmp_name"], $target_file6);
+                $conn->query("INSERT INTO scholarship (student_id, apply, school_yr, name, course, contact, email, dbirth, pbirth, age, sex, nationality, religion, address, paddress, elementary, e_address, e_syattend, e_awards, junior, j_address, j_syattend, j_awards, senior, s_address, s_syattend, s_awards, academic_probation, desciplinary_probation, f_name, f_nationality, f_occupation, f_company, f_number, f_contact, m_name, m_nationality, m_occupation, m_company, m_number, m_contact, siblings, birth_order, hospitalized, details, essay1, essay2, req_date, sched_date, cor, grades, itr, loe, gm, pic, status, message) 
+                VALUES('$studentid','$d1','$d2','$d3','$d4','$d5','$d6','$d7','$d8','$d9','$d10','$d11','$d12','$d13','$d14','$d15','$d16','$d17','$d18','$d19','$d20','$d21','$d22','$d23','$d24','$d25','$d26','$d27','$d28','$d29','$d30','$d31','$d32','$d33','$d34','$d35','$d36','$d37','$d38','$d39','$d40','$d41','$d42','$d43','$d44','$d45','$d46', '$sched_today', 'PENDING', '$target_file1', '$target_file2', '$target_file3', '$target_file4', '$target_file5', '$target_file6', 'PENDING', 'N/A')") or die($conn->error);
                  ?>
                  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
