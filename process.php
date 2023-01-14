@@ -5,7 +5,7 @@
     include('connection.php');
     session_start();
     date_default_timezone_set('Asia/Manila');
-    // error_reporting(0);
+    error_reporting(0);
 
 
      // logout
@@ -462,9 +462,46 @@
         $contact = $_POST['contact'];
         $social1 = $_POST['s1'];
         $social2 = $_POST['s2'];
+        $course = $_POST['course'];
+        $emails = $_POST['email'];
 
+        $d7 = $_POST['dbirth'];
+        $d8 = $_POST['pbirth'];
+        $d9 = $_POST['age'];
+        $d10 = $_POST['sex'];
+        $d11 = $_POST['nationality'];
+        $d12 = $_POST['religion'];
+        $d13 = $_POST['address'];
+        $d14 = $_POST['paddress'];
+        $d15 = $_POST['elementary'];
+        $d16 = $_POST['e_address'];
+        $d17 = $_POST['e_syattend'];
+        $d18 = $_POST['e_awards'];
+        $d19 = $_POST['junior'];
+        $d20 = $_POST['j_address'];
+        $d21 = $_POST['j_syattend'];
+        $d22 = $_POST['j_awards'];
+        $d23 = $_POST['senior'];
+        $d24 = $_POST['s_address'];
+        $d25 = $_POST['s_syattend'];
+        $d26 = $_POST['s_awards'];
+        $d27 = $_POST['f_name'];
+        $d28 = $_POST['f_nationality'];
+        $d29 = $_POST['f_occupation'];
+        $d30 = $_POST['f_company'];
+        $d31 = $_POST['f_number'];
+        $d32 = $_POST['f_contact'];
+        $d33 = $_POST['m_name'];
+        $d34 = $_POST['m_nationality'];
+        $d35 = $_POST['m_occupation'];
+        $d36 = $_POST['m_company'];
+        $d37 = $_POST['m_number'];
+        $d38 = $_POST['m_contact'];
+        $d39 = $_POST['siblings'];
+        $d40 = $_POST['birth_order'];
+ 
         if ($id_student != null){
-            $conn->query("UPDATE student SET username='$username', contact='$contact', social1='$social1', social2='$social2' WHERE id='$id_student'") or die($conn->error);
+            $conn->query("UPDATE student SET username='$username', contact='$contact', course='$course', email='$emails', dbirth='$d7', pbirth='$d8', age='$d9', sex='$d10', nationality='$d11', religion='$d12', address='$d13', paddress='$d14', elementary='$d15', e_address='$d16', e_syattend='$d17', e_awards='$d18', junior='$d19', j_address='$d20', j_syattend='$d21', j_awards='$d22', senior='$d23', s_address='$d24', s_syattend='$d25', s_awards='$d26', f_name='$d27', f_nationality='$d28', f_occupation='$d29', f_company='$d30', f_number='$d31', f_contact='$d32', m_name='$d33', m_nationality='$d34', m_occupation='$d35', m_company='$d36', m_number='$d37', m_contact='$d38', siblings='$d39', birth_order='$d40', social1='$social1', social2='$social2' WHERE id='$id_student'") or die($conn->error);
             ?>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

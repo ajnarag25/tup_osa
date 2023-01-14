@@ -357,6 +357,9 @@
                             <div class="n-form-com admiss-form">
                                 <form class="form-horizontal" method="POST" action="process.php">
                                     <div class="form-group">
+                                        <h4 style="color: gray;">Personal Information</h4>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="control-label col-sm-3">Username</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" name="username" value="<?php echo $row['username'] ?>" required>
@@ -380,6 +383,234 @@
                                             <input type="text" class="form-control" name="s2" value="<?php echo $row['social2'] ?>" required>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                <label class="control-label col-sm-3">Course:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="course" value="<?php echo $row['course'] ?>" readonly>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Email:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="email" value="<?php echo $row['email'] ?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Date of Birth:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="dbirth" value="<?php echo $row['dbirth'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4">Place of Birth:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="pbirth" value="<?php echo $row['pbirth'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Age:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="age" value="<?php echo $row['age'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Sex:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="sex" value="<?php echo $row['sex'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Nationality:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="nationality" value="<?php echo $row['nationality'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Religion:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="religion" value="<?php echo $row['religion'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-5">Complete Address:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" name="address" value="<?php echo $row['address'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-5">Provincial Address:</label>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" name="paddress" value="<?php echo $row['paddress'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h4 style="color: gray;">Educational History</h4>
+                                </div>
+                                <div class="form-group">
+                                    <p>Elementary Level</p>
+                                    <label class="control-label col-sm-3">Elementary</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="elementary" value="<?php echo $row['elementary'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="e_address" value="<?php echo $row['e_address'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">S.Y Attended</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="e_syattend" value="<?php echo $row['e_syattend'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Awards</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="e_awards" value="<?php echo $row['e_awards'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Junior High Level</p>
+                                    <label class="control-label col-sm-3">Junior High</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="junior" value="<?php echo $row['junior'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="j_address" value="<?php echo $row['j_address'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">S.Y Attended</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="j_syattend" value="<?php echo $row['j_syattend'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Awards</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="j_awards" value="<?php echo $row['j_awards'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Senior High Level</p>
+                                    <label class="control-label col-sm-3">Senor High</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="senior" value="<?php echo $row['senior'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="s_address" value="<?php echo $row['s_address'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">S.Y Attended</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="s_syattend" value="<?php echo $row['s_syattend'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Awards</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="s_awards" value="<?php echo $row['s_awards'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h4 style="color: gray;">Family Information</h4>
+                                </div>
+                                <div class="form-group">
+                                    <p>Father's Information</p>
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="f_name" value="<?php echo $row['f_name'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Nationality</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="f_nationality" value="<?php echo $row['f_nationality'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Occupation</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="f_occupation" value="<?php echo $row['f_occupation'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Company Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="f_company" value="<?php echo $row['f_company'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Office Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="f_number" value="<?php echo $row['f_number'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Mobile Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="f_contact" value="<?php echo $row['f_contact'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Mother's Information</p>
+                                    <label class="control-label col-sm-3">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="m_name" value="<?php echo $row['m_name'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Nationality</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="m_nationality" value="<?php echo $row['m_nationality'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Occupation</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="m_occupation" value="<?php echo $row['m_occupation'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Company Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="m_company" value="<?php echo $row['m_company'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Office Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="m_number" value="<?php echo $row['m_number'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Mobile Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="m_contact" value="<?php echo $row['m_contact'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <p>Siblings</p>
+                                    <label class="control-label col-sm-5">Number of Siblings</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="siblings" value="<?php echo $row['siblings'] ?>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Birth Order</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="birth_order" value="<?php echo $row['birth_order'] ?>" required>
+                                    </div>
+                                </div>
                                     <div class="sdb-bot-edit">
                                         <button type="button" data-toggle="modal" data-target="#save1<?php echo $row['id'] ?>" class="waves-effect waves-light btn-large sdb-btn sdb-btn-save"><i class="fa fa-pencil"></i> Save Changes</button>
                                     </div>
