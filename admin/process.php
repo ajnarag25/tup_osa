@@ -890,31 +890,74 @@ if (isset($_POST['decline_goodmoral'])) {
 }
 
 // VIOLATIONS
-if (isset($_POST['violation'])) {
-    $studentid = $_POST['studentid'];
-    $names = $_POST['name'];
-    $course = $_POST['course'];
-    $yrsection = $_POST['yrsection'];
-    $o1 = $_POST['offense1'];
-    $o2 = $_POST['offense2'];
-    $o3 = $_POST['offense3'];
-    $o4 = $_POST['offense4'];
-    $hrs = $_POST['hours'];
-
-    $sql = "SELECT * FROM violations WHERE student_id = '$studentid' AND name = '$names' AND course = '$course' AND yr_section = '$yrsection'";
+if (isset($_GET['violation'])) {
+    $studentid = $_GET['studentid'];
+    $names = $_GET['name'];
+    $course = $_GET['course'];
+    $yrsection = $_GET['yrsection'];
+    $o1 = $_GET['offense1'];
+    $o2 = null;
+    if (isset($_GET['offense2'])) {
+        $o2 = $_GET['offense2'];
+    }elseif (isset($_GET['offense2_maj'])) {
+        $o2 = $_GET['offense2_maj'];
+    }
+    
+    $o3 = $_GET['offense3'];
+    $o4 = $_GET['offense4'];
+    $hrs = $_GET['hours'];
+   // echo $studentid;
+    //echo $names;
+   // echo $course;
+    //echo $yrsection;
+    //echo $o1;
+    echo $o2;
+    //echo $o3;
+    //echo $o4;
+    $sql1 = "SELECT * FROM violation_data WHERE violations_col = '$o2'";
+    $result_viol = mysqli_query($conn, $sql1);
+    $check_viol = mysqli_num_rows($result_viol);
+    if ($check_viol == 0) {
+        $conn->query("INSERT INTO violation_data (violations_col,typee) 
+        VALUES('$o2','$o1')") or die($conn->error);
+    }
+    $sql = "SELECT * FROM violations WHERE student_id = '$studentid' AND name = '$names' AND course = '$course' AND offense2 = '$o2'";
     $result = mysqli_query($conn, $sql);
     $check = mysqli_num_rows($result);
 
     if ($check == 1){
+        if($o3 == 'Second' || $o3 == 'Third'){
+            $conn->query("DELETE FROM violations WHERE student_id='$studentid'") or die($conn->error);
+            if ($hrs == null) {
+                $conn->query("INSERT INTO violations (student_id, name, course, yr_section, offense1, offense2, offense3, offense4, td, status) 
+                VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', 0, 'ONGOING')") or die($conn->error);
+            }
+            else {
+                $conn->query("INSERT INTO violations (student_id, name, course, yr_section, offense1, offense2, offense3, offense4, td, status) 
+                VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', $hrs, 'ONGOING')") or die($conn->error);
+            }
+        }
+        else{
+            if ($hrs == null) {
+                $conn->query("INSERT INTO violations (student_id, name, course, yr_section, offense1, offense2, offense3, offense4, td, status) 
+                VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', 0, 'ONGOING')") or die($conn->error);
+            }
+            else {
+                $conn->query("INSERT INTO violations (student_id, name, course, yr_section, offense1, offense2, offense3, offense4, td, status) 
+                VALUES('$studentid', '$names', '$course', '$yrsection', '$o1', '$o2', '$o3', '$o4', $hrs, 'ONGOING')") or die($conn->error);
+            }
+
+        }
         ?>
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
             $(document).ready(function(){
                 Swal.fire({
-                icon: 'error',
-                title: 'Student already added',
+                icon: 'success',
+                title: 'Student Violation Successfully Added',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Okay'
                 }).then((result) => {

@@ -176,65 +176,51 @@
                                                 <div class="inn-title">
                                                     <h4>Student Information</h4>
                                                 </div>
-                                                <div class="bor">
 
-                                                    <form method="POST" action="process.php">
+
+                                                <?php
+                                                if (isset($_GET['render_violation'])) {
+                                                    
+                                                ?>
+
+                                                <div class="bor">
+                                                    <form method="GET" action="process.php">
                                                         <h4>Personal Information</h4>
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n1" type="text" class="validate" name="studentid" required>
+                                                                <input id="t5-n1" type="text" class="validate" name="studentid" value="<?php echo $_GET['studentid']?>" readonly>
                                                                 <label for="t5-n1">TUPC ID Number</label>
                                                             </div>
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" class="validate" name="name" required>
+                                                                <input id="t5-n2" type="text" class="validate" name="name" value="<?php echo $_GET['name']?>" readonly>
                                                                 <label for="t5-n2">Full Name</label>
                                                             </div>
                                                         </div>  
                                                         <div class="row">
                                                             <div class="input-field col s6">
                                                                 <select name="course" required>
-                                                                    <option selected disabled>-- Select Course --</option>
-                                                                    <option value="BGT-AT">BGT-AT</option>
-                                                                    <option value="BET-ET">BET-ET</option>			
-                                                                    <option value="BET-ESET">BET-ESET</option>
-                                                                    <option value="BET-COET">BET-COET</option>		
-                                                                    <option value="BET-CT">BET-CT</option>
-                                                                    <option value="BET-MT">BET-MT</option>
-                                                                    <option value="BET-AD">BET-AD</option>
-                                                                    <option value="BET-PPT">BET-PPT</option>
-                                                                    <option value="BSIE-IA">BSIE-IA</option>		
-                                                                    <option value="BSIE-ICT">BSIE-ICT</option>	
-                                                                    <option value="BSCE">BSCE</option>	
-                                                                    <option value="BSEE">BSEE</option>	
-                                                                    <option value="BSME">BSME</option>		
+                                                                    <option value= "<?php echo $_GET['course'] ?>"><?php echo $_GET['course'] ?></option>	
                                                                 </select>
                                                             </div>
                                                            
                                                             <div class="input-field col s6">
-                                                                <input id="t5-n2" type="text" class="validate" name="yrsection" required>
+                                                                <input id="t5-n2" type="text" class="validate" name="yrsection"value="<?php echo $_GET['yrsection']?>" readonly>
                                                                 <label for="t5-n2">Year & Section</label>
                                                             </div>
                                                         </div>
                                                         <h4>Violation Details</h4>
                                                         <div class="row">
                                                             <div class="input-field col s6">
-                                                                <select id="choices" onChange="update()" name="offense1" required>
-                                                                    <option selected disabled>-- Major or Minor --</option>
-                                                                    <option value="Major">Major Offense</option>
-                                                                    <option value="Minor">Minor Offense</option>				
+                                                                <select id="choices" onLoad="update()" name="offense1" value="<?php echo $_GET['offense1']?>" required>
+                                                                    <option selected><?php echo $_GET['offense1']?></option>			
                                                                 </select>
                                                             </div>
                                                             <div id="majorr" class="input-field col s6" hidden>
                                                                 <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
-                                                                    <option selected disabled>-- Select Violation (Major) --</option>
-                                                                    <?php 
-                                                                        $sql = "SELECT * FROM violation_data WHERE typee='major'";
-                                                                        $result=mysqli_query($conn, $sql);
-                                                                        $row = mysqli_num_rows($result);
-                                                                        while ($row = mysqli_fetch_array($result)) {
-                                                                    ?>
+                                                                    <option selected value = "<?php echo $_GET['offense2']?>"><?php echo $_GET['offense2']?></option>
+                                                
 
-                                                                    <option value="<?php echo $row['violations_col'] ?>"><?php echo $row['violations_col'] ?></option>
+                                                        
                                                                     <!-- <option value="Unautorized Activities/Illegal Assemblies">Unautorized Activities/Illegal Assemblies</option>			
                                                                     <option value="Deadly and Dangerous Weapons">Deadly and Dangerous Weapons</option>
                                                                     <option value="Threats/Coercion">Threats/Coercion</option>		
@@ -260,24 +246,15 @@
                                                                     <option value="Commission of the same or any minor offense for the 4th time">Commission of the same or any minor offense for the 4th time</option>				
                                                                     <option value="Commission of a major offense while under academic probation">Commission of a major offense while under academic probation</option>	
                                                                     <option value="Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances">Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances</option>	 -->
-                                                                    <?php
-                                                                    }?>
-                                                                    <option value="customOption1">[Type Specific Violation]</option>
+                                                                    
+                                                                   
                                                                      
                                                                 </select>
                                                                 <input name="offense2" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
                                                             </div>
                                                             <div id="minorr" class="input-field col s6" hidden>
                                                                 <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
-                                                                    <option selected disabled>-- Select Violation (Minor) --</option>
-                                                                    <?php 
-                                                                        $sql = "SELECT * FROM violation_data WHERE typee='minor'";
-                                                                        $result=mysqli_query($conn, $sql);
-                                                                        $row = mysqli_num_rows($result);
-                                                                        while ($row = mysqli_fetch_array($result)) {
-                                                                    ?>
-
-                                                                    <option value="<?php echo $row['violations_col'] ?>"><?php echo $row['violations_col'] ?></option>
+                                                                    <option selected value = "<?php echo $_GET['offense2']?>"><?php echo $_GET['offense2']?></option>
                                                                     <!-- <option value="Loitering or causing disturbance during class hours">Loitering or causing disturbance during class hours</option> -->
                                                                     <!-- <option value="Not wearing the prescribed uniform/haircut/University identification card while inside the University premises">Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</option>
                                                                     <option value="Cross dressing during uniform days and wash days">Cross dressing during uniform days and wash days</option>
@@ -298,22 +275,66 @@
                                                                     <option value="Accidental damage of property within the University premises">Accidental damage of property within the University premises</option>
                                                                     <option value="Public and indecent display of physical intimacy with another person within the University premises or during an official school activity">Public and indecent display of physical intimacy with another person within the University premises or during an official school activity</option>
                                                                     <option value="Possession of any type of cigarette or tobacco product inside the campus">Possession of any type of cigarette or tobacco product inside the campus</option> -->
-                                                                    <?php
-                                                                        }
-                                                                    ?>
-                                                                    <option value="customOption1">[Type Specific Violation]</option>
+                                                                    
+                                                                    
                                                                 </select>
                                                                 <input name="offense2" style="display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="input-field col s6" >
-                                                                <select id="choices2" onChange="update()" name="offense3" required>
-                                                                    <option selected disabled>-- Offense # --</option>
-                                                                    <option value="First">First Offense</option>
+                                                                <?php
+                                                                if (isset($_GET['offense2'])) {
+                                                                    $stuid =  $_GET['studentid'];
+                                                                    $name = $_GET['name'];
+                                                                    $otwo =$_GET['offense2'];
+                                                                    $sql = "SELECT offense3 FROM violations WHERE student_id = '$stuid' AND name = '$name' AND offense2 = '$otwo' ";
+                                                                    $result = mysqli_query($conn, $sql);
+                                                                    $check = mysqli_num_rows($result);
+                                                                }else{
+                                                                    $stuid =  $_GET['studentid'];
+                                                                    $name = $_GET['name'];
+                                                                    $otwo =$_GET['offense2_maj'];
+                                                                    $yrsection = $_GET['yrsection'];
+                                                                    $sql = "SELECT offense3 FROM violations WHERE student_id = '$stuid' AND name = '$name' AND offense2 = '$otwo'";
+                                                                    $result = mysqli_query($conn, $sql);
+                                                                    $check = mysqli_num_rows($result);
+                                                                    
+                                                                }
+                                                                ?>
+                                                                <?php
+                                                                if ($check == 0) {
+                                                                    ?>
+                                                                    <select id="choices2" onLoad="update()" name="offense3" required>
+                                                                        <option value="First">First Offense</option>
+                                                                    </select>
+                                                                <?php
+                                                                }else{
+                                                                ?>
+
+                                                                <?php
+                                                                $fet = mysqli_fetch_array($result);
+                                                                if($fet['offense3'] == "First"){
+                                                                ?>
+                                                                <select id="choices2" onLoad="update()" name="offense3" required>
                                                                     <option value="Second">Second Offense</option>
-                                                                    <option value="Third">Third Offense</option>				
                                                                 </select>
+                                                                <?php
+                                                                }elseif($fet['offense3'] == "Second"){
+                                                                ?>
+                                                                <select id="choices2" onLoad="update()" name="offense3" required>
+                                                                    <option value="Third">Third Offense</option>
+                                                                </select>
+                                                                 <?php   
+                                                                }elseif($fet['offense3'] == "Third"){
+                                                                ?>
+                                                                <select id="choices2" onLoad="update()" name="offense3" required>
+                                                                    <option value="Third">Third Offense</option>
+                                                                </select>
+                                                                <?php
+                                                                }
+                                                            }
+                                                                ?>
                                                             </div>
                                                             <!-- For First offense Major-->
                                                             <div id="firstoff" class="input-field col s6" hidden>
@@ -396,8 +417,156 @@
                                                             </div>
                                                         </div>
                                                     </form>
+                                                    
                                                 </div>
-                                                <a href="_admin-violation.php" class="btn waves-effect btn-primary"><strong>Go Back</strong></a>
+                                                <a href="_admin-violation-add_render.php" class="btn waves-effect btn-danger"><strong>Cancel</strong></a>
+                                                <?php
+                                                }else{
+                                                ?>
+                                                    <div class="bor">
+
+                                                        <form method="GET" action="">
+                                                            <h4>Personal Information</h4>
+                                                            <div class="row">
+                                                                <div class="input-field col s6">
+                                                                    <input id="t5-n1" type="text" class="validate" name="studentid" required>
+                                                                    <label for="t5-n1">TUPC ID Number</label>
+                                                                </div>
+                                                                <div class="input-field col s6">
+                                                                    <input id="t5-n2" type="text" class="validate" name="name" required>
+                                                                    <label for="t5-n2">Full Name</label>
+                                                                </div>
+                                                            </div>  
+                                                            <div class="row">
+                                                                <div class="input-field col s6">
+                                                                    <select name="course" required>
+                                                                        <option selected disabled>-- Select Course --</option>
+                                                                        <option value="BGT-AT">BGT-AT</option>
+                                                                        <option value="BET-ET">BET-ET</option>			
+                                                                        <option value="BET-ESET">BET-ESET</option>
+                                                                        <option value="BET-COET">BET-COET</option>		
+                                                                        <option value="BET-CT">BET-CT</option>
+                                                                        <option value="BET-MT">BET-MT</option>
+                                                                        <option value="BET-AD">BET-AD</option>
+                                                                        <option value="BET-PPT">BET-PPT</option>
+                                                                        <option value="BSIE-IA">BSIE-IA</option>		
+                                                                        <option value="BSIE-ICT">BSIE-ICT</option>	
+                                                                        <option value="BSCE">BSCE</option>	
+                                                                        <option value="BSEE">BSEE</option>	
+                                                                        <option value="BSME">BSME</option>		
+                                                                    </select>
+                                                                </div>
+                                                            
+                                                                <div class="input-field col s6">
+                                                                    <input id="t5-n2" type="text" class="validate" name="yrsection" required>
+                                                                    <label for="t5-n2">Year & Section</label>
+                                                                </div>
+                                                            </div>
+                                                            <h4>Violation Details</h4>
+                                                            <div class="row">
+                                                                <div class="input-field col s6">
+                                                                    <select id="choices_render" onChange="update_1()" name="offense1" required>
+                                                                        <option selected disabled>-- Major or Minor --</option>
+                                                                        <option value="Major">Major Offense</option>
+                                                                        <option value="Minor">Minor Offense</option>				
+                                                                    </select>
+                                                                </div>
+                                                                <div id="majorr_render" class="input-field col s6" hidden>
+                                                                    <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
+                                                                        <option selected disabled>-- Select Violation (Major) --</option>
+                                                                        <?php 
+                                                                            $sql = "SELECT * FROM violation_data WHERE typee='major'";
+                                                                            $result=mysqli_query($conn, $sql);
+                                                                            $row = mysqli_num_rows($result);
+                                                                            while ($row = mysqli_fetch_array($result)) {
+                                                                        ?>
+
+                                                                        <option value="<?php echo $row['violations_col'] ?>"><?php echo $row['violations_col'] ?></option>
+                                                                        <!-- <option value="Unautorized Activities/Illegal Assemblies">Unautorized Activities/Illegal Assemblies</option>			
+                                                                        <option value="Deadly and Dangerous Weapons">Deadly and Dangerous Weapons</option>
+                                                                        <option value="Threats/Coercion">Threats/Coercion</option>		
+                                                                        <option value="Swindling">Swindling</option>
+                                                                        <option value="Misuse of / Failure to Account Funds">Misuse of / Failure to Account Funds</option>
+                                                                        <option value="Violence and Physical Assault/Injury">Violence and Physical Assault/Injury</option>
+                                                                        <option value="Robbery/Theft">Robbery/Theft</option>
+                                                                        <option value="Damage to Property">Damage to Property</option>		
+                                                                        <option value="Forcible or unauthorized entry into the TUP premises">Forcible or unauthorized entry into the TUP premises</option>	
+                                                                        <option value="Commission of cyber crimes as defined under R.A. No. 10175">Commission of cyber crimes as defined under R.A. No. 10175</option>	
+                                                                        <option value="Slander/Libel/Gossip">Slander/Libel/Gossip</option>	
+                                                                        <option value="Falsification of documents,records and credentials">Falsification of documents,records and credentials</option>
+                                                                        <option value="Academic Dishonesty">Academic Dishonesty</option>
+                                                                        <option value="Immoral Acts">Immoral Acts</option>		
+                                                                        <option value="Gambling">Gambling</option>	    
+                                                                        <option value="False representation or Misrepresentation">False representation or Misrepresentation</option>	
+                                                                        <option value="Acts of Disrespect">Acts of Disrespect</option>	
+                                                                        <option value="Offering or Giving Bribes">Offering or Giving Bribes</option>	
+                                                                        <option value="Smoking within the University premises of any type of cigarette or tobacco product">Smoking within the University premises of any type of cigarette or tobacco product</option>	
+                                                                        <option value="Littering within the University premises">Littering within the University premises</option>	
+                                                                        <option value="Entering the University premises with a borrowed ID or registration form">Entering the University premises with a borrowed ID or registration form</option>	
+                                                                        <option value="Lending of ID/ registration form to facilitate the entry of another student into the University premises">Lending of ID/ registration form to facilitate the entry of another student into the University premises</option>	
+                                                                        <option value="Commission of the same or any minor offense for the 4th time">Commission of the same or any minor offense for the 4th time</option>				
+                                                                        <option value="Commission of a major offense while under academic probation">Commission of a major offense while under academic probation</option>	
+                                                                        <option value="Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances">Final conviction of any offense punishable under the Revised Penal Code, special penal laws or ordinances</option>	 -->
+                                                                        <?php
+                                                                        }?>
+                                                                        <option value="customOption1">[Type Specific Violation]</option>
+                                                                        
+                                                                    </select>
+                                                                    <input name="offense2" style = "display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2_maj')">
+                                                                </div>
+
+
+                                                                <div id="minorr_render" class="input-field col s6" hidden>
+                                                                    <select name="offense2" onchange="if($(this).val()=='customOption1')showCustomInput('offense2')" required>
+                                                                        <option selected disabled>-- Select Violation (Minor) --</option>
+                                                                        <?php 
+                                                                            $sql = "SELECT * FROM violation_data WHERE typee='minor'";
+                                                                            $result=mysqli_query($conn, $sql);
+                                                                            $row = mysqli_num_rows($result);
+                                                                            while ($row = mysqli_fetch_array($result)) {
+                                                                        ?>
+
+                                                                        <option value="<?php echo $row['violations_col'] ?>"><?php echo $row['violations_col'] ?></option>
+                                                                        <!-- <option value="Loitering or causing disturbance during class hours">Loitering or causing disturbance during class hours</option> -->
+                                                                        <!-- <option value="Not wearing the prescribed uniform/haircut/University identification card while inside the University premises">Not wearing the prescribed uniform/haircut/University identification card while inside the University premises</option>
+                                                                        <option value="Cross dressing during uniform days and wash days">Cross dressing during uniform days and wash days</option>
+                                                                        <option value="Violation of the dress code regulation or the footwear regulation during wash days">Violation of the dress code regulation or the footwear regulation during wash days</option>
+                                                                        <option value="For male students, sporting of inappropriate or unwanted facial hair, as may be determined by the proper University officials">For male students, sporting of inappropriate or unwanted facial hair, as may be determined by the proper University officials</option>
+                                                                        <option value="Wearing earrings for male students and multiple earrings for female students within the University premises or during school activities">Wearing earrings for male students and multiple earrings for female students within the University premises or during school activities</option>
+                                                                        <option value="Wearing caps or hats inside the classroom or covered facilities">Wearing caps or hats inside the classroom or covered facilities</option>
+                                                                        <option value="Entering the classroom (students from other classes) without permission from the instructor while the class is going on">Entering the classroom (students from other classes) without permission from the instructor while the class is going on</option>
+                                                                        <option value="Leaving the room without permission (cutting classes) from the instructor while the class is on going">Leaving the room without permission (cutting classes) from the instructor while the class is on going</option>
+                                                                        <option value="Attempting to join any fraternity, sorority or student organization that is not recognized or accredited by the University. An attempt is present when a student has signed an application form to join a fraternity, a sorority or unaccredited organization">Attempting to join any fraternity, sorority or student organization that is not recognized or accredited by the University. An attempt is present when a student has signed an application form to join a fraternity, a sorority or unaccredited organization</option>
+                                                                        <option value="Posting printed materials in the University premises without prior written approval from the proper University officials">Posting printed materials in the University premises without prior written approval from the proper University officials</option>
+                                                                        <option value="Using the University facilities without prior written permission from the proper University officials">Using the University facilities without prior written permission from the proper University officials</option>
+                                                                        <option value="Unauthorized removal of official notices and posters from the bulletin board">Unauthorized removal of official notices and posters from the bulletin board</option>
+                                                                        <option value="Possession of gambling paraphernalia">Possession of gambling paraphernalia</option>
+                                                                        <option value="Unauthorized use of the cellphone,mini video / audio or other related IT gadgets/devices during classes">Unauthorized use of the cellphone,mini video / audio or other related IT gadgets/devices during classes</option>
+                                                                        <option value="Irresponsible use of water and/or electricity within the University premises">Irresponsible use of water and/or electricity within the University premises</option>
+                                                                        <option value="Making lewd gestures or uttering lustful word/s to offend or provoke another person or group within the campus">Making lewd gestures or uttering lustful word/s to offend or provoke another person or group within the campus</option>
+                                                                        <option value="Accidental damage of property within the University premises">Accidental damage of property within the University premises</option>
+                                                                        <option value="Public and indecent display of physical intimacy with another person within the University premises or during an official school activity">Public and indecent display of physical intimacy with another person within the University premises or during an official school activity</option>
+                                                                        <option value="Possession of any type of cigarette or tobacco product inside the campus">Possession of any type of cigarette or tobacco product inside the campus</option> -->
+                                                                        <?php
+                                                                            }
+                                                                        ?>
+                                                                        <option value="customOption1">[Type Specific Violation]</option>
+                                                                    </select>
+                                                                    <input name="offense2" style = "display:none;" disabled="disabled" onblur="if($(this).val()=='')showOptions('offense2')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="input-field col s12">
+                                                                    <button type="submit" class="btn btn-info" name="render_violation"><strong>Next</strong></button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        </div>
+                                                        <a href="_admin-violation.php" class="btn waves-effect btn-danger"><strong>Go Back</strong></a>
+                                                <?php
+                                                }
+                                                ?>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -513,6 +682,22 @@
         }
         update();
 
+        function update_1() { 
+            var select = document.getElementById('choices_render');
+            var option = select.options[select.selectedIndex];
+            if(option.value == "Major"){
+                document.getElementById('majorr_render').hidden = false;
+                document.getElementById('minorr_render').hidden = true;
+            }
+            else if(option.value == "Minor"){
+                document.getElementById('majorr_render').hidden = true;
+                document.getElementById('minorr_render').hidden = false;
+
+            }
+
+
+        }
+        update_1();
         function toggle($toBeHidden, $toBeShown) {
             $toBeHidden.hide().prop('disabled', true);
             $toBeShown.show().prop('disabled', false).focus();

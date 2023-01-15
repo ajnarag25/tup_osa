@@ -176,7 +176,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box-inn-sp">
-                                <a href="_admin-violation-add.php" style="margin-right: 10px; margin-top: 15px;" class="btn btn-danger waves-light right">Add Violators</a>
+                                <a href="_admin-violation-add_render.php" style="margin-right: 10px; margin-top: 15px;" class="btn btn-danger waves-light right">Add Violators</a>
                                 <div class="inn-title">
                                     <h4>Student Violators</h4>
                                 </div>
